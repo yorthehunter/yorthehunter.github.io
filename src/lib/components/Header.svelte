@@ -1,7 +1,7 @@
 <script>
   export const prerender = true
   import Me from "$lib/assets/brian_cleveland_simpsons.png"
-  const myTitle = "Design leader focused on product design strategy for web and mobile and design systems";
+  const myTitle = "Design leader, product design strategy for web and mobile platforms";
 </script>
 
 <svelte:head>
@@ -41,7 +41,7 @@
   }
 
   h1 {
-    font-size: 1.75rem;
+    font-size: 2rem;
     line-height: 2.5rem;
 
     @media (max-width: 768px) {
@@ -51,7 +51,7 @@
   }
 
   h2 {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     line-height: 2.25rem;
     padding: 0 0.5rem;
 

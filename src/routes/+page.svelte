@@ -20,11 +20,11 @@
 
   h3 {
     margin-bottom: 1rem;
-    line-height: 1.5rem;
+    line-height: 1.667rem;
   }
 
   p {
     margin-bottom: 1rem;
-    line-height: 1.5rem;
+    line-height: 1.667rem;
   }
 </style>

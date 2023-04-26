@@ -21,6 +21,7 @@
   
   :global(body) {
     overflow-x: hidden;
+    color: #242424;
   }
 
 
@@ -40,6 +41,8 @@
   footer {
     padding: 4rem;
     color: #242424;
+    font-size: 1rem;
+    line-height: 1.5rem;
 
     @media (max-width: 768px) {
       padding: 2rem;
@@ -49,11 +52,6 @@
       display: flex;
       gap: 1rem;
       margin-bottom: 1rem;
-    }
-    
-    p {
-      font-size: 0.85rem;
-      line-height: 1rem;
     }
   }
 </style>
