@@ -1,0 +1,7 @@
+@import './reset.css';
+
+html {
+  font-family: 'Montserrat', sans-serif;
+  /* https://matthewjamestaylor.com/responsive-font-size#how */
+  font-size: calc(15px + 0.390625vw); 
+}
