@@ -1,4 +1,3 @@
-
 <article class="job-decription">
   <h3>I am a staff product designer leading design systems at Modern Health.</h3>
   <p>Previously, I was the head of design at <a href="https://www.dressanomalie.com/">Anomalie</a> (acquired by

@@ -1,4 +1,5 @@
 <script>
+  export const prerender = true
   import Me from "$lib/assets/brian_cleveland_simpsons.png"
   const myTitle = "Design leader focused on product design strategy for web and mobile and design systems";
 </script>
