@@ -33,17 +33,6 @@
     gap: 2rem;
   }
 
-  .work-collection {
-    display: grid;
-    gap: 1.5rem;
-    grid-template-columns: repeat(2, minmax(10px, 1fr));
-    align-items: start;
-
-    @media only screen and (max-width: 700px) {
-      grid-template-columns: repeat(1, minmax(10px, 1fr));
-    }
-  }
-
   h2 {
     font-family: 'Montserrat', sans-serif;
     font-size: 3.75rem;

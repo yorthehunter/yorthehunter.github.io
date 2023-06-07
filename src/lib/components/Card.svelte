@@ -1,8 +1,8 @@
-<script>
-  export let tag
-  export let imageUrl
-  export let title
-  export let subtitle
+<script lang="ts">
+  export let tag:string
+  export let imageUrl:string
+  export let title:string
+  export let subtitle:string
   import Tag from '$lib/components/Tag.svelte'
 </script>
 

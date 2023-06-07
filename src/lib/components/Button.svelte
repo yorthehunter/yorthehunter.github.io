@@ -1,9 +1,9 @@
-<script>
-  export let url;
-  export let label;
-  export let icon = false;
-  export let isInactive = false;
-  export let isAnchor = false;
+<script lang="ts">
+  export let url:string = "";
+  export let label:string;
+  export let icon:boolean = false;
+  export let isInactive:boolean = false;
+  export let isAnchor:boolean = false;
   import ArrowRight from "$lib/components/ArrowRight.svelte"
 </script>
 

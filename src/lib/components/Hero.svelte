@@ -1,10 +1,10 @@
-<script>
+<script lang="ts">
   import Divider from '$lib/components/Divider.svelte'
   const mhUrl = "https://www.modernhealth.com/";
   const anomalieUrl = "https://www.dressanomalie.com/";
   const sfUrl = "https://www.stitchfix.com/home";
   const mediumArticle = "https://yorthehunter.medium.com/introducing-the-mode-design-system-b3a64cb916da";
-  const link = (text, url) => `<a href="${url}" target="_blank">${text}</a>`;
+  const link = (text:string, url:string) => `<a href="${url}" target="_blank">${text}</a>`;
 
 </script>
 

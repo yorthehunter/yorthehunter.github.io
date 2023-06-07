@@ -1,5 +1,4 @@
 <script>
-
   import Hero from '$lib/components/Hero.svelte'
   import MyWork from '$lib/components/MyWork.svelte'
   import AboutMe from '$lib/components/AboutMe.svelte'
