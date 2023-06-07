@@ -57,5 +57,9 @@
     gap: 1.5rem;
     align-items: center;
     justify-content: start;
+
+    @media only screen and (max-width: 700px) {
+      flex-direction: column;
+    }
   }
 </style>

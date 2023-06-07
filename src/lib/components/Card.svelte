@@ -37,8 +37,8 @@
     }
 
     p {
-      font-size: 1.125rem;
-      line-height: 1.5rem;
+      font-size: 18px;
+      line-height: 1;
     }
 
     .content {
