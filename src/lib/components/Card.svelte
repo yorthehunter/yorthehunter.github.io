@@ -1,0 +1,50 @@
+<script>
+  export let tag
+  export let imageUrl
+  export let title
+  export let subtitle
+  import Tag from '$lib/components/Tag.svelte'
+</script>
+
+<article class="card">
+  <img src={imageUrl} alt={title} />
+  <Tag>{tag}</Tag>
+  <div class="content">
+    <h2>{title}</h2>
+    <p>{subtitle}</p>
+  </div>
+  <slot />
+</article>
+
+<style lang="scss">
+  .card {
+    padding: 1rem;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-radius: 4px;
+
+    img {
+      display: block;
+    }
+
+    h2 {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
+
+    p {
+      font-size: 1.125rem;
+      line-height: 1.5rem;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+</style>
