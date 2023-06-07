@@ -28,6 +28,11 @@
 
 <style lang="scss">
   .name {
+
+    @media only screen and (max-width: 700px) {
+      display: none;
+    }
+
     font-family: "Montserrat", sans-serif;
     font-size: 1.25rem;
     line-height: 1.75rem;
