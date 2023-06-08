@@ -1,12 +1,13 @@
 <script>
   export const prerender = true
   const ghUrl = "https://github.com/yorthehunter/yorthehunter.github.io";
+  import P from '$lib/components/P.svelte'
 </script>
 
 <footer>
-  <p>
+  <P>
     This site is built with <a href={ghUrl} target="_blank">Svelte and Vite</a>.
-  </p>
+  </P>
 </footer>
 
 <style lang="scss">
