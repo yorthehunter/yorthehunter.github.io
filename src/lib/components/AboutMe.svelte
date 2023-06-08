@@ -55,7 +55,7 @@
     display: flex;
     flex-direction: row;
     gap: 1.5rem;
-    align-items: center;
+    align-items: start;
     justify-content: start;
 
     @media only screen and (max-width: 700px) {

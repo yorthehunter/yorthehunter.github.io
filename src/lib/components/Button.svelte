@@ -37,8 +37,8 @@
     align-self: start;
     justify-content: center;
     gap: 0.75rem;
-    font-size: 1.125rem;
-    line-height: 1.5rem;
+    font-size: 18px;
+    line-height: 1.5;
     border: none;
     margin: none;
     padding: calc(1rem - 4px) 1.5rem;
@@ -47,6 +47,15 @@
     border-radius: 255px;
     transition: background-color 0.15s ease-out;
     border: 2px solid black;
+
+    @media only screen and (max-width: 700px) {
+      font-size: 16px;
+    }
+
+    svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
 
     &.inactive {
       background-color: white;

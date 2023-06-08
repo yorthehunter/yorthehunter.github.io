@@ -14,10 +14,10 @@
   <nav>
     <ul>
       <li>
-        <Button isAnchor label="My Work" url="#my-work" />
+        <Button isAnchor label="Work" url="#my-work" />
       </li>
       <li>
-        <Button isAnchor label="About Me" url="#about-me" />
+        <Button isAnchor label="About" url="#about-me" />
       </li>
       <li>
         <Button isAnchor label="Contact" url="#contact" />

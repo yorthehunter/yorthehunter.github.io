@@ -32,13 +32,13 @@
     h2 {
       font-family: "Montserrat", sans-serif;
       font-weight: 700;
-      font-size: 1.5rem;
-      line-height: 2rem;
+      font-size: 24px;
+      line-height: 1.25;
     }
 
     p {
       font-size: 18px;
-      line-height: 1;
+      line-height: 1.5;
     }
 
     .content {

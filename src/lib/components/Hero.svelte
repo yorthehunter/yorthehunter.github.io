@@ -52,12 +52,20 @@
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: 0.04em;
+
+    @media only screen and (max-width: 700px) {
+      font-size: 12vw;
+    }
   }
 
   h2 {
     font-size: 2.75rem;
     line-height: 4rem;
     font-weight: 400;
+
+    @media only screen and (max-width: 700px) {
+      font-size: 7vw;
+    }
   }
 
   h2,
