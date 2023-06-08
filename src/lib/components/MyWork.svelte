@@ -29,7 +29,7 @@
     subtitle="A case study of how we launched a color palette across all platforms at Modern Health"
     tag="Modern Health"
     imageUrl={Work2}
-    ><Button icon={true} url="https://yorthehunter.medium.com/how-we-created-an-accessible-scalable-color-palette-2ae1242abdcb" label="Read on Medium" /></Card>
+    ><Button icon={true} url="https://yorthehunter.medium.com/how-we-created-an-accessible-scalable-color-palette-2ae1242abdcb" label="Read on Medium">Read on Medium</Button></Card>
     <Card
     title="Designing a Returns Process that Reflects Reality"
     subtitle="A case study on developing a new returns process at Stitch Fix by mapping the physical space of users to a digital experience"
