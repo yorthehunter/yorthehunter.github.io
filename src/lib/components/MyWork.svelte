@@ -8,17 +8,16 @@
   import Work4 from "$lib/assets/global-nav.png"
   import Work5 from "$lib/assets/mode-ds-overview.png"
   import Work6 from "$lib/assets/lego.png"
-
+  import P from '$lib/components/P.svelte'
+  import ContentSection from '$lib/components/ContentSection.svelte'
 </script>
 
-<article id="my-work">
-  <h2>My Work</h2>
-  <Divider />
-  <p>I have worked with many early startups and growth-phase startups, helping drive us to higher levels of design excellence, business growth, and product team effectiveness. I value easily understood documentation and clear communication, consistency, usability, and inclusion.</p>
-  <p>These portfolio pieces are examples of highly successful projects that have driven business results but are punctuated with the challenges that digital products often face: decision paralysis, resource constraints & scope changes, strategic pivots, knowledge silos, etc. In my experience, I’ve been privileged to partner with amazing people to overcome these challenges and push our collective work to new levels.
-  </p>
-  <Divider />
-  <section class="work-collection">
+<ContentSection id="work" title="My Work">
+  <svelte:fragment slot="top">
+    <P>I have worked with many early startups and growth-phase startups, helping drive us to higher levels of design excellence, business growth, and product team effectiveness. I value easily understood documentation and clear communication, consistency, usability, and inclusion.</P>
+    <P>These portfolio pieces are examples of highly successful projects that have driven business results but are punctuated with the challenges that digital products often face: decision paralysis, resource constraints & scope changes, strategic pivots, knowledge silos, etc. In my experience, I’ve been privileged to partner with amazing people to overcome these challenges and push our collective work to new levels.</P>
+  </svelte:fragment>
+  <section class="work-collection" slot="bottom">
     <Card
       title="Introducing the Mode Design System"
       subtitle="Building a shared experience language at Stitch Fix"
@@ -56,17 +55,9 @@
     imageUrl={Work6}
     ><Button isInactive label="Coming Soon" /></Card>
   </section>
-</article>
+</ContentSection>
 
 <style lang="scss">
-  article {
-    max-width: 1128px;
-    margin: 4rem auto;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
   .work-collection {
     display: grid;
     gap: 1.5rem;
@@ -75,24 +66,6 @@
 
     @media only screen and (max-width: 700px) {
       grid-template-columns: repeat(1, minmax(10px, 1fr));
-    }
-  }
-
-  h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 3.75rem;
-    line-height: 4.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-  }
-
-  p {
-    font-size: 1.75rem;
-    line-height: 3rem;
-
-    & + p {
-      margin-top: 1rem;
     }
   }
 </style>

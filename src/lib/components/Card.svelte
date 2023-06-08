@@ -22,7 +22,7 @@
     border: 2px solid black;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
     border-radius: 4px;
 
     img {
