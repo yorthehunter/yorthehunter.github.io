@@ -1,35 +1,23 @@
-<script lang="ts">
-  export let url:string = "";
-  export let icon:boolean = false;
-  export let isInactive:boolean = false;
-  export let isAnchor:boolean = false;
-  import ArrowRight from "$lib/components/ArrowRight.svelte"
+<script>
+  import Button from '$lib/components/Button.svelte'
+  import Sun from '$lib/components/Sun.svelte'
+  import Moon from '$lib/components/Moon.svelte'
+  let isDark = false;
+  function toggle() {
+    window.document.body.classList.toggle('dark-mode')
+    isDark = !isDark;
+  }
 </script>
-
-{#if isInactive}
-  <button class="button inactive">
-    <slot />
-    {#if icon}
-      <ArrowRight />
-    {/if}
-  </button>
-{/if}
-{#if !isInactive}
-  <a
-    href={url}
-    class="button"
-    target={isAnchor ? '' : '_blank'}
-  >
-    <slot />
-    {#if icon}
-      <ArrowRight />
-    {/if}
-  </a>
-{/if}
-
+<button on:click={toggle}>
+  {#if isDark }
+	  <Sun />
+  {:else}
+    <Moon />
+  {/if}
+</button>
 
 <style lang="scss">
-  .button {
+  button {
     display: inline-flex;
     flex-direction: row;
     align-items: center;
@@ -54,16 +42,6 @@
     svg {
       width: 1.25rem;
       height: 1.25rem;
-    }
-
-    &.inactive {
-      background-color: var(--color-bg);
-      color: var(--color-primary);
-
-      &:hover,
-      &:active {
-        background-color: var(--color-bg);
-      }
     }
 
     &:hover {

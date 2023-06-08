@@ -19,7 +19,7 @@
 <style lang="scss">
   .card {
     padding: 1rem;
-    border: 2px solid black;
+    border: 2px solid var(--color-primary);
     display: flex;
     flex-direction: column;
     gap: 1.5rem;

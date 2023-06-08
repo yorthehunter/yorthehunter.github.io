@@ -13,7 +13,7 @@
   <nav slot="bottom">
     <ul>
       <li>
-        <Button label="Email Me" url="mailto:boru.design@gmail.com" />
+        <Button url="mailto:boru.design@gmail.com">Email Me</Button>
       </li>
     </ul>
   </nav>

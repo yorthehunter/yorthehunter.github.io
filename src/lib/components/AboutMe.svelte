@@ -13,13 +13,13 @@
   <nav slot="bottom">
     <ul>
       <li>
-        <Button label="My Resume" icon url="https://docs.google.com/document/d/1AyuuNw0u30vxh8HlWDfZyU2a5A8N4nl_vOzMBexquJQ/edit?usp=sharing" />
+        <Button icon url="https://docs.google.com/document/d/1AyuuNw0u30vxh8HlWDfZyU2a5A8N4nl_vOzMBexquJQ/edit?usp=sharing">My Resume</Button>
       </li>
       <li>
-        <Button label="LinkedIn" icon url="https://www.linkedin.com/in/borudesign/" />
+        <Button icon url="https://www.linkedin.com/in/borudesign/">LinkedIn</Button>
       </li>
       <li>
-        <Button label="Medium" icon url="https://medium.com/@yorthehunter" />
+        <Button icon url="https://medium.com/@yorthehunter">Medium</Button>
       </li>
     </ul>
   </nav>

@@ -16,11 +16,19 @@
   
   :global(:root) {
     --color-raspberry: #FF2D78;
+    --color-primary: #000;
+    --color-bg: #fff;
+  }
+
+  :global(body.dark-mode) {
+    --color-primary: #fff;
+    --color-bg: #000;
   }
 
   :global(body) { 
     overflow-x: hidden;
-    color: black;
+    color: var(--color-primary);
+    background-color: var(--color-bg)
   }
 
   :global(a) {

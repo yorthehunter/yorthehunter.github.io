@@ -3,6 +3,7 @@
   import Me from "$lib/assets/brian_cleveland_simpsons.png"
   const myTitle = "Design leader, product design strategy for web and mobile platforms";
   import Button from '$lib/components/Button.svelte'
+  import ThemeToggle from '$lib/components/ThemeToggle.svelte'
 </script>
 
 <svelte:head>
@@ -14,13 +15,16 @@
   <nav>
     <ul>
       <li>
-        <Button isAnchor label="Work" url="#work" />
+        <Button isAnchor url="#work">Work</Button>
       </li>
       <li>
-        <Button isAnchor label="About" url="#about" />
+        <Button isAnchor url="#about">About</Button>
       </li>
       <li>
-        <Button isAnchor label="Contact" url="#contact" />
+        <Button isAnchor url="#contact">Contact</Button>
+      </li>
+      <li>
+        <ThemeToggle />
       </li>
     </ul>
   </nav>
@@ -47,6 +51,10 @@
     gap: 1.5rem;
     align-items: center;
     justify-content: center;
+
+    @media only screen and (max-width: 700px) {
+      gap: 0.5rem;
+    }
   }
 
   header {
