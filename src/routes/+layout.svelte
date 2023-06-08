@@ -5,7 +5,6 @@
 </script>
 
 <Header />
-<Divider />
 <main>
   <slot />
 </main>
@@ -34,7 +33,6 @@
   :global(a) {
     color: currentColor;
     text-decoration: none;
-    transition: color 0.15s ease-out, border-bottom 0.15s ease-out;
     border-bottom: 2px solid currentColor;
 
     &:visited {
@@ -43,7 +41,6 @@
 
     &:hover {
       color: var(--color-raspberry);
-      border-bottom-width: 0;
     }
   }
 </style>

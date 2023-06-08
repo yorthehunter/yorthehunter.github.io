@@ -7,32 +7,35 @@
 </script>
 
 <svelte:head>
-	<meta name="description" content={`Brian Cleveland: ${myTitle}`}>
+	<meta name="description" content={`Portfolio, links, and contact information for Brian Cleveland: ${myTitle}`}>
+  <title>Brian Cleveland: {myTitle}</title>
+  <meta name="author"  content="Brian Cleveland">
 </svelte:head>
 
 <header>
-  <span class="name">Brian Cleveland</span>
-  <nav>
-    <ul>
-      <li>
-        <Button isAnchor url="#work">Work</Button>
-      </li>
-      <li>
-        <Button isAnchor url="#about">About</Button>
-      </li>
-      <li>
-        <Button isAnchor url="#contact">Contact</Button>
-      </li>
-      <li>
-        <ThemeToggle />
-      </li>
-    </ul>
-  </nav>
+  <div class="content">
+    <span class="name">Brian Cleveland</span>
+    <nav>
+      <ul>
+        <li>
+          <Button isAnchor url="#work">Work</Button>
+        </li>
+        <li>
+          <Button isAnchor url="#about">About</Button>
+        </li>
+        <li>
+          <Button isAnchor url="#contact">Contact</Button>
+        </li>
+        <li>
+          <ThemeToggle />
+        </li>
+      </ul>
+    </nav>
+  </div>
 </header>
 
 <style lang="scss">
   .name {
-
     @media only screen and (max-width: 700px) {
       display: none;
     }
@@ -44,7 +47,7 @@
     font-weight: 700;
   }
 
-  header,
+  .content,
   ul {
     display: flex;
     flex-direction: row;
@@ -57,10 +60,20 @@
     }
   }
 
-  header {
+  .content {
     margin: auto;
     padding: 1.5rem;
     max-width: calc(1128px + 3rem);
+  }
+
+  header {
+    width: 100%;
+    border-bottom: 2px solid var(--color-primary);
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--color-bg);
   }
 
 </style>
