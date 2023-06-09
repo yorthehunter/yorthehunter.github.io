@@ -5,7 +5,11 @@
   const sfUrl = "https://www.stitchfix.com/home";
   const mediumArticle = "https://yorthehunter.medium.com/introducing-the-mode-design-system-b3a64cb916da";
   const link = (text:string, url:string) => `<a href="${url}" target="_blank">${text}</a>`;
-
+  import Value1 from '$lib/components/web-mobile.svelte'
+  import Value2 from '$lib/components/web-design.svelte'
+  import Value3 from '$lib/components/clipboard.svelte'
+  import P from '$lib/components/P.svelte'
+  import Value from '$lib/components/Value.svelte'
 </script>
 
 <article>
@@ -15,13 +19,35 @@
   </header>
   <Divider />
   <section>
-    <p>I am a staff product designer leading design systems at {@html link("Modern Health", mhUrl)}.</p>
-    <p>Previously, I was the head of design at {@html link("Anomalie", anomalieUrl)} (acquired by
+    <P>I am a staff product designer leading design systems at {@html link("Modern Health", mhUrl)}.</P>
+    <P>Previously, I was the head of design at {@html link("Anomalie", anomalieUrl)} (acquired by
       David&rsquo;s Bridal) and the first designer at {@html link("Stitch Fix", sfUrl)} (and later,
       their first front-end engineer), launching the platform design team and {@html link("the Mode design system", mediumArticle)}.
-    </p>
+    </P>
   </section>
   <Divider />
+  <section class="values">
+    <Value>
+      <Value1 slot="image" />
+      <svelte:fragment slot="title">UI development</svelte:fragment>
+      <svelte:fragment slot="content">I made my first website in 2000. Since then, I’ve continued to build for web and mobile, which has helped me communicate design needs between teams and define best practices for accessibility and usability.</svelte:fragment>
+      <svelte:fragment slot="tools">Tools: React, Svelte, HTML + Sass/CSS, UI frameworks, Rails, React Native</svelte:fragment>
+    </Value>
+    <Divider />
+    <Value>
+      <Value2 slot="image" />
+      <svelte:fragment slot="title">Design systems</svelte:fragment>
+      <svelte:fragment slot="content">Over the past several years, I have created, directed, and maintained the growth of multiple successful design systems, serving teams of all sizes and driving UX excellence.</svelte:fragment>
+      <svelte:fragment slot="tools">Tools: Figma, Notion, Confluence, Principle, Style Dictionary, Storybook, Zeroheight</svelte:fragment>
+    </Value>
+    <Divider />
+    <Value>
+      <Value3 slot="image" />
+      <svelte:fragment slot="title">Product design strategy</svelte:fragment>
+      <svelte:fragment slot="content">I’ve spent 13 years on product teams in UX, interaction, and UI design. More recently, I have led design strategy for major cross-functional products, defined OKRs and managed resourcing, and partnered with other leaders to align business goals across teams.</svelte:fragment>
+      <svelte:fragment slot="tools">Tools: Google suite, Product Plan, Asana, Jira, Slack</svelte:fragment>
+    </Value>
+  </section>
 </article>
 
 <style lang="scss">
@@ -68,17 +94,13 @@
     }
   }
 
-  h2,
-  p {
+  h2 {
     max-width: 936px;
   }
 
-  p {
-    font-size: 1.75rem;
-    line-height: 3rem;
-
-    & + p {
-      margin-top: 1rem;
-    }
+  .values {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
   }
 </style>
