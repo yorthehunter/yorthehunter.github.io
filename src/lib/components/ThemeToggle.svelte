@@ -8,7 +8,7 @@
     isDark = !isDark;
   }
 </script>
-<button on:click={toggle}>
+<button on:click={toggle} class="button">
   {#if isDark }
 	  <Sun />
   {:else}
