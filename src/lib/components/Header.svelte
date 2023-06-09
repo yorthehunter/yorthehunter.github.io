@@ -1,9 +1,9 @@
 <script>
   export const prerender = true
-  import Me from "$lib/assets/brian_cleveland_simpsons.png"
   const myTitle = "Design leader, product design strategy for web and mobile platforms";
   import Button from '$lib/components/Button.svelte'
   import ThemeToggle from '$lib/components/ThemeToggle.svelte'
+  import Me from '$lib/components/brian-cleveland.svelte'
 </script>
 
 <svelte:head>
@@ -14,7 +14,7 @@
 
 <header>
   <div class="content">
-    <span class="name">Brian Cleveland</span>
+    <span class="name"><Me />Brian Cleveland</span>
     <nav>
       <ul>
         <li>
@@ -45,6 +45,9 @@
     line-height: 1.75rem;
     flex: 1;
     font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
   }
 
   .content,
