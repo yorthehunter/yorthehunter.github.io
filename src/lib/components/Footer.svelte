@@ -8,6 +8,7 @@
   <P>
     This site is built with <a href={ghUrl} target="_blank">Svelte and Vite</a>.
   </P>
+  <P size="small">Special thanks to Vectors Market for the icons from <a href="https://thenounproject.com/" target="_blank">The Noun Project</a></P>
 </footer>
 
 <style lang="scss">

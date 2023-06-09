@@ -34,6 +34,7 @@
     color: currentColor;
     text-decoration: none;
     border-bottom: 2px solid currentColor;
+    transition: color 150ms ease-out;
 
     &:visited {
       color: currentColor;
