@@ -5,7 +5,8 @@
     display: inline-flex;
     align-self: start;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 11px;
+    letter-spacing: 0.03em;
     line-height: 1;
     border: 2px solid var(--color-primary);
     padding: 4px 8px;

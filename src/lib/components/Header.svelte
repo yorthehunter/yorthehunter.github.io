@@ -77,6 +77,7 @@
     left: 0;
     right: 0;
     background-color: var(--color-bg);
+    z-index: 100;
   }
 
 </style>

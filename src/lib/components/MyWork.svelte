@@ -21,39 +21,42 @@
     <Card
       title="Introducing the Mode Design System"
       subtitle="Building a shared experience language at Stitch Fix"
-      tag="Stitch Fix"
+      tags={["Stitch Fix", "Design Systems"]}
       imageUrl={Work1}
-    ><Button icon={true} url="https://yorthehunter.medium.com/introducing-the-mode-design-system-b3a64cb916da?sk=7450450ef476290ea72991dc0c0110c8">Read on Medium</Button></Card>
+      url="https://yorthehunter.medium.com/introducing-the-mode-design-system-b3a64cb916da?sk=7450450ef476290ea72991dc0c0110c8"
+    />
     <Card
     title="How We Created an Accessible, Scalable Color Palette"
     subtitle="A case study of how we launched a color palette across all platforms at Modern Health"
-    tag="Modern Health"
+    tags={["Modern Health", "Design Systems"]}
     imageUrl={Work2}
-    ><Button icon={true} url="https://yorthehunter.medium.com/how-we-created-an-accessible-scalable-color-palette-2ae1242abdcb" label="Read on Medium">Read on Medium</Button></Card>
+    url="https://yorthehunter.medium.com/how-we-created-an-accessible-scalable-color-palette-2ae1242abdcb"
+    />
+
     <Card
     title="Designing a Returns Process that Reflects Reality"
     subtitle="A case study on developing a new returns process at Stitch Fix by mapping the physical space of users to a digital experience"
-    tag="Stitch Fix"
+    tags={["Stitch Fix", "Product Design"]}
     imageUrl={Work3}
-    ><Button isInactive>Coming Soon</Button></Card>
+    />
     <Card
     title="How we launched a multi-platform global navigation"
     subtitle="A case study on the componentization of navigation in our design system"
-    tag="Modern Health"
+    tags={["Modern Health", "Design Systems"]}
     imageUrl={Work4}
-    ><Button isInactive>Coming Soon</Button></Card>
+    />
     <Card
     title="Introducing a Customer-facing Design System at Stitch Fix"
     subtitle="A case study on creating the Platform Design team and introducing design systems to a rapidly growing product ecosystem"
-    tag="Stitch Fix"
+    tags={["Stitch Fix", "Design Systems"]}
     imageUrl={Work5}
-    ><Button isInactive>Coming Soon</Button></Card>
+    />
     <Card
     title="Tips for Consistency in a Design System"
     subtitle="A list of tips that I’ve learned over time to maintain consistency"
-    tag="Design Systems"
+    tags={["Design Systems"]}
     imageUrl={Work6}
-    ><Button isInactive>Coming Soon</Button></Card>
+    />
   </section>
 </ContentSection>
 

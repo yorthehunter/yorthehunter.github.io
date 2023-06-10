@@ -23,7 +23,6 @@
   &.inactive {
     color: var(--color-primary);
     background-color: var(--color-bg);
-    pointer-events: none;
   }
 
   svg {
@@ -31,12 +30,13 @@
     height: 1.25rem;
   }
 
-  &:hover {
+  &:hover:not(.inactive) {
     background-color: var(--color-raspberry);
     border-color: var(--color-raspberry);
+    cursor: pointer;
   }
 
-  &:active {
+  &:active:not(.inactive) {
     background-color: var(--color-primary);
     border-color: var(--color-primary);
   }

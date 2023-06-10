@@ -1,18 +1,36 @@
 <script lang="ts">
-  export let tag:string
   export let imageUrl:string
   export let title:string
   export let subtitle:string
+  export let tags:array = []
+  export let url:string
+  export let buttonLabel:string
   import Tag from '$lib/components/Tag.svelte'
+  import Button from '$lib/components/Button.svelte'
 </script>
 
 <article class="card">
-  <img src={imageUrl} alt={title} />
-  <Tag>{tag}</Tag>
+  {#if url}
+    <a href={url} target="_blank">
+      <img src={imageUrl} alt={title} />
+    </a>
+  {:else}
+    <img src={imageUrl} alt={title} />
+  {/if}
+  <div class="tags">
+    {#each tags as tag}
+      <Tag>{tag}</Tag>
+    {/each}
+  </div>
   <div class="content">
     <h2>{title}</h2>
     <p>{subtitle}</p>
   </div>
+  {#if url}
+    <Button icon={true} url={url}>{buttonLabel ? buttonLabel : "Read on Medium"}</Button>
+  {:else}
+    <Button isInactive>Coming Soon</Button>
+  {/if}
   <slot />
 </article>
 
@@ -26,7 +44,8 @@
     border-radius: 4px;
 
     img {
-      display: block;
+      display: flex;
+      transition: opacity 150ms ease-out;
     }
 
     h2 {
@@ -45,6 +64,19 @@
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
+    }
+
+    .tags {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    a {
+      border: none;
+
+      &:hover > img {
+        opacity: 0.7;
+      }
     }
   }
 </style>
