@@ -9,7 +9,6 @@ html {
   transition-property: background-color, border-color;
   transition-duration: 150ms;
   transition-timing-function: ease-out;
-  outline: 1px solid red;
 }
 
 
