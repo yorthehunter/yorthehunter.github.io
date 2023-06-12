@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="none" viewBox="0 0 56 56">
+<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="none" viewBox="0 0 56 56" role="img">
+  <title>Brian Cleveland</title>
   <rect width="54" height="54" x="1" y="1" fill="#fff" rx="27"/>
   <path stroke="#000" d="M36.852 47.41c-.025.097.058.306.583.364.656.073 1.166-.146 1.166.364s-.656 2.187-2.77 3.718c-2.114 1.531-3.135 1.75-7.8 1.75s-10.497-5.03-10.862-5.249c-.291-.175.462-.705.875-.948"/>
   <path stroke="#000" stroke-linecap="round" d="m17.753 40.047.291 8.82m18.808-5.686v6.343"/>

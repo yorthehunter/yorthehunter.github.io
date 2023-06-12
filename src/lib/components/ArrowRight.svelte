@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" role="img">
+  <title>Arrow right</title>
   <g clip-path="url(#a)">
     <path fill="transparent" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M.625 10h18.75m-6.25-6.25 6.25 6.25-6.25 6.25"/>
   </g>

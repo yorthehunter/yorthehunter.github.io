@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="200" height="176" fill="currentColor" viewBox="0 0 200 176">
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="176" fill="currentColor" viewBox="0 0 200 176" role="img">
+  <title>Web and mobile systems</title>
   <g class="Frame 34">
     <g class="Group">
       <g class="Group">

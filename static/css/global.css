@@ -12,7 +12,8 @@ html {
 }
 
 *:focus {
-  outline: 2px solid blue;
+  outline: 2px solid var(--color-raspberry);
+  outline-offset: 2px;
 }
 
 @media only screen and (max-width: 900px)  {
