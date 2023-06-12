@@ -69,6 +69,7 @@
 
     @media only screen and (max-width: 700px) {
       grid-template-columns: repeat(1, minmax(10px, 1fr));
+      gap: 0;
     }
   }
 </style>

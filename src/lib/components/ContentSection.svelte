@@ -8,7 +8,6 @@
   <h2>{title}</h2>
   <Divider />
   <slot name="top" />
-  <Divider />
   <slot name="bottom" />
 </article>
 

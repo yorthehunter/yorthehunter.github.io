@@ -43,6 +43,21 @@
     gap: 1.5rem;
     border-radius: 4px;
 
+    @media only screen and (max-width: 700px) {
+      border-left: 0;
+      border-right: 0;
+      padding-left: 0;
+      padding-right: 0;
+      border-radius: 0;
+      border-top: 0;
+      padding-bottom: 4rem;
+      margin: 0 -1.5rem;
+      padding: 3rem 2rem;
+      &:first-child {
+        border-top: 2px solid;
+      }
+    }
+
     img {
       display: flex;
       transition: opacity 150ms ease-out;
