@@ -51,6 +51,7 @@
 </article>
 
 <style lang="scss">
+  @use './helpers.scss';
   article {
     max-width: 1128px;
     padding: 4rem 0;
@@ -79,7 +80,7 @@
     font-weight: 700;
     letter-spacing: 0.04em;
 
-    @media only screen and (max-width: 700px) {
+    @include helpers.small-screen {
       font-size: 12vw;
     }
   }
@@ -89,7 +90,7 @@
     line-height: 4rem;
     font-weight: 400;
 
-    @media only screen and (max-width: 700px) {
+    @include helpers.small-screen {
       font-size: 7vw;
     }
   }

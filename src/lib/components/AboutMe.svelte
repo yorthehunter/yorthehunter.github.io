@@ -26,6 +26,7 @@
 </ContentSection>
 
 <style lang="scss">
+  @use './helpers.scss';
   ul {
     display: flex;
     flex-direction: row;
@@ -33,7 +34,7 @@
     align-items: start;
     justify-content: start;
 
-    @media only screen and (max-width: 700px) {
+    @include helpers.small-screen {
       flex-direction: column;
     }
   }

@@ -35,8 +35,10 @@
 </header>
 
 <style lang="scss">
+  @use './helpers.scss';
+
   .name {
-    @media only screen and (max-width: 700px) {
+    @include helpers.small-screen {
       display: none;
     }
 
@@ -58,7 +60,7 @@
     align-items: center;
     justify-content: center;
 
-    @media only screen and (max-width: 700px) {
+    @include helpers.small-screen {
       gap: 0.5rem;
     }
   }

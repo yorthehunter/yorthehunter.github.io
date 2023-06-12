@@ -61,13 +61,15 @@
 </ContentSection>
 
 <style lang="scss">
+  @use './helpers.scss';
+
   .work-collection {
     display: grid;
     gap: 1.5rem;
     grid-template-columns: repeat(2, minmax(10px, 1fr));
     align-items: start;
 
-    @media only screen and (max-width: 700px) {
+    @include helpers.small-screen {
       grid-template-columns: repeat(1, minmax(10px, 1fr));
       gap: 0;
     }
