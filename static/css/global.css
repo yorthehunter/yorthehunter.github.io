@@ -11,6 +11,9 @@ html {
   transition-timing-function: ease-out;
 }
 
+*:focus {
+  outline: 2px solid blue;
+}
 
 @media only screen and (max-width: 900px)  {
   html {

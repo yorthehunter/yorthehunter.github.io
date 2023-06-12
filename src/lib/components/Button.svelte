@@ -9,7 +9,7 @@
 <style lang="scss" src="./Button.scss" />
 
 {#if isInactive}
-  <button class="button inactive">
+  <button type="button" class="button inactive" aria-disabled>
     <slot />
     {#if icon}
       <ArrowRight />

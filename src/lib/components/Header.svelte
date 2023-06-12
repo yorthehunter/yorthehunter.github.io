@@ -14,7 +14,7 @@
 
 <header>
   <div class="content">
-    <span class="name"><Me />Brian Cleveland</span>
+    <a class="name" href="#top"><Me /><span>Brian Cleveland</span></a>
     <nav>
       <ul>
         <li>
@@ -38,8 +38,15 @@
   @use './helpers.scss';
 
   .name {
+    & > span {
+      @include helpers.small-screen {
+        display: none;
+      }
+    }
+
     @include helpers.small-screen {
-      display: none;
+      max-width: 44px;
+      max-height: 44px;
     }
 
     font-family: "Montserrat", sans-serif;
@@ -50,22 +57,27 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    border: 0;
   }
 
   .content,
   ul {
+    @include helpers.small-screen {
+      gap: 0.5rem;
+    }
+
     display: flex;
     flex-direction: row;
     gap: 1.5rem;
     align-items: center;
     justify-content: center;
-
-    @include helpers.small-screen {
-      gap: 0.5rem;
-    }
   }
 
   .content {
+    @include helpers.small-screen {
+      padding: 0.5rem 1.5rem;
+    }
+
     margin: auto;
     padding: 1.5rem;
     max-width: calc(1128px + 3rem);
