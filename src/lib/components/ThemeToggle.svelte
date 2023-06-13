@@ -1,5 +1,4 @@
 <script>
-  import Button from '$lib/components/Button.svelte'
   import Sun from '$lib/components/Sun.svelte'
   import Moon from '$lib/components/Moon.svelte'
   let isDark = false;

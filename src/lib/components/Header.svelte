@@ -4,6 +4,8 @@
   import Button from '$lib/components/Button.svelte'
   import ThemeToggle from '$lib/components/ThemeToggle.svelte'
   import Me from '$lib/components/brian-cleveland.svelte'
+  import Menu from '$lib/components/Menu.svelte'
+  let menuOpen = false;
 </script>
 
 <svelte:head>
@@ -14,20 +16,30 @@
 
 <header>
   <div class="content">
-    <a class="name" href="#top"><Me /><span>Brian Cleveland</span></a>
+    <div class="name">
+      <a href="#top"><Me /><span>Brian Cleveland</span></a>
+    </div>
     <nav>
       <ul>
-        <li>
+        <li class="only-big">
           <Button isAnchor url="#work">Work</Button>
         </li>
-        <li>
+        <li class="only-big">
           <Button isAnchor url="#about">About</Button>
         </li>
-        <li>
+        <li class="only-big">
           <Button isAnchor url="#contact">Contact</Button>
         </li>
         <li>
           <ThemeToggle />
+        </li>
+        <li class="only-small">
+          <Menu on:click={() => menuOpen = !menuOpen} />
+          <div class="menu" class:show={menuOpen}>
+            <a href="#work" on:click={() => menuOpen = !menuOpen}>Work</a>
+            <a href="#about" on:click={() => menuOpen = !menuOpen}>About</a>
+            <a href="#contact" on:click={() => menuOpen = !menuOpen}>Contact</a>
+          </div>
         </li>
       </ul>
     </nav>
@@ -38,10 +50,19 @@
   @use './helpers.scss';
 
   .name {
-    & > span {
+    margin-right: auto;
+
+    span {
       @include helpers.small-screen {
         display: none;
       }
+    }
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      border: 0;
     }
 
     @include helpers.small-screen {
@@ -56,8 +77,6 @@
     font-weight: 700;
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    border: 0;
   }
 
   .content,
@@ -92,6 +111,52 @@
     right: 0;
     background-color: var(--color-bg);
     z-index: 100;
+  }
+
+  .only-small {
+    display: none;
+
+    @include helpers.small-screen {
+      display: block;
+    }
+  }
+
+  .only-big {
+    display: block;
+
+    @include helpers.small-screen {
+      display: none;
+    }
+  }
+
+  .menu {
+    display: none;
+    position: absolute;
+    z-index: 100;
+    background-color: var(--color-bg);
+    border: 2px solid var(--color-primary);
+    padding: 1.5rem;
+    left: 1rem;
+    right: 1rem;
+    top: 4.5rem;
+
+    a {
+      color: var(--color-primary);
+      font-size: 1.75rem;
+      border: 0;
+      padding: 1rem 0.5rem;
+      transition: color 150ms ease-out;
+
+      &:hover {
+        outline: 2px solid var(--color-raspberry);
+        color: var(--color-raspberry);
+      }
+    }
+
+    &.show {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
 </style>
