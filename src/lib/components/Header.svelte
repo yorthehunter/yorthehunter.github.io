@@ -14,7 +14,7 @@
   <meta name="author"  content="Brian Cleveland">
 </svelte:head>
 
-<header>
+<header id="#top">
   <div class="content">
     <div class="name">
       <a href="#top"><Me /><span>Brian Cleveland</span></a>
