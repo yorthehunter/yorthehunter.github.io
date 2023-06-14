@@ -11,6 +11,10 @@ html {
   transition-timing-function: ease-out;
 }
 
+*:focus {
+  outline: 2px solid var(--color-raspberry);
+  outline-offset: 2px;
+}
 
 @media only screen and (max-width: 900px)  {
   html {
