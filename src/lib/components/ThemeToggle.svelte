@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import Sun from '$lib/components/Sun.svelte'
   import Moon from '$lib/components/Moon.svelte'
   let isDark = false;
@@ -15,4 +15,4 @@
   {/if}
 </button>
 
-<style lang="scss" src="./Button.scss" />
+<style lang="scss" src="./Button.scss"></style>

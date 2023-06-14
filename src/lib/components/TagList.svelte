@@ -1,6 +1,6 @@
-<script>
+<script lang="ts">
   import Tag from '$lib/components/Tag.svelte'
-  export let tagList = [];
+  export let tagList: string[] = [];
 </script>
 
 <div class="tags">

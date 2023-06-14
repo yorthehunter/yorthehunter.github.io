@@ -2,9 +2,9 @@
   export let imageUrl:string
   export let title:string
   export let subtitle:string
-  export let tags:array = []
-  export let url:string
-  export let buttonLabel:string
+  export let tags:string[] = []
+  export let url:string = ""
+  export let buttonLabel:string = ""
   import Tag from '$lib/components/Tag.svelte'
   import Button from '$lib/components/Button.svelte'
   import TagList from '$lib/components/TagList.svelte'

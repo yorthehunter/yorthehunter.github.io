@@ -1,12 +1,10 @@
 <script lang="ts">
+  import ArrowRight from "$lib/components/ArrowRight.svelte"
   export let url:string = "";
   export let icon:boolean = false;
   export let isInactive:boolean = false;
   export let isAnchor:boolean = false;
-  import ArrowRight from "$lib/components/ArrowRight.svelte"
 </script>
-
-<style lang="scss" src="./Button.scss" />
 
 {#if isInactive}
   <button type="button" class="button inactive" aria-disabled>
@@ -28,3 +26,5 @@
     {/if}
   </a>
 {/if}
+
+<style lang="scss" src="./Button.scss"></style>
