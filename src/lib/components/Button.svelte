@@ -27,4 +27,6 @@
   </a>
 {/if}
 
-<style lang="scss" src="./Button.scss"></style>
+<style lang="scss">
+  @use '../assets/Button.scss';
+</style>

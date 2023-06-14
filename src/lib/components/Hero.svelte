@@ -5,9 +5,9 @@
   const sfUrl = "https://www.stitchfix.com/home";
   const mediumArticle = "https://yorthehunter.medium.com/introducing-the-mode-design-system-b3a64cb916da";
   const link = (text:string, url:string) => `<a href="${url}" target="_blank">${text}</a>`;
-  import Value1 from '$lib/components/web-mobile.svelte'
-  import Value2 from '$lib/components/web-design.svelte'
-  import Value3 from '$lib/components/clipboard.svelte'
+  import Value1 from '$lib/assets/web-mobile.svelte'
+  import Value2 from '$lib/assets/web-design.svelte'
+  import Value3 from '$lib/assets/clipboard.svelte'
   import P from '$lib/components/P.svelte'
   import Value from '$lib/components/Value.svelte'
   import Tag from '$lib/components/Tag.svelte'
