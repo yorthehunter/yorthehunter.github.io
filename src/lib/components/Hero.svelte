@@ -10,6 +10,11 @@
   import Value3 from '$lib/components/clipboard.svelte'
   import P from '$lib/components/P.svelte'
   import Value from '$lib/components/Value.svelte'
+  import Tag from '$lib/components/Tag.svelte'
+  import TagList from '$lib/components/TagList.svelte'
+  export const uiDevTools = [ "React", "Svelte", "HTML + Sass/CSS", "UI frameworks", "Rails", "React Native" ]
+  export const dsTools = [ "Figma", "Notion", "Confluence", "Principle", "Style Dictionary", "Storybook", "Zeroheight" ]
+  export const designStrategyTools = [ "Google suite", "Product Plan", "Asana", "Jira", "Slack", "MixPanel", "DataDog", "Looker" ]
 </script>
 
 <article>
@@ -31,21 +36,21 @@
       <Value1 slot="image" />
       <svelte:fragment slot="title">UI development</svelte:fragment>
       <svelte:fragment slot="content">I made my first website in 2000. Since then, I’ve continued to build for web and mobile, which has helped me communicate design needs between teams and define best practices for accessibility and usability.</svelte:fragment>
-      <svelte:fragment slot="tools">Tools: React, Svelte, HTML + Sass/CSS, UI frameworks, Rails, React Native</svelte:fragment>
+      <TagList tagList={uiDevTools} slot="tools" />
     </Value>
     <Divider />
     <Value>
       <Value2 slot="image" />
       <svelte:fragment slot="title">Design systems</svelte:fragment>
       <svelte:fragment slot="content">Over the past several years, I have created, directed, and maintained the growth of multiple successful design systems, serving teams of all sizes and driving UX excellence.</svelte:fragment>
-      <svelte:fragment slot="tools">Tools: Figma, Notion, Confluence, Principle, Style Dictionary, Storybook, Zeroheight</svelte:fragment>
+      <TagList tagList={dsTools} slot="tools" />
     </Value>
     <Divider />
     <Value>
       <Value3 slot="image" />
       <svelte:fragment slot="title">Product design strategy</svelte:fragment>
       <svelte:fragment slot="content">I’ve spent 13 years on product teams in UX, interaction, and UI design. More recently, I have led design strategy for major cross-functional products, defined OKRs and managed resourcing, and partnered with other leaders to align business goals across teams.</svelte:fragment>
-      <svelte:fragment slot="tools">Tools: Google suite, Product Plan, Asana, Jira, Slack</svelte:fragment>
+      <TagList tagList={designStrategyTools} slot="tools" />
     </Value>
   </section>
 </article>

@@ -7,6 +7,7 @@
   export let buttonLabel:string
   import Tag from '$lib/components/Tag.svelte'
   import Button from '$lib/components/Button.svelte'
+  import TagList from '$lib/components/TagList.svelte'
 </script>
 
 <article class="card">
@@ -17,11 +18,7 @@
   {:else}
     <img src={imageUrl} alt={title} />
   {/if}
-  <div class="tags">
-    {#each tags as tag}
-      <Tag>{tag}</Tag>
-    {/each}
-  </div>
+  <TagList tagList={tags} />
   <div class="content">
     <h2>{title}</h2>
     <p>{subtitle}</p>
@@ -80,11 +77,6 @@
     .content {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .tags {
-      display: flex;
       gap: 0.5rem;
     }
 
