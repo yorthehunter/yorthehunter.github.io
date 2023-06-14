@@ -87,16 +87,18 @@
 
     @include helpers.small-screen {
       font-size: 12vw;
+      line-height: 1;
     }
   }
 
   h2 {
     font-size: 2.75rem;
-    line-height: 4rem;
+    line-height: 3.75rem;
     font-weight: 400;
 
     @include helpers.small-screen {
-      font-size: 7vw;
+      font-size: 6vw;
+      line-height: 1.25;
     }
   }
 
