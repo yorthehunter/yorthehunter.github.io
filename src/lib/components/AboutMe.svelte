@@ -8,7 +8,7 @@
 <ContentSection id="about" title="About Me">
   <svelte:fragment slot="top">
     <P>“Who is Navin R. Johnson?”</P>
-    <P>Hey, my name is Brian Cleveland and I am unapologetically nostalgic human who reflects fondly on the 80s. I love watching movies from my childhood, I collect old video games and laser discs, and absolutely love playing <a href="https://en.wikipedia.org/wiki/Fireball_Island" target="_blank">Fireball Island</a> with my kids. In my quote-unquote spare time, I also am a budding home renovation enthusiast who is slowly learning how to do home improvement one bathroom tile at a time.</P>
+    <P>Hey, my name is Brian Cleveland and I'm an unapologetically nostalgic human who fondly reflects on the 80s. I love watching movies from my childhood, I collect old video games and laser discs, and I love playing <a href="https://en.wikipedia.org/wiki/Fireball_Island" target="_blank">Fireball Island</a> with my kids. In my quote-unquote spare time, I also am a budding home renovation enthusiast who is slowly learning how to DIY home improvement one bathroom tile at a time.</P>
   </svelte:fragment>
   <nav slot="bottom">
     <ul>
