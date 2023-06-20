@@ -22,11 +22,6 @@
   }
 
   h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 3.75rem;
-    line-height: 4.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
+    @include section-heading;
   }
 </style>

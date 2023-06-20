@@ -56,7 +56,6 @@
 </article>
 
 <style lang="scss">
-  @use './helpers.scss';
   article {
     max-width: 1128px;
     padding: 4rem 0;
@@ -73,33 +72,12 @@
     }
   }
 
-  h1,
-  h2 {
-    font-family: 'Montserrat', sans-serif;
-  }
-
   h1 {
-    font-size: 5rem;
-    line-height: 1;
-    text-transform: uppercase;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-
-    @include helpers.small-screen {
-      font-size: 12vw;
-      line-height: 1;
-    }
+    @include font-title;
   }
 
   h2 {
-    font-size: 2.75rem;
-    line-height: 3.75rem;
-    font-weight: 400;
-
-    @include helpers.small-screen {
-      font-size: 6vw;
-      line-height: 1.25;
-    }
+    @include font-subtitle;
   }
 
   h2 {

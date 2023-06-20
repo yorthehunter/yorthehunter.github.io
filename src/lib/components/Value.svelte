@@ -14,14 +14,12 @@
 </div>
 
 <style lang="scss">
-  @use './helpers.scss';
-
   .value {
     display: flex;
     gap: 1rem;
     align-items: center;
 
-    @include helpers.small-screen {
+    @include small-screen {
       flex-direction: column;
     }
   }
@@ -41,7 +39,7 @@
     font-weight: 700;
     margin-bottom: 0.5rem;
 
-    @include helpers.small-screen {
+    @include small-screen {
       text-align: center;
     }
   }

@@ -1,0 +1,37 @@
+<article class="article">
+
+  # Hello world
+
+## Hiya
+
+### What's up
+
+#### Whoa
+
+Fuck
+
+- fuck 1
+- fuck 2
+
+---
+
+1. Fuck 3
+2. Fuck 4
+
+</article>
+
+<style lang="scss">
+  .article {
+    max-width: calc(1128px + 3rem);
+    padding: 2rem 1.5rem;
+    margin: auto;
+
+    h1 {
+      @include font-title;
+    }
+
+    h2 {
+      @include section-heading;
+    }
+  }
+</style>

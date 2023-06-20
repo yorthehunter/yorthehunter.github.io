@@ -17,18 +17,18 @@
 <header>
   <div class="content">
     <div class="name">
-      <a href="#top"><Me /><span>Brian Cleveland</span></a>
+      <a href="/#top"><Me /><span>Brian Cleveland</span></a>
     </div>
     <nav>
       <ul>
         <li class="only-big">
-          <Button isAnchor url="#work">Work</Button>
+          <Button isAnchor url="/#work">Work</Button>
         </li>
         <li class="only-big">
-          <Button isAnchor url="#about">About</Button>
+          <Button isAnchor url="/#about">About</Button>
         </li>
         <li class="only-big">
-          <Button isAnchor url="#contact">Contact</Button>
+          <Button isAnchor url="/#contact">Contact</Button>
         </li>
         <li>
           <ThemeToggle />
@@ -47,13 +47,11 @@
 </header>
 
 <style lang="scss">
-  @use './helpers.scss';
-
   .name {
     margin-right: auto;
 
     span {
-      @include helpers.small-screen {
+      @include small-screen {
         display: none;
       }
     }
@@ -65,7 +63,7 @@
       border: 0;
     }
 
-    @include helpers.small-screen {
+    @include small-screen {
       max-width: 44px;
       max-height: 44px;
     }
@@ -81,7 +79,7 @@
 
   .content,
   ul {
-    @include helpers.small-screen {
+    @include small-screen {
       gap: 0.5rem;
     }
 
@@ -93,7 +91,7 @@
   }
 
   .content {
-    @include helpers.small-screen {
+    @include small-screen {
       padding: 0.5rem 1.5rem;
     }
 
@@ -116,7 +114,7 @@
   .only-small {
     display: none;
 
-    @include helpers.small-screen {
+    @include small-screen {
       display: block;
     }
   }
@@ -124,7 +122,7 @@
   .only-big {
     display: block;
 
-    @include helpers.small-screen {
+    @include small-screen {
       display: none;
     }
   }

@@ -16,5 +16,5 @@
 </button>
 
 <style lang="scss">
-  @use '../assets/Button.scss';
+  @import '$lib/assets/Button.scss';
 </style>

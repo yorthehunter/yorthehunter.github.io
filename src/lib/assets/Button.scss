@@ -1,5 +1,3 @@
-@use './helpers.scss';
-
 .button {
   display: inline-flex;
   flex-direction: row;
@@ -17,7 +15,7 @@
   transition: background-color 0.15s ease-out, border-color 0.15s ease-out;
   border: 2px solid var(--color-primary);
 
-  @include helpers.small-screen {
+  @include small-screen {
     font-size: 16px;
     padding: calc(1rem - 4px) 1.125rem;
   }

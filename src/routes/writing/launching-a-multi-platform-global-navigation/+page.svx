@@ -1,0 +1,108 @@
+<article class="article">
+
+# Launching Global Navigation Components at Modern Health
+
+<h2 class="subtitle">
+  A case study solving a cross-functional problem with a design system solution
+</h2>
+
+Modern Health offers evidence-based mental health care to numerous users across multiple technical platforms. Their clientele includes top companies like Lyft, Pixar, EA, and Zendesk. As an organization that values efficiency and growth, they strive to identify ways to scale effectively to meet the increasing demand. We've found success at scale through our design system, Vita.
+
+## Project Overview
+
+### What problem are we solving?
+
+Even though global navigation design patterns are similar across different platforms, it's not possible to share navigation UI due to the siloed nature of teams and products. How might we enable product teams to launch features efficiently and consistently across multiple platforms and a shared user experience?
+
+### Hypothesis
+
+By leveraging our centralized design system and creating reusable components, we can provide configurable global navigation components and relevant documentation to enable a consistent, accessible user experience balanced with a faster time-to-launch for navigation projects. We will also enable product teams’ abilities to launch new features that can’t happen in the current structure.
+
+### The team
+
+- Core team:
+    - 1 Platform product design lead (me)
+    - 1 Platform front-eng engineer lead
+- Supported by:
+    - 1 Platform senior front-end consult
+    - The product design team reviewing design iterations
+    - Head of Design and Head of Foundations Engineering for leadership insights
+    - PMs and product engineers providing product needs and migration partnership
+
+## Planning
+
+In the planning phase, we connected our desire to solve the problem of shared, universal global navigation with the needs of other product teams supporting our shared strategic vision.
+
+### Defining the business case
+
+The Platform Team supports a rapidly scaling business through efficiency improvements. A design system is meant for efficiency, helping all members of product teams launch ideas more effectively together. Defining the business case requires identifying the needs of those product teams, the metrics that drive those needs, and a shared roadmap that works in everyone’s favor.
+
+### Roadmapping together
+
+## Process
+
+
+
+</article>
+
+<style lang="scss">
+  .article {
+    max-width: calc(936px + 3rem);
+    padding: 2rem 1.5rem;
+    margin: auto;
+
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3.25rem;
+      line-height: 3.75rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-top: 2rem;
+    }
+
+    h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5rem;
+      line-height: 3.5rem;
+      font-weight: 700;
+      margin-top: 2rem;
+    }
+
+    h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      line-height: 3rem;
+      font-weight: 700;
+      margin-top: 2rem;
+    }
+
+    .subtitle {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      line-height: 3rem;
+      font-weight: 400;
+      margin-top: 1rem;
+
+      @include small-screen {
+        font-size: 5vw;
+        line-height: 1.25;
+      }
+    }
+
+    p,
+    ul {
+      font-size: 1.25rem;
+      line-height: 1.5;
+      margin-top: 1rem;
+    }
+
+    ul {
+      list-style: disc;
+      padding-left: 1.5rem;
+    }
+
+    li + li {
+      margin-top: 0.5rem;
+    }
+  }
+</style>

@@ -12,7 +12,8 @@
 <Footer />
 
 <style lang="scss">
-  
+  @import '$lib/assets/helpers.scss';
+
   :global(:root) {
     --color-raspberry: #FF2D78;
     --color-primary: #000;

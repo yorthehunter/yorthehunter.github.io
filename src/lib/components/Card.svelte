@@ -32,8 +32,6 @@
 </article>
 
 <style lang="scss">
-  @use './helpers';
-
   .card {
     padding: 1rem;
     border: 2px solid var(--color-primary);
@@ -42,7 +40,7 @@
     gap: 1.5rem;
     border-radius: 4px;
 
-    @include helpers.small-screen {
+    @include small-screen {
       border-left: 0;
       border-right: 0;
       padding-left: 0;
