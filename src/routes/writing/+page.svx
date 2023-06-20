@@ -1,23 +1,5 @@
 <article class="article">
-
-  # Hello world
-
-## Hiya
-
-### What's up
-
-#### Whoa
-
-Fuck
-
-- fuck 1
-- fuck 2
-
----
-
-1. Fuck 3
-2. Fuck 4
-
+Placeholder
 </article>
 
 <style lang="scss">

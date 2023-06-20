@@ -36,9 +36,9 @@
         <li class="only-small">
           <Menu on:click={() => menuOpen = !menuOpen} />
           <div class="menu" class:show={menuOpen}>
-            <a href="#work" on:click={() => menuOpen = !menuOpen}>Work</a>
-            <a href="#about" on:click={() => menuOpen = !menuOpen}>About</a>
-            <a href="#contact" on:click={() => menuOpen = !menuOpen}>Contact</a>
+            <a href="/#work" on:click={() => menuOpen = !menuOpen}>Work</a>
+            <a href="/#about" on:click={() => menuOpen = !menuOpen}>About</a>
+            <a href="/#contact" on:click={() => menuOpen = !menuOpen}>Contact</a>
           </div>
         </li>
       </ul>
