@@ -15,8 +15,7 @@
     <a href={url} target="_blank">
       <img src={imageUrl} alt={title} />
     </a>
-  {:else}
-    <img src={imageUrl} alt={title} />
+
   {/if}
   <TagList tagList={tags} />
   <div class="content">
@@ -81,8 +80,8 @@
     a {
       border: none;
 
-      &:hover > img {
-        opacity: 0.7;
+      &:hover {
+        outline: 2px solid var(--color-raspberry);
       }
     }
   }
