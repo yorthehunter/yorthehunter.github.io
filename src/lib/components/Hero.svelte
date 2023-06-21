@@ -31,28 +31,28 @@
     </P>
   </section>
   <Divider />
-  <section class="values">
+  <ul class="values">
     <Value>
       <Value3 slot="image" />
       <svelte:fragment slot="title">Product design strategy</svelte:fragment>
       <svelte:fragment slot="content">I’ve spent 13 years on product teams in UX, interaction, and UI design. More recently, I have led design strategy for major cross-functional products, defined OKRs and managed resourcing, and partnered with other leaders to align business goals across teams.</svelte:fragment>
       <TagList tagList={designStrategyTools} slot="tools" />
     </Value>
-    <Divider />
+    <Divider as="li" />
     <Value>
       <Value2 slot="image" />
       <svelte:fragment slot="title">Design systems</svelte:fragment>
       <svelte:fragment slot="content">Over the past several years, I have created, directed, and maintained the growth of multiple successful design systems, serving teams of all sizes and elevating the user experience.</svelte:fragment>
       <TagList tagList={dsTools} slot="tools" />
     </Value>
-    <Divider />
+    <Divider as="li" />
     <Value>
       <Value1 slot="image" />
       <svelte:fragment slot="title">UI development</svelte:fragment>
       <svelte:fragment slot="content">I made my first website in 2000. Since then, I’ve continued to build for web and mobile, created communication channels between design and engineering teams, and defined best practices for accessibility and usability.</svelte:fragment>
       <TagList tagList={uiDevTools} slot="tools" />
     </Value>
-  </section>
+  </ul>
 </article>
 
 <style lang="scss">
@@ -87,6 +87,5 @@
   .values {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
   }
 </style>

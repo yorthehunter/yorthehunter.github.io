@@ -1,3 +1,10 @@
+<script lang="ts">
+  import Value from '$lib/components/Value.svelte'
+  import Divider from '$lib/components/Divider.svelte'
+  import Moon from '$lib/assets/moon.svelte'
+  import ProcessValues from './ProcessValues.svelte'
+</script>
+
 <article class="article">
 
 # Launching Global Navigation Components at Modern Health
@@ -41,7 +48,7 @@ The Platform Team supports a rapidly scaling business through efficiency improve
 
 ## Process
 
-
+<ProcessValues />
 
 </article>
 

@@ -2,22 +2,24 @@
   import P from '$lib/components/P.svelte'
 </script>
 
-<div class="value">
+<li class="value">
   <div class="image">
     <slot name="image" />
   </div>
   <div class="content">
     <h2 class="title"><slot name="title" /></h2>
     <P size="small"><slot name="content" /></P>
-    <P size="small"><slot name="tools" /></P>
+    {#if $$slots.tools}
+      <P size="small"><slot name="tools" /></P>
+    {/if}
   </div>
-</div>
+</li>
 
 <style lang="scss">
   .value {
     display: flex;
-    gap: 1rem;
-    align-items: center;
+    align-items: start;
+    padding: 1rem 0;
 
     @include small-screen {
       flex-direction: column;
@@ -29,7 +31,7 @@
   }
 
   .image {
-    min-width: 168px;
+    padding: 1rem;
   }
 
   .title {
