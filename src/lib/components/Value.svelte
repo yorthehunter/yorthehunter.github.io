@@ -19,10 +19,11 @@
   .value {
     display: flex;
     align-items: start;
-    padding: 1rem 0;
+    padding: 2rem 0;
 
     @include small-screen {
       flex-direction: column;
+      align-items: center;
     }
   }
 
@@ -32,6 +33,7 @@
 
   .image {
     padding: 1rem;
+    flex-shrink: 0;
   }
 
   .title {

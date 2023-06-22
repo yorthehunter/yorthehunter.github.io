@@ -68,3 +68,14 @@
     </Value>
   {/each}
 </ul>
+
+<style lang="scss">
+  ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    @include small-screen {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
