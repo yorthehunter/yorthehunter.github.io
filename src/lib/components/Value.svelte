@@ -17,14 +17,14 @@
 
 <style lang="scss">
   .value {
-    display: flex;
-    align-items: start;
-    padding: 2rem 0;
-
     @include small-screen {
       flex-direction: column;
       align-items: center;
     }
+
+    display: flex;
+    align-items: start;
+    padding: 2rem 0;
   }
 
   .content {

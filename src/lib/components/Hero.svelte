@@ -70,12 +70,12 @@
     header {
       display: flex;
       flex-direction: column;
-      padding: 0 0 2rem;
+      padding: 2rem 0 6rem;
       gap: 2rem;
     }
     
     section {
-      padding: 2rem 0;
+      padding: 4rem 0;
     }
   }
 
@@ -94,5 +94,6 @@
   .values {
     display: flex;
     flex-direction: column;
+    gap: 2rem;
   }
 </style>

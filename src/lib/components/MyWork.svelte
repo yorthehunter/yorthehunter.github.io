@@ -14,8 +14,8 @@
 
 <ContentSection id="work" title="My Work">
   <svelte:fragment slot="top">
-    <P>I have worked with many early startups and growth-phase startups, helping drive us to higher levels of design excellence, business growth, and product team effectiveness. I value easily understood documentation and clear communication, consistency, usability, and inclusion.</P>
-    <P>These portfolio pieces are examples of highly successful projects that have driven business results but are punctuated with the challenges that digital products often face: decision paralysis, resource constraints & scope changes, strategic pivots, knowledge silos, etc. In my experience, I’ve been privileged to partner with amazing people to overcome these challenges and push our collective work to new levels.</P>
+    <P>I have worked with many early startups and growth-phase startups, helping drive to higher levels of design excellence, business growth, and product team efficiency. I value easily understood documentation and clear communication, consistency, usability, and inclusion.</P>
+    <P>These portfolio pieces are examples of highly successful projects that have driven business results but are punctuated with the challenges that digital products often face, like decision paralysis, resource constraints, scope change, knowledge silos, etc. It's been my privilege to partner with amazing teammates to overcome these challenges.</P>
   </svelte:fragment>
   <section class="work-collection" slot="bottom">
     <Card

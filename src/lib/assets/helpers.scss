@@ -63,7 +63,11 @@
 }
 
 @mixin body-copy-sm {
-  font-size: 18px;
+  font-size: 1.25rem;
   line-height: 1.5;
   max-width: 936px;
+
+  @include small-screen {
+    font-size: 18px;
+  }
 }
