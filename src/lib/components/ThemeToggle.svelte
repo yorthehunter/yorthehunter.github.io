@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Sun from '$lib/assets/sun.svelte'
-  import Moon from '$lib/assets/moon.svelte'
+  import Sun from '$lib/assets/images/sun.svelte'
+  import Moon from '$lib/assets/images/moon.svelte'
   let isDark = false;
   function toggle() {
     window.document.body.classList.toggle('dark-mode')
@@ -16,5 +16,5 @@
 </button>
 
 <style lang="scss">
-  @import '$lib/assets/Button.scss';
+  @import '$lib/assets/styles/button.scss';
 </style>

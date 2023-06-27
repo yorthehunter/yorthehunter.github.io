@@ -8,7 +8,7 @@ export default defineConfig({
 		preprocessorOptions: {
 			scss: {
 				additionalData: `
-					@import '$lib/assets/helpers';
+					@import '$lib/assets/styles/helpers';
 				`
 			}
 		}

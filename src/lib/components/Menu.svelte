@@ -1,5 +1,5 @@
 <script>
-  import Hamburger from '$lib/assets/hamburger.svelte'
+  import Hamburger from '$lib/assets/images/hamburger.svelte'
 </script>
 
 <button on:click class="button">
@@ -7,5 +7,5 @@
 </button>
 
 <style lang="scss">
-  @import '$lib/assets/Button.scss';
+  @import '$lib/assets/styles/button.scss';
 </style>

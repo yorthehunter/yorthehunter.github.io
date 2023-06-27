@@ -3,7 +3,7 @@
   const myTitle = "Design leader, product design strategy for web and mobile platforms";
   import Button from '$lib/components/Button.svelte'
   import ThemeToggle from '$lib/components/ThemeToggle.svelte'
-  import Me from '$lib/assets/brian-cleveland.svelte'
+  import Me from '$lib/assets/images/brian-cleveland.svelte'
   import Menu from '$lib/components/Menu.svelte'
   let menuOpen = false;
 </script>

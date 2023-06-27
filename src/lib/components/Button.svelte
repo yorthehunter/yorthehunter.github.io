@@ -28,5 +28,5 @@
 {/if}
 
 <style lang="scss">
-  @import '$lib/assets/Button.scss';
+  @import '$lib/assets/styles/Button.scss';
 </style>

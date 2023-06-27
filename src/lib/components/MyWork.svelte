@@ -2,12 +2,12 @@
   import Divider from '$lib/components/Divider.svelte'
   import Card from '$lib/components/Card.svelte'
   import Button from '$lib/components/Button.svelte'
-  import Work1 from "$lib/assets/mode-screenshot.png"
-  import Work2 from "$lib/assets/color-chart.png"
-  import Work3 from "$lib/assets/loading-dock.png"
-  import Work4 from "$lib/assets/global-nav.png"
-  import Work5 from "$lib/assets/mode-ds-overview.png"
-  import Work6 from "$lib/assets/lego.png"
+  import Work1 from "$lib/assets/images/mode-screenshot.png"
+  import Work2 from "$lib/assets/images/color-chart.png"
+  import Work3 from "$lib/assets/images/loading-dock.png"
+  import Work4 from "$lib/assets/images/global-nav.png"
+  import Work5 from "$lib/assets/images/mode-ds-overview.png"
+  import Work6 from "$lib/assets/images/lego.png"
   import P from '$lib/components/P.svelte'
   import ContentSection from '$lib/components/ContentSection.svelte'
 </script>

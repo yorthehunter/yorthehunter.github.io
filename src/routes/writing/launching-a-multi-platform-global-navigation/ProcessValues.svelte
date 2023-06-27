@@ -1,15 +1,15 @@
 <script>
   import Value from '$lib/components/Value.svelte'
   import Divider from '$lib/components/Divider.svelte'
-  import Adoption from '$lib/assets/adoption.svelte'
-  import Beta from '$lib/assets/beta.svelte'
-  import Development from '$lib/assets/development.svelte'
-  import Docs from '$lib/assets/docs.svelte'
-  import Exploration from '$lib/assets/exploration.svelte'
-  import Qa from '$lib/assets/qa.svelte'
-  import Research from '$lib/assets/research.svelte'
-  import Review from '$lib/assets/review.svelte'
-  import Specs from '$lib/assets/specs.svelte'
+  import Adoption from '$lib/assets/images/adoption.svelte'
+  import Beta from '$lib/assets/images/beta.svelte'
+  import Development from '$lib/assets/images/development.svelte'
+  import Docs from '$lib/assets/images/docs.svelte'
+  import Exploration from '$lib/assets/images/exploration.svelte'
+  import Qa from '$lib/assets/images/qa.svelte'
+  import Research from '$lib/assets/images/research.svelte'
+  import Review from '$lib/assets/images/review.svelte'
+  import Specs from '$lib/assets/images/specs.svelte'
   const values = [
     {
       icon: Research,
