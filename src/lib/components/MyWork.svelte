@@ -1,7 +1,5 @@
 <script>
-  import Divider from '$lib/components/Divider.svelte'
   import Card from '$lib/components/Card.svelte'
-  import Button from '$lib/components/Button.svelte'
   import Work1 from "$lib/assets/images/mode-screenshot.png"
   import Work2 from "$lib/assets/images/color-chart.png"
   import Work3 from "$lib/assets/images/loading-dock.png"

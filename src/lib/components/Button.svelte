@@ -1,5 +1,5 @@
 <script lang="ts">
-  import ArrowRight from "$lib/components/ArrowRight.svelte"
+  import ArrowRight from "$lib/assets/images/ArrowRight.svelte"
   export let url:string = "";
   export let icon:boolean = false;
   export let isInactive:boolean = false;

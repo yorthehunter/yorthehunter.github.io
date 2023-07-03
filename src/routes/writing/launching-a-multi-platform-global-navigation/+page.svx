@@ -3,6 +3,8 @@
   import Divider from '$lib/components/Divider.svelte'
   import Moon from '$lib/assets/moon.svelte'
   import ProcessValues from './ProcessValues.svelte'
+  import Values from '$lib/components/Values.svelte'
+  import {processValues} from './processValues'
 </script>
 
 <article class="article">
@@ -48,7 +50,7 @@ The Platform Team supports a rapidly scaling business through efficiency improve
 
 ## Process
 
-<ProcessValues />
+<Values values={processValues} />
 
 </article>
 
