@@ -66,8 +66,7 @@
     }
 
     p {
-      font-size: 18px;
-      line-height: 1.5;
+      @include body-copy-sm;
     }
 
     .content {

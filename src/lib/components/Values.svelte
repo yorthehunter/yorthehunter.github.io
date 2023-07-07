@@ -4,7 +4,7 @@
   export let values: {icon: ComponentType<SvelteComponentTyped>, title: string, content: string}[]
   export let twoCol:boolean = true
 </script>
-  
+
 <ul style="grid-template-columns: {twoCol ? '1fr 1fr': '1fr'}">
   {#each values as value}
     <Value>
