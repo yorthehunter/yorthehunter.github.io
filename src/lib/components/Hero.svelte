@@ -1,14 +1,16 @@
 <script lang="ts">
   import Divider from '$lib/components/Divider.svelte'
   const mhUrl = "https://www.modernhealth.com/";
-  const anomalieUrl = "https://www.dressanomalie.com/";
-  const sfUrl = "https://www.stitchfix.com/home";
-  const mediumArticle = "https://yorthehunter.medium.com/introducing-the-mode-design-system-b3a64cb916da";
+  const anomalieUrl = "https://www.retaildive.com/news/davids-bridal-acquires-custom-wedding-dress-startup-anomalie/623973/";
+  const sfUrl = "https://www.stitchfix.com/";
+  const modClothUrl = "http://www.modcloth.com";
+  const builtUrl = "http://www.getBuilt.com";
   const link = (text:string, url:string) => `<a href="${url}" target="_blank">${text}</a>`;
   import P from '$lib/components/P.svelte'
   import Button from '$lib/components/Button.svelte'
   import Values from '$lib/components/Values.svelte'
 	import { heroValues } from './heroValues';
+	import Description from './Description.svelte';
   export const uiDevTools = [ "React", "Svelte", "HTML + Sass/CSS", "UI frameworks", "Rails", "React Native" ]
   export const dsTools = [ "Figma", "Notion", "Confluence", "Principle", "Style Dictionary", "Storybook", "Zeroheight" ]
   export const designStrategyTools = [ "Google suite", "Product Plan", "Asana", "Jira", "Slack", "MixPanel", "DataDog", "Looker" ]
@@ -17,15 +19,12 @@
 <article>
   <header>
     <h1>Brian Cleveland</h1>
-    <h2>Design leader, product design strategy for web and mobile platforms</h2>
+    <h2>Experienced design leader, UI developer, and startup strategist</h2>
   </header>
   <Divider />
   <section>
-    <P>My most recent role was staff product designer leading design systems at {@html link("Modern Health", mhUrl)}.</P>
-    <P>Previously, I was the head of design at {@html link("Anomalie", anomalieUrl)} (acquired by
-      David&rsquo;s Bridal) and the first designer at {@html link("Stitch Fix", sfUrl)} (and later,
-      their first front-end engineer), launching the platform design team and {@html link("the Mode design system", mediumArticle)}.
-    </P>
+    <P>I have 14 years of design and development experience in product-driven tech companies. I am passionate about helping others actualize their visions and turn ideas into solutions. I have designed and built for a wide variety of platforms, services, and products, but it’s people that are what drive me.</P>
+    <P>Staff designer at {@html link("Built Technologies", builtUrl)} and  {@html link("Modern Health", mhUrl)}. Head of design at {@html link("Anomalie", anomalieUrl)} (acquired by David’s Bridal). First designer and later first front-end engineer at {@html link("Stitch Fix", sfUrl)}. Interaction designer at {@html link("ModCloth", modClothUrl)}.</P>
     <nav>
       <ul class="nav-links">
         <li>
@@ -40,6 +39,8 @@
       </ul>
     </nav>
   </section>
+  <Divider />
+  <Description />
   <Divider />
   <Values values={heroValues} twoCol={false} />
 </article>

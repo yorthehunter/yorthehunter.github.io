@@ -57,7 +57,7 @@
 }
 
 @mixin body-copy {
-  max-width: 936px;
+  // max-width: 936px;
   font-size: 1.75rem;
   line-height: 1.5;
 }
@@ -65,7 +65,7 @@
 @mixin body-copy-sm {
   font-size: 1.5rem;
   line-height: 1.5;
-  max-width: 936px;
+  // max-width: 936px;
 
   @include small-screen {
     font-size: 18px;

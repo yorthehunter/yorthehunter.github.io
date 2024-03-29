@@ -25,6 +25,10 @@
     --color-bg: #000;
   }
 
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+
   :global(body) { 
     overflow-x: hidden;
     color: var(--color-primary);

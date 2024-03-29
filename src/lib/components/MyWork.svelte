@@ -31,7 +31,7 @@
     url="https://yorthehunter.medium.com/how-we-created-an-accessible-scalable-color-palette-2ae1242abdcb"
     />
 
-    <Card
+    <!-- <Card
     title="Designing a Returns Process that Reflects Reality"
     subtitle="A case study on developing a new returns process at Stitch Fix by mapping the physical space of users to a digital experience"
     tags={["Stitch Fix", "Product Design"]}
@@ -54,7 +54,7 @@
     subtitle="A list of tips that I’ve learned over time to maintain consistency"
     tags={["Design Systems"]}
     imageUrl={Work6}
-    />
+    /> -->
   </section>
 </ContentSection>
 
