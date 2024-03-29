@@ -24,7 +24,7 @@
   </header>
   <Divider />
   <section>
-    <P>I have 14 years of design and development experience in product-driven tech companies. I am passionate about helping others actualize their visions and turn ideas into solutions. I have designed and built for a wide variety of platforms, services, and products, but it’s people that are what drive me.</P>
+    <P>I have 14 years of design and development experience in product-driven tech companies. I am excited to help others actualize their visions and turn ideas into solutions. I have designed and built for a wide variety of platforms, services, and products, but people drive my passion.</P>
     <P>Staff designer at {@html link("Built Technologies", builtUrl)} and  {@html link("Modern Health", mhUrl)}. Head of design at {@html link("Anomalie", anomalieUrl)} (acquired by David’s Bridal). First designer and later first front-end engineer at {@html link("Stitch Fix", sfUrl)}. Interaction designer at {@html link("ModCloth", modClothUrl)}.</P>
     <nav>
       <ul class="nav-links">
