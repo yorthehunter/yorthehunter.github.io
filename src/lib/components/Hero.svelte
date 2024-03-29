@@ -10,7 +10,8 @@
   import Button from '$lib/components/Button.svelte'
   import Values from '$lib/components/Values.svelte'
 	import { heroValues } from './heroValues';
-	import Description from './Description.svelte';
+	import Description from './Accomplishments.svelte';
+	import Accomplishments from './Accomplishments.svelte';
   export const uiDevTools = [ "React", "Svelte", "HTML + Sass/CSS", "UI frameworks", "Rails", "React Native" ]
   export const dsTools = [ "Figma", "Notion", "Confluence", "Principle", "Style Dictionary", "Storybook", "Zeroheight" ]
   export const designStrategyTools = [ "Google suite", "Product Plan", "Asana", "Jira", "Slack", "MixPanel", "DataDog", "Looker" ]
@@ -39,9 +40,7 @@
       </ul>
     </nav>
   </section>
-  <Divider />
-  <Description />
-  <Divider />
+  <Accomplishments />
   <Values values={heroValues} twoCol={false} />
 </article>
 
@@ -72,12 +71,6 @@
 
   h2 {
     max-width: 936px;
-  }
-
-  .values {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
   }
 
   .nav-links {

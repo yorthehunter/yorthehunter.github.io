@@ -7,6 +7,7 @@
   export let buttonLabel:string = ""
   import Button from '$lib/components/Button.svelte'
   import TagList from '$lib/components/TagList.svelte'
+  import P from '$lib/components/P.svelte'
 </script>
 
 <article class="card">
@@ -14,7 +15,8 @@
     <a href={url} target="_blank">
       <img src={imageUrl} alt={title} />
     </a>
-
+  {:else if imageUrl}
+    <img src={imageUrl} alt={title} />
   {/if}
   <TagList tagList={tags} />
   <div class="content">
@@ -24,7 +26,7 @@
   {#if url}
     <Button icon={true} url={url}>{buttonLabel ? buttonLabel : "Read on Medium"}</Button>
   {:else}
-    <Button isInactive>Coming Soon</Button>
+    <P size="small"><em>Please Ask for Details About this Project</em></P>
   {/if}
   <slot />
 </article>

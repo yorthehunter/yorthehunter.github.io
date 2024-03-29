@@ -1,10 +1,11 @@
 <script lang="ts">
   import type { ComponentType, SvelteComponentTyped } from 'svelte';
   import Value from '$lib/components/Value.svelte'
-  export let values: {icon: ComponentType<SvelteComponentTyped>, title: string, content: string}[]
+  export let values: {icon: ComponentType<SvelteComponentTyped>, title: string, content: string[]}[]
   export let twoCol:boolean = true
 </script>
 
+<h2 class="title">Values</h2>
 <ul class="values" style="grid-template-columns: {twoCol ? '1fr 1fr': '1fr'}">
   {#each values as value}
     <Value>
@@ -22,11 +23,16 @@
 </ul>
 
 <style lang="scss">
+  .title {
+    @include subsection-heading;
+
+    @include small-screen {
+      text-align: center;
+    }
+  }
 
   .value-list {
-    padding-left: 1.5rem;
-    list-style: disc;
-    @include body-copy-sm;
+    @include unordered-list;
   }
 
   .values {

@@ -9,11 +9,11 @@
   line-height: 1.5;
   margin: 0;
   padding: calc(1rem - 4px) 1.5rem;
-  background-color: var(--color-primary);
+  background-color: var(--color-secondary);
   color: var(--color-bg);
   border-radius: 255px;
   transition: background-color 0.15s ease-out, border-color 0.15s ease-out;
-  border: 2px solid var(--color-primary);
+  border: 2px solid var(--color-secondary);
 
   @include small-screen {
     font-size: 16px;
@@ -21,7 +21,7 @@
   }
 
   &.inactive {
-    color: var(--color-primary);
+    color: var(--color-secondary);
     background-color: var(--color-bg);
   }
 
@@ -37,7 +37,7 @@
   }
 
   &:active:not(.inactive) {
-    background-color: var(--color-primary);
-    border-color: var(--color-primary);
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
   }
 }

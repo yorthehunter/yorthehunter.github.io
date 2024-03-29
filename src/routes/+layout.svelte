@@ -16,13 +16,15 @@
 
   :global(:root) {
     --color-raspberry: #FF2D78;
-    --color-primary: #000;
+    --color-primary: #0A0A0A;
+    --color-secondary: #292929;
     --color-bg: #fff;
   }
 
   :global(body.dark-mode) {
     --color-primary: #fff;
-    --color-bg: #000;
+    --color-bg: #0A0A0A;
+    --color-secondary: #dbdbdb;
   }
 
   :global(html) {

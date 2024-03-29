@@ -6,6 +6,7 @@
   import Work4 from "$lib/assets/images/global-nav.png"
   import Work5 from "$lib/assets/images/mode-ds-overview.png"
   import Work6 from "$lib/assets/images/lego.png"
+  import Work7 from "$lib/assets/images/mh-home-screen.png"
   import P from '$lib/components/P.svelte'
   import ContentSection from '$lib/components/ContentSection.svelte'
 </script>
@@ -31,7 +32,7 @@
     url="https://yorthehunter.medium.com/how-we-created-an-accessible-scalable-color-palette-2ae1242abdcb"
     />
 
-    <!-- <Card
+    <Card
     title="Designing a Returns Process that Reflects Reality"
     subtitle="A case study on developing a new returns process at Stitch Fix by mapping the physical space of users to a digital experience"
     tags={["Stitch Fix", "Product Design"]}
@@ -50,6 +51,12 @@
     imageUrl={Work5}
     />
     <Card
+    title="Launching a New Personalized Home Screen"
+    subtitle="A case study on designing a new home screen experience for members of Modern Health"
+    tags={["Modern Health", "Mobile", "Product Design"]}
+    imageUrl={Work7}
+    />
+    <!-- <Card
     title="Tips for Consistency in a Design System"
     subtitle="A list of tips that I’ve learned over time to maintain consistency"
     tags={["Design Systems"]}

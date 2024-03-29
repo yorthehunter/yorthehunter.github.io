@@ -57,17 +57,30 @@
 }
 
 @mixin body-copy {
-  // max-width: 936px;
-  font-size: 1.75rem;
+  max-width: 936px;
+  font-size: 1.5rem;
   line-height: 1.5;
+  color: var(--color-secondary);
 }
 
 @mixin body-copy-sm {
-  font-size: 1.5rem;
-  line-height: 1.5;
-  // max-width: 936px;
+  font-size: 1.375rem;
+  line-height: 1.75;
+  max-width: 936px;
+  color: var(--color-secondary);
+
 
   @include small-screen {
     font-size: 18px;
+  }
+}
+
+@mixin unordered-list {
+  padding-left: 1.5rem;
+  list-style: disc;
+  @include body-copy-sm;
+
+  & > li:not(:last-of-type) {
+    margin-bottom: 0.5rem;
   }
 }
