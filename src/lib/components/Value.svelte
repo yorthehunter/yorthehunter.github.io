@@ -8,7 +8,7 @@
   </div>
   <div class="content">
     <h2 class="title"><slot name="title" /></h2>
-    <P size="small"><slot name="content" /></P>
+    <slot name="content" />
     {#if $$slots.tools}
       <P size="small"><slot name="tools" /></P>
     {/if}

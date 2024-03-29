@@ -6,22 +6,41 @@
     export const heroValues = [
       {
         icon: Value1,
-        title: "Product design strategy",
-        content: "I have 13 years of experience on product teams in UX, interaction, and UI design. More recently, I have led design strategy for major cross-functional products, defined OKRs and managed resourcing, and partnered with other leaders to align business goals across teams.",
+        title: "Product Design Strategist",
+        content: [
+          "Many, many years of experience on product teams",
+          "Cross-functional partner to CEOs, directors, managers, and peers of all levels",
+          "Part-time product manager, owning requirements, roadmapping, scoping, & OKRs",
+        ],
       },
       {
         icon: Value2,
-        title: "Design systems",
-        content: "Over the past several years, I have created, directed, and maintained the growth of multiple successful design systems, serving teams of all sizes and elevating the user experience. I am passionate about the strategic importance of design systems and how they bring product teams together.",
+        title: "Systems Building",
+        content: [
+          "Design systems architect",
+          "Design pattern perfectionist",
+          "Designer and developer experience enthusiast",
+          "Documentation pusher"
+        ],
       },
       {
         icon: Value3,
-        title: "UI development",
-        content: "I made my first website in 2000. Since then, I’ve continued to build for web and mobile, created CSS and UI frameworks for teams and enabled communication channels between design and engineering teams, and defined best practices for accessibility and usability.",
+        title: "UI Developer",
+        content: [
+          "Web and mobile",
+          "CSS and agnostic UI frameworks",
+          "Bridge design, engineering, and product",
+          "Define best practices for accessibility and usability"
+        ],
       },
       {
         icon: Value4,
-        title: "Team leadership and mentorship",
-        content: "I have created platform teams, led the direction and workloads of teams, and mentored many designers in design systems & UI component best practices, team code environments & communication with engineering, Figma tools, and more. Elevating the work of my teammates is my truest passion in design.",
+        title: "Team Leader and Mentor",
+        content: [
+          "Platform teams enthusiast",
+          "Systems thinking mentor",
+          "Team code environment advocate",
+          "Tooling and automation instructor"
+        ],
       }
     ]

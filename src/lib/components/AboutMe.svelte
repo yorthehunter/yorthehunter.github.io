@@ -1,5 +1,4 @@
 <script>
-  import Divider from '$lib/components/Divider.svelte'
   import Button from '$lib/components/Button.svelte'
   import P from '$lib/components/P.svelte'
   import ContentSection from '$lib/components/ContentSection.svelte'
