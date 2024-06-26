@@ -7,7 +7,7 @@
 <section>
   <h2 class="title">Accomplishments</h2>
   <article>
-    <h3 class="subtitle">Helped a team of 20 grow into a billion dollar styling experience at Stitch Fix</h3>
+    <h3 class="subtitle">Helped a team of 20 grow into a $2 billion dollar styling experience at Stitch Fix</h3>
     <ul>
       <li>As the first designer, helped grow the design team to 15+ product designers and researchers</li>
       <li>As the first front-end engineer, built multiple internal UI libraries for expert-use systems</li>
@@ -18,9 +18,9 @@
   <article>
     <h3 class="subtitle">Built and led the design strategy of the first front-end platform team at Stitch Fix</h3>
     <ul>
-      <li>As the first Platform product designer, I created the Mode design system which unified the visual experience of all customer-facing products</li>
-      <li>Created the first front-end platform team</li>
-      <li>Led the rebranding efforts, resulting in a technical solution that supported two branded UIs that could be toggled on or off, creating a seamless transition for users</li>
+      <li>Created the first front-end platform design team</li>
+      <li>Created and launched the Mode design system which unified the visual experience of all customer-facing products</li>
+      <li>Led the rebranding effort, resulting in a technical solution that supported two branded UIs that could be toggled on or off through the design system, creating a seamless transition for users</li>
     </ul>
   </article>
   <article>
@@ -34,7 +34,7 @@
   <article>
     <h3 class="subtitle">Launched the first design system at Modern Health</h3>
     <ul>
-      <li>Designed and helped develop the Vita design system, serving all web products with a UI library, documentation, and design assets</li>
+      <li>Designed, helped develop, and launched the Vita design system, serving all our user-facing platforms with a single-source coded UI library, documentation, and design assets</li>
       <li>Created and led the Design System Guild, responsible for distributing information, unblocking product teams, and elevating the design and implementation of the design system</li>
       <li>Mentored others in systems design, component composition, and usability guidelines</li>
       <li>Built with accessibility and international language support as primary objectives</li>

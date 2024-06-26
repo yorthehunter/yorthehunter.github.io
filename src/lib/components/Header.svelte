@@ -80,7 +80,7 @@
   .content,
   ul {
     @include small-screen {
-      gap: 0.5rem;
+      gap: 1rem;
     }
 
     display: flex;
@@ -96,7 +96,7 @@
     }
 
     margin: auto;
-    padding: 1.5rem;
+    padding: 1rem;
     max-width: calc(1128px + 3rem);
   }
 

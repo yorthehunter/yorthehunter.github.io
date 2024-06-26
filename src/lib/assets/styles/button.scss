@@ -5,10 +5,10 @@
   align-self: start;
   justify-content: center;
   gap: 0.75rem;
-  font-size: 18px;
-  line-height: 1.5;
+  font-size: 1rem;
+  line-height: 1.25;
   margin: 0;
-  padding: calc(1rem - 4px) 1.5rem;
+  padding: calc(1rem - 4px) 1.25rem;
   background-color: var(--color-secondary);
   color: var(--color-bg);
   border-radius: 255px;
@@ -16,7 +16,7 @@
   border: 2px solid var(--color-secondary);
 
   @include small-screen {
-    font-size: 16px;
+    font-size: 1.25rem;
     padding: calc(1rem - 4px) 1.125rem;
   }
 
@@ -26,8 +26,8 @@
   }
 
   svg {
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 1rem;
+    height: 1rem;
   }
 
   &:hover:not(.inactive) {
