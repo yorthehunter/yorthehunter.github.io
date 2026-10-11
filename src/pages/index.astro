@@ -2,9 +2,13 @@
 import Layout from "../layouts/Layout.astro";
 import LinkButton from "../components/LinkButton.astro";
 import TopNav from "../components/TopNav.astro";
-// import Accomplishments from "../components/Accomplishments.astro";
 import MyWork from "../components/MyWork.astro";
+import MoreWork from "../components/MoreWork.astro";
+import HowILead from "../components/HowILead.astro";
 import SelectedImpact from "../components/SelectedImpact.astro";
+import CareerPath from "../components/CareerPath.astro";
+import AboutMe from "../components/AboutMe.astro";
+import MyStory from "../components/MyStory.astro";
 import Contact from "../components/Contact.astro";
 
 const mhUrl = "https://www.modernhealth.com/";
@@ -18,22 +22,20 @@ const tiveUrl = "http://www.tive.com";
 const resumeUrl = "https://docs.google.com/document/d/1SaZ4JSDOMKmL3DXPAOlfW2wrOcPJz3YNPabrS91beSI/edit?usp=sharing"
 const linkedinUrl = "https://www.linkedin.com/in/borudesign/"
 const mediumUrl = "https://medium.com/@yorthehunter"
-
-const base = import.meta.env.BASE_URL;
 ---
 
 <Layout
-  title="Brian Cleveland: Product design leader working across design systems, platforms, teams, and engineering."
+  title="Brian Cleveland: Product design leader | Scaling & Building Enterprise UX Teams | Design Systems | AI-Enabled Product Development"
 >
   <TopNav />
   <main id="main">
     <header class="content-section">
       <p class="eyebrow all-caps soft">Brian Cleveland</p>
       <h1 class="heading-1">
-        I build the teams, systems, and product foundations that help complex organizations scale.
+        I lead design teams and build product foundations that scale complex organizations.
       </h1>
       <h2 class="body-2">
-        Product design leader with 16 years across enterprise platforms, design systems, and design engineering. Currently leading a distributed design team across web, mobile, and hardware at <a href={tiveUrl} target="_blank">Tive</a>.
+        Product design manager across enterprise web and native mobile platforms, design systems, and design engineering. Currently leading product design at <a href={tiveUrl} target="_blank">Tive</a>.
       </h2>
       <nav class="navigation-list">
         <ul>
@@ -60,14 +62,14 @@ const base = import.meta.env.BASE_URL;
         </ul>
       </nav>
       <p class="credibility-strip body-4 soft">
-        16 years <span aria-hidden="true">·</span> Manages a senior product design team <span aria-hidden="true">·</span> Design + engineering background
+        16 years experience <span aria-hidden="true">·</span> Manages senior product designers <span aria-hidden="true">·</span> Design + engineering expert
       </p>
     </header>
     <article class="content-section">
       <p class="body-3">
         I lead product design at <a href={tiveUrl} target="_blank"
           >Tive</a
-        >, managing designers while staying hands-on across complex enterprise software spanning web, mobile, and connected hardware. 
+        >, managing designers while staying hands-on across complex enterprise software spanning web, mobile, and connected hardware.
       </p>
       <p class="body-3">
         Previously: Staff designer at <a href={builtUrl} target="_blank"
@@ -82,20 +84,33 @@ const base = import.meta.env.BASE_URL;
         >.
       </p>
     </article>
-    <!-- <article class="content-section">
-      <h2 class="heading-3">Accomplishments</h2>
-      <Accomplishments />
-    </article> -->
     <article class="content-section" id="my-work">
       <h2 class="heading-3">Work</h2>
       <MyWork />
-      <p class="body-3">
-        <a href={`${base}/work`}>See more of my work &rarr;</a>
-      </p>
+      <h3 class="heading-4">More Work</h3>
+      <p class="body-3">Earlier projects from my time at Modern Health.</p>
+      <MoreWork />
+    </article>
+    <article class="content-section" id="how-i-lead">
+      <h2 class="heading-3">How I Lead</h2>
+      <HowILead />
     </article>
     <article class="content-section" id="selected-impact">
       <h2 class="heading-3">Selected Impact</h2>
       <SelectedImpact />
+    </article>
+    <article class="content-section" id="career-path">
+      <h2 class="heading-3">Career Path</h2>
+      <CareerPath />
+    </article>
+    <article class="content-section" id="about-me">
+      <h2 class="heading-3">About Me</h2>
+      <AboutMe>
+        <article class="content-section" id="my-design-journey" slot="aboutMe">
+          <h3 class="heading-4">My Design Journey</h3>
+          <MyStory />
+        </article>
+      </AboutMe>
     </article>
     <article class="content-section" id="reach-out">
       <h2 class="heading-3">Reach Out</h2>
