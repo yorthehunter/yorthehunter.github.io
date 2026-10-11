@@ -34,7 +34,7 @@ import TopNav from "../../components/TopNav.astro";
 <div class="stat" role="listitem"><b class="word">Web · Mobile · Hardware</b><span>Cross-platform design leadership</span></div>
 <div class="stat" role="listitem"><b>4</b><span>Key product areas</span></div>
 <div class="stat" role="listitem"><b class="word">Player / coach</b><span>Management + hands-on systems work</span></div>
-<div class="stat" role="listitem"><b class="word"><span class="ph">[Result stat]</span></b><span><span class="ph">[What it measures]</span></span></div>
+<div class="stat" role="listitem"><b class="word">1 hr → 10 min</b><span>Prep time per design review</span></div>
 </div>
 </header>
 <!-- AT A GLANCE -->
@@ -44,7 +44,7 @@ import TopNav from "../../components/TopNav.astro";
 <div><span class="label">My role</span><p>Product Design Manager and player-coach: people management, design direction, design operations, and hands-on systems work. I partner with product managers, engineering managers, and product leadership.</p></div>
 <div><span class="label">The problem</span><p>Product and engineering were increasingly &ldquo;waiting on design.&rdquo; A stretched senior team needed a repeatable way to focus on strategic work and let others make good design decisions.</p></div>
 <div><span class="label">What I changed</span><p>A lightweight operating model for visibility and ownership, an AI-assisted review-prep workflow, and a risk-based framework for how much evidence each decision needs.</p></div>
-<div><span class="label">What happened</span><p>Designers now engage earlier and drive bigger architectural changes in support of the roadmap. <span class="ph">[Add one number or before/after that proves it]</span></p></div>
+<div><span class="label">What happened</span><p>&ldquo;Waiting on design&rdquo; is no longer something we hear. Designers moved from reactive product partners to proactive design leaders, driving architectural changes like the tables and global navigation redesigns, and review prep dropped from about an hour to about ten minutes.</p></div>
 </div>
 </section>
 <!-- THE MOMENT -->
@@ -90,9 +90,9 @@ import TopNav from "../../components/TopNav.astro";
 <h2>What changed</h2>
 </div>
 <div class="outcomes">
-<div><span class="label accent">Team</span><h3>More ownership</h3><p>Senior designers engaging earlier, driving alignment, and operating with greater autonomy.</p><p class="proof"><span class="ph">[Evidence: e.g. architectural changes designers drove, or decisions made without escalation]</span></p></div>
-<div><span class="label accent">Quality</span><h3>Better judgment</h3><p>More informed critique, intentional validation, and more attention to shared patterns.</p><p class="proof"><span class="ph">[Evidence: e.g. decisions validated before build, or a risk call that changed an outcome]</span></p></div>
-<div><span class="label accent">Leverage</span><h3>Less coordination overhead</h3><p>AI and lightweight operations make context, feedback, and cross-team awareness easier to maintain.</p><p class="proof"><span class="ph">[Evidence: e.g. review-prep time saved, or meetings removed]</span></p></div>
+<div><span class="label accent">Team</span><h3>More ownership</h3><p>Senior designers engaging earlier, driving alignment, and operating with greater autonomy.</p><p class="proof">Designers have led architectural changes, including the tables and global navigation redesigns.</p></div>
+<div><span class="label accent">Quality</span><h3>Better judgment</h3><p>More informed critique, intentional validation, and more attention to shared patterns.</p><p class="proof">Mobile app architecture is now scaled strategically instead of by hunch, with shorter time to launch and more effective launches.</p></div>
+<div><span class="label accent">Leverage</span><h3>Less coordination overhead</h3><p>AI and lightweight operations make context, feedback, and cross-team awareness easier to maintain.</p><p class="proof">Review prep dropped from about an hour to about ten minutes, across roughly 20 reviews.</p></div>
 </div>
 <blockquote class="quote"><span class="ph">[Quote from a designer, PM, or EM about working this way]</span><cite><span class="ph">[Role, anonymized]</span></cite></blockquote>
 </section>
@@ -146,7 +146,7 @@ import TopNav from "../../components/TopNav.astro";
 </div>
 <div class="result">
 <span class="label">Result</span>
-<p>1. Designers gained room to drive bigger architectural changes in support of the product roadmap.<br><br>2. I gained earlier visibility into the decisions where my involvement had the most impact.<br><br>3. <span class="ph">[Evidence: one number or example of what designers now drive without escalation]</span></p>
+<p>1. Designers gained room to drive bigger architectural changes in support of the product roadmap, including the tables and global navigation redesigns.<br><br>2. I gained earlier visibility into the decisions where my involvement had the most impact.</p>
 </div>
 </section>
 <!-- 02 MANAGER -->
@@ -183,7 +183,7 @@ import TopNav from "../../components/TopNav.astro";
 </figure>
 <div class="result">
 <span class="label">Result</span>
-<p>1. Faster context and fewer basic questions, so reviews go straight to better feedback.<br><br>2. AI didn't replace design judgment. It created more room for it.<br><br>3. <span class="ph">[Evidence: time saved per review, or how many reviews now use the workflow]</span></p>
+<p>1. Faster context and fewer basic questions, so reviews go straight to better feedback. Prep dropped from about an hour to about ten minutes across roughly 20 reviews.<br><br>2. AI didn't replace design judgment. It created more room for it.</p>
 </div>
 </section>
 <!-- 03 JUDGMENT -->
@@ -223,7 +223,7 @@ import TopNav from "../../components/TopNav.astro";
 </figure>
 <div class="result">
 <span class="label">Result</span>
-<p><span class="ph">[One line: how the risk framework changed what gets validated, with a concrete example]</span></p>
+<p>Mobile app architecture decisions are now made strategically rather than by hunch, which has shortened time to launch and made launches more effective.</p>
 </div>
 </section>
 <!-- THE PEOPLE SIDE -->
@@ -838,7 +838,7 @@ img{max-width:100%}
 .four.three{grid-template-columns:repeat(3,1fr)}
 @media (max-width:900px){.four.three{grid-template-columns:1fr 1fr}}
 @media (max-width:520px){.four.three{grid-template-columns:1fr}}
-.outcomes p.proof{font-size:.92rem}
+.outcomes p.proof{font-size:.95rem;color:var(--ink);padding-top:10px;border-top:1px solid var(--line)}
 .quote{margin:36px 0 0;border-left:3px solid var(--accent-strong);padding:4px 0 4px 20px;font-family:var(--display);font-size:clamp(1.2rem,2.2vw,1.6rem);line-height:1.3;max-width:48ch}
 .quote cite{display:block;margin-top:10px;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-style:normal}
 details.more{margin-top:28px}
