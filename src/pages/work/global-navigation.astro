@@ -1,0 +1,477 @@
+---
+import CaseStudyLayout from "../../layouts/CaseStudyLayout.astro";
+import CaseStudyFigure from "../../components/CaseStudyFigure.astro";
+import LinkButton from "../../components/LinkButton.astro";
+
+import auditImg from "../../assets/images/gnav-audit.png";
+import competitiveImg from "../../assets/images/gnav-competitive.png";
+import principlesImg from "../../assets/images/gnav-principles.png";
+import roadmapImg from "../../assets/images/gnav-roadmap.png";
+import iterationsImg from "../../assets/images/gnav-iterations.png";
+import breakpointsImg from "../../assets/images/gnav-breakpoints.png";
+import specsImg from "../../assets/images/gnav-specs.png";
+import docsImg from "../../assets/images/gnav-docs.png";
+import architectureImg from "../../assets/images/gnav-architecture.png";
+import mobileImg from "../../assets/images/gnav-mobile.png";
+import critImg from "../../assets/images/gnav-crit.png";
+import beforeImg from "../../assets/images/gnav-before.png";
+import scrollMemberImg from "../../assets/images/gnav-scroll-member.webp";
+import scrollBlueShieldImg from "../../assets/images/gnav-scroll-blueshield.webp";
+import scrollPropertiesImg from "../../assets/images/gnav-scroll-properties.webp";
+import scrollDocsImg from "../../assets/images/gnav-scroll-docs.webp";
+
+const base = import.meta.env.BASE_URL;
+
+const sections = [
+  { id: "overview", label: "Overview" },
+  { id: "problem", label: "Problem" },
+  { id: "approach", label: "Approach" },
+  { id: "decisions", label: "Decisions" },
+  { id: "engineering", label: "Engineering" },
+  { id: "impact", label: "Impact" },
+  { id: "results", label: "Results" },
+  { id: "learned", label: "Learned" },
+];
+---
+
+<CaseStudyLayout
+  title="One Navigation System, Globally Adopted · Brian Cleveland"
+  navLabel="Global Navigation Case Study"
+  sections={sections}
+>
+  <!-- HERO -->
+  <header class="content-section" id="overview">
+    <p class="eyebrow all-caps soft">
+      Design systems · Modern Health · 2022
+    </p>
+    <h1 class="heading-1">One navigation system, globally adopted</h1>
+    <p class="cs-lede">
+      Launching global navigation in the design system enabled faster time to live.
+    </p>
+    <ul class="cs-stats">
+      <li><span class="value">5</span><span class="label">Web properties migrated to one system</span></li>
+      <li><span class="value">2</span><span class="label">Teams enabled to launch global search</span></li>
+      <li><span class="value">4 mo</span><span class="label">From design audit to MVP</span></li>
+      <li><span class="value">35%</span><span class="label">Users engaged with navigation items at a higher rate</span></li>
+    </ul>
+    <div class="cs-compare">
+      <div>
+        <p class="cs-compare-label">Before: every product had its own navigation</p>
+        <CaseStudyFigure
+          src={beforeImg}
+          alt="Stacked navigation bars from Member web, Circles, Admin, Provider, a proposed Pathways experience, proposed Admin updates, and a logged-out Member home, each with different layout, color, and links."
+          contain
+        />
+      </div>
+      <div>
+        <p class="cs-compare-label accent">After: one system that adapts to every screen size</p>
+        <CaseStudyFigure
+          src={breakpointsImg}
+          alt="Six versions of the Modern Health navigation bar from wide to narrow, showing the search field shrinking to an icon and finally folding into a More menu."
+        />
+      </div>
+    </div>
+    <dl class="cs-facts">
+      <div>
+        <dt>Challenge</dt>
+        <dd>Five products, five different navigations.</dd>
+      </div>
+      <div>
+        <dt>My role</dt>
+        <dd>Design lead, partnered with engineering.</dd>
+      </div>
+      <div>
+        <dt>Scope</dt>
+        <dd>Five web properties and native mobile.</dd>
+      </div>
+      <div>
+        <dt>Team</dt>
+        <dd>1 designer, 1 engineer, 5 product teams.</dd>
+      </div>
+      <div>
+        <dt>The systemic move</dt>
+        <dd>One configurable system, not five fixes.</dd>
+      </div>
+      <div>
+        <dt>Outcome</dt>
+        <dd>Reusable components, all five properties migrated.</dd>
+      </div>
+    </dl>
+  </header>
+
+  <!-- PROBLEM -->
+  <section class="content-section" id="problem">
+    <p class="eyebrow all-caps soft">The problem</p>
+    <h2 class="heading-3">The request was local. The cause was systemic.</h2>
+    <div class="cs-split">
+      <div class="cs-prose">
+        <ul>
+          <li>Customer-facing and provider-facing teams both asked for search.</li>
+          <li>Every product had its own header, so each change started from scratch.</li>
+          <li>The real question: how do we make any navigation change cheap, consistent, and accessible?</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="heading-5">What the audit found</h3>
+        <ol class="cs-findings">
+          <li>Problems making changes to navigation</li>
+          <li>Disconnect from information architecture</li>
+          <li>Accessibility issues</li>
+          <li>Design inconsistencies</li>
+          <li>Lack of shared resources</li>
+          <li>Brand inconsistencies</li>
+          <li>No agreed usability best practices</li>
+        </ol>
+      </div>
+    </div>
+    <CaseStudyFigure
+      src={auditImg}
+      alt="Stacked screenshots of the navigation bars from Member web, Circles, Admin, Provider, a proposed Pathways experience, and proposed Admin updates, each with different layout, color, and behavior."
+      caption="The audit: every product had its own navigation."
+      contain
+    />
+  </section>
+
+  <!-- APPROACH -->
+  <section class="content-section" id="approach">
+    <p class="eyebrow all-caps soft">The approach</p>
+    <h2 class="heading-3">Tie the design-system roadmap to the product roadmap.</h2>
+    <p class="cs-prose">
+      I framed it as a business case tied to the product roadmap, so it became a roadmap initiative, not a &ldquo;nice-to-have.&rdquo;
+    </p>
+    <ol class="cs-timeline">
+      <li>
+        <span class="when">February</span>
+        <h3>Exploration</h3>
+        <p>Design audits and problem scoping.</p>
+      </li>
+      <li>
+        <span class="when">March</span>
+        <h3>Concepts</h3>
+        <p>Design specs, product use-cases, and product alignment.</p>
+      </li>
+      <li>
+        <span class="when">April</span>
+        <h3>Build</h3>
+        <p>Layout library, componentization, and integration.</p>
+      </li>
+      <li>
+        <span class="when">May</span>
+        <h3>MVP</h3>
+        <p>Search live in Member web, using the new global navigation.</p>
+      </li>
+    </ol>
+    <div class="cs-split even">
+      <div class="cs-prose">
+        <h3 class="heading-5">Success metrics:</h3>
+        <ol>
+          <li>Global components available as <b>Beta within 4 months</b>.</li>
+          <li>Product team A (Client Experience) launches Search within <b>1 sprint</b> after MVP.</li>
+          <li>Product team B (Member Experience) launches Search within <b>2 sprints</b> after MVP.</li>
+          <li>All teams adopt the new components within <b>1 quarter</b> after MVP.</li>
+        </ol>
+      </div>
+      <CaseStudyFigure
+        src={roadmapImg}
+        alt="A navigation bar with an open search dropdown, annotated with start content, icon, divider, brand, navigation item, and dropdown trigger."
+        caption="The first use-case that drove the roadmap: <b>Search</b> as a slot in the navigation."
+      />
+    </div>
+
+    <div class="cs-prose">
+      <h3 class="heading-5">Competitive Analysis</h3>
+      <p>
+        I studied Blue Shield, Rippling, Airbnb, Kayak, Shopify, and Red Hat to learn the principles behind their patterns.
+      </p>
+    </div>
+    <CaseStudyFigure
+      src={competitiveImg}
+      alt="Annotated screenshots of Modern Health Member web and Blue Shield CA navigation, with notes on inconsistent menu placement and active-state behavior."
+      caption="Our navigation, annotated next to how others solve it. Open to scroll the full audits."
+      scroll={[
+        {
+          label: "Member web audit",
+          src: scrollMemberImg,
+          alt: "Full-length audit of Modern Health Member web, Circles, Provider dashboard, Admin, and marketing site navigation, annotated with inconsistencies in menus, active states, and mobile behavior.",
+        },
+        {
+          label: "Competitive audit",
+          src: scrollBlueShieldImg,
+          alt: "Full-length audit of Blue Shield CA, Rippling, Airbnb, and Kayak navigation patterns, including menus and mobile treatments.",
+        },
+      ]}
+    />
+    <CaseStudyFigure
+      src={principlesImg}
+      alt="A board of navigation guidance from other design systems covering information architecture, usability, accessibility, style, and hierarchy."
+      caption="Principles from other design systems."
+    />
+
+    <div class="cs-prose">
+      <h3 class="heading-5">A repeatable process</h3>
+    </div>
+    <ol class="cs-steps">
+      <li>Research</li>
+      <li>Exploration</li>
+      <li>Design review</li>
+      <li>Component specs</li>
+      <li>Development</li>
+      <li>Usage documentation</li>
+      <li>Component QA</li>
+      <li>Beta launch</li>
+      <li>Migration and adoption</li>
+    </ol>
+  </section>
+
+  <!-- DECISIONS -->
+  <section class="content-section" id="decisions">
+    <p class="eyebrow all-caps soft">Design decisions</p>
+    <h2 class="heading-3">Three decisions, and why I made each one.</h2>
+    <article class="cs-decision">
+      <div class="cs-decision-head">
+        <span class="index" aria-hidden="true">01</span>
+        <h3>Build one system instead of patching each header</h3>
+      </div>
+      <dl>
+        <div>
+          <dt>Alternatives</dt>
+          <dd>Fix each navigation in place. The existing code was too tangled to build on.</dd>
+        </div>
+        <div>
+          <dt>Why this</dt>
+          <dd>The audit found the same root causes everywhere: no IA connection, uneven accessibility, no shared resources. Separate fixes would drift apart again.</dd>
+        </div>
+        <div>
+          <dt>Tradeoff</dt>
+          <dd>A slower first launch, and the question &ldquo;why all surfaces?&rdquo; We showed that one navigation serves many purposes, and teams backed it.</dd>
+        </div>
+      </dl>
+      <CaseStudyFigure
+        src={iterationsImg}
+        alt="Iterations of the Provider and Admin header across several color, spacing, and badge treatments, next to an annotated resources menu."
+        caption="Header iterations across themes, states, and menus."
+        contain
+      />
+    </article>
+
+    <article class="cs-decision">
+      <div class="cs-decision-head">
+        <span class="index" aria-hidden="true">02</span>
+        <h3>Treat Search as a navigation item that collapses by breakpoint</h3>
+      </div>
+      <dl>
+        <div>
+          <dt>Alternatives</dt>
+          <dd>A bespoke Search bar per product, or a fixed search field that always takes the same space.</dd>
+        </div>
+        <div>
+          <dt>Why this</dt>
+          <dd>Search drove the work, but it won't be the last special case. As a slot, it shipped in 1&ndash;2 sprints, and future items can too.</dd>
+        </div>
+        <div>
+          <dt>Tradeoff</dt>
+          <dd>Each breakpoint is another state to specify, build, and QA.</dd>
+        </div>
+      </dl>
+      <CaseStudyFigure
+        src={breakpointsImg}
+        alt="Six versions of the Modern Health navigation bar from wide to narrow, showing the search field shrinking to an icon and finally folding into a More menu."
+        caption="Search collapses by breakpoint, ending in a &ldquo;More&rdquo; menu."
+      />
+    </article>
+
+    <article class="cs-decision">
+      <div class="cs-decision-head">
+        <span class="index" aria-hidden="true">03</span>
+        <h3>Let teams configure navigation as data, not redesign it</h3>
+      </div>
+      <dl>
+        <div>
+          <dt>Alternatives</dt>
+          <dd>Hand-built variants for every product, or a single fixed navigation for everyone.</dd>
+        </div>
+        <div>
+          <dt>Why this</dt>
+          <dd>One shared structure (sections, headings, dividers, items), so teams can change navigation without a design ticket.</dd>
+        </div>
+        <div>
+          <dt>Tradeoff</dt>
+          <dd>Anything outside the structure goes through the design system.</dd>
+        </div>
+      </dl>
+      <CaseStudyFigure
+        src={specsImg}
+        alt="Component specification showing menu properties, theme and type options, and the JSON structure used to configure sections and items."
+        caption="Menu spec: properties, and the data that configures them. Open to scroll every state."
+        scroll={[
+          {
+            label: "Properties",
+            src: scrollPropertiesImg,
+            alt: "Full menu specification: default and static menu variants, the properties and JSON structure, and navigation item states for default, hover, pressed, focus, and selected on light and dark themes.",
+          },
+        ]}
+      />
+    </article>
+  </section>
+
+  <!-- ENGINEERING -->
+  <section class="content-section" id="engineering">
+    <p class="eyebrow all-caps soft">Working with engineering</p>
+    <h2 class="heading-3">Design and engineering owned the component together.</h2>
+    <div class="cs-split">
+      <div class="cs-prose">
+        <ul>
+          <li>Figma and code share names, properties, and tokens, so decisions hold in both.</li>
+          <li>Feasibility was a design input from the first concept, not a late review.</li>
+          <li><b>Storybook is the source of truth</b> for behavior. Figma is the reference for designers.</li>
+          <li><b>Accessibility was specified:</b> tab to the trigger, arrows between items, Enter to activate.</li>
+        </ul>
+      </div>
+      <CaseStudyFigure
+        src={architectureImg}
+        alt="Diagram of the Vita Design System connecting Figma components and a code library, linked by Figma styles and coded tokens, flowing into Figma project files, Storybook, and product codebases."
+        caption="Figma and code share styles and tokens. Both feed Storybook and product code."
+      />
+    </div>
+
+    <div class="cs-split even">
+      <div class="cs-prose">
+        <h3 class="heading-5">Documentation shipped with the code</h3>
+        <p>Usage guidance meant adoption didn't depend on us being in the room.</p>
+      </div>
+      <CaseStudyFigure
+        src={docsImg}
+        alt="Storybook documentation for the Menu component showing usage and best practices next to a code view."
+        caption="Usage guidance in Storybook. Open to scroll the full page."
+        scroll={[
+          {
+            label: "Documentation",
+            src: scrollDocsImg,
+            alt: "The full Menu documentation page: usage, best practices, dropdown and static variants, states, dos and don'ts, and how to use the component in Figma.",
+          },
+        ]}
+      />
+    </div>
+  </section>
+
+  <!-- IMPACT -->
+  <section class="content-section" id="impact">
+    <p class="eyebrow all-caps soft">Local fix, global impact</p>
+    <h2 class="heading-3">One launch became a platform capability.</h2>
+    <p class="cs-callout">
+      Search was the first thing to ship on the system. It was <em>never the only thing</em> it was built for.
+    </p>
+    <div class="cs-table-wrap">
+      <table class="cs-table">
+        <thead>
+          <tr>
+            <th scope="col">The local problem</th>
+            <th scope="col">What changed systemically</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Search needed a home in Member web.</td>
+            <td>Any product can add search, or any other item. Two teams launched it.</td>
+          </tr>
+          <tr>
+            <td>Provider needed to add new EHR features.</td>
+            <td>Integrated with shared components, not a one-off build.</td>
+          </tr>
+          <tr>
+            <td>Five web properties, five navigations.</td>
+            <td>All five share one set of components, with better UX and brand alignment.</td>
+          </tr>
+          <tr>
+            <td>Native mobile had its own navigation.</td>
+            <td>New design matches the web.</td>
+          </tr>
+          <tr>
+            <td>Navigation changes were expensive and risky.</td>
+            <td>Future navigation and IA changes happen in one place.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <CaseStudyFigure
+      src={mobileImg}
+      alt="The native mobile Member home screen with a bottom navigation bar that matches the web navigation look."
+      caption="Native mobile, matching the web navigation."
+      contain
+    />
+  </section>
+
+  <!-- RESULTS -->
+  <section class="content-section" id="results">
+    <p class="eyebrow all-caps soft">Results</p>
+    <h2 class="heading-3">What shipped and what it enabled.</h2>
+    <ul class="cs-results">
+      <li>
+        <span class="value">5 of 5</span>
+        <p>Web properties migrated: Member, Circles, Client Resources, Provider, and Pathways.</p>
+      </li>
+      <li>
+        <span class="value">2</span>
+        <p>Teams enabled to launch global search on the system.</p>
+      </li>
+      <li>
+        <span class="value word">Findability</span>
+        <p>Improved and tracked across member-facing products.</p>
+      </li>
+    </ul>
+    <div class="cs-prose">
+      <ul>
+        <li>Reusable components, with &ldquo;recipes&rdquo; for common patterns.</li>
+        <li>Documented best practices for every new component.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- LEARNED -->
+  <section class="content-section" id="learned">
+    <p class="eyebrow all-caps soft">What I learned</p>
+    <h2 class="heading-3">Align early, and match the feedback channel to the fidelity.</h2>
+    <div class="cs-split">
+      <div class="cs-prose">
+        <ul>
+          <li><b>Align early.</b> I talked with product, engineering, and design partners constantly from the start, so the teams already backed the plan by the time we reached product review.</li>
+          <li><b>Get focused feedback often.</b> I used Slack for quick questions, the Design Systems Guild for demos, and design critique for specifics, so each round of feedback was about one thing.</li>
+          <li><b>Share progress with more people than you think need to know.</b> Share early, share often. I still do this with my team today, and it held true here too.</li>
+        </ul>
+      </div>
+      <CaseStudyFigure
+        src={critImg}
+        alt="A design critique board with sticky notes and principles written next to navigation variants."
+        caption="A critique board from exploration."
+        contain
+      />
+    </div>
+    <div class="cs-table-wrap">
+      <table class="cs-table">
+        <thead>
+          <tr>
+            <th scope="col">Channel</th>
+            <th scope="col">Use it for</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Slack</th><td>Quick polls and questions</td></tr>
+          <tr><th scope="row">Cross-team meetings</th><td>Alignment and decisions</td></tr>
+          <tr><th scope="row">Guild forum and office hours</th><td>Demos and technical refinement</td></tr>
+          <tr><th scope="row">Design critique</th><td>Specific design refinement</td></tr>
+          <tr><th scope="row">Product review</th><td>Bringing the team along, and strategic alignment</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="cs-prose">
+      <h3 class="heading-5">What I'd do differently</h3>
+      <p>I'd capture a findability baseline before launch. We tracked the improvement, but I don't have the before-and-after numbers I'd want today.</p>
+    </div>
+    <nav class="navigation-list" aria-label="More case studies">
+      <ul>
+        <li><LinkButton href={`${base}#my-work`} label="Back to all work" /></li>
+        <li><LinkButton href={`${base}/work/tive`} label="Read: Scaling design judgment at Tive" inverse /></li>
+      </ul>
+    </nav>
+  </section>
+</CaseStudyLayout>

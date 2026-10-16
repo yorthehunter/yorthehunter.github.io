@@ -1,0 +1,54 @@
+---
+import { Image, getImage } from "astro:assets";
+
+interface ScrollFrame {
+  /** Tab label in the lightbox (shown only when there is more than one frame). */
+  label: string;
+  /** Full-height export of a frame that scrolls in the source design. */
+  src: ImageMetadata;
+  alt: string;
+}
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  /** Authored HTML, so <b> and entities work. Shown under the figure and in the lightbox. */
+  caption?: string;
+  /** Don't stretch narrow/tall images to the full column width. */
+  contain?: boolean;
+  /** Tall frames that scroll in the original design. Opens the lightbox as a scrollable view. */
+  scroll?: ScrollFrame[];
+}
+
+const { src, alt, caption, contain = false, scroll } = Astro.props;
+
+// Larger render for the lightbox, without upscaling small sources.
+const full = await getImage({ src, width: Math.min(src.width, 1920) });
+
+const frames = scroll
+  ? await Promise.all(
+      scroll.map(async (f) => ({
+        label: f.label,
+        alt: f.alt,
+        src: (await getImage({ src: f.src, width: Math.min(f.src.width, 1800) })).src,
+      })),
+    )
+  : undefined;
+---
+
+<figure class:list={["cs-figure", contain && "contain", frames && "scrolls"]}>
+  <button
+    type="button"
+    class="cs-zoom"
+    data-full={full.src}
+    data-alt={alt}
+    data-caption={caption}
+    data-scroll={frames ? JSON.stringify(frames) : undefined}
+    data-hint={frames ? "Scroll full frame" : "Enlarge"}
+    aria-haspopup="dialog"
+    aria-label={frames ? `Open scrollable view: ${alt}` : `Enlarge image: ${alt}`}
+  >
+    <Image src={src} alt={alt} loading="lazy" widths={[640, 960, 1280]} sizes="(max-width: 1100px) 100vw, 1100px" />
+  </button>
+  {caption && <figcaption set:html={caption} />}
+</figure>
