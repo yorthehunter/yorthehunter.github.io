@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import LinkButton from "../components/LinkButton.astro";
 import colorPalette from "../assets/images/sample-mh-colors.png";
 import homeScreen from "../assets/images/sample-mh-home.png";
-import globalNav from "../assets/images/sample-mh-nav.png";
+import returnsProcess from "../assets/images/sample-sf-returns.png";
 ---
 
 <ul>
@@ -39,19 +39,18 @@ import globalNav from "../assets/images/sample-mh-nav.png";
   </li>
   <li class="work-card">
     <Image
-      src={globalNav}
-      alt="A screenshot of the spec work for the Global Navigation in the Vita Design System from Modern Health"
+      src={returnsProcess}
+      alt="Screens from the redesigned warehouse returns process at Stitch Fix"
       class="image"
       loading="lazy"
     />
     <section class="content">
-      <h4>Launched Multi-platform Global Navigation</h4>
+      <h4>Designing a Returns Process That Reflects Reality</h4>
       <p>
-        Componentized our global navigation across all platforms at Modern
-        Health, enabling global search and increasing engagement by 35% with all
-        member-facing products.
+        Redesigned warehouse returns at Stitch Fix around real-world operations, increasing throughput by 50% and
+        reducing errors by 15%.
       </p>
-      <span><em>Please Ask for Details About this Project</em></span>
+      <LinkButton newWindow label="View the Presentation" href="https://www.figma.com/proto/wS6ueswXKU1mBg4spRq1C6/Portfolio-2023%E2%80%932024?node-id=765-370&node-type=section&t=OCbnbU6f7Ta94OPS-1&scaling=contain&content-scaling=fixed&page-id=762%3A18068" />
     </section>
   </li>
 </ul>

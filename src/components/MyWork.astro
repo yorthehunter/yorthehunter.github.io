@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 import LinkButton from "../components/LinkButton.astro";
 import modeDS from "../assets/images/sample-sf-mode.png";
-import returnsProcess from "../assets/images/sample-sf-returns.png";
+import globalNavThumb from "../assets/images/sample-mh-global-nav-thumb.png";
 import tiveLogo from "../assets/images/tive-logo.png";
 
 const base = import.meta.env.BASE_URL;
@@ -35,15 +35,17 @@ const featuredStories = [
     },
   },
   {
-    tags: ["Complex workflows", "Hands-on design", "Measurable impact"],
-    title: "Designing a returns process that reflects reality",
+    tags: ["Design systems", "Cross-platform", "Engineering partnership"],
+    title: "One navigation system, globally adopted",
     summary:
-      "Redesigned warehouse returns around real-world operations, increasing throughput by 50% and reducing errors by 15%.",
-    proves: "I stay close to users, systems, and product craft.",
-    image: returnsProcess,
+      "Replaced five different navigations with one configurable system across 5 web properties and 2 native apps, enabling global search and a 35% increase in navigation engagement.",
+    proves: "I turn a single request into a platform capability.",
+    image: globalNavThumb,
+    alt: "Before and after: seven different navigation bars on the left, and one responsive navigation system on the right.",
     cta: {
-      label: "View the Presentation",
-      href: "https://www.figma.com/proto/wS6ueswXKU1mBg4spRq1C6/Portfolio-2023%E2%80%932024?node-id=765-370&node-type=section&t=OCbnbU6f7Ta94OPS-1&scaling=contain&content-scaling=fixed&page-id=762%3A18068",
+      label: "Read the Case Study",
+      href: `${base}/work/global-navigation`,
+      newWindow: false,
     },
   },
 ];
@@ -62,10 +64,24 @@ const featuredStories = [
       <div class="story-media" data-contain={story.fit === "contain"}>
         <Image
           src={story.image}
-          alt=""
+          alt={story.alt ?? ""}
           class:list={["story-image", story.fit === "contain" && "contain"]}
           loading="lazy"
         />
+        {story.cta && (
+          // The CTA button below is the accessible link; this one is a mouse/touch
+          // shortcut over the image, so it stays out of the tab order and screen readers.
+          <a
+            class="story-media-link"
+            href={story.cta.href}
+            target={story.cta.newWindow ?? true ? "_blank" : "_self"}
+            rel={story.cta.newWindow ?? true ? "noopener noreferrer" : undefined}
+            tabindex="-1"
+            aria-hidden="true"
+          >
+            <span class="story-overlay">{story.cta.label}<span aria-hidden="true"> →</span></span>
+          </a>
+        )}
       </div>
       <div class="story-content">
         <div class="story-tags">
@@ -121,6 +137,7 @@ const featuredStories = [
     border-radius: 16px;
     overflow: hidden;
     background: var(--color-bg-soften);
+    position: relative;
 
     &[data-contain] {
       display: flex;
@@ -143,6 +160,35 @@ const featuredStories = [
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
+    }
+  }
+
+  .story-media-link {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    transition: background-color 0.15s ease-in;
+    text-decoration: none;
+    color: white;
+  }
+
+  .story-overlay {
+    font: var(--font-heading-5);
+    color: white;
+    opacity: 0;
+    transition: opacity 0.15s ease-in;
+  }
+
+  // Show the overlay on hover, or when the CTA button is focused by keyboard.
+  .story-media-link:hover,
+  .story:has(.story-content a:focus-visible) .story-media-link {
+    background-color: var(--color-bg-overlay-dark);
+
+    .story-overlay {
+      opacity: 1;
     }
   }
 

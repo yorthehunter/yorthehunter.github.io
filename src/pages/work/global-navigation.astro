@@ -5,7 +5,6 @@ import LinkButton from "../../components/LinkButton.astro";
 
 import auditImg from "../../assets/images/gnav-audit.png";
 import competitiveImg from "../../assets/images/gnav-competitive.png";
-import principlesImg from "../../assets/images/gnav-principles.png";
 import roadmapImg from "../../assets/images/gnav-roadmap.png";
 import iterationsImg from "../../assets/images/gnav-iterations.png";
 import breakpointsImg from "../../assets/images/gnav-breakpoints.png";
@@ -49,8 +48,8 @@ const sections = [
       Launching global navigation in the design system enabled faster time to live.
     </p>
     <ul class="cs-stats">
-      <li><span class="value">5</span><span class="label">Web properties migrated to one system</span></li>
-      <li><span class="value">2</span><span class="label">Teams enabled to launch global search</span></li>
+      <li><span class="value">7</span><span class="label">Surfaces on one system: 5 web, iOS, and Android</span></li>
+      <li><span class="value">2</span><span class="label">Teams launched Global Search features in the new nav</span></li>
       <li><span class="value">4 mo</span><span class="label">From design audit to MVP</span></li>
       <li><span class="value">35%</span><span class="label">Users engaged with navigation items at a higher rate</span></li>
     </ul>
@@ -82,7 +81,7 @@ const sections = [
       </div>
       <div>
         <dt>Scope</dt>
-        <dd>Five web properties and native mobile.</dd>
+        <dd>5 web properties, plus iOS and Android apps.</dd>
       </div>
       <div>
         <dt>Team</dt>
@@ -94,7 +93,7 @@ const sections = [
       </div>
       <div>
         <dt>Outcome</dt>
-        <dd>Reusable components, all five properties migrated.</dd>
+        <dd>Reusable components across all 5 web properties and both native apps.</dd>
       </div>
     </dl>
   </header>
@@ -201,26 +200,6 @@ const sections = [
         },
       ]}
     />
-    <CaseStudyFigure
-      src={principlesImg}
-      alt="A board of navigation guidance from other design systems covering information architecture, usability, accessibility, style, and hierarchy."
-      caption="Principles from other design systems."
-    />
-
-    <div class="cs-prose">
-      <h3 class="heading-5">A repeatable process</h3>
-    </div>
-    <ol class="cs-steps">
-      <li>Research</li>
-      <li>Exploration</li>
-      <li>Design review</li>
-      <li>Component specs</li>
-      <li>Development</li>
-      <li>Usage documentation</li>
-      <li>Component QA</li>
-      <li>Beta launch</li>
-      <li>Migration and adoption</li>
-    </ol>
   </section>
 
   <!-- DECISIONS -->
@@ -383,8 +362,8 @@ const sections = [
             <td>All five share one set of components, with better UX and brand alignment.</td>
           </tr>
           <tr>
-            <td>Native mobile had its own navigation.</td>
-            <td>New design matches the web.</td>
+            <td>The iOS and Android apps had their own navigation.</td>
+            <td>A new design on both matches the web.</td>
           </tr>
           <tr>
             <td>Navigation changes were expensive and risky.</td>
@@ -407,16 +386,16 @@ const sections = [
     <h2 class="heading-3">What shipped and what it enabled.</h2>
     <ul class="cs-results">
       <li>
-        <span class="value">5 of 5</span>
-        <p>Web properties migrated: Member, Circles, Client Resources, Provider, and Pathways.</p>
+        <span class="value">7</span>
+        <p>Surfaces on one system: 5 web properties (Member, Circles, Client Resources, Provider, and Pathways), plus iOS and Android.</p>
       </li>
       <li>
         <span class="value">2</span>
-        <p>Teams enabled to launch global search on the system.</p>
+        <p>Teams launched Global Search features in the new nav.</p>
       </li>
       <li>
-        <span class="value word">Findability</span>
-        <p>Improved and tracked across member-facing products.</p>
+        <span class="value">35%</span>
+        <p>Increase in navigation engagement across member-facing products.</p>
       </li>
     </ul>
     <div class="cs-prose">
@@ -465,7 +444,10 @@ const sections = [
     </div>
     <div class="cs-prose">
       <h3 class="heading-5">What I'd do differently</h3>
-      <p>I'd capture a findability baseline before launch. We tracked the improvement, but I don't have the before-and-after numbers I'd want today.</p>
+      <ol>
+        <li>I'd capture a findability baseline before launch. We tracked the improvement, but I don't have the before-and-after numbers I'd want today.</li>
+        <li>If I had today's design and AI tools, I'd do discovery much faster, align to system and design principles earlier, and start building much sooner.</li>
+      </ol>
     </div>
     <nav class="navigation-list" aria-label="More case studies">
       <ul>
