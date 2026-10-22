@@ -1,133 +1,84 @@
 ---
-import { Image } from "astro:assets";
-import LinkButton from "../components/LinkButton.astro";
-import colorPalette from "../assets/images/sample-mh-colors.png";
-import homeScreen from "../assets/images/sample-mh-home.png";
-import returnsProcess from "../assets/images/sample-sf-returns.png";
+const projects = [
+  {
+    title: "Creating an Accessible, Scalable Color Palette",
+    summary:
+      "Redesigned the color palette for all web and mobile platforms (member, provider, client) at Modern Health, enabling WCAG compliance at scale.",
+    cta: "Read on Medium",
+    href: "https://yorthehunter.medium.com/how-we-created-an-accessible-scalable-color-palette-2ae1242abdcb",
+  },
+  {
+    title: "Launched a Personalized Home Screen",
+    summary:
+      "Designed a modular home screen at Modern Health, resulting in 25% higher retention and the launch of algorithmically personalized content.",
+    cta: "View the Presentation",
+    href: "https://www.figma.com/proto/wS6ueswXKU1mBg4spRq1C6/Portfolio-2023%E2%80%932024?page-id=808%3A11414&node-id=808-19544&node-type=section&t=vmCyw9LoND2kaYWq-0&scaling=min-zoom&content-scaling=fixed",
+  },
+  {
+    title: "Designing a Returns Process That Reflects Reality",
+    summary:
+      "Redesigned warehouse returns at Stitch Fix around real-world operations, increasing throughput by 50% and reducing errors by 15%.",
+    cta: "View the Presentation",
+    href: "https://www.figma.com/proto/wS6ueswXKU1mBg4spRq1C6/Portfolio-2023%E2%80%932024?node-id=765-370&node-type=section&t=OCbnbU6f7Ta94OPS-1&scaling=contain&content-scaling=fixed&page-id=762%3A18068",
+  },
+];
 ---
 
-<ul>
-  <li class="work-card">
-    <Image
-      src={colorPalette}
-      alt="Color examples from the Vita Design System color palette"
-      class="image"
-      loading="lazy"
-    />
-    <section class="content">
-      <h4>Creating an Accessible, Scalable Color Palette</h4>
-      <p>
-        Redesigned the color palette for all web and mobile platforms (member, provider, client) at Modern Health. Enabled
-        WCAG-compliance at scale and an enhanced UX through better accessibility of design.
-      </p>
-      <LinkButton newWindow label="Read on Medium" href="https://yorthehunter.medium.com/how-we-created-an-accessible-scalable-color-palette-2ae1242abdcb" />
-    </section>
-  </li>
-  <li class="work-card">
-    <Image
-      src={homeScreen}
-      alt="Desktop and mobile views of the new home screen at Modern Health"
-      class="image"
-    />
-    <section class="content">
-      <h4>Launched a Personalized Home Screen</h4>
-      <p>
-        Designed a modular home screen, resulting in 25% higher retention, better user engagement, and the launch of algorithmically personalized content.
-      </p>
-      <LinkButton newWindow label="View the Presentation" href="https://www.figma.com/proto/wS6ueswXKU1mBg4spRq1C6/Portfolio-2023%E2%80%932024?page-id=808%3A11414&node-id=808-19544&node-type=section&t=vmCyw9LoND2kaYWq-0&scaling=min-zoom&content-scaling=fixed" />
-    </section>
-  </li>
-  <li class="work-card">
-    <Image
-      src={returnsProcess}
-      alt="Screens from the redesigned warehouse returns process at Stitch Fix"
-      class="image"
-      loading="lazy"
-    />
-    <section class="content">
-      <h4>Designing a Returns Process That Reflects Reality</h4>
-      <p>
-        Redesigned warehouse returns at Stitch Fix around real-world operations, increasing throughput by 50% and
-        reducing errors by 15%.
-      </p>
-      <LinkButton newWindow label="View the Presentation" href="https://www.figma.com/proto/wS6ueswXKU1mBg4spRq1C6/Portfolio-2023%E2%80%932024?node-id=765-370&node-type=section&t=OCbnbU6f7Ta94OPS-1&scaling=contain&content-scaling=fixed&page-id=762%3A18068" />
-    </section>
-  </li>
+<ul class="more-list">
+  {projects.map((project) => (
+    <li>
+      <h4>{project.title}</h4>
+      <p>{project.summary}</p>
+      <a href={project.href} target="_blank" rel="noopener noreferrer">
+        {project.cta} &rarr;
+      </a>
+    </li>
+  ))}
 </ul>
 
 <style lang="scss">
-  ul {
+  .more-list {
     list-style: none;
-    display: flex;
-    align-items: stretch;
-    flex-direction: column;
-    gap: var(--space-xl);
-  }
+    border-top: 1px solid var(--color-bg-overlay);
 
-  .work-card {
-    display: flex;
-    flex-direction: row;
-    gap: var(--space-s);
-    border-radius: 20px;
-    background: var(--color-vibrant-gradient);
-    padding: var(--space-m) var(--space-m) 0;
-    position: relative;
+    li {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      column-gap: var(--space-l);
+      row-gap: var(--space-3xs);
+      padding: var(--space-s) 0;
+      border-bottom: 1px solid var(--color-bg-overlay);
 
-    @media screen and (max-width: 720px) {
-      flex-direction: column;
-    }
-
-    &:hover .content {
-      visibility: visible;
-      opacity: 1;
-    }
-
-    .image {
-      object-fit: contain;
-      max-width: min(700px, 100%);
-      height: auto;
-      margin: auto;
-
-      @media screen and (max-width: 812px) {
-        max-width: 100%;
-        width: 100%;
-        object-fit: cover;
-      }
-    }
-
-    .content {
-      transition: visibility 0s, opacity 0.15s ease-in;
-      visibility: hidden;
-      opacity: 0;
-      padding: var(--space-m) var(--space-m);
-      border-radius: 20px;
-      color: white;
-      display: flex;
-      justify-content: flex-end;
-      flex-direction: column;
-      gap: var(--space-xs);
-      align-items: start;
-      flex: 1;
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      background-color: var(--color-bg-overlay-dark);
-
-      > p {
-        @media screen and (max-width: 812px) {
-          display: none;
-        }
+      @media screen and (max-width: 720px) {
+        grid-template-columns: 1fr;
       }
     }
 
     h4 {
       font: var(--font-heading-4);
+      grid-column: 1;
     }
 
     p {
+      font: var(--font-body-3);
+      color: var(--color-secondary);
+      grid-column: 1;
+      max-width: 60ch;
+    }
+
+    a {
       font: var(--font-body-4);
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      align-self: center;
+      white-space: nowrap;
+
+      @media screen and (max-width: 720px) {
+        grid-column: 1;
+        grid-row: auto;
+        align-self: start;
+        margin-top: var(--space-2xs);
+      }
     }
   }
 </style>
