@@ -4,11 +4,11 @@ import LinkButton from './LinkButton.astro';
 import brianCleveland from "../assets/images/brian-cleveland-headshot.png"; 
 import ThemeIcon from './ThemeIcon.astro';
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
 <nav>
-  <a href={base} class="logo">
+  <a href={`${base}/`} class="logo">
     <Image
       src={brianCleveland}
       alt="Brian Cleveland"
@@ -19,13 +19,13 @@ const base = import.meta.env.BASE_URL;
   </a>
   <ul>
     <li>
-      <LinkButton href={base} label="Home" />
+      <LinkButton href={`${base}/`} label="Home" />
     </li>
     <li>
-      <LinkButton href={`${base}#my-work`} label="Work" />
+      <LinkButton href={`${base}/#my-work`} label="Work" />
     </li>
     <li>
-      <LinkButton href={`${base}#about-me`} label="About" />
+      <LinkButton href={`${base}/#about-me`} label="About" />
     </li>
     <ThemeIcon />
   </ul>

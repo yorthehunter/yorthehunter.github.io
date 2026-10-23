@@ -5,7 +5,7 @@ import modeDS from "../assets/images/sample-sf-mode.png";
 import globalNavThumb from "../assets/images/sample-mh-global-nav-thumb.png";
 import tiveLogo from "../assets/images/tive-logo.png";
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 const featuredStories = [
   {
