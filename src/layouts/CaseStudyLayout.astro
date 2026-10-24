@@ -163,6 +163,43 @@ const { title, sections, navLabel } = Astro.props;
   .content-section / .heading-* / .body-* classes.
 -->
 <style is:global>
+  /*
+    Case-study type scale and rhythm. Same fluid range as the site scale
+    (320px to 1240px), so phones are unchanged; only the large-screen ceiling
+    comes down: body 24px -> 20px, small 18px -> 16px, h2 43px -> 36px,
+    h1 76px -> 60px. The composite --font-* tokens are re-declared here
+    because they were already resolved at :root and wouldn't pick up the
+    new sizes on their own.
+  */
+  .case-study {
+    --font-size--1: clamp(0.833rem, 0.7749rem + 0.2904vi, 1rem);
+    --font-size-0: clamp(1rem, 0.913rem + 0.4348vi, 1.25rem);
+    --font-size-1: clamp(1.2rem, 1.0522rem + 0.7391vi, 1.625rem);
+    --font-size-2: clamp(1.44rem, 1.1583rem + 1.4087vi, 2.25rem);
+    --font-size-3: clamp(1.728rem, 1.329rem + 1.9948vi, 2.875rem);
+    --font-size-4: clamp(2.074rem, 1.4905rem + 2.9155vi, 3.75rem);
+
+    --font-heading-1: var(--font-heading-weight) var(--font-size-4)/var(--line-height-display) var(--secondary-font-family);
+    --font-heading-2: var(--font-heading-weight) var(--font-size-3)/var(--line-height-display) var(--secondary-font-family);
+    --font-heading-3: var(--font-heading-weight) var(--font-size-2)/var(--line-height-heading) var(--secondary-font-family);
+    --font-heading-4: var(--font-heading-weight) var(--font-size-1)/var(--line-height-heading) var(--font-family);
+    --font-heading-5: var(--font-heading-weight) var(--font-size-0)/var(--line-height-heading) var(--font-family);
+    --font-heading-6: var(--font-heading-weight) var(--font-size--1)/var(--line-height-heading) var(--font-family);
+    --font-body-1: var(--font-body-weight) var(--font-size-2)/var(--line-height-body) var(--font-family);
+    --font-body-2: var(--font-body-weight) var(--font-size-1)/var(--line-height-body) var(--font-family);
+    --font-body-3: var(--font-body-weight) var(--font-size-0)/var(--line-height-body) var(--font-family);
+    --font-body-4: var(--font-body-weight) var(--font-size--1)/var(--line-height-body) var(--font-family);
+  }
+
+  /*
+    Tighter vertical rhythm on large screens: the site's section padding grows
+    from 48px to 72px; here it stays at 48px. Phones already use 48px, so
+    they're unchanged.
+  */
+  .case-study .content-section {
+    padding-block: 3rem;
+  }
+
   .cs-subnav {
     position: sticky;
     top: 0;
