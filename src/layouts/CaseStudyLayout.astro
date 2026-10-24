@@ -320,18 +320,35 @@ const { title, sections, navLabel } = Astro.props;
     list-style: none;
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: auto auto;
     border-top: 3px solid var(--color-vibrant);
   }
 
+  /*
+    Each stat spans two rows of the strip's grid and inherits them (subgrid), so
+    every value sits on one row and every label on the next, even when a value or
+    label wraps. A hairline divides the stats.
+  */
   .cs-stats li {
-    padding: var(--space-s) var(--space-s) var(--space-s) 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3xs);
+    display: grid;
+    grid-row: span 2;
+    grid-template-rows: subgrid;
+    row-gap: var(--space-3xs);
+    align-content: start;
+    padding: var(--space-s) var(--space-s) 0 var(--space-s);
   }
 
+  .cs-stats li:first-child {
+    padding-left: 0;
+  }
+
+  .cs-stats li + li {
+    border-left: 1px solid var(--color-bg-overlay);
+  }
+
+  /* One value size for numbers and words alike, so they sit on the same baseline. */
   .cs-stats .value {
-    font: var(--font-heading-weight) var(--font-size-3) / 1 var(--secondary-font-family);
+    font: var(--font-heading-weight) var(--font-size-2) / 1.1 var(--secondary-font-family);
     color: var(--color-vibrant-dark);
   }
 
@@ -351,6 +368,17 @@ const { title, sections, navLabel } = Astro.props;
   @media screen and (max-width: 820px) {
     .cs-stats {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* Two per row: divider only between the pair, rule between the rows. */
+    .cs-stats li:nth-child(odd) {
+      padding-left: 0;
+      border-left: 0;
+    }
+
+    .cs-stats li:nth-child(n + 3) {
+      border-top: 1px solid var(--color-bg-overlay);
+      margin-top: var(--space-s);
     }
   }
 
