@@ -1,0 +1,312 @@
+---
+// The five-level "one object, five densities" demo from the Tive case study.
+// Self-contained: the chrome follows the site theme; the mock product UI
+// (.screen and everything inside it) is a fixed light rendering of Tive's UI.
+---
+
+<details class="more">
+<summary>Explore the five-level object framework</summary>
+<div class="panel ox" id="ox" style="margin-top:28px">
+<div class="ox-top">
+<span class="label accent">One object · five levels of density</span>
+<button aria-pressed="false" class="ox-toggle" id="ox-anat" type="button"><span aria-hidden="true" class="sw"></span>Highlight shared anatomy</button>
+</div>
+<div aria-label="Object levels" class="ox-rail" role="tablist">
+<button aria-selected="false" class="ox-lv" data-lv="1" id="ox-t1" role="tab" type="button" tabindex="-1"><span class="slot-s"><span class="sil" style="--w:26px;--h:8px"></span></span><span class="n">Level 1</span><span class="nm">Inline chip</span></button>
+<button aria-selected="false" class="ox-lv" data-lv="2" id="ox-t2" role="tab" type="button" tabindex="-1"><span class="slot-s"><span class="sil" style="--w:44px;--h:11px"></span></span><span class="n">Level 2</span><span class="nm">Simple card</span></button>
+<button aria-selected="true" class="ox-lv" data-lv="3" id="ox-t3" role="tab" type="button" tabindex="0"><span class="slot-s"><span class="sil" style="--w:48px;--h:34px"></span></span><span class="n">Level 3</span><span class="nm">Expanded card</span></button>
+<button aria-selected="false" class="ox-lv" data-lv="4" id="ox-t4" role="tab" type="button" tabindex="-1"><span class="slot-s"><span class="sil" style="--w:54px;--h:48px"></span></span><span class="n">Level 4</span><span class="nm">Dialog</span></button>
+<button aria-selected="false" class="ox-lv" data-lv="5" id="ox-t5" role="tab" type="button" tabindex="-1"><span class="slot-s"><span class="sil" style="--w:100px;--h:60px"></span></span><span class="n">Level 5</span><span class="nm">Full page</span></button>
+</div>
+<!-- L1 -->
+<div aria-labelledby="ox-t1" class="ox-stage" data-panel="1" hidden="" role="tabpanel">
+<div class="ox-cap"><span class="label accent">Level 1 · Inline chip</span><h3>A lightweight reference, anywhere space is tight</h3><p>Click or tap opens the object at Level 2. No status or metadata—identity only.</p></div>
+<div class="screen"><div class="p lv1">
+<div class="p-card p-tip">
+<div class="p-head anat"><span class="p-ic"><svg aria-hidden="true" viewBox="0 0 24 24"><rect fill="none" height="14" rx="2" stroke="currentColor" stroke-width="1.8" width="18" x="3" y="5"></rect><circle cx="9" cy="11" fill="currentColor" r="2"></circle><path d="M6 16c.6-1.6 1.7-2.4 3-2.4s2.4.8 3 2.4M14 10h4M14 13h3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"></path></svg></span><div class="p-t"><b>Phillip Alfred Cole</b><small>Driver Contact • +1 201-555-0123</small></div><span aria-hidden="true" class="p-x">×</span></div>
+<hr class="p-hr">
+<div class="p-okline">✓ AI Calling Consent Granted</div>
+<span class="p-link">Edit Driver Contact ↗</span>
+</div>
+<span class="p-chip anat"><svg aria-hidden="true" viewBox="0 0 24 24"><rect fill="none" height="14" rx="2" stroke="currentColor" stroke-width="2" width="18" x="3" y="5"></rect><circle cx="9" cy="11" fill="currentColor" r="2"></circle></svg>Phillip Alfred Cole</span>
+</div></div>
+</div>
+<!-- L2 -->
+<div aria-labelledby="ox-t2" class="ox-stage" data-panel="2" hidden="" role="tabpanel">
+<div class="ox-cap"><span class="label accent">Level 2 · Simple card</span><h3>Identity plus one glance of status</h3><p>The default row in a list. Same anatomy everywhere: type icon, name, meta line, status, disclosure. Only the icon, accent, and meta text change per object type.</p></div>
+<div class="screen"><div class="p lv2">
+<div class="p-card p-simple"><div class="p-head anat"><span class="p-ic"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M2.5 7h11v9h-11zM13.5 10h4l3 3v3h-7z" fill="currentColor"></path><circle cx="6.5" cy="17" fill="#fff" r="2" stroke="currentColor" stroke-width="1.6"></circle><circle cx="17" cy="17" fill="#fff" r="2" stroke="currentColor" stroke-width="1.6"></circle></svg></span><div class="p-t"><b>AeroTrans Express</b><small>Carrier • Road</small></div></div><span class="p-btn-ic round">⌄</span></div>
+<div class="p-card p-simple err"><div class="p-head anat"><span class="p-ic"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M2.5 7h11v9h-11zM13.5 10h4l3 3v3h-7z" fill="currentColor"></path><circle cx="6.5" cy="17" fill="#fff" r="2" stroke="currentColor" stroke-width="1.6"></circle><circle cx="17" cy="17" fill="#fff" r="2" stroke="currentColor" stroke-width="1.6"></circle></svg></span><div class="p-t"><b>AeroTrans Express</b><small>Carrier • Road</small></div></div><span aria-label="Needs attention" class="p-alert">!</span><span class="p-btn-ic round">⌄</span></div>
+</div></div>
+</div>
+<!-- L3 -->
+<div aria-labelledby="ox-t3" class="ox-stage" data-panel="3" role="tabpanel">
+<div class="ox-cap"><span class="label accent">Level 3 · Expanded card</span><h3>Inline detail without leaving the page</h3><p>The form-step and accordion state. Only the fields and actions that matter in context—carrier compliance in a shipment form, say. Everything else waits for Level 4 or 5.</p></div>
+<div class="screen"><div class="p lv3">
+<div class="p-card p-exp">
+<div class="p-head anat"><span class="p-ic"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M2.5 7h11v9h-11zM13.5 10h4l3 3v3h-7z" fill="currentColor"></path><circle cx="6.5" cy="17" fill="#fff" r="2" stroke="currentColor" stroke-width="1.6"></circle><circle cx="17" cy="17" fill="#fff" r="2" stroke="currentColor" stroke-width="1.6"></circle></svg></span><div class="p-t"><b>AeroTrans Express</b><small>Carrier • Road</small></div></div>
+<div class="p-actions"><span class="p-btn-ic">✎</span><span class="p-btn-ic">🗑︎</span><span class="p-btn-ic round">⌃</span></div>
+<hr class="p-hr full">
+<div class="p-kv full"><div><small>DOT #</small><span>USDOT 123456</span></div><div><small>MC #</small><span>MC-123456</span></div><div><small>Mode</small><span>Road</span></div><div><small>Phone</small><span>(617) 555-0134</span></div><div class="full"><small>Address</small><span>48 Harbor St, Boston, MA 02210</span></div></div>
+<span class="p-link full">Edit Carrier ↗</span>
+</div>
+</div></div>
+</div>
+<!-- L4 -->
+<div aria-labelledby="ox-t4" class="ox-stage" data-panel="4" hidden="" role="tabpanel">
+<div class="ox-cap"><span class="label accent">Level 4 · Dialog</span><h3>Committed inspection of one object</h3><p>The user chose to focus. Tabs, related shipments, and primary actions arrive, without navigating away from the task.</p></div>
+<div class="screen"><div class="p lv4"><div class="p-scrim">
+<div class="p-card p-dlg">
+<div class="p-dlg-h"><div class="p-head anat"><span class="p-ic"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M2.5 7h11v9h-11zM13.5 10h4l3 3v3h-7z" fill="currentColor"></path><circle cx="6.5" cy="17" fill="#fff" r="2" stroke="currentColor" stroke-width="1.6"></circle><circle cx="17" cy="17" fill="#fff" r="2" stroke="currentColor" stroke-width="1.6"></circle></svg></span><div class="p-t"><b>AeroTrans Express</b><small>Carrier • Road</small></div></div><span aria-hidden="true" class="p-x">×</span></div>
+<div class="p-tabs"><b>Details</b><span>Shipments</span><span>Activity</span></div>
+<div class="p-pad"><div class="p-kv"><div><small>Mode</small><span>Road</span></div><div><small>Phone</small><span>(617) 555-0134</span></div><div><small>DOT #</small><span>USDOT 123456</span></div><div><small>MC #</small><span>MC-123456</span></div><div class="full"><small>Address</small><span>48 Harbor St, Boston, MA 02210</span></div></div>
+<small class="p-over">Recent shipments</small>
+<div class="p-rows"><div class="p-row"><span class="id">SH-10234</span><span class="route">Boston → Newark</span><span class="p-pill ok">Delivered</span></div><div class="p-row"><span class="id">SH-10221</span><span class="route">Newark → Columbus</span><span class="p-pill transit">In transit</span></div></div></div>
+<div class="p-foot"><span class="p-btn">Close</span><span class="p-btn pri">Edit carrier</span></div>
+</div>
+</div></div></div>
+</div>
+<!-- L5 -->
+<div aria-labelledby="ox-t5" class="ox-stage wide" data-panel="5" hidden="" role="tabpanel">
+<div class="ox-cap"><span class="label accent">Level 5 · Full page</span><h3>The object as a first-class page</h3><p>Its own address, tabs, and everything related to it. Origin and destination stay <b>Level 1 chips</b> even here—one system, nested inside itself.</p></div>
+<div class="screen"><div class="p lv5">
+<div class="p-crumb">Carriers <span>›</span> <b>AeroTrans Express</b></div>
+<div class="p-pagehead"><div class="p-head anat"><span class="p-ic lg"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M2.5 7h11v9h-11zM13.5 10h4l3 3v3h-7z" fill="currentColor"></path><circle cx="6.5" cy="17" fill="#fff" r="2" stroke="currentColor" stroke-width="1.6"></circle><circle cx="17" cy="17" fill="#fff" r="2" stroke="currentColor" stroke-width="1.6"></circle></svg></span><div class="p-t"><b class="xl">AeroTrans Express <span class="p-pill carrier">Carrier</span></b><small><span class="p-live">Active</span> · Road · USDOT 123456 · MC-123456 <span class="p-pill muted">User-provided</span></small></div></div><div class="p-hbtns"><span class="p-btn">Edit</span><span class="p-btn">···</span></div></div>
+<div class="p-tabs"><b>Overview</b><span>Shipments</span><span>Documents</span><span>Activity</span></div>
+<div class="p-cols">
+<div class="p-colmain">
+<div class="p-card p-pad"><b class="p-h">Details</b><div class="p-kv"><div><small>Mode</small><span>Road</span></div><div><small>Phone</small><span>(617) 555-0134</span></div><div><small>DOT #</small><span>USDOT 123456</span></div><div><small>MC #</small><span>MC-123456</span></div><div class="full"><small>Address</small><span>48 Harbor St, Boston, MA 02210</span></div></div></div>
+<div class="p-card p-pad"><div class="p-hrow"><b class="p-h">Recent shipments</b><span class="p-link">View all</span></div>
+<div class="p-rows">
+<div class="p-row"><span class="id">SH-10234</span><span class="p-chip loc anat">Boston</span><span class="arr">→</span><span class="p-chip loc anat">Newark</span><span class="p-pill ok">Delivered</span></div>
+<div class="p-row"><span class="id">SH-10221</span><span class="p-chip loc anat">Newark</span><span class="arr">→</span><span class="p-chip loc anat">Columbus</span><span class="p-pill transit">In transit</span></div>
+<div class="p-row"><span class="id">SH-10198</span><span class="p-chip loc anat">Columbus</span><span class="arr">→</span><span class="p-chip loc anat">Boston</span><span class="p-pill ok">Delivered</span></div>
+</div></div>
+</div>
+<div class="p-colside">
+<div class="p-card p-pad"><b class="p-h">Performance</b><div class="p-stats"><div><b>96%</b><small>On-time</small></div><div><b>184</b><small>Shipments</small></div><div><b>2.4d</b><small>Avg transit</small></div></div></div>
+<div class="p-card p-pad"><b class="p-h">Contacts</b><div class="p-ppl"><div><span class="av">MJ</span><span><b>Maria Jensen</b><small>Dispatch lead</small></span></div><div><span class="av b">RK</span><span><b>Ravi Kapoor</b><small>Account manager</small></span></div></div></div>
+<div class="p-card p-pad"><b class="p-h">Notes</b><p class="p-note">Preferred for temperature-sensitive lanes into the Northeast. Requires 24hr appointment scheduling at Boston dock.</p></div>
+</div>
+</div>
+</div></div>
+</div>
+<div class="ox-foot"><span class="note">Rebuilt from the Figma object card system · sample data · use ← → to step through levels</span></div>
+</div>
+<p class="same">Same underlying object. Shared interaction and hierarchy rules. Different information density based on context.</p>
+</details>
+
+<script>
+  // Level picker + anatomy highlight for the object-density demo.
+  const ox = document.getElementById("ox");
+  if (ox) {
+    let level = 3;
+    let anatomy = false;
+
+    const draw = () => {
+      ox.classList.toggle("anat-on", anatomy);
+      document.getElementById("ox-anat")?.setAttribute("aria-pressed", String(anatomy));
+      ox.querySelectorAll<HTMLButtonElement>(".ox-lv").forEach((b) => {
+        const on = Number(b.dataset.lv) === level;
+        b.setAttribute("aria-selected", String(on));
+        b.tabIndex = on ? 0 : -1;
+      });
+      ox.querySelectorAll<HTMLElement>(".ox-stage").forEach((p) => {
+        p.hidden = Number(p.dataset.panel) !== level;
+      });
+    };
+
+    ox.addEventListener("click", (e) => {
+      const target = e.target as Element;
+      const tab = target.closest<HTMLElement>(".ox-lv");
+      if (tab) {
+        level = Number(tab.dataset.lv);
+        draw();
+      } else if (target.closest("#ox-anat")) {
+        anatomy = !anatomy;
+        draw();
+      }
+    });
+
+    // Arrow keys move between levels.
+    ox.addEventListener("keydown", (e) => {
+      if (!(e.target as Element).closest(".ox-lv")) return;
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+      e.preventDefault();
+      level = Math.min(5, Math.max(1, level + (e.key === "ArrowRight" ? 1 : -1)));
+      draw();
+      ox.querySelector<HTMLElement>(`.ox-lv[data-lv="${level}"]`)?.focus();
+    });
+
+    draw();
+  }
+</script>
+
+<style>
+  /* Map the demo's local names onto the site tokens (light and dark follow html.dark). */
+  details.more {
+    --ink: var(--color-primary);
+    --muted: var(--color-secondary);
+    --ground: var(--color-bg);
+    --line: color-mix(in srgb, var(--color-primary) 22%, transparent);
+    --surface: color-mix(in srgb, var(--color-bg-soften) 40%, var(--color-bg));
+    --sunk: var(--color-bg-soften);
+    --accent-strong: var(--color-vibrant-dark);
+    --accent-ink: color-mix(in srgb, var(--color-vibrant-dark) 55%, var(--color-primary));
+    --accent-soft: color-mix(in srgb, var(--color-vibrant) 28%, var(--color-bg));
+    --mono: var(--font-family);
+    --display: var(--secondary-font-family);
+    --body: var(--font-family);
+  }
+
+  details.more [hidden] { display: none !important; }
+
+  .label {
+    font-family: var(--mono);
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .label.accent {
+    color: var(--accent-ink);
+  }
+
+  .ox-cap h3 {
+    font-family: var(--display);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .ox-cap p,
+  .same,
+  .note {
+    max-width: none;
+  }
+/* object explorer */
+.ox{display:grid;gap:18px}
+.ox-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.ox-toggle{font:inherit;font-family:var(--body);font-size:.8rem;font-weight:600;color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:999px;padding:6px 12px 6px 8px;display:inline-flex;align-items:center;gap:8px;cursor:pointer}
+.ox-toggle .sw{width:28px;height:16px;border-radius:999px;background:var(--sunk);position:relative;transition:background .15s}
+.ox-toggle .sw::after{content:"";position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;background:var(--surface);transition:transform .15s}
+.ox-toggle[aria-pressed="true"] .sw{background:var(--accent-strong)}
+.ox-toggle[aria-pressed="true"] .sw::after{transform:translateX(12px)}
+.ox-toggle:focus-visible,.ox-lv:focus-visible{outline:2px solid var(--accent-strong);outline-offset:2px}
+.ox-rail{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.ox-lv{font:inherit;text-align:left;background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:10px 12px;display:grid;gap:2px;cursor:pointer;transition:background .15s,border-color .15s}
+.ox-lv:hover{background:var(--ground)}
+.ox-lv[aria-selected="true"]{border-color:var(--accent-strong);background:var(--accent-soft)}
+.ox-lv .slot-s{height:62px;display:flex;align-items:flex-end;margin-bottom:8px}
+.sil{width:var(--w);height:var(--h);border:1.5px solid var(--muted);border-radius:3px;position:relative;background:var(--surface)}
+.sil::before{content:"";position:absolute;left:2px;right:2px;top:2px;height:min(4px,calc(100% - 4px));border-radius:1px;background:var(--accent-strong)}
+.ox-lv .n{font-family:var(--mono);font-size:.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-ink)}
+.ox-lv .nm{font-family:var(--display);font-weight:600;font-size:1rem;line-height:1.2}
+@media (max-width:700px){.ox-rail{grid-template-columns:repeat(5,minmax(96px,1fr));overflow-x:auto;padding-bottom:4px}}
+.ox-stage{display:grid;grid-template-columns:minmax(0,250px) minmax(0,1fr);gap:28px;align-items:start}
+.ox-stage.wide{grid-template-columns:1fr}
+.ox-stage.wide .ox-cap{grid-template-columns:auto 1fr;column-gap:28px}
+.ox-stage.wide .ox-cap h3{grid-column:1}.ox-stage.wide .ox-cap p{grid-column:2;grid-row:1/span 2}
+@media (max-width:860px){.ox-stage,.ox-stage.wide .ox-cap{grid-template-columns:1fr}.ox-stage.wide .ox-cap p{grid-column:auto;grid-row:auto}}
+.ox-cap{display:grid;gap:8px;align-content:start;padding-top:4px}
+.ox-cap h3{font-size:1.35rem}
+.ox-cap p{font-size:.95rem;color:var(--muted)}
+.ox-foot .note{margin:0}
+
+/* product UI, rebuilt from Figma — a fixed light "screen" in both themes */
+.screen{--p-bg:#EEF0F3;--p-ink:#111827;--p-muted:#6B7280;--p-line:#E5E7EB;--p-blue:#1E5BF0;--p-blue-soft:#E8EFFE;--anat:#009C7E;
+  background:var(--p-bg);border-radius:8px;padding:clamp(16px,3vw,32px);display:grid;place-items:center;min-height:340px;overflow-x:auto;color-scheme:light}
+.p{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--p-ink);font-size:13px;line-height:1.4;letter-spacing:0;text-transform:none}
+.p b{font-weight:600}
+.p small{font-size:12px}
+.p-card{background:#fff;border:1px solid var(--p-line);border-radius:8px}
+.p-head{display:flex;align-items:center;gap:12px;min-width:0}
+.p-ic{width:36px;height:36px;border-radius:8px;background:var(--p-blue-soft);color:var(--p-blue);display:grid;place-items:center;flex:none}
+.p-ic svg{width:22px;height:22px}
+.p-ic.lg{width:44px;height:44px}.p-ic.lg svg{width:28px;height:28px}
+.p-t{min-width:0}.p-t b{display:block;font-size:13px}.p-t small{display:block;color:var(--p-muted)}
+.p-t b.xl{font-size:22px;font-weight:700;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.p-x{margin-left:auto;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;color:var(--p-muted);background:#F3F4F6;font-size:14px;line-height:1}
+.p-hr{border:0;height:1px;background:var(--p-line);margin:12px 0}
+.p-okline{color:#15803D;font-weight:600;font-size:12px}
+.p-link{color:var(--p-blue);font-weight:600;font-size:12px}
+.p-chip{display:inline-flex;align-items:center;gap:5px;padding:2px 9px;border-radius:999px;background:var(--p-blue-soft);color:var(--p-blue);border:1px solid #C9D8FD;font-weight:600;font-size:12px;white-space:nowrap}
+.p-chip svg{width:14px;height:14px}
+.p-chip.loc{background:#E6F6EF;color:#0F7A55;border-color:#BFE8D6}
+.p-chip.loc::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.p-pill{display:inline-block;font-size:11px;font-weight:600;padding:2px 7px;border-radius:4px;white-space:nowrap}
+.p-pill.ok{background:#DCFCE7;color:#166534}.p-pill.transit{background:#DBEAFE;color:#1E40AF}
+.p-pill.carrier{background:var(--p-blue-soft);color:#1D4ED8}.p-pill.muted{background:#F3F4F6;color:#4B5563}
+.p-btn-ic{width:28px;height:28px;border-radius:6px;display:grid;place-items:center;color:#374151;background:#F3F4F6;font-size:13px;flex:none}
+.p-btn-ic.round{border-radius:50%}
+.p-btn{font-size:12px;font-weight:600;padding:7px 12px;border-radius:6px;border:1px solid #D1D5DB;background:#fff;white-space:nowrap}
+.p-btn.pri{background:var(--p-blue);color:#fff;border-color:var(--p-blue)}
+.p-kv{display:grid;grid-template-columns:1fr 1fr;gap:12px 20px}
+.p-kv small{display:block;color:var(--p-muted);font-size:11px}
+.p-kv span{display:block}
+.p-kv .full,.full{grid-column:1/-1}
+.p-tabs{display:flex;gap:18px;border-bottom:1px solid var(--p-line);color:var(--p-muted);font-size:12px;padding-inline:4px}
+.p-tabs > *{padding-bottom:8px}
+.p-tabs b{color:var(--p-blue);border-bottom:2px solid var(--p-blue);margin-bottom:-1px}
+.p-rows{display:grid;gap:6px}
+.p-row{display:flex;align-items:center;gap:8px;background:#F9FAFB;border:1px solid #F0F1F3;border-radius:6px;padding:7px 10px;font-size:12px}
+.p-row .id{font-weight:600;margin-right:4px}
+.p-row .route{margin-left:auto;color:var(--p-muted)}
+.p-row .arr{color:var(--p-muted)}
+.p-row .p-pill{margin-left:auto}
+.p-row .route + .p-pill{margin-left:0}
+.p-over{display:block;color:var(--p-muted);font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin:14px 0 6px}
+/* levels */
+.lv1{display:grid;justify-items:center;gap:14px}
+.p-tip{width:310px;padding:12px 14px;position:relative;box-shadow:0 10px 30px rgba(17,24,39,.14);display:grid;gap:8px}
+.p-tip .p-hr{margin:2px 0}
+.p-tip::after{content:"";position:absolute;left:50%;bottom:-7px;width:12px;height:12px;background:#fff;border-right:1px solid var(--p-line);border-bottom:1px solid var(--p-line);transform:translateX(-50%) rotate(45deg)}
+.lv2{display:grid;gap:12px;width:min(380px,100%)}
+.p-simple{display:flex;align-items:center;gap:10px;padding:12px 14px}
+.p-simple .p-head{flex:1}
+.p-simple.err{border-color:#FCA5A5}
+.p-alert{width:20px;height:20px;border-radius:50%;background:#DC2626;color:#fff;font-weight:800;font-size:12px;display:grid;place-items:center}
+.lv3{width:min(440px,100%)}
+.p-exp{padding:16px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:0 10px}
+.p-exp .p-link{margin-top:14px}
+.p-actions{display:flex;gap:6px}
+.lv4{width:min(520px,100%)}
+.p-scrim{background:rgba(17,24,39,.32);border-radius:6px;padding:clamp(12px,4vw,36px)}
+.p-dlg{box-shadow:0 20px 40px rgba(17,24,39,.25)}
+.p-dlg-h{display:flex;align-items:center;gap:10px;padding:16px 16px 12px}
+.p-dlg-h .p-head{flex:1}
+.p-pad{padding:14px 16px}
+.p-foot{display:flex;justify-content:flex-end;gap:8px;padding:12px 16px;border-top:1px solid var(--p-line)}
+.lv5{width:100%;min-width:720px;background:#F6F7F9;border-radius:6px;padding:16px;display:grid;gap:12px}
+.p-crumb{font-size:12px;color:var(--p-muted)}.p-crumb span{margin:0 4px}.p-crumb b{color:var(--p-ink)}
+.p-pagehead{display:flex;align-items:center;gap:12px}
+.p-pagehead .p-head{flex:1}
+.p-hbtns{display:flex;gap:6px}
+.p-live{color:#15803D;font-weight:600}.p-live::before{content:"● ";font-size:9px;vertical-align:1px}
+.p-cols{display:grid;grid-template-columns:1.9fr 1fr;gap:12px;align-items:start}
+.p-colmain,.p-colside{display:grid;gap:12px}
+.p-h{display:block;font-size:13px;margin-bottom:10px}
+.p-hrow{display:flex;justify-content:space-between;align-items:baseline}
+.p-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.p-stats b{display:block;font-size:18px;font-weight:700}.p-stats small{color:var(--p-muted);font-size:11px}
+.p-ppl{display:grid;gap:10px}
+.p-ppl > div{display:flex;align-items:center;gap:10px}
+.p-ppl b,.p-ppl small{display:block}.p-ppl small{color:var(--p-muted);font-size:11px}
+.av{width:28px;height:28px;border-radius:50%;background:#E0E7FF;color:#3730A3;font-size:11px;font-weight:700;display:grid;place-items:center;flex:none}
+.av.b{background:#FEF3C7;color:#92400E}
+.p-note{font-size:12px;color:#374151;max-width:none}
+/* shared anatomy highlight */
+.ox.anat-on .anat{outline:2px dashed var(--anat);outline-offset:4px;border-radius:6px}
+.ox.anat-on .p-chip.anat{border-radius:999px}
+@media (prefers-reduced-motion: reduce){.ox-toggle .sw,.ox-toggle .sw::after,.ox-lv{transition:none}}
+.note{font-family:var(--mono);font-size:.7rem;color:var(--muted);margin-top:12px}
+.same{margin-top:28px;font-family:var(--display);font-weight:600;font-size:clamp(1.2rem,2.2vw,1.6rem);line-height:1.25;letter-spacing:-0.01em;max-width:44ch}
+details.more{margin-top:28px}
+details.more > summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;padding:10px 16px;border:1px solid var(--line);border-radius:999px;background:var(--surface)}
+details.more > summary::-webkit-details-marker{display:none}
+details.more > summary::before{content:"+";font-size:1rem;line-height:1;color:var(--accent-ink)}
+details.more[open] > summary::before{content:"\2212"}
+details.more > summary:hover{background:var(--sunk)}
+details.more[open] > summary{margin-bottom:8px}
+</style>
