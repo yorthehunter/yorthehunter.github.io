@@ -1,16 +1,21 @@
 ---
 const projects = [
   {
+    title: "Scaling the Timber Design System at Built Technologies",
+    summary:
+      "Directed system architecture across 7 product teams, growing the library to 150+ components and adoption from about 40% to over 90% during my year on the team. Set up the Timber Guild so design and engineering shared ownership.",
+  },
+  {
     title: "Creating an Accessible, Scalable Color Palette",
     summary:
-      "Redesigned the color palette for all web and mobile platforms (member, provider, client) at Modern Health, enabling WCAG compliance at scale.",
+      "Redesigned the color palette for all web and mobile platforms (member, provider, client) at Modern Health as part of the Vita design system, helping raise WCAG accessibility coverage of coded components from 50% to 95%.",
     cta: "Read on Medium",
     href: "https://yorthehunter.medium.com/how-we-created-an-accessible-scalable-color-palette-2ae1242abdcb",
   },
   {
     title: "Launched a Personalized Home Screen",
     summary:
-      "Designed a modular home screen at Modern Health that increased time on page by 25% on average and launched algorithmically personalized content.",
+      "Designed a modular home screen at Modern Health that raised the customer return rate by 25% against a 30-day benchmark and launched algorithmically personalized content.",
     cta: "View the Presentation",
     href: "https://www.figma.com/proto/wS6ueswXKU1mBg4spRq1C6/Portfolio-2023%E2%80%932024?page-id=808%3A11414&node-id=808-19544&node-type=section&t=vmCyw9LoND2kaYWq-0&scaling=min-zoom&content-scaling=fixed",
   },
@@ -29,9 +34,11 @@ const projects = [
     <li>
       <h4>{project.title}</h4>
       <p>{project.summary}</p>
-      <a href={project.href} target="_blank" rel="noopener noreferrer">
-        {project.cta} &rarr;
-      </a>
+      {project.href && (
+        <a href={project.href} target="_blank" rel="noopener noreferrer">
+          {project.cta} &rarr;
+        </a>
+      )}
     </li>
   ))}
 </ul>
