@@ -4,9 +4,16 @@ import LinkButton from './LinkButton.astro';
 import brianCleveland from "../assets/images/brian-cleveland-headshot.png"; 
 import ThemeIcon from './ThemeIcon.astro';
 
+interface Props {
+  /** Pin the bar to the top while scrolling. Off by default so pages with their own sticky bar don't stack two. */
+  sticky?: boolean;
+}
+
+const { sticky = false } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
+<header class:list={["site-header", sticky && "sticky"]}>
 <nav>
   <a href={`${base}/`} class="logo">
     <Image
@@ -27,8 +34,18 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     <ThemeIcon />
   </ul>
 </nav>
+</header>
 
 <style lang="scss">
+  .site-header.sticky {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: color-mix(in srgb, var(--color-bg) 90%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--color-bg-overlay);
+  }
+
   .logo {
     color: inherit;
     text-decoration: none;

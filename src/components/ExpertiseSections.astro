@@ -1,0 +1,112 @@
+---
+import { areas } from "../data/expertise";
+---
+
+<div class="areas">
+  {areas.map((area) => (
+    <article class="area" id={`expertise-${area.id}`}>
+      <header class="area-intro">
+        <h3 class="area-title">{area.title}</h3>
+        <p class="area-line">{area.line}</p>
+      </header>
+      <div class="groups">
+        {area.groups.map((group) => (
+          <div class="group">
+            <h4>{group.heading}</h4>
+            <ul>
+              {group.items.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </article>
+  ))}
+</div>
+
+<style lang="scss">
+  .areas {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+  }
+
+  .area {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: var(--space-m);
+    padding: var(--space-m);
+    background: var(--color-bg-overlay);
+    border-radius: var(--space-2xs);
+
+    @media screen and (max-width: 860px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .area-intro {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+  }
+
+  .area-title {
+    font: var(--font-heading-4);
+    color: var(--color-vibrant-dark);
+  }
+
+  .area-line {
+    font: var(--font-body-3);
+  }
+
+  .groups {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-m) var(--space-l);
+    align-content: start;
+
+    @media screen and (max-width: 560px) {
+      grid-template-columns: 1fr;
+    }
+
+    // An odd last group spans the row instead of leaving a gap beside it.
+    .group:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+    }
+  }
+
+  .group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+
+    h4 {
+      font: var(--font-heading-5);
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3xs);
+    }
+
+    li {
+      font: var(--font-body-4);
+      color: var(--color-secondary);
+      padding-left: var(--space-xs);
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.65em;
+        width: 0.4em;
+        height: 2px;
+        background: var(--color-vibrant-dark);
+      }
+    }
+  }
+</style>

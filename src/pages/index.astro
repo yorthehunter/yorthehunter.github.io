@@ -2,6 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 import LinkButton from "../components/LinkButton.astro";
 import TopNav from "../components/TopNav.astro";
+import HeroRotator from "../components/HeroRotator.astro";
+import ExpertiseSections from "../components/ExpertiseSections.astro";
 import MyWork from "../components/MyWork.astro";
 import MoreWork from "../components/MoreWork.astro";
 import HowILead from "../components/HowILead.astro";
@@ -24,18 +26,16 @@ const mediumUrl = "https://medium.com/@yorthehunter"
 ---
 
 <Layout
-  title="Brian Cleveland | Product Design Leader"
+  title="Brian Cleveland | Player-Coach Design Leader"
 >
-  <TopNav />
+  <TopNav sticky />
   <main id="main">
     <header class="content-section">
-      <p class="eyebrow all-caps soft">16 years in product design</p>
-      <h1 class="heading-1">
-        I lead design and build systems that scale.
+      <p class="eyebrow all-caps soft">Player-coach design leader · 16 years in product design</p>
+      <h1 class="heading-1 hero-headline">
+        I lead <span class="highlight">design</span>, shape <span class="highlight">strategy</span>, and stay <span class="highlight">hands-on</span>.
       </h1>
-      <h2 class="body-2">
-        Strategic design leader and experienced design systems architect
-      </h2>
+      <HeroRotator />
       <nav class="navigation-list">
         <ul>
           <li>
@@ -65,7 +65,7 @@ const mediumUrl = "https://medium.com/@yorthehunter"
       <p class="body-3">
         I lead product design at <a href={tiveUrl} target="_blank"
           >Tive</a
-        >, a supply chain visibility platform, managing designers across web, mobile, and connected hardware.
+        >, a supply chain visibility platform, as a player-coach: I manage a team of designers across web, mobile, and connected hardware while staying hands-on in the work.
       </p>
       <p class="body-3">
         Previously: Staff product designer at <a href={builtUrl} target="_blank"
@@ -80,6 +80,13 @@ const mediumUrl = "https://medium.com/@yorthehunter"
         >.
       </p>
     </article>
+    <section class="content-section" id="player-coach">
+      <h2 class="heading-3">Player and coach</h2>
+      <p class="body-3">
+        Four areas where I lead the team and still do the work myself.
+      </p>
+      <ExpertiseSections />
+    </section>
     <article class="content-section" id="my-work">
       <h2 class="heading-3">Work</h2>
       <MyWork />
@@ -118,3 +125,59 @@ const mediumUrl = "https://medium.com/@yorthehunter"
     </footer>
   </main>
 </Layout>
+
+<style>
+  /* Wipes in left to right behind a soft-edged mask whose edge position is
+     animated, easing out so it slows near the end. The element keeps its full
+     size throughout, so nothing below it shifts. */
+  @property --wipe {
+    syntax: "<percentage>";
+    inherits: false;
+    initial-value: 115%;
+  }
+
+  .hero-headline {
+    --wipe-mask: linear-gradient(
+      90deg,
+      #000 calc(var(--wipe) - 15%),
+      transparent var(--wipe)
+    );
+    -webkit-mask-image: var(--wipe-mask);
+    mask-image: var(--wipe-mask);
+    /* The mask only paints inside the box, and the tight display line-height
+       leaves descenders (the "y") outside it. Pad the box and pull it back
+       with a matching negative margin so the layout is unchanged. */
+    padding-block: 0.2em;
+    margin-block: -0.2em;
+    animation: headline-wipe 2.5s cubic-bezier(0.4, 0.05, 0.355, 1) 0.25s both;
+  }
+
+  /* Same accent green as the current step in Career Path. */
+  .highlight {
+    color: var(--color-vibrant-dark);
+  }
+
+  @keyframes headline-wipe {
+    from {
+      --wipe: 0%;
+    }
+    to {
+      --wipe: 115%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-headline {
+      -webkit-mask-image: none;
+      mask-image: none;
+      animation: none;
+    }
+  }
+</style>
+
+<style is:global>
+  /* Keep in-page anchors from landing under the sticky nav. */
+  html {
+    scroll-padding-top: 5rem;
+  }
+</style>
