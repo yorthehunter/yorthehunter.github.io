@@ -31,8 +31,8 @@ export const areas: ExpertiseArea[] = [
       {
         heading: "Leading small teams through fast growth",
         items: [
-          "Stitch Fix: first design hire, grew team to 15+ designers and researchers",
-          "Tive: hired three designers, launched career ladders and growth plans",
+          "Stitch Fix: first design hire, created and led the platform design team",
+          "Tive: hired two designers, launched career ladders and growth plans",
           "Anomalie: Head of Design through a digital rebrand",
         ],
       },
