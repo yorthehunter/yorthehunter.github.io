@@ -16,6 +16,36 @@ export interface ExpertiseArea {
 
 export const areas: ExpertiseArea[] = [
   {
+    id: "player-coach-leadership",
+    title: "Player-Coach Leadership",
+    line: "A hands-on leader who grows senior designers",
+    groups: [
+      {
+        heading: "Growing a team",
+        items: [
+          "Managing senior designers",
+          "Teaching systems thinking",
+          "Setting individual growth plans",
+        ],
+      },
+      {
+        heading: "Leading small teams through fast growth",
+        items: [
+          "Stitch Fix: first design hire, grew team to 15+ designers and researchers",
+          "Tive: hired three designers, launched career ladders and growth plans",
+          "Anomalie: Head of Design through a digital rebrand",
+        ],
+      },
+      {
+        heading: "Scaling enterprise products",
+        items: [
+          "Design processes that meet teams where they are",
+          "Repeatable patterns for cross-platform designs and architecture",
+        ],
+      },
+    ],
+  },
+  {
     id: "design-systems",
     title: "Design Systems",
     line: "Architect of high-impact design systems",
@@ -49,36 +79,6 @@ export const areas: ExpertiseArea[] = [
           "WCAG compliance baked in, with easily tested, highly extensible designs",
           "Design judgment encoded into guidelines",
           "AI-assisted UI audits, code alignment, and quality assurance",
-        ],
-      },
-    ],
-  },
-  {
-    id: "player-coach-leadership",
-    title: "Player-Coach Leadership",
-    line: "A hands-on leader who grows senior designers",
-    groups: [
-      {
-        heading: "Growing a team",
-        items: [
-          "Managing senior designers",
-          "Teaching systems thinking",
-          "Setting individual growth plans",
-        ],
-      },
-      {
-        heading: "Leading small teams through fast growth",
-        items: [
-          "Stitch Fix: first design hire, grew team to 15+ designers and researchers",
-          "Tive: hired three designers, launched career ladders and growth plans",
-          "Anomalie: Head of Design through a digital rebrand",
-        ],
-      },
-      {
-        heading: "Scaling enterprise products",
-        items: [
-          "Design processes that meet teams where they are",
-          "Repeatable patterns for cross-platform designs and architecture",
         ],
       },
     ],
