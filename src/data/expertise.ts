@@ -23,34 +23,31 @@ export const areas: ExpertiseArea[] = [
       {
         heading: "Owning the system as a product and a platform",
         items: [
-          "Design system roadmapping",
-          "Strategic alignment and prioritization",
-          "Entire system ownership, from ideation to implementation, migration, maintenance, and evolution",
+          "Roadmapping, strategic alignment, and prioritization",
+          "Ownership from ideation through migration, maintenance, and evolution",
         ],
       },
       {
         heading: "Design and code alignment",
         items: [
           "Token implementation and management",
-          "Figma-to-code and code-to-Figma alignment",
+          "Figma-to-code and code-to-Figma",
           "Technical architecture",
         ],
       },
       {
         heading: "Repeatability",
         items: [
-          "Cross-team governance of the design system",
-          "Contribution and release processes",
-          "Documentation for humans and machines to understand the system",
+          "Cross-team governance, contribution, and release processes",
+          "Documentation for humans and machines",
           "Faster time-to-live while maintaining high quality",
         ],
       },
       {
         heading: "Consistency of craft",
         items: [
-          "WCAG compliance baked into the design system",
-          "Visual and interaction designs that are easily tested and highly extensible",
-          "Design judgment encoded into design system guidelines",
+          "WCAG compliance baked in, with easily tested, highly extensible designs",
+          "Design judgment encoded into guidelines",
           "AI-assisted UI audits, code alignment, and quality assurance",
         ],
       },
@@ -72,16 +69,16 @@ export const areas: ExpertiseArea[] = [
       {
         heading: "Leading small teams through fast growth",
         items: [
-          "Stitch Fix: first design hire, then helped grow the team to 15+ designers and researchers",
-          "Tive: hired three designers and launched career ladders with individualized growth plans for every level",
-          "Anomalie: led design as Head of Design through a digital rebrand and transformation",
+          "Stitch Fix: first design hire, grew team to 15+ designers and researchers",
+          "Tive: hired three designers, launched career ladders and growth plans",
+          "Anomalie: Head of Design through a digital rebrand",
         ],
       },
       {
         heading: "Scaling enterprise products",
         items: [
-          "Setting up design processes that meet design teams where they are",
-          "Establishing repeatable patterns for cross-platform designs and architecture",
+          "Design processes that meet teams where they are",
+          "Repeatable patterns for cross-platform designs and architecture",
         ],
       },
     ],
@@ -109,17 +106,15 @@ export const areas: ExpertiseArea[] = [
         heading: "Strategic prioritization and tradeoffs",
         items: [
           "Balancing customer value, business impact, technical feasibility, and resources",
-          "Scoping projects, planning release schedules, and aligning with engineering on delivery",
+          "Scoping and release planning, aligned with engineering on delivery",
         ],
       },
       {
         heading: "Business impact and value creation",
         items: [
-          "Connecting decisions to adoption, retention, and revenue opportunities",
-          "Monetization through user experience",
-          "Product branding and positioning",
-          "Anomalie: led a digital rebrand that increased user engagement by 25% and retention by 40%",
-          "Modern Health: designed a personalized home screen that raised the customer return rate by 25% against a 30-day benchmark",
+          "Anomalie: rebrand increased engagement 25% and retention 40%",
+          "Modern Health: personalized home screen raised return rate 25% against a 30-day benchmark",
+          "Connecting decisions to adoption, retention, and revenue through monetization, branding, and positioning",
         ],
       },
     ],
@@ -133,22 +128,15 @@ export const areas: ExpertiseArea[] = [
         heading: "Designing in code",
         items: [
           "Proposing and pushing production-ready designs",
-          "Designing with real data: an object card pattern that renders UI from any data object",
-          "Using Claude to turn code and API documentation into design documents",
+          "Designing with real data: an object card pattern that renders UI from any data",
+          "Claude turns code and API documentation into design documents",
         ],
       },
       {
         heading: "AI prototyping for rapid decision-making",
         items: [
-          "Prototyping in code with Claude to test product direction before engineering builds it",
-          "Risk-based design validation that tests product direction earlier and reduces downstream design and engineering rework",
-        ],
-      },
-      {
-        heading: "Engineering roots",
-        items: [
-          "First front-end engineer at Stitch Fix",
-          "Built UI libraries in React and Sass",
+          "Claude prototypes in code to test direction before engineering builds it",
+          "Risk-based validation that tests direction earlier and reduces downstream rework",
         ],
       },
     ],
