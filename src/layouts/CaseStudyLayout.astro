@@ -9,15 +9,17 @@ interface Section {
 
 interface Props {
   title: string;
+  /** One or two sentences for search results and link previews. */
+  description?: string;
   sections: Section[];
   /** Short label shown at the left of the sticky section nav. */
   navLabel: string;
 }
 
-const { title, sections, navLabel } = Astro.props;
+const { title, description, sections, navLabel } = Astro.props;
 ---
 
-<Layout title={title}>
+<Layout title={title} description={description}>
   <TopNav />
   <nav class="cs-subnav" aria-label="Case study sections">
     <div class="cs-subnav-inner">
