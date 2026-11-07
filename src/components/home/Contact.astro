@@ -1,0 +1,74 @@
+---
+import ActionLink from "./ActionLink.astro";
+
+interface Props {
+  resumeUrl: string;
+  linkedinUrl: string;
+  mediumUrl: string;
+}
+
+const { resumeUrl, linkedinUrl, mediumUrl } = Astro.props;
+const email = "boru.design@gmail.com";
+---
+
+<section class="contact" id="contact">
+  <div class="band-content">
+    <div class="intro">
+      <h2 class="mono">Let’s Work Together</h2>
+      <a class="email display" href={`mailto:${email}`}>Boru.design@<wbr />gmail.com</a>
+      <p>
+        I am an experienced design leader and I want to help you with AI-enabled design,
+        design-engineering processes, and strategic product initiatives.
+      </p>
+    </div>
+    <ul class="links">
+      <li><ActionLink href={`mailto:${email}`} label="Email Me" /></li>
+      <li><ActionLink href={resumeUrl} label="My Resume" external /></li>
+      <li><ActionLink href={linkedinUrl} label="LinkedIn" external /></li>
+      <li><ActionLink href={mediumUrl} label="Medium" external /></li>
+    </ul>
+  </div>
+</section>
+
+<style>
+  .contact {
+    --btn-fg: var(--color-light-cream);
+    --btn-bg: var(--color-dark-raspberry);
+    background: var(--color-dark-raspberry);
+    color: var(--color-light-cream);
+  }
+
+  .contact .band-content {
+    gap: var(--space-sm);
+  }
+
+  .intro {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .email {
+    align-self: flex-start;
+    color: inherit;
+    font-size: var(--fs-email);
+    line-height: 1.1;
+    text-decoration: none;
+  }
+
+  .email:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.12em;
+  }
+
+  .intro p {
+    max-width: 61rem; /* 978px in the design */
+  }
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+</style>

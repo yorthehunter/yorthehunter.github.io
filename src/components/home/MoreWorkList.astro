@@ -1,0 +1,98 @@
+---
+import ActionLink from "./ActionLink.astro";
+
+const projects = [
+  {
+    title: "Scaling the Timber Design System at Built Technologies",
+    summary:
+      "Directed system architecture across 7 product teams, growing the library to 150+ components and adoption from about 40% to over 90% during my year on the team. Set up the Timber Guild so design and engineering shared ownership.",
+  },
+  {
+    title: "Creating an Accessible, Scalable Color Palette",
+    summary:
+      "Redesigned the color palette for all web and mobile platforms (member, provider, client) at Modern Health as part of the Vita design system, helping raise WCAG accessibility coverage of coded components from 50% to 95%.",
+    cta: "Read on Medium",
+    href: "https://yorthehunter.medium.com/how-we-created-an-accessible-scalable-color-palette-2ae1242abdcb",
+  },
+  {
+    title: "Launched a Personalized Home Screen",
+    summary:
+      "Designed a modular home screen at Modern Health that raised the customer return rate by 25% against a 30-day benchmark and launched algorithmically personalized content.",
+    cta: "View the Presentation",
+    href: "https://www.figma.com/proto/wS6ueswXKU1mBg4spRq1C6/Portfolio-2023%E2%80%932024?page-id=808%3A11414&node-id=808-19544&node-type=section&t=vmCyw9LoND2kaYWq-0&scaling=min-zoom&content-scaling=fixed",
+  },
+  {
+    title: "Designing a Returns Process That Reflects Reality",
+    summary:
+      "Redesigned warehouse returns at Stitch Fix around real-world operations. Associates moved items through their queue 1.5x faster on average, and counted errors fell by about 15%.",
+    cta: "View the Presentation",
+    href: "https://www.figma.com/proto/wS6ueswXKU1mBg4spRq1C6/Portfolio-2023%E2%80%932024?node-id=765-370&node-type=section&t=OCbnbU6f7Ta94OPS-1&scaling=contain&content-scaling=fixed&page-id=762%3A18068",
+  },
+];
+---
+
+<div class="more-work">
+  <div class="more-heading">
+    <h3 class="display">More Work</h3>
+    <p class="mono">Earlier design projects and outcomes</p>
+  </div>
+  <ul class="projects">
+    {projects.map((project) => (
+      <li class="project">
+        <div class="text">
+          <h4 class="display">{project.title}</h4>
+          <p>{project.summary}</p>
+        </div>
+        {project.href && project.cta && (
+          <ActionLink href={project.href} label={project.cta} external />
+        )}
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .more-work {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .more-heading {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--fg);
+  }
+
+  .more-heading h3 {
+    font-size: var(--fs-heading);
+  }
+
+  .projects {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .project {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+    padding-bottom: var(--space-lg);
+    border-bottom: 2px solid var(--fg);
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    max-width: 61rem; /* 978px in the design */
+  }
+
+  .text h4 {
+    font-size: var(--fs-heading);
+  }
+</style>

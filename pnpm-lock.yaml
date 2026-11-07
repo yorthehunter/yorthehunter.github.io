@@ -11,6 +11,9 @@ importers:
       '@astrojs/check':
         specifier: ^0.7.0
         version: 0.7.0(typescript@5.5.2)
+      '@fontsource-variable/archivo':
+        specifier: ^5.3.0
+        version: 5.3.0
       '@fontsource-variable/literata':
         specifier: ^5.1.0
         version: 5.1.0
@@ -20,6 +23,12 @@ importers:
       '@fontsource-variable/open-sans':
         specifier: ^5.1.0
         version: 5.1.0
+      '@fontsource/archivo-black':
+        specifier: ^5.3.0
+        version: 5.3.0
+      '@fontsource/space-mono':
+        specifier: ^5.3.0
+        version: 5.3.0
       astro:
         specifier: ^4.11.3
         version: 4.11.3(sass@1.77.6)(typescript@5.5.2)
@@ -343,6 +352,9 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@fontsource-variable/archivo@5.3.0':
+    resolution: {integrity: sha512-HogK8FJelrD1o7TlZlkIVtHgc20bO5PZRWE7mUeUTdMN055alznQV6/00J00IBeu8FQAH4s3zW9UJNvKExXf+g==}
+
   '@fontsource-variable/literata@5.1.0':
     resolution: {integrity: sha512-GBKHa7tj/Js5Se2I4Tl3Oxe182jxXlKsqegetraVOYVhRiOF8Ct8hVhFhrbjk7M97i7binFQZjv9K9YOQSsO6w==}
 
@@ -351,6 +363,12 @@ packages:
 
   '@fontsource-variable/open-sans@5.1.0':
     resolution: {integrity: sha512-NuJdoORzM6qp+bf5j7dyo6MO8rBEEiSw8wiZv9t7sga0RIODgLLbBAMaZMaZiLwNbXcGPxhFcHcuDaQr1xj9kA==}
+
+  '@fontsource/archivo-black@5.3.0':
+    resolution: {integrity: sha512-7EsTIQ+Blf96ktpzTUpI7msi+u9/AJxM/GZxOSkEubVd1jSTrFSTNxMgfpX/8rQsjZ+19a+qvRbtcTEp5J/72g==}
+
+  '@fontsource/space-mono@5.3.0':
+    resolution: {integrity: sha512-FrpBMOVWn3PRdRHlrZWC55X3kZG/2BTH7SM5ZyS/bky3iKya2BturI5lk+t0RoDQL2JyHzURsVq/EisCsxpI5A==}
 
   '@img/sharp-darwin-arm64@0.33.4':
     resolution: {integrity: sha512-p0suNqXufJs9t3RqLBO6vvrgr5OhgbWp76s5gTRvdmxmuv9E1rcaqGUsl3l4mKVmXPkTkTErXediAui4x+8PSA==}
@@ -2224,11 +2242,17 @@ snapshots:
   '@esbuild/win32-x64@0.21.5':
     optional: true
 
+  '@fontsource-variable/archivo@5.3.0': {}
+
   '@fontsource-variable/literata@5.1.0': {}
 
   '@fontsource-variable/montserrat@5.0.19': {}
 
   '@fontsource-variable/open-sans@5.1.0': {}
+
+  '@fontsource/archivo-black@5.3.0': {}
+
+  '@fontsource/space-mono@5.3.0': {}
 
   '@img/sharp-darwin-arm64@0.33.4':
     optionalDependencies:

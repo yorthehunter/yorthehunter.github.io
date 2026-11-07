@@ -2,50 +2,21 @@
 import '@fontsource-variable/montserrat';
 import '@fontsource-variable/literata';
 
+import SiteHead from '../components/SiteHead.astro';
+
 interface Props {
 	title: string;
 	/** Shown in search results and link previews. Defaults to the site description. */
 	description?: string;
 }
 
-const defaultDescription =
-	"Player-coach product design leader with 16 years across enterprise platforms, design systems, and design engineering. Brian Cleveland leads product design at Tive while staying hands-on.";
-
-const { title, description = defaultDescription } = Astro.props;
-
-// Link previews need absolute URLs.
-const siteBase = new URL(import.meta.env.BASE_URL, Astro.site);
-const canonicalUrl = new URL(Astro.url.pathname, siteBase.origin);
-const ogImage = new URL("og-image.png", siteBase);
-const ogImageAlt =
-	"Brian Cleveland, player-coach design leader: I lead design, shape strategy, and stay hands-on.";
-
+const { title, description } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content={description} />
-		<link rel="canonical" href={canonicalUrl} />
-		<meta property="og:type" content="website" />
-		<meta property="og:site_name" content="Brian Cleveland" />
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={description} />
-		<meta property="og:url" content={canonicalUrl} />
-		<meta property="og:image" content={ogImage} />
-		<meta property="og:image:width" content="1200" />
-		<meta property="og:image:height" content="630" />
-		<meta property="og:image:alt" content={ogImageAlt} />
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content={title} />
-		<meta name="twitter:description" content={description} />
-		<meta name="twitter:image" content={ogImage} />
-		<meta name="twitter:image:alt" content={ogImageAlt} />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL.replace(/\/$/, "")}/favicon.svg`} />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+		<SiteHead title={title} description={description} />
 	</head>
 	<body>
 		<slot />

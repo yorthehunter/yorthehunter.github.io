@@ -1,0 +1,117 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+
+// Each step is the year a role started and the role itself.
+const steps = [
+  { year: "2010", role: "Modcloth - Product Designer" },
+  { year: "2012", role: "Stitch Fix - First Designer" },
+  { year: "2017", role: "Stitch Fix - Design Engineer" },
+  { year: "2019", role: "Stitch Fix - Platform Designer" },
+  { year: "2020", role: "Anomalie - Head of Design" },
+  { year: "2021", role: "Modern Health - Systems Leader" },
+  { year: "2023", role: "Built Technologies - Systems Leader" },
+  { year: "2024", role: "Tive - Design Lead and Manager" },
+];
+---
+
+<section class="band" id="career">
+  <div class="band-content">
+    <SectionHeading
+      title="Career"
+      description="I love coaching designers, partnering deeply with engineering, and wrangling complex systemic challenges"
+    />
+    <div class="career">
+      <div class="overview">
+        <h3 class="display">My Career</h3>
+        <p class="mono">Craft, code, systems, and leadership all inform how I work</p>
+      </div>
+      <ol class="timeline">
+        {steps.map((step, i) => (
+          <>
+            <li class="step">
+              <span class="mono">{step.year}</span>
+              <span class="mono arrow" aria-hidden="true">→</span>
+              <span class="mono role">{step.role}</span>
+            </li>
+            {i < steps.length - 1 && (
+              <li class="mono arrow between" aria-hidden="true">→</li>
+            )}
+          </>
+        ))}
+      </ol>
+    </div>
+  </div>
+</section>
+
+<style>
+  .career {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .overview {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .overview h3 {
+    font-size: var(--fs-heading);
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .step {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-sm) var(--space-md);
+  }
+
+  /* The arrow between steps only makes sense when steps run in a row. */
+  .between {
+    display: none;
+  }
+
+  /* Roles are highlighter-style chips that stay dark-on-teal in both themes. */
+  .role {
+    padding-inline: var(--space-xs);
+    background: var(--color-bright-teal);
+    color: var(--color-dark-gray);
+  }
+
+  @media (min-width: 54rem) {
+    .overview {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: var(--space-md);
+    }
+
+    .overview p {
+      flex: 1;
+    }
+
+    .timeline {
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .between {
+      display: block;
+    }
+
+    .step {
+      flex-wrap: nowrap;
+    }
+
+    .role {
+      white-space: nowrap;
+    }
+  }
+</style>

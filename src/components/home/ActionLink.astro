@@ -1,0 +1,60 @@
+---
+// The Figma "Section Tab" used as a button-style link: header tabs, hero
+// links and case study calls to action.
+interface Props {
+  href: string;
+  label: string;
+  /** Opens in a new tab. */
+  external?: boolean;
+  /** "outline" is the default; "filled" is the inverse. */
+  variant?: "outline" | "filled";
+}
+
+const { href, label, external = false, variant = "outline" } = Astro.props;
+---
+
+<a
+  class:list={["action-link", variant === "filled" && "filled"]}
+  href={href}
+  target={external ? "_blank" : undefined}
+  rel={external ? "noopener noreferrer" : undefined}
+>{label}</a>
+
+<style>
+  /* Sections set --btn-fg / --btn-bg when they sit on a colored band. */
+  .action-link {
+    --_fg: var(--btn-fg, var(--fg));
+    --_bg: var(--btn-bg, var(--bg));
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: var(--space-sm) var(--space-md);
+    border: 2px solid var(--_fg);
+    border-radius: 3px;
+    background: transparent;
+    color: var(--_fg);
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: var(--fs-body);
+    line-height: 1.2;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: background-color 0.15s, color 0.15s;
+  }
+
+  .action-link.filled {
+    background: var(--_fg);
+    color: var(--_bg);
+  }
+
+  .action-link:hover,
+  .action-link.filled:hover {
+    background: var(--_fg);
+    color: var(--_bg);
+  }
+
+  .action-link.filled:hover {
+    background: transparent;
+    color: var(--_fg);
+  }
+</style>

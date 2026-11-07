@@ -1,0 +1,147 @@
+---
+import { Image } from "astro:assets";
+import ActionLink from "./ActionLink.astro";
+import tiveLogo from "../../assets/images/tive-logo.png";
+import modeDS from "../../assets/images/sample-sf-mode.png";
+import globalNav from "../../assets/images/home-global-nav.png";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+const stories = [
+  {
+    eyebrow: "Leading and scaling product design at Tive",
+    title: "Scaling design judgment, not just design output",
+    tags: ["Team leadership", "Operating Model", "Enterprise platform"],
+    image: tiveLogo,
+    alt: "Tive logo",
+    position: "center",
+    cta: { label: "Read the Case Study", href: `${base}/work/tive`, external: false },
+  },
+  {
+    eyebrow: "Growing adoption across 9 product teams at Stitch Fix",
+    title: "Introducing the Mode Design System",
+    tags: ["Design systems", "Governance", "Enterprise platform"],
+    image: modeDS,
+    alt: "Collage of the Mode Design System library in Figma: the file browser with Foundational Notions, Kufak patterns, and Helper components, plus a card component spec and a design review thread.",
+    position: "center",
+    cta: {
+      label: "Read on Medium",
+      href: "https://yorthehunter.medium.com/introducing-the-mode-design-system-b3a64cb916da?sk=7450450ef476290ea72991dc0c0110c8",
+      external: true,
+    },
+  },
+  {
+    eyebrow: "Launching global navigation in the design system at Modern Health",
+    title: "One navigation system, globally adopted",
+    tags: ["Design systems", "Cross-platform", "Engineering partnership"],
+    image: globalNav,
+    alt: "Before and after: seven different navigation bars on the left, and one responsive navigation system on the right.",
+    // The design crops this image to its left side.
+    position: "left center",
+    cta: { label: "Read the Case Study", href: `${base}/work/global-navigation`, external: false },
+  },
+];
+---
+
+<div class="stories">
+  {stories.map((story) => (
+    <article class="story">
+      <div class="media">
+        <Image
+          src={story.image}
+          alt={story.alt}
+          widths={[400, 800, 1200]}
+          sizes="(min-width: 54rem) 400px, 100vw"
+          style={`object-position: ${story.position}`}
+          loading="lazy"
+        />
+      </div>
+      <div class="body">
+        <div class="heading">
+          <p class="mono">{story.eyebrow}</p>
+          <h3 class="display">{story.title}</h3>
+        </div>
+        <ul class="chips">
+          {story.tags.map((tag) => (
+            <li class="chip">{tag}</li>
+          ))}
+        </ul>
+        <ActionLink
+          href={story.cta.href}
+          label={story.cta.label}
+          external={story.cta.external}
+        />
+      </div>
+    </article>
+  ))}
+</div>
+
+<style>
+  .stories {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .story {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-lg);
+    padding-bottom: var(--space-lg);
+    border-bottom: 2px solid var(--fg);
+  }
+
+  /* Image: 400 x 280 on desktop, full width at the same ratio when stacked. */
+  .media {
+    aspect-ratio: 10 / 7;
+    border: 4px solid var(--fg);
+    overflow: hidden;
+  }
+
+  .media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+    min-width: 0;
+  }
+
+  .heading {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .heading h3 {
+    font-size: var(--fs-headline);
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+
+  .chip {
+    padding: var(--space-xs);
+    background: var(--subdued);
+    font-family: var(--font-mono);
+    font-size: var(--fs-chip);
+    line-height: 1.4;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  @media (min-width: 54rem) {
+    .story {
+      grid-template-columns: minmax(0, min(25rem, 38%)) minmax(0, 1fr);
+      align-items: start;
+    }
+  }
+</style>

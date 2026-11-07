@@ -1,0 +1,206 @@
+---
+// Layout for the 2026 homepage design. It owns its own fonts, tokens and
+// global styles so the case study pages (which use Layout.astro) are untouched.
+import "@fontsource-variable/archivo";
+import "@fontsource/archivo-black";
+import "@fontsource/space-mono";
+import SiteHead from "../components/SiteHead.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <SiteHead title={title} description={description} />
+    <!-- Apply the saved (or system) theme before first paint to avoid a flash. -->
+    <script is:inline>
+      (function () {
+        var theme = null;
+        try { theme = localStorage.getItem("theme"); } catch (e) {}
+        var dark = theme
+          ? theme === "dark"
+          : window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.classList.toggle("dark", dark);
+      })();
+    </script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    color-scheme: light;
+
+    /* Palette (from the Figma "Color" variables) */
+    --color-dark-gray: #121212;
+    --color-light-cream: #f2f0ea;
+    --color-dark-raspberry: #c4005c;
+    --color-bright-teal: #18f1ca;
+
+    /* Semantic roles. Dark mode only swaps these. */
+    --bg: var(--color-light-cream);
+    --fg: var(--color-dark-gray);
+    --subdued: rgba(18, 18, 18, 0.2);
+    --accent: var(--color-dark-raspberry);
+    --on-accent: var(--color-light-cream);
+    --accent-text: var(--color-dark-raspberry);
+    --band-bg: var(--color-dark-gray);
+    --band-fg: var(--color-light-cream);
+    --band-eyebrow: var(--color-bright-teal);
+    --tab-active-bg: var(--color-dark-gray);
+    --tab-active-fg: var(--color-bright-teal);
+
+    /* Type families */
+    --font-display: "Archivo Black", "Arial Black", Impact, sans-serif;
+    --font-body: "Archivo Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-mono: "Space Mono", ui-monospace, Menlo, Consolas, monospace;
+
+    /* Fluid type: each step is clamp(min, intercept + slope * vi, max),
+       interpolated between a 360px and a 1440px viewport. The max is the
+       Figma desktop size; the min is the smallest size that still fits
+       at 360px. */
+    --fs-display: clamp(2.5rem, 1.5rem + 5vi, 6rem); /* hero: 40 @320 -> 96 @1440 */
+    --fs-title: clamp(2.5rem, 2rem + 2.222vi, 4rem); /* section title: 40 -> 64 */
+    --fs-statement: clamp(2rem, 1.3333rem + 2.963vi, 4rem); /* How I Lead: 32 -> 64 */
+    --fs-email: clamp(1.75rem, 1rem + 3.333vi, 4rem); /* contact email: 28 -> 64 */
+    --fs-headline: clamp(1.75rem, 1.3333rem + 1.852vi, 3rem); /* story headline: 28 -> 48 */
+    --fs-heading: clamp(1.5rem, 1.3333rem + 0.741vi, 2rem); /* more work: 24 -> 32 */
+    --fs-name: clamp(1rem, 0.6042rem + 1.759vi, 2.1875rem); /* header name: 16 -> 35 */
+    --fs-body: clamp(1rem, 0.9583rem + 0.185vi, 1.125rem); /* 16 -> 18 */
+    --fs-mono: clamp(0.875rem, 0.8333rem + 0.185vi, 1rem); /* 14 -> 16 */
+    --fs-chip: clamp(0.75rem, 0.7083rem + 0.1157vi, 0.8125rem); /* 12 -> 13 */
+
+    /* Fluid spacing (Figma Spacing variables, mobile -> desktop) */
+    --space-xs: clamp(0.25rem, 0.2292rem + 0.0926vi, 0.3125rem); /* 4 -> 5 */
+    --space-sm: clamp(0.5rem, 0.4583rem + 0.185vi, 0.625rem); /* 8 -> 10 */
+    --space-md: clamp(1rem, 0.9167rem + 0.37vi, 1.25rem); /* 16 -> 20 */
+    --space-lg: clamp(2rem, 1.8333rem + 0.741vi, 2.5rem); /* 32 -> 40 */
+    --space-xl: clamp(4rem, 3.6667rem + 1.481vi, 5rem); /* 64 -> 80 */
+    --gutter: clamp(1rem, 5.926vi - 0.3333rem, 5rem); /* 16 -> 80 */
+    --content-max: 108rem; /* 1728 */
+
+    --header-offset: 5rem;
+  }
+
+  html.dark {
+    color-scheme: dark;
+    --bg: var(--color-dark-gray);
+    --fg: var(--color-light-cream);
+    --subdued: rgba(242, 240, 234, 0.2);
+    /* The raspberry fill stays; raspberry as text on near-black needs a lift. */
+    --accent-text: #ff4d94;
+    --band-bg: var(--color-light-cream);
+    --band-fg: var(--color-dark-gray);
+    --band-eyebrow: var(--color-dark-raspberry);
+    --tab-active-bg: var(--color-light-cream);
+    --tab-active-fg: var(--color-dark-raspberry);
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    background: var(--bg);
+    scroll-padding-top: var(--header-offset);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: var(--fs-body);
+    line-height: 1.4;
+    overflow-wrap: break-word;
+  }
+
+  h1,
+  h2,
+  h3,
+  p,
+  ul,
+  ol,
+  figure {
+    margin: 0;
+    padding: 0;
+  }
+
+  ul,
+  ol {
+    list-style: none;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  :focus-visible {
+    outline: 3px solid currentColor;
+    outline-offset: 3px;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: var(--space-md);
+    top: -4rem;
+    z-index: 100;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--fg);
+    color: var(--bg);
+    font-weight: 700;
+  }
+
+  .skip-link:focus {
+    top: var(--space-sm);
+  }
+
+  /* One band per page section, with a 4px rule between them. */
+  .band {
+    border-top: 4px solid var(--fg);
+  }
+
+  .band-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    max-width: var(--content-max);
+    margin-inline: auto;
+    padding: var(--space-xl) var(--gutter);
+  }
+
+  .mono {
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: var(--fs-mono);
+    line-height: 1.4;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 1.083;
+  }
+</style>

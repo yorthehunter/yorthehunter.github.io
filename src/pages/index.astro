@@ -1,16 +1,14 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import LinkButton from "../components/LinkButton.astro";
-import TopNav from "../components/TopNav.astro";
-import HeroRotator from "../components/HeroRotator.astro";
-import ExpertiseSections from "../components/ExpertiseSections.astro";
-import MyWork from "../components/MyWork.astro";
-import MoreWork from "../components/MoreWork.astro";
-import HowILead from "../components/HowILead.astro";
-import CareerPath from "../components/CareerPath.astro";
-import AboutMe from "../components/AboutMe.astro";
-import MyStory from "../components/MyStory.astro";
-import Contact from "../components/Contact.astro";
+import HomeLayout from "../layouts/HomeLayout.astro";
+import SiteHeader from "../components/home/SiteHeader.astro";
+import ActionLink from "../components/home/ActionLink.astro";
+import SectionHeading from "../components/home/SectionHeading.astro";
+import Strengths from "../components/home/Strengths.astro";
+import FeaturedWork from "../components/home/FeaturedWork.astro";
+import MoreWorkList from "../components/home/MoreWorkList.astro";
+import Career from "../components/home/Career.astro";
+import HowILead from "../components/home/HowILead.astro";
+import Contact from "../components/home/Contact.astro";
 
 const mhUrl = "https://www.modernhealth.com/";
 const anomalieUrl =
@@ -20,123 +18,71 @@ const modClothUrl = "http://www.modcloth.com";
 const builtUrl = "http://www.getBuilt.com";
 const tiveUrl = "http://www.tive.com";
 
-const resumeUrl = "https://docs.google.com/document/d/1SaZ4JSDOMKmL3DXPAOlfW2wrOcPJz3YNPabrS91beSI/preview"
-const linkedinUrl = "https://www.linkedin.com/in/borudesign/"
-const mediumUrl = "https://medium.com/@yorthehunter"
+const resumeUrl = "https://docs.google.com/document/d/1SaZ4JSDOMKmL3DXPAOlfW2wrOcPJz3YNPabrS91beSI/preview";
+const linkedinUrl = "https://www.linkedin.com/in/borudesign/";
+const mediumUrl = "https://medium.com/@yorthehunter";
 ---
 
-<Layout
-  title="Brian Cleveland | Player-Coach Design Leader"
->
-  <TopNav sticky />
+<HomeLayout title="Brian Cleveland | Player-Coach Design Leader">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <SiteHeader resumeUrl={resumeUrl} />
   <main id="main">
-    <header class="content-section">
-      <p class="eyebrow all-caps soft">Player-coach design leader · 16 years in product design</p>
-      <h1 class="heading-1 hero-headline">
-        I lead <span class="highlight">design</span>, shape <span class="highlight">strategy</span>, and stay <span class="highlight">hands-on</span>.
-      </h1>
-      <HeroRotator />
-      <nav class="navigation-list">
-        <ul>
-          <li>
-            <LinkButton
-              href="#my-work"
-              label="View Work"
-            />
-          </li>
-          <li>
-            <LinkButton
-              href={resumeUrl}
-              label="Resume"
-              newWindow
-            />
-          </li>
-          <li>
-            <LinkButton
-              href={linkedinUrl}
-              label="LinkedIn"
-              newWindow
-            />
-          </li>
+    <section class="hero">
+      <div class="band-content">
+        <div class="hero-content">
+          <h1 class="hero-title display">
+            <span class="line line-light">I Lead <span class="accent">Design</span></span>
+            <span class="line line-accent">and stay <span class="ink">hands-on</span></span>
+          </h1>
+          <p class="mono eyebrow">Player-coach design leader · 16 years in product design</p>
+        </div>
+        <p class="intro">
+          Design Lead and Manager at <a href={tiveUrl} target="_blank" rel="noopener noreferrer">Tive</a>.
+          Previously at <a href={sfUrl} target="_blank" rel="noopener noreferrer">Stitch Fix</a>,
+          <a href={mhUrl} target="_blank" rel="noopener noreferrer">Modern Health</a>,
+          <a href={builtUrl} target="_blank" rel="noopener noreferrer">Built Technologies</a>,
+          <a href={anomalieUrl} target="_blank" rel="noopener noreferrer">Anomalie</a>, and
+          <a href={modClothUrl} target="_blank" rel="noopener noreferrer">ModCloth</a>.
+        </p>
+        <ul class="hero-links">
+          <li><ActionLink href="#my-work" label="My Work" variant="filled" /></li>
+          <li><ActionLink href={resumeUrl} label="My Resume" external /></li>
+          <li><ActionLink href={linkedinUrl} label="LinkedIn" external /></li>
+          <li><ActionLink href={mediumUrl} label="Medium" external /></li>
         </ul>
-      </nav>
-    </header>
-    <article class="content-section">
-      <p class="body-3">
-        I lead product design at <a href={tiveUrl} target="_blank"
-          >Tive</a
-        >, a supply chain visibility platform, as a player-coach: I manage a team of designers across web, mobile, and connected hardware while staying hands-on in the work.
-      </p>
-      <p class="body-3">
-        Previously: Staff product designer at <a href={builtUrl} target="_blank"
-          >Built Technologies</a
-        > and <a href={mhUrl} target="_blank">Modern Health</a>. Principal design engineer and Head of Design
-        at <a href={anomalieUrl} target="_blank">Anomalie</a> (acquired by David’s
-        Bridal). First designer, hybrid design engineer, and later first lead platform designer at <a
-          href={sfUrl}
-          target="_blank">Stitch Fix</a
-        >. Interaction designer at <a href={modClothUrl} target="_blank"
-          >ModCloth</a
-        >.
-      </p>
-    </article>
-    <section class="content-section" id="player-coach">
-      <h2 class="heading-3">Player and coach</h2>
-      <p class="body-3">
-        Where I coach the team and build alongside it.
-      </p>
-      <ExpertiseSections />
+      </div>
     </section>
-    <article class="content-section" id="my-work">
-      <h2 class="heading-3">Work</h2>
-      <MyWork />
-      <h3 class="heading-4">More Work</h3>
-      <p class="body-3">Earlier design projects and outcomes.</p>
-      <MoreWork />
-    </article>
-    <article class="content-section" id="how-i-lead">
-      <h2 class="heading-3">How I Lead</h2>
-      <HowILead />
-    </article>
-    <article class="content-section" id="career-path">
-      <h2 class="heading-3">Career Path</h2>
-      <CareerPath />
-    </article>
-    <article class="content-section" id="about-me">
-      <h2 class="heading-3">About Me</h2>
-      <AboutMe>
-        <article class="content-section" id="my-design-journey" slot="aboutMe">
-          <h3 class="heading-4">My Design Journey</h3>
-          <MyStory />
-        </article>
-      </AboutMe>
-    </article>
-    <article class="content-section" id="reach-out">
-      <h2 class="heading-3">Let's Work Together</h2>
-      <Contact resumeUrl={resumeUrl} linkedinUrl={linkedinUrl} mediumUrl={mediumUrl} />
-    </article>
-    <footer>
-      <p>
-        This site was built with <a
-          href="https://github.com/yorthehunter/yorthehunter.github.io"
-          target="_blank">Astro and SCSS</a
-        >.
-      </p>
-    </footer>
+
+    <Strengths />
+
+    <section class="band" id="my-work">
+      <div class="band-content">
+        <SectionHeading
+          title="Work"
+          description="examples of the product and systems work that shaped how I lead today"
+        />
+        <FeaturedWork />
+        <MoreWorkList />
+      </div>
+    </section>
+
+    <Career />
+    <HowILead />
+    <Contact resumeUrl={resumeUrl} linkedinUrl={linkedinUrl} mediumUrl={mediumUrl} />
   </main>
-</Layout>
+</HomeLayout>
 
 <style>
-  /* Wipes in left to right behind a soft-edged mask whose edge position is
-     animated, easing out so it slows near the end. The element keeps its full
-     size throughout, so nothing below it shifts. */
+  /* Wipes the headline in left to right behind a soft-edged mask whose edge
+     position is animated, easing out so it slows near the end. The element
+     keeps its full size throughout, so nothing below it shifts. */
   @property --wipe {
     syntax: "<percentage>";
     inherits: false;
     initial-value: 115%;
   }
 
-  .hero-headline {
+  .hero-title {
     --wipe-mask: linear-gradient(
       90deg,
       #000 calc(var(--wipe) - 15%),
@@ -144,17 +90,12 @@ const mediumUrl = "https://medium.com/@yorthehunter"
     );
     -webkit-mask-image: var(--wipe-mask);
     mask-image: var(--wipe-mask);
-    /* The mask only paints inside the box, and the tight display line-height
-       leaves descenders (the "y") outside it. Pad the box and pull it back
-       with a matching negative margin so the layout is unchanged. */
+    /* The mask only paints inside the box; pad it and pull it back with a
+       matching negative margin so descenders aren't clipped and the layout
+       is unchanged. */
     padding-block: 0.2em;
     margin-block: -0.2em;
     animation: headline-wipe 2.5s cubic-bezier(0.4, 0.05, 0.355, 1) 0.25s both;
-  }
-
-  /* Same accent green as the current step in Career Path. */
-  .highlight {
-    color: var(--color-vibrant-dark);
   }
 
   @keyframes headline-wipe {
@@ -167,17 +108,96 @@ const mediumUrl = "https://medium.com/@yorthehunter"
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero-headline {
+    .hero-title {
       -webkit-mask-image: none;
       mask-image: none;
       animation: none;
     }
   }
-</style>
 
-<style is:global>
-  /* Keep in-page anchors from landing under the sticky nav. */
-  html {
-    scroll-padding-top: 5rem;
+  /* The header's bottom rule already separates the hero from the page. */
+  .hero {
+    border-top: 0;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .hero-title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xs);
+    font-size: var(--fs-display);
+  }
+
+  /* Each line is a block that hugs its words, and wraps with them. */
+  .line {
+    display: block;
+    padding-inline: var(--space-sm);
+  }
+
+  .line-light {
+    background: var(--bg);
+    color: var(--fg);
+  }
+
+  .line-light .accent {
+    color: var(--accent-text);
+  }
+
+  .line-accent {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+
+  .line-accent .ink {
+    color: var(--color-dark-gray);
+  }
+
+  /* Mobile reads eyebrow first, then headline. Desktop puts it underneath. */
+  .eyebrow {
+    order: -1;
+    margin-bottom: var(--space-sm);
+  }
+
+  .intro {
+    max-width: 61rem;
+  }
+
+  .intro a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+
+  .intro a:hover {
+    text-decoration-thickness: 3px;
+  }
+
+  .hero-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  @media (min-width: 54rem) {
+    .eyebrow {
+      order: 0;
+      margin-bottom: 0;
+    }
+
+    .hero-links :global(.action-link.filled) {
+      background: transparent;
+      color: var(--fg);
+    }
+
+    .hero-links :global(.action-link.filled:hover) {
+      background: var(--fg);
+      color: var(--bg);
+    }
   }
 </style>

@@ -1,0 +1,37 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<div class="section-heading">
+  <h2 class="title display"><span>{title}</span></h2>
+  <p class="mono">{description}</p>
+</div>
+
+<style>
+  .section-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--fg);
+  }
+
+  /* The title is a solid block that hugs the word, and wraps with it. */
+  .title {
+    font-size: var(--fs-title);
+    line-height: 1.1;
+  }
+
+  .title span {
+    display: inline-block;
+    padding-inline: var(--space-sm);
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+</style>
