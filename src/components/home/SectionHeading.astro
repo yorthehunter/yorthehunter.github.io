@@ -8,7 +8,7 @@ const { title, description } = Astro.props;
 ---
 
 <div class="section-heading">
-  <h2 class="title display"><span>{title}</span></h2>
+  <h2 class="title display" data-reveal><span>{title}</span></h2>
   <p class="mono">{description}</p>
 </div>
 
@@ -34,4 +34,60 @@ const { title, description } = Astro.props;
     background: var(--accent);
     color: var(--on-accent);
   }
+
+  /* The hero's left-to-right wipe, played once when the title scrolls into
+     view. The title is only hidden when JavaScript is running (html.js), so
+     it never stays invisible without it. */
+  @property --wipe {
+    syntax: "<percentage>";
+    inherits: false;
+    initial-value: 115%;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    :global(html.js) .title[data-reveal] {
+      --wipe: 0%;
+      --wipe-mask: linear-gradient(
+        90deg,
+        #000 calc(var(--wipe) - 15%),
+        transparent var(--wipe)
+      );
+      -webkit-mask-image: var(--wipe-mask);
+      mask-image: var(--wipe-mask);
+    }
+
+    :global(html.js) .title[data-reveal].is-visible {
+      animation: title-wipe 1.4s cubic-bezier(0.4, 0.05, 0.355, 1) both;
+    }
+  }
+
+  @keyframes title-wipe {
+    from {
+      --wipe: 0%;
+    }
+    to {
+      --wipe: 115%;
+    }
+  }
 </style>
+
+<script>
+  const titles = document.querySelectorAll<HTMLElement>("[data-reveal]");
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      // Wait until the title is mostly on screen, and a little off the bottom edge.
+      { threshold: 0.6, rootMargin: "0px 0px -10% 0px" },
+    );
+    titles.forEach((title) => observer.observe(title));
+  } else {
+    titles.forEach((title) => title.classList.add("is-visible"));
+  }
+</script>

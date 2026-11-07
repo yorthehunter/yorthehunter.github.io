@@ -21,6 +21,7 @@ const { title, description } = Astro.props;
     <!-- Apply the saved (or system) theme before first paint to avoid a flash. -->
     <script is:inline>
       (function () {
+        document.documentElement.classList.add("js");
         var theme = null;
         try { theme = localStorage.getItem("theme"); } catch (e) {}
         var dark = theme
