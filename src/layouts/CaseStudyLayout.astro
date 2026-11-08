@@ -1,6 +1,7 @@
 ---
 import Layout from "./Layout.astro";
 import TopNav from "../components/TopNav.astro";
+import "../styles/case-study-new.css";
 
 interface Section {
   id: string;
@@ -14,13 +15,24 @@ interface Props {
   sections: Section[];
   /** Short label shown at the left of the sticky section nav. */
   navLabel: string;
+  /**
+   * "new" skins the page with the 2026 homepage design (see styles/case-study-new.css).
+   * It needs that design's shell: pass `shell={HomeLayout}` and the SiteHeader in the
+   * `header` slot from the page, so the shell's global styles only load on pages
+   * that use them.
+   */
+  variant?: "classic" | "new";
+  shell?: typeof Layout;
 }
 
-const { title, description, sections, navLabel } = Astro.props;
+const { title, description, sections, navLabel, variant = "classic", shell } = Astro.props;
+const isNew = variant === "new";
+const Shell = shell ?? Layout;
 ---
 
-<Layout title={title} description={description}>
-  <TopNav />
+<Shell title={title} description={description}>
+  <slot name="header"><TopNav /></slot>
+  <div class:list={[isNew && "cs-new"]}>
   <nav class="cs-subnav" aria-label="Case study sections">
     <div class="cs-subnav-inner">
       <span class="cs-subnav-label">{navLabel}</span>
@@ -33,14 +45,16 @@ const { title, description, sections, navLabel } = Astro.props;
   </nav>
   <main id="main" class="case-study">
     <slot />
-    <footer>
-      <p>
-        This site was built with <a
-          href="https://github.com/yorthehunter/yorthehunter.github.io"
-          target="_blank">Astro and SCSS</a
-        >.
-      </p>
-    </footer>
+    {!isNew && (
+      <footer>
+        <p>
+          This site was built with <a
+            href="https://github.com/yorthehunter/yorthehunter.github.io"
+            target="_blank">Astro and SCSS</a
+          >.
+        </p>
+      </footer>
+    )}
   </main>
   <dialog class="cs-lightbox" id="cs-lightbox" aria-label="Enlarged image">
     <button type="button" class="cs-lightbox-close" aria-label="Close enlarged image">&times;</button>
@@ -50,7 +64,8 @@ const { title, description, sections, navLabel } = Astro.props;
     </div>
     <p class="cs-lightbox-caption"></p>
   </dialog>
-</Layout>
+  </div>
+</Shell>
 
 <script>
   // Lightbox: one shared <dialog>, filled from the clicked figure.
@@ -129,6 +144,17 @@ const { title, description, sections, navLabel } = Astro.props;
       img.removeAttribute("src");
       opener?.focus();
     });
+  }
+</script>
+
+<script>
+  // The new design's site header is sticky, so the section nav sticks just below it.
+  const siteHeader = document.querySelector<HTMLElement>(".site-header");
+  if (siteHeader && "ResizeObserver" in window) {
+    const setOffset = () =>
+      document.documentElement.style.setProperty("--header-h", `${siteHeader.offsetHeight}px`);
+    setOffset();
+    new ResizeObserver(setOffset).observe(siteHeader);
   }
 </script>
 

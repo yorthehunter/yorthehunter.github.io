@@ -1,0 +1,614 @@
+/*
+  Case study skin for the 2026 design (CaseStudyLayout variant="new").
+
+  The case study primitives (.cs-*) are written against the original site
+  tokens (--color-*, --space-*, --font-*). Rather than fork them, this file
+  re-points those tokens at the homepage design system (--bg, --fg, --accent,
+  Archivo, Space Mono) inside .cs-new, then reshapes the pieces that carry the
+  old look: pills and soft cards become square, stroked boxes; headings become
+  Archivo Black caps; accents go raspberry. Everything is scoped to .cs-new, so
+  pages on the classic layout are untouched.
+*/
+
+.cs-new {
+  /* Colors: old names, new roles. Dark mode follows because --bg / --fg swap. */
+  --color-bg: var(--bg);
+  --color-primary: var(--fg);
+  --color-secondary: color-mix(in srgb, var(--fg) 72%, var(--bg));
+  --color-bg-soften: color-mix(in srgb, var(--fg) 10%, var(--bg));
+  --color-bg-overlay: color-mix(in srgb, var(--fg) 10%, transparent);
+  --color-vibrant: var(--accent);
+  --color-vibrant-dark: var(--accent-text);
+  --color-vibrant-gradient: var(--accent);
+  --color-raspberry: var(--accent-text);
+
+  /* Spacing: the original fluid scale (the homepage reuses the same names with
+     different values, so it is restated here for everything inside .cs-new). */
+  --space-3xs: clamp(0.25rem, 0.2065rem + 0.2174vi, 0.375rem);
+  --space-2xs: clamp(0.5rem, 0.413rem + 0.4348vi, 0.75rem);
+  --space-xs: clamp(0.75rem, 0.6196rem + 0.6522vi, 1.125rem);
+  --space-s: clamp(1rem, 0.8261rem + 0.8696vi, 1.5rem);
+  --space-m: clamp(1.5rem, 1.2391rem + 1.3043vi, 2.25rem);
+  --space-l: clamp(2rem, 1.6522rem + 1.7391vi, 3rem);
+  --space-xl: clamp(3rem, 2.4783rem + 2.6087vi, 4.5rem);
+
+  /* Type */
+  --font-family: var(--font-body);
+  --secondary-font-family: var(--font-display);
+  --font-heading-weight: 400;
+  --font-body-weight: 500;
+  --line-height-display: 1.1;
+  --line-height-heading: 1.25;
+  --line-height-body: 1.5;
+  --font-size--1: clamp(0.875rem, 0.8333rem + 0.185vi, 1rem);
+  --font-size-0: clamp(1.0625rem, 1rem + 0.28vi, 1.25rem);
+  --font-size-1: clamp(1.125rem, 1rem + 0.5vi, 1.375rem);
+  --font-size-2: clamp(1.5rem, 1.2rem + 1.3vi, 2.25rem);
+  --font-size-3: clamp(1.75rem, 1.4rem + 1.5vi, 2.75rem);
+  --font-size-4: clamp(2.25rem, 1.5rem + 3.333vi, 4rem);
+
+  background: var(--bg);
+  color: var(--fg);
+  overflow-x: clip; /* full-bleed section rules; clip keeps position: sticky working */
+}
+
+/* .case-study re-declares the composite font tokens; win on specificity. */
+.cs-new .case-study {
+  --font-size--1: clamp(0.875rem, 0.8333rem + 0.185vi, 1rem);
+  --font-size-0: clamp(1.0625rem, 1rem + 0.28vi, 1.25rem);
+  --font-size-1: clamp(1.125rem, 1rem + 0.5vi, 1.375rem);
+  --font-size-2: clamp(1.5rem, 1.2rem + 1.3vi, 2.25rem);
+  --font-size-3: clamp(1.75rem, 1.4rem + 1.5vi, 2.75rem);
+  --font-size-4: clamp(2.25rem, 1.5rem + 3.333vi, 4rem);
+
+  --font-heading-1: var(--font-heading-weight) var(--font-size-4)/var(--line-height-display) var(--secondary-font-family);
+  --font-heading-2: var(--font-heading-weight) var(--font-size-3)/var(--line-height-display) var(--secondary-font-family);
+  --font-heading-3: var(--font-heading-weight) var(--font-size-2)/var(--line-height-display) var(--secondary-font-family);
+  --font-heading-4: 700 var(--font-size-1)/var(--line-height-heading) var(--font-family);
+  --font-heading-5: 700 var(--font-size-0)/var(--line-height-heading) var(--font-family);
+  --font-heading-6: 700 var(--font-size--1)/var(--line-height-heading) var(--font-family);
+  --font-body-1: var(--font-body-weight) var(--font-size-2)/var(--line-height-body) var(--font-family);
+  --font-body-2: var(--font-body-weight) var(--font-size-1)/var(--line-height-body) var(--font-family);
+  --font-body-3: var(--font-body-weight) var(--font-size-0)/var(--line-height-body) var(--font-family);
+  --font-body-4: var(--font-body-weight) var(--font-size--1)/var(--line-height-body) var(--font-family);
+}
+
+/* ---------- Globals the classic Layout provides, restated ---------- */
+
+.cs-new a {
+  color: inherit;
+}
+
+.cs-new .heading-1 { font: var(--font-heading-1); }
+.cs-new .heading-2 { font: var(--font-heading-2); }
+.cs-new .heading-3 { font: var(--font-heading-3); }
+.cs-new .heading-4 { font: var(--font-heading-4); }
+.cs-new .body-1 { font: var(--font-body-1); }
+.cs-new .body-2 { font: var(--font-body-2); }
+.cs-new .body-3 { font: var(--font-body-3); }
+.cs-new .body-4 { font: var(--font-body-4); }
+
+.cs-new .all-caps {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cs-new .soft {
+  color: var(--color-secondary);
+}
+
+/* Eyebrows are the mono labels. */
+.cs-new .eyebrow {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: var(--fs-mono);
+  line-height: 1.4;
+  letter-spacing: 1px;
+  margin-bottom: -1.5rem;
+}
+
+.cs-new .eyebrow.soft {
+  color: inherit;
+}
+
+/* One band per section: a full-bleed 4px rule above each, like the homepage. */
+.cs-new .content-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 2.5rem;
+  width: 100%;
+  max-width: 76rem;
+  margin: auto;
+  padding: var(--space-xl) var(--gutter);
+}
+
+.cs-new .case-study .content-section {
+  padding-block: var(--space-xl);
+}
+
+.cs-new .content-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  border-top: 4px solid var(--fg);
+  pointer-events: none;
+}
+
+.cs-new header.content-section::before {
+  display: none;
+}
+
+.cs-new .navigation-list > ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+}
+
+/* ---------- Headings ---------- */
+
+.cs-new h1,
+.cs-new h2,
+.cs-new .cs-callout,
+.cs-new .cs-stats .value,
+.cs-new .cs-results .value,
+.cs-new .cs-decision-head .index,
+.cs-new .cs-stamp {
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.cs-new h1.heading-1 {
+  max-width: 24ch;
+}
+
+/* Emphasis inside display type reads as the raspberry accent, not italics. */
+.cs-new h1 i,
+.cs-new h1 em,
+.cs-new h2 i,
+.cs-new h2 em,
+.cs-new .cs-accent,
+.cs-new .cs-callout em {
+  font-style: normal;
+  color: var(--accent-text);
+}
+
+.cs-new .cs-lede {
+  color: var(--fg);
+}
+
+.cs-new .cs-prose b,
+.cs-new .cs-cols b {
+  font-weight: 700;
+}
+
+/* ---------- Sticky section nav ---------- */
+
+.cs-new .cs-subnav {
+  top: var(--header-h, 4.5rem);
+  z-index: 40;
+  background: var(--bg);
+  backdrop-filter: none;
+  border-top: 0;
+  border-bottom: 2px solid var(--fg);
+}
+
+.cs-new .cs-subnav-inner {
+  max-width: 76rem;
+  padding: 0 var(--gutter);
+}
+
+.cs-new .cs-subnav-label {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: var(--fs-mono);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.cs-new .cs-subnav a:link,
+.cs-new .cs-subnav a:visited {
+  padding: 0.35rem 0.75rem;
+  border: 2px solid transparent;
+  border-radius: 3px;
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 0.8125rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.cs-new .cs-subnav a:hover {
+  background: transparent;
+  border-color: var(--fg);
+  color: var(--fg);
+}
+
+.cs-new .cs-subnav a[aria-current="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+
+.cs-new .case-study section {
+  scroll-margin-top: 3.5rem;
+}
+
+/* ---------- Hero ---------- */
+
+.cs-new .cs-stats {
+  border-top: 4px solid var(--fg);
+}
+
+.cs-new .cs-stats li + li {
+  border-left: 2px solid var(--fg);
+}
+
+.cs-new .cs-stats .value {
+  color: var(--accent-text);
+}
+
+.cs-new .cs-stats .label {
+  color: var(--fg);
+}
+
+@media screen and (max-width: 820px) {
+  .cs-new .cs-stats li:nth-child(n + 3) {
+    border-top: 2px solid var(--fg);
+  }
+}
+
+.cs-new .cs-facts dt {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: var(--fs-mono);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--fg);
+}
+
+.cs-new .cs-facts.rows {
+  border-top: 2px solid var(--fg);
+}
+
+.cs-new .cs-facts.rows > div {
+  border-bottom: 2px solid var(--fg);
+}
+
+/* ---------- Boxes: square, stroked, no soft fills ---------- */
+
+.cs-new .cs-panel {
+  --cs-line: var(--fg);
+  background: transparent;
+  border: 2px solid var(--fg);
+  border-radius: 0;
+}
+
+.cs-new .cs-compare-label {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: var(--fs-mono);
+  color: var(--fg);
+}
+
+.cs-new .cs-compare-label.accent {
+  color: var(--accent-text);
+}
+
+.cs-new .cs-node {
+  border: 2px solid var(--fg);
+  border-radius: 0;
+  background: var(--bg);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+}
+
+.cs-new .cs-node.strong {
+  background: var(--fg);
+  border-color: var(--fg);
+  color: var(--bg);
+}
+
+.cs-new .cs-node.accent {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+
+.cs-new .cs-node.linked {
+  border-color: var(--accent-text);
+}
+
+.cs-new .cs-node.linked::after {
+  border-radius: 0;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--bg);
+}
+
+.cs-new .cs-flow.muted .cs-node {
+  color: var(--color-secondary);
+  border-color: var(--color-secondary);
+}
+
+.cs-new .cs-triad i,
+.cs-new .cs-pipeline i {
+  color: var(--fg);
+}
+
+.cs-new .cs-matrix .ax {
+  font-family: var(--font-mono);
+  color: var(--fg);
+}
+
+.cs-new .cs-matrix .cell {
+  border-radius: 0;
+  border: 2px solid var(--fg);
+  color: var(--fg);
+}
+
+.cs-new .cs-matrix .cell small {
+  font-family: var(--font-mono);
+  opacity: 1;
+}
+
+.cs-new .cs-matrix .c1 { background: var(--bg); }
+.cs-new .cs-matrix .c2 { background: color-mix(in srgb, var(--accent) 25%, var(--bg)); }
+.cs-new .cs-matrix .c3 { background: color-mix(in srgb, var(--accent) 55%, var(--bg)); }
+.cs-new .cs-matrix .c4 { background: var(--accent); color: var(--on-accent); }
+
+html:not(.dark) .cs-new .cs-matrix .c4,
+html.dark .cs-new .cs-matrix .c4 {
+  color: var(--on-accent);
+}
+
+/* Results: raspberry cards. */
+.cs-new .cs-results li {
+  background: var(--accent);
+  color: var(--on-accent);
+  border-radius: 0;
+}
+
+html:not(.dark) .cs-new .cs-results li {
+  color: var(--on-accent);
+}
+
+.cs-new .cs-results .kicker {
+  font-family: var(--font-mono);
+  opacity: 1;
+}
+
+/* Takeaway: the dark band from How I Lead (cream in dark mode). */
+.cs-new .cs-takeaway {
+  background: var(--band-bg);
+  color: var(--band-fg);
+  border-radius: 0;
+}
+
+.cs-new .cs-takeaway .eyebrow {
+  color: var(--band-eyebrow);
+}
+
+.cs-new .cs-takeaway p,
+.cs-new .cs-takeaway li {
+  font-weight: 500;
+}
+
+/* Callout and quote. */
+.cs-new .cs-callout {
+  border-top: 4px solid var(--fg);
+  border-bottom: 2px solid var(--fg);
+}
+
+.cs-new .cs-quote {
+  font-family: var(--font-body);
+  font-weight: 700;
+  border-left: 4px solid var(--accent);
+}
+
+.cs-new .cs-quote cite {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--fg);
+}
+
+/* Section heads. */
+.cs-new .cs-decision-head .index {
+  color: var(--accent-text);
+  opacity: 1;
+}
+
+/* Columns: a full stroke on top; link columns light up red on hover. */
+.cs-new .cs-cols > * {
+  border-top: 4px solid var(--fg);
+}
+
+.cs-new .cs-cols p {
+  color: var(--fg);
+}
+
+.cs-new .cs-cols .go {
+  font-family: var(--font-mono);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--fg);
+}
+
+.cs-new .cs-cols.links > a {
+  border-radius: 0;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.cs-new .cs-cols.links > a:hover {
+  background: transparent;
+  border-top-color: var(--accent-text);
+  color: var(--accent-text);
+}
+
+.cs-new .cs-cols.links > a:hover p,
+.cs-new .cs-cols.links > a:hover .go {
+  color: var(--accent-text);
+}
+
+/* Failed experiment. */
+.cs-new .cs-stamp {
+  border-radius: 0;
+  border-width: 4px;
+  color: var(--accent-text);
+  border-color: var(--accent-text);
+}
+
+.cs-new .cs-xlist {
+  color: var(--fg);
+}
+
+.cs-new .cs-sign {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--fg);
+}
+
+/* ---------- Figures ---------- */
+
+.cs-new .cs-figure img {
+  border: 4px solid var(--fg);
+  border-radius: 0;
+  transition: border-color 0.15s;
+}
+
+.cs-new .cs-zoom {
+  border-radius: 0;
+}
+
+.cs-new .cs-zoom:hover img {
+  border-color: var(--accent-text);
+}
+
+.cs-new .cs-zoom:focus-visible {
+  outline-color: var(--accent-text);
+}
+
+.cs-new .cs-zoom::after {
+  border-radius: 3px;
+  background: var(--fg);
+  color: var(--bg);
+  font-family: var(--font-mono);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.cs-new .cs-figure figcaption {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: var(--fs-mono);
+  line-height: 1.4;
+  color: var(--fg);
+}
+
+/* ---------- Lightbox ---------- */
+
+.cs-new .cs-lightbox img,
+.cs-new .cs-lightbox-pane.scrolling {
+  border-radius: 0;
+}
+
+.cs-new .cs-lightbox-tabs button {
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.cs-new .cs-lightbox-tabs button[aria-selected="true"] {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.cs-new .cs-lightbox-close {
+  border-radius: 3px;
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.cs-new .cs-lightbox-close:hover {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.cs-new .cs-lightbox-caption {
+  font-family: var(--font-mono);
+}
+
+/* ---------- Lists of steps and findings (other case studies) ---------- */
+
+.cs-new .cs-steps li {
+  border-radius: 3px;
+  border: 2px solid var(--fg);
+  background: transparent;
+}
+
+.cs-new .cs-decision {
+  border-radius: 0;
+  border: 2px solid var(--fg);
+  background: transparent;
+}
+
+.cs-new .cs-timeline li {
+  border-top: 4px solid var(--fg);
+}
+
+.cs-new .cs-timeline li::before {
+  border-radius: 0;
+  background: var(--accent);
+}
+
+/* Archivo Black is wide: size result words so they never split mid-word, and
+   let the cards wrap to two columns before they get that narrow. */
+.cs-new .cs-results {
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+}
+
+.cs-new .cs-stats .value.word,
+.cs-new .cs-results .value.word {
+  font-size: clamp(1.25rem, 1rem + 1vi, 1.625rem);
+  overflow-wrap: break-word;
+}
+
+/* Object density demo: the controls take the new button shape. The product
+   mock-ups inside it stay as they are, since they depict the Tive UI. */
+.cs-new details.more > summary {
+  border: 2px solid var(--fg);
+  border-radius: 3px;
+  background: transparent;
+  color: var(--fg);
+  font-weight: 700;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.cs-new details.more > summary:hover {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.cs-new details.more > summary::before {
+  color: currentColor;
+}
+
+.cs-new button.ox-lv,
+.cs-new button.ox-toggle {
+  border: 2px solid var(--fg);
+  border-radius: 3px;
+}
+
+.cs-new button.ox-lv[aria-selected="true"] {
+  border-color: var(--accent);
+}

@@ -1,7 +1,10 @@
 ---
 import CaseStudyLayout from "../../layouts/CaseStudyLayout.astro";
+import HomeLayout from "../../layouts/HomeLayout.astro";
+import SiteHeader from "../../components/home/SiteHeader.astro";
+import { resumeUrl } from "../../data/site-links";
 import CaseStudyFigure from "../../components/CaseStudyFigure.astro";
-import LinkButton from "../../components/LinkButton.astro";
+import ActionLink from "../../components/home/ActionLink.astro";
 import ObjectDensityDemo from "../../components/ObjectDensityDemo.astro";
 
 import boardImg from "../../assets/images/tive-board.webp";
@@ -26,8 +29,15 @@ const sections = [
   title="Scaling Design Judgment · Brian Cleveland"
   description="How I increased ownership across a senior design team at Tive while introducing stronger discovery, critique, validation, and shared product foundations."
   navLabel="Leadership at Tive Case Study"
+  variant="new"
+  shell={HomeLayout}
   sections={sections}
 >
+  <Fragment slot="header">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <SiteHeader resumeUrl={resumeUrl} />
+  </Fragment>
+
   <!-- HERO + AT A GLANCE -->
   <header class="content-section">
     <p class="eyebrow all-caps soft">Design leadership at Tive • 3rd Quarter 2026</p>
@@ -403,8 +413,8 @@ const sections = [
     </div>
     <nav class="navigation-list" aria-label="More case studies">
       <ul>
-        <li><LinkButton href={`${base}/#my-work`} label="Back to all work" /></li>
-        <li><LinkButton href={`${base}/work/global-navigation`} label="Read: One navigation system, globally adopted" inverse /></li>
+        <li><ActionLink href={`${base}/#my-work`} label="Back to all work" /></li>
+        <li><ActionLink href={`${base}/work/global-navigation`} label="Read: One navigation system, globally adopted" variant="filled" /></li>
       </ul>
     </nav>
   </div>
