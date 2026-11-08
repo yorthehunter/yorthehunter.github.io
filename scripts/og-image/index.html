@@ -1,0 +1,120 @@
+<!doctype html>
+<!--
+  Source for public/og-image-2026.png (the social share card), drawn with the
+  same tokens as the site. Regenerate with scripts/og-image/render.sh.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      @font-face {
+        font-family: "Archivo Black";
+        src: url("../../node_modules/@fontsource/archivo-black/files/archivo-black-latin-400-normal.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: "Space Mono";
+        src: url("../../node_modules/@fontsource/space-mono/files/space-mono-latin-400-normal.woff2") format("woff2");
+      }
+
+      :root {
+        --dark-gray: #121212;
+        --light-cream: #f2f0ea;
+        --raspberry: #c4005c;
+        --teal: #18f1ca;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      html, body { width: 1200px; height: 630px; overflow: hidden; }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        background: var(--light-cream);
+        color: var(--dark-gray);
+        font-family: "Space Mono", monospace;
+      }
+
+      /* Header bar, like the site's: name on the left, a 4px rule underneath. */
+      .bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 76px;
+        padding: 0 72px;
+        border-bottom: 4px solid var(--dark-gray);
+      }
+
+      .name {
+        font-family: "Archivo Black", sans-serif;
+        font-size: 32px;
+        text-transform: uppercase;
+        letter-spacing: 0;
+      }
+
+      main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 28px;
+        padding: 0 72px;
+      }
+
+      h1 {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        font-family: "Archivo Black", sans-serif;
+        font-weight: 400;
+        font-size: 84px;
+        line-height: 1.083;
+        text-transform: uppercase;
+      }
+
+      .line { display: block; padding: 0 10px; white-space: nowrap; }
+      .line.light .accent { color: var(--raspberry); }
+      .line.accent-bg { background: var(--raspberry); color: var(--light-cream); }
+      .line.accent-bg .ink { color: var(--dark-gray); }
+
+      .eyebrow {
+        font-size: 22px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      /* Footer band, like How I Lead. */
+      .band {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 76px;
+        padding: 0 72px;
+        background: var(--dark-gray);
+        font-size: 22px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .band .role { color: var(--teal); }
+      .band .url { color: var(--light-cream); }
+    </style>
+  </head>
+  <body>
+    <div class="bar">
+      <span class="name">Brian Cleveland</span>
+    </div>
+    <main>
+      <p class="eyebrow">Player-coach design leader · 16 years in product design</p>
+      <h1>
+        <span class="line light">I Lead <span class="accent">Design</span></span>
+        <span class="line accent-bg">and stay <span class="ink">hands-on</span></span>
+      </h1>
+    </main>
+    <div class="band">
+      <span class="role">Design Lead and Manager at Tive</span>
+      <span class="url">yorthehunter.github.io</span>
+    </div>
+  </body>
+</html>

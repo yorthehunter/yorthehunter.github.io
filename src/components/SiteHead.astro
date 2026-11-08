@@ -13,9 +13,10 @@ const { title, description = defaultDescription } = Astro.props;
 // Link previews need absolute URLs.
 const siteBase = new URL(import.meta.env.BASE_URL, Astro.site);
 const canonicalUrl = new URL(Astro.url.pathname, siteBase.origin);
-const ogImage = new URL("og-image.png", siteBase);
+// New file name (not og-image.png) so link previews that cached the old card refetch it.
+const ogImage = new URL("og-image-2026.png", siteBase);
 const ogImageAlt =
-  "Brian Cleveland, player-coach design leader: I lead design, shape strategy, and stay hands-on.";
+  "Brian Cleveland, player-coach design leader with 16 years in product design: I lead design and stay hands-on. Design Lead and Manager at Tive.";
 ---
 
 <meta charset="UTF-8" />

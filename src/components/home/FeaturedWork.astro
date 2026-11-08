@@ -46,7 +46,15 @@ const stories = [
 <div class="stories">
   {stories.map((story) => (
     <article class="story">
-      <div class="media">
+      {/* The CTA below is the keyboard link; this one is a mouse and touch
+          shortcut to the same place, so it stays out of the tab order. */}
+      <a
+        class="media"
+        href={story.cta.href}
+        target={story.cta.external ? "_blank" : undefined}
+        rel={story.cta.external ? "noopener noreferrer" : undefined}
+        tabindex="-1"
+      >
         <Image
           src={story.image}
           alt={story.alt}
@@ -55,7 +63,7 @@ const stories = [
           style={`object-position: ${story.position}`}
           loading="lazy"
         />
-      </div>
+      </a>
       <div class="body">
         <div class="heading">
           <p class="mono">{story.eyebrow}</p>
@@ -93,6 +101,7 @@ const stories = [
 
   /* Image: 400 x 280 on desktop, full width at the same ratio when stacked. */
   .media {
+    display: block;
     aspect-ratio: 10 / 7;
     border: 4px solid var(--fg);
     overflow: hidden;
@@ -102,6 +111,11 @@ const stories = [
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: opacity 0.15s;
+  }
+
+  .media:hover img {
+    opacity: 0.85;
   }
 
   .body {
