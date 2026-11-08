@@ -110,11 +110,30 @@ const columns = (tab: Tab) => (tab.groups.length === 3 ? 3 : 2);
 </section>
 
 <style>
+  /* Strokes, group headers and the selected tab share these roles. Light mode
+     is ink on cream; dark mode swaps in the raspberry so the near-white fill
+     doesn't dominate. */
+  .strengths {
+    --edge: var(--fg);
+    --head-bg: var(--fg);
+    --head-fg: var(--bg);
+    --selected-bg: var(--tab-active-bg);
+    --selected-fg: var(--tab-active-fg);
+  }
+
+  :global(html.dark) .strengths {
+    --edge: var(--accent);
+    --head-bg: var(--accent);
+    --head-fg: var(--on-accent);
+    --selected-bg: var(--accent);
+    --selected-fg: var(--on-accent);
+  }
+
   .tablist {
     display: flex;
     gap: var(--space-xs);
     padding: 2px var(--space-sm) 0;
-    border-bottom: 2px solid var(--fg);
+    border-bottom: 2px solid var(--edge);
     /* On narrow screens the four tabs scroll sideways instead of wrapping. */
     overflow-x: auto;
     scrollbar-width: none;
@@ -128,7 +147,7 @@ const columns = (tab: Tab) => (tab.groups.length === 3 ? 3 : 2);
   .tab {
     flex: none;
     padding: var(--space-sm);
-    border: 2px solid var(--fg);
+    border: 2px solid var(--edge);
     border-bottom: 0;
     background: transparent;
     color: var(--fg);
@@ -147,8 +166,8 @@ const columns = (tab: Tab) => (tab.groups.length === 3 ? 3 : 2);
   }
 
   .tab[aria-selected="true"] {
-    background: var(--tab-active-bg);
-    color: var(--tab-active-fg);
+    background: var(--selected-bg);
+    color: var(--selected-fg);
   }
 
   .tab:focus-visible {
@@ -168,13 +187,13 @@ const columns = (tab: Tab) => (tab.groups.length === 3 ? 3 : 2);
     display: flex;
     flex-direction: column;
     padding: 1px;
-    border: 2px solid var(--fg);
+    border: 2px solid var(--edge);
   }
 
   .highlight h3 {
     padding: var(--space-sm);
-    background: var(--fg);
-    color: var(--bg);
+    background: var(--head-bg);
+    color: var(--head-fg);
     font-weight: 700;
     font-size: var(--fs-body);
     line-height: 1.3;

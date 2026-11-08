@@ -65,10 +65,16 @@ const stories = [
         />
       </a>
       <div class="body">
-        <div class="heading">
+        <a
+          class="heading"
+          href={story.cta.href}
+          target={story.cta.external ? "_blank" : undefined}
+          rel={story.cta.external ? "noopener noreferrer" : undefined}
+          tabindex="-1"
+        >
           <p class="mono">{story.eyebrow}</p>
           <h3 class="display">{story.title}</h3>
-        </div>
+        </a>
         <ul class="chips">
           {story.tags.map((tag) => (
             <li class="chip">{tag}</li>
@@ -105,17 +111,17 @@ const stories = [
     aspect-ratio: 10 / 7;
     border: 4px solid var(--fg);
     overflow: hidden;
+    transition: border-color 0.15s;
   }
 
   .media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: opacity 0.15s;
   }
 
-  .media:hover img {
-    opacity: 0.85;
+  .media:hover {
+    border-color: var(--accent-text);
   }
 
   .body {
@@ -130,6 +136,13 @@ const stories = [
     display: flex;
     flex-direction: column;
     gap: var(--space-xs);
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .heading:hover {
+    color: var(--accent-text);
   }
 
   .heading h3 {
