@@ -1,7 +1,10 @@
 ---
 import CaseStudyLayout from "../../layouts/CaseStudyLayout.astro";
+import HomeLayout from "../../layouts/HomeLayout.astro";
+import SiteHeader from "../../components/home/SiteHeader.astro";
 import CaseStudyFigure from "../../components/CaseStudyFigure.astro";
-import LinkButton from "../../components/LinkButton.astro";
+import ActionLink from "../../components/home/ActionLink.astro";
+import { resumeUrl } from "../../data/site-links";
 
 import auditImg from "../../assets/images/gnav-audit.png";
 import competitiveImg from "../../assets/images/gnav-competitive.png";
@@ -37,8 +40,15 @@ const sections = [
   title="One Navigation System, Globally Adopted · Brian Cleveland"
   description="Replaced seven different navigations with one configurable system across 5 web properties and 2 native apps, enabling global search and a 35% increase in navigation clickthroughs on the web home page."
   navLabel="Global Navigation Case Study"
+  variant="new"
+  shell={HomeLayout}
   sections={sections}
 >
+  <Fragment slot="header">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <SiteHeader resumeUrl={resumeUrl} />
+  </Fragment>
+
   <!-- HERO -->
   <header class="content-section" id="overview">
     <p class="eyebrow all-caps soft">
@@ -481,8 +491,8 @@ const sections = [
     </div>
     <nav class="navigation-list" aria-label="More case studies">
       <ul>
-        <li><LinkButton href={`${base}/#my-work`} label="Back to all work" /></li>
-        <li><LinkButton href={`${base}/work/tive`} label="Read: Scaling design judgment at Tive" inverse /></li>
+        <li><ActionLink href={`${base}/#my-work`} label="Back to all work" /></li>
+        <li><ActionLink href={`${base}/work/tive`} label="Read: Scaling design judgment at Tive" variant="filled" /></li>
       </ul>
     </nav>
   </section>

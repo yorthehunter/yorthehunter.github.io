@@ -612,3 +612,52 @@ html:not(.dark) .cs-new .cs-results li {
 .cs-new button.ox-lv[aria-selected="true"] {
   border-color: var(--accent);
 }
+
+/* ---------- Decision cards, timeline, tables, findings ---------- */
+
+.cs-new .cs-decision-head h3 {
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.cs-new .cs-decision dt,
+.cs-new .cs-timeline .when,
+.cs-new .cs-table th {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--fg);
+}
+
+.cs-new .cs-timeline p {
+  color: var(--fg);
+}
+
+.cs-new .cs-table th,
+.cs-new .cs-table td {
+  border-bottom: 1px solid var(--fg);
+}
+
+.cs-new .cs-table th {
+  font-size: var(--fs-mono);
+  border-bottom: 2px solid var(--fg);
+}
+
+.cs-new .cs-table th[scope="row"] {
+  font-family: var(--font-body);
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  border-bottom: 1px solid var(--fg);
+}
+
+.cs-new .cs-findings li {
+  border-bottom: 2px solid var(--fg);
+}
+
+.cs-new .cs-findings li::before {
+  font-weight: 400;
+  color: var(--accent-text);
+  opacity: 1;
+}
