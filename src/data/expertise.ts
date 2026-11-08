@@ -129,7 +129,7 @@ export const areas: ExpertiseArea[] = [
         items: [
           "Proposing and pushing production-ready designs",
           "Designing with real data: an object card pattern that renders UI from any data",
-          "Claude turns code and API documentation into design documents",
+          "Using Claude to keep design decisions in sync with production code",
         ],
       },
       {
