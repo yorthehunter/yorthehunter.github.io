@@ -5,29 +5,32 @@ import SiteHeader from "../../components/home/SiteHeader.astro";
 import { resumeUrl } from "../../data/site-links";
 import CaseStudyFigure from "../../components/CaseStudyFigure.astro";
 import ActionLink from "../../components/home/ActionLink.astro";
-import ObjectDensityDemo from "../../components/ObjectDensityDemo.astro";
 
-import boardImg from "../../assets/images/tive-board.webp";
+import boardImg from "../../assets/images/tive-design-board.png";
 import reviewPrepImg from "../../assets/images/tive-review-prep.png";
-import validationMethodsImg from "../../assets/images/tive-validation-methods.png";
+import riskAnalysisImg from "../../assets/images/tive-risk-analysis.png";
+import tablesPlanImg from "../../assets/images/tive-tables-plan.png";
+import tablesBeforeImg from "../../assets/images/tive-tables-before.png";
+import tablesAfterImg from "../../assets/images/tive-tables-after.png";
+import bannersAuditImg from "../../assets/images/tive-banners-audit.png";
+import bannersLibraryImg from "../../assets/images/tive-banners-library.png";
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 const sections = [
   { id: "challenge", label: "Challenge" },
-  { id: "outcomes", label: "Results" },
   { id: "team", label: "Team" },
   { id: "manager", label: "Manager" },
   { id: "judgment", label: "Judgment" },
+  { id: "proof", label: "Proof" },
   { id: "people", label: "People" },
   { id: "learned", label: "Learned" },
-  { id: "product", label: "Also" },
 ];
 ---
 
 <CaseStudyLayout
   title="Scaling Design Judgment · Brian Cleveland"
-  description="How I increased ownership across a senior design team at Tive while introducing stronger discovery, critique, validation, and shared product foundations."
+  description="How I increased ownership across a senior design team at Tive with a lightweight operating model, AI-assisted review prep, and risk-based validation."
   navLabel="Leadership at Tive Case Study"
   variant="new"
   shell={HomeLayout}
@@ -38,14 +41,13 @@ const sections = [
     <SiteHeader resumeUrl={resumeUrl} />
   </Fragment>
 
-  <!-- HERO + AT A GLANCE -->
+  <!-- HERO -->
   <header class="content-section">
     <p class="eyebrow all-caps soft">Design leadership at Tive • 3rd Quarter 2026</p>
     <h1 class="heading-1">Scaling design judgment, not just design output</h1>
     <p class="cs-lede">
       Evolving a senior product design team from reactive execution toward an autonomous, strategic function.
     </p>
-    <p class="body-3 soft">Tive is a global supply chain visibility platform, growing rapidly as a Series C company.</p>
     <ul class="cs-stats">
       <li><span class="value">3 platforms</span><span class="label">Design leadership across web, mobile, and hardware</span></li>
       <li><span class="value">4</span><span class="label">Key product areas</span></li>
@@ -54,24 +56,12 @@ const sections = [
     </ul>
     <dl class="cs-facts rows">
       <div>
-        <dt>Context</dt>
-        <dd>Enterprise software spanning web, native mobile, and connected hardware, while the engineering team was growing quickly and adopting AI.</dd>
-      </div>
-      <div>
         <dt>My role</dt>
         <dd>Product Design Lead and Manager (player-coach), partnering with product managers, engineering managers, and the leadership team.</dd>
       </div>
       <div>
-        <dt>The problem</dt>
-        <dd>Product and engineering were increasingly &ldquo;waiting on design.&rdquo; A stretched senior team needed a repeatable way to focus on strategic work and let others make good design decisions.</dd>
-      </div>
-      <div>
-        <dt>What I changed</dt>
-        <dd>A lightweight operating model for visibility and ownership, an AI-assisted review-prep workflow, and a risk-based framework for how much evidence each decision needs.</dd>
-      </div>
-      <div>
-        <dt>What happened</dt>
-        <dd>We <i>rarely</i> hear &ldquo;waiting on design&rdquo; anymore. Designers moved from reactive product partners to proactive design leaders, driving architectural changes like tables and global navigation redesigns, and design review moved from UI critique and context sharing to systemic change and architecture evaluation.</dd>
+        <dt>Context</dt>
+        <dd>Tive is a Series C supply chain visibility platform spanning web, native mobile, and connected hardware. Engineering was growing quickly and adopting AI.</dd>
       </div>
     </dl>
   </header>
@@ -81,86 +71,10 @@ const sections = [
     <p class="eyebrow all-caps soft">The leadership challenge</p>
     <h2 class="heading-3">&ldquo;We're waiting on design.&rdquo;<br />No, you're waiting on design <em class="cs-accent">mocks</em>.</h2>
     <div class="cs-prose">
-      <p>That feedback got louder as the engineering team grew and adopted AI to speed through code. We were launching faster, with less design confidence and more pressure on the team, and we were stretched thin <b>trying to do it all</b>.</p>
-      <p>We were spending our time on tedious, tactical work, and we had no repeatable framework for big-rock design work or for consistently designing at a high level. Engineers had come to expect every flow and edge-case to have a high-fidelity Figma mock.</p>
-      <p>We needed to be less reactive and more proactive to keep a high bar for UX while reducing design debt.</p>
-      <p>The goal wasn't to add process for process&rsquo;s sake or to be a decision gatekeeper; it was to create <i>enough</i> structure and context that designers could consistently operate more <b>independently</b> while raising the <b>quality and consistency</b> of the work.</p>
-    </div>
-    <div class="cs-compare">
-      <div class="cs-panel cs-flow muted" role="group" aria-label="Before (the waterfall): a linear hand-off">
-        <p class="cs-compare-label">Before (the waterfall)</p>
-        <div class="cs-node">Product requirements</div><div class="cs-arrow"></div>
-        <div class="cs-node">Design</div><div class="cs-arrow"></div>
-        <div class="cs-node">Mocks</div><div class="cs-arrow"></div>
-        <div class="cs-node">Engineering</div>
-      </div>
-      <div class="cs-panel cs-flow" role="group" aria-label="After (moving forward together): shared context and designer ownership">
-        <p class="cs-compare-label accent">After (moving forward together)</p>
-        <div class="cs-node">Product strategy</div><div class="cs-arrow"></div>
-        <div class="cs-triad"><div class="cs-node">Product</div><i>↔</i><div class="cs-node strong">Design</div><i>↔</i><div class="cs-node">Eng</div></div><div class="cs-arrow"></div>
-        <div class="cs-node">Shared context</div><div class="cs-arrow"></div>
-        <div class="cs-node accent">Designer ownership</div><div class="cs-arrow"></div>
-        <div class="cs-node">Evidence + critique</div><div class="cs-arrow"></div>
-        <div class="cs-node">Execution</div>
-      </div>
+      <p>That feedback got louder as engineering grew and adopted AI to speed through code. We were launching faster with less design confidence, and the team was stretched thin <b>trying to do it all</b>.</p>
+      <p>Engineers had come to expect a high-fidelity Figma mock for every flow and edge case, so our time went to tactical work. The goal wasn't to add process or become a decision gatekeeper. It was <i>enough</i> structure and context for designers to work <b>independently</b> while raising the <b>quality and consistency</b> of the work.</p>
     </div>
     <p class="cs-callout">The question became: <em>how do I scale design judgment without becoming the bottleneck?</em></p>
-  </section>
-
-  <!-- RESULTS -->
-  <section class="content-section" id="outcomes">
-    <p class="eyebrow all-caps soft">Results</p>
-    <h2 class="heading-3">What changed</h2>
-    <ul class="cs-results">
-      <li>
-        <span class="kicker">Team</span>
-        <span class="value word">More ownership</span>
-        <p>Designers engaging earlier, driving alignment, and operating with greater autonomy.</p>
-        <p class="proof">Designers lead large architectural changes freely and with clearer direction.</p>
-      </li>
-      <li>
-        <span class="kicker">Quality</span>
-        <span class="value word">Better judgment</span>
-        <p>More informed critique, intentional validation, and more attention to shared patterns.</p>
-        <p class="proof">Mobile app architecture is now scaled strategically instead of by hunch. More roadmap features ship on time, and launches are of a higher quality, resulting in fewer &ldquo;fast-follows.&rdquo;</p>
-      </li>
-      <li>
-        <span class="kicker">Leverage</span>
-        <span class="value word">Less coordination overhead</span>
-        <p>AI and lightweight operations make context, feedback, and cross-team awareness easier to maintain.</p>
-        <p class="proof">By my own timing, prepping for design critique dropped from about an hour to about ten minutes across roughly 20 reviews.</p>
-      </li>
-    </ul>
-    <blockquote class="cs-quote">
-      &ldquo;Design is finally involved in product roadmap discussions and it&rsquo;s a great thing!&rdquo;
-      <cite>Senior product designer</cite>
-    </blockquote>
-  </section>
-
-  <!-- HOW I DID IT -->
-  <section class="content-section" id="model">
-    <p class="eyebrow all-caps soft">How I did it</p>
-    <h2 class="heading-3">Three places where better systems created leverage.</h2>
-    <div class="cs-cols links">
-      <a href="#team">
-        <p class="eyebrow all-caps soft">01 · TEAM</p>
-        <h3>Scale the team</h3>
-        <p>Create autonomy without losing alignment.</p>
-        <span class="go">Operating model ↓</span>
-      </a>
-      <a href="#manager">
-        <p class="eyebrow all-caps soft">02 · MANAGER</p>
-        <h3>Scale the manager</h3>
-        <p>Use AI to raise the quality of feedback.</p>
-        <span class="go">Review prep ↓</span>
-      </a>
-      <a href="#judgment">
-        <p class="eyebrow all-caps soft">03 · JUDGMENT</p>
-        <h3>Scale judgment</h3>
-        <p>Match design rigor to actual product risk.</p>
-        <span class="go">Risk framework ↓</span>
-      </a>
-    </div>
   </section>
 
   <!-- 01 TEAM -->
@@ -172,46 +86,21 @@ const sections = [
         <h2 class="heading-3">Autonomy requires <i>visibility</i>, not more <i>approval gates</i>.</h2>
       </div>
     </div>
-    <div class="cs-split">
+    <div class="cs-move">
       <div class="cs-prose">
-        <p class="eyebrow all-caps soft">Problem</p>
         <p>Designers were spending long hours on mocks when what we needed was <b>bigger, systemic changes</b>.</p>
-        <p>In addition to other forums for design alignment, I introduced Design Triage: a dedicated space to align on our shared work and pull in design system and architectural big-rocks alongside our feature work.</p>
-        <CaseStudyFigure
-          src={boardImg}
-          alt="The design team's board with five columns, Needs Triage, Want to Do, Designing, In Review or Blocked, and Design Done, holding cards such as Table Migration, Card Migration, and Button component micro interactions."
-          caption="The <b>DS / patterns</b> board, live: design-system work moves from Needs Triage through Designing to Design Done."
-        />
+        <p>I introduced Design Triage: a weekly space to align on shared work and pull design system and architectural big rocks in alongside feature work. Design Jam brings PMs in earlier, and a Slack channel turns anyone&rsquo;s idea into a ticket.</p>
       </div>
-      <div class="cs-panel">
-        <div class="cs-ops" role="group" aria-label="Team operating model">
-          <div class="cs-node">Upcoming work</div><div class="cs-arrow"></div>
-          <div class="cs-node strong">Design triage</div>
-          <div class="cs-lanes">
-            <div class="cs-node">Product initiatives</div>
-            <div class="cs-node linked">DS / patterns</div>
-            <div class="cs-node">UX papercuts</div>
-          </div>
-          <div class="cs-join"></div><div class="cs-arrow"></div>
-          <div class="cs-node accent">Designer ownership</div><div class="cs-arrow"></div>
-          <div class="cs-node">Jam · critique · alignment</div><div class="cs-arrow"></div>
-          <div class="cs-node">Development</div>
-        </div>
-      </div>
+      <CaseStudyFigure
+        src={boardImg}
+        alt="The design team's board with six columns: Needs Triage with 97 cards, Want to Do with 20, Designing with 21, In Review or Blocked with 12, Design Done with 10, and Building with 4. Cards include Banner audit, Design migration template, Table Migration, Card Migration, and Button component micro interactions, most tagged Design System or Design Ops."
+        caption="The design team&rsquo;s board, live: design system and design ops work sits next to feature work, moving from Needs Triage through Designing and Design Done to Building."
+      />
+      <aside class="cs-outcome">
+        <p class="eyebrow all-caps">Result</p>
+        <p>Designers now drive bigger architectural changes in support of the roadmap, and I can see the decisions where my involvement has the most impact.</p>
+      </aside>
     </div>
-    <div class="cs-cols">
-      <div><h3>Design Triage</h3><p>Weekly visibility into upcoming work, conflicts, risks, and opportunities.</p></div>
-      <div><h3>Async coordination</h3><p>Less meeting overhead; better awareness of related work, AI-assistance where beneficial.</p></div>
-      <div><h3>Design Jam</h3><p>Earlier collaboration, including PMs. Documented decisions and shared notes.</p></div>
-      <div><h3>Product-design-at-Tive Slack Channel</h3><p>Quicker ideas from anyone into tickets.</p></div>
-    </div>
-    <aside class="cs-takeaway">
-      <p class="eyebrow all-caps soft">Result</p>
-      <ol>
-        <li>Designers can now drive bigger architectural changes in support of the product roadmap.</li>
-        <li>I now had visibility into the decisions where my involvement had the most impact.</li>
-      </ol>
-    </aside>
   </section>
 
   <!-- 02 MANAGER -->
@@ -223,41 +112,22 @@ const sections = [
         <h2 class="heading-3">AI helped me spend less time reconstructing context and more time challenging the work.</h2>
       </div>
     </div>
-    <div class="cs-split">
+    <div class="cs-move">
       <div class="cs-prose">
-        <p class="eyebrow all-caps soft">Problem</p>
-        <p>Managing senior designers across <i>many</i> simultaneous initiatives created a problem: <i>high quality feedback required gathering a lot of context before every review.</i></p>
-        <p>So I built a review-prep workflow in Claude. Give it a project name, it gathers recent context across Slack, Google Drive, and Figma and structures it around the questions I need answered before a critique.</p>
-        <p>In a few minutes I can see the problem statement, the decisions made during exploration, the tradeoffs and engineering input, and the open questions. It&rsquo;s like sitting in the planning meetings for every major project. I stop asking designers to replay all of the decisions made, and spend critique on strategy (&ldquo;Did you consider the work designer B is doing on product X?&rdquo; &ldquo;What persona are you targeting with option C?&rdquo;) instead of pixel-level feedback.</p>
+        <p>Managing senior designers across <i>many</i> simultaneous initiatives meant gathering a lot of context before every review.</p>
+        <p>So I built a review-prep workflow in Claude. Give it a project name and it gathers recent context from Slack, Google Drive, and Figma, structured around the questions I need answered before a critique.</p>
+        <p>I stop asking designers to replay every decision, and critique goes to strategy instead of pixel-level feedback.</p>
       </div>
-      <div class="cs-panel">
-        <div class="cs-prep" role="group" aria-label="AI design review prep workflow">
-          <div class="cs-sources"><div class="cs-node">Slack</div><div class="cs-node">Drive</div><div class="cs-node">Figma</div></div>
-          <div class="cs-wire"></div>
-          <div class="cs-node strong">Claude<br />review prep</div>
-          <div class="cs-wire"></div>
-          <div class="cs-qs">
-            <div class="cs-node">Why this solution?</div>
-            <div class="cs-node">Alternatives explored?</div>
-            <div class="cs-node">Tradeoffs?</div>
-            <div class="cs-node">Open questions?</div>
-            <div class="cs-node accent out">→ Design critique</div>
-          </div>
-        </div>
-      </div>
+      <CaseStudyFigure
+        src={reviewPrepImg}
+        alt="Excerpt from an AI-generated design review prep brief: a Biggest unanswered questions section listing open decisions about scope, architecture, edge cases, carried-over scope, and QA ownership."
+        caption="From a review-prep brief: the open questions worth challenging, gathered before the critique starts."
+      />
+      <aside class="cs-outcome">
+        <p class="eyebrow all-caps">Result</p>
+        <p>By my own timing, prep dropped from about an hour to about ten minutes across roughly 20 reviews. AI didn&rsquo;t replace design judgment. It created more room for it.</p>
+      </aside>
     </div>
-    <CaseStudyFigure
-      src={reviewPrepImg}
-      alt="Excerpt from an AI-generated design review prep brief: a Biggest unanswered questions section listing open decisions about scope, architecture, edge cases, carried-over scope, and QA ownership."
-      caption="From a review-prep brief: the open questions worth challenging, gathered before the critique starts."
-    />
-    <aside class="cs-takeaway">
-      <p class="eyebrow all-caps soft">Result</p>
-      <ol>
-        <li>Faster context and fewer basic questions, so reviews go straight to better feedback. By my own timing, prep dropped from about an hour to about ten minutes across roughly 20 reviews.</li>
-        <li>AI didn't replace design judgment. It created more room for it.</li>
-      </ol>
-    </aside>
   </section>
 
   <!-- 03 JUDGMENT -->
@@ -269,16 +139,9 @@ const sections = [
         <h2 class="heading-3">Not every design problem deserves the same process.</h2>
       </div>
     </div>
-    <div class="cs-split">
+    <div class="cs-move even">
       <div class="cs-prose">
-        <p class="eyebrow all-caps soft">System</p>
-        <p>Four parts that work together.</p>
-        <ul>
-          <li><b>Risk scoring:</b> Rate each decision by impact and uncertainty.</li>
-          <li><b>Validation library:</b> Pick the right method, from heuristic review and analytics to live in-product validation, surveys, interviews, and usability testing.</li>
-          <li><b>Design Triage:</b> Talk through risk calls as a team.</li>
-          <li><b>AI analysis tool:</b> Open to the broader org, not just designers.</li>
-        </ul>
+        <p>We rate each decision by <b>impact and uncertainty</b>, then pick a validation method to match, from heuristic review and analytics to interviews and usability testing. Risk calls get talked through in Design Triage.</p>
       </div>
       <div class="cs-panel">
         <div class="cs-matrix" role="table" aria-label="Validation by impact and uncertainty">
@@ -292,37 +155,118 @@ const sections = [
           <div class="cell c3" role="cell"><small>Evidence: focused</small><b>Focused, targeted validation</b></div>
           <div class="cell c4" role="cell"><small>Evidence: deep</small><b>Deep research + deeper validation</b></div>
         </div>
-        <div class="cs-pipeline">
-          <span class="cs-node">Assess risk</span><i>→</i><span class="cs-node">Choose method</span><i>→</i><span class="cs-node">Gather evidence</span><i>→</i><span class="cs-node accent">Decide</span>
-        </div>
       </div>
+      <CaseStudyFigure
+        src={riskAnalysisImg}
+        alt="A risk analysis document for a ticket about a misleading tracker warning. A summary table breaks the work into four milestones: define when the warning fires, pick the pattern, rewrite the copy, and add a way to suppress the warning. Each has a risk level of low or medium and a validation method, such as analytics review, heuristic review, a usability check, or customer conversations. Below the table, each milestone explains its risk and states a confidence level."
+        caption="A first pass from Claude, run against our risk framework: each milestone in a ticket gets a risk level, a confidence, and a validation method to match."
+      />
+      <aside class="cs-outcome">
+        <p class="eyebrow all-caps">Result</p>
+        <p>App architecture decisions are now made strategically rather than by hunch. More roadmap features ship on their scheduled date, and launches are higher quality.</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- CASE IN POINT: THE MIGRATION PROCESS (TABLES PILOT + BANNERS) -->
+  <section class="content-section" id="proof">
+    <p class="eyebrow all-caps soft">Case in point</p>
+    <h2 class="heading-3">No one owned the rollout, so <i>design took on the plan</i>.</h2>
+    <div class="cs-prose">
+      <p>Design system changes would get designed, and often built once, but the app-wide rollout took a very long time. Sometimes it never finished. No one owned the migration.</p>
+      <p>I proposed that design take on more of the planning: communicate intent better, partner with product to get the work onto teams&rsquo; boards, and partner with engineering and QA to keep the plan realistic. Another designer and I shaped that into a migration process and pitched it to our head of product.</p>
+      <p>The process has one test: <b>whoever owns the work can create tickets from the plan without coming back to design with questions.</b></p>
+    </div>
+
+    <div class="cs-run">
+      <p class="eyebrow all-caps soft">The pilot</p>
+      <h3>Tables, run by a designer on my team</h3>
+    </div>
+    <div class="cs-prose">
+      <p>A third designer piloted the process on Tables, a rollout that had already stalled across the platform. It&rsquo;s the Table Migration card on the board above. Their plan audits every list view, makes a decision on each one, and shows a before and after for all but two.</p>
     </div>
     <CaseStudyFigure
-      src={validationMethodsImg}
-      alt="Excerpt from the Design Operations Manual listing validation methods: heuristic or expert review, analytics and behavioral review, Pendo live validation, survey, and user interview, each with what it answers, when to use it, and examples."
-      caption="Validation method examples as listed in the Design Operations Manual"
-      contain
+      src={tablesPlanImg}
+      alt="A wide Figma canvas. Along the top, four documents: the migration plan brief, a before-you-start checklist, an audit guide, and a decisions table. Below them, a row of seventeen pairs of screens, each a screenshot of a current table page above its redesign."
+      caption="The pilot plan in Figma, built on the process template: brief, audit, and decisions along the top, then today&rsquo;s page and the proposed design for every remaining table."
     />
-    <aside class="cs-takeaway">
-      <p class="eyebrow all-caps soft">Result</p>
-      <p>App architecture decisions are now made strategically rather than by hunch. More roadmap features ship on their scheduled date, and launches are higher quality.</p>
+    <div class="cs-compare">
+      <div>
+        <p class="cs-compare-label">Before: today&rsquo;s Shipments list</p>
+        <CaseStudyFigure
+          src={tablesBeforeImg}
+          alt="The current Shipments list: a full-width search field above the tabs, a row of ten filter dropdowns, and each shipment row drawn as its own bordered card."
+        />
+      </div>
+      <div>
+        <p class="cs-compare-label accent">After: the new Table pattern</p>
+        <CaseStudyFigure
+          src={tablesAfterImg}
+          alt="The redesigned Shipments list: a compact search field, one filter bar holding all ten filters with Clear all and Save Filter, a count of results, a Customize table button, and rows separated by simple dividers."
+        />
+      </div>
+    </div>
+    <aside class="cs-outcome">
+      <p class="eyebrow all-caps">Where it stands</p>
+      <p>10 of 27 tables are on the new pattern. The other 17 each have a decision, a ticket, and a priority, ready for product to break down across their teams.</p>
+    </aside>
+
+    <div class="cs-run">
+      <p class="eyebrow all-caps soft">My own run</p>
+      <h3>Banners, which I audited and planned myself</h3>
+    </div>
+    <div class="cs-prose">
+      <p>The Banner Message component was built once, but the move to every banner never officially happened. I documented the component in the library, then ran an AI-assisted audit of the code and the test environment. It&rsquo;s the Banner audit card on the board above. The audit found 61 places the product shows an important, non-blocking notice. 42 use the component, and all of them inherit two differences from the Figma spec. The other 19 are older alerts and hand-built boxes outside the system.</p>
+      <p>My plan turns those 61 into 14 tickets, each with a priority. The first one fixes the shared component, which clears the inherited differences in all 42 at once.</p>
+    </div>
+    <CaseStudyFigure
+      src={bannersAuditImg}
+      alt="The top of the Banner Message audit. Summary tiles read 61 instances, 42 direct matches, 19 partial matches, 34 minor drift, 27 major drift, 0 exact match, and 24 variations. A panel compares the coded component with the Figma spec line by line: left padding and the dismiss default differ, everything else matches. A second panel lists the worst offenders, such as menus in the action slot, stacked banners, and older alert boxes."
+      caption="My audit: every notice in the product, the shared component checked line by line against the Figma spec, and the worst local variations."
+    />
+    <div class="cs-compare">
+      <div class="cs-panel cs-plan">
+        <p class="cs-compare-label">From my plan: 14 tickets</p>
+        <dl class="cs-facts rows">
+          <div>
+            <dt>P2</dt>
+            <dd><b>First:</b> fix the shared component. One change corrects the spacing and the dismiss default everywhere it&rsquo;s used.</dd>
+          </div>
+          <div>
+            <dt>P2</dt>
+            <dd>Tracker settings: show one banner at a time and take the menu out of the action slot.</dd>
+          </div>
+          <div>
+            <dt>P3 &times; 9</dt>
+            <dd>Replace older alerts and hand-built boxes with the component, remove local overrides, and decide whether banners get a title.</dd>
+          </div>
+          <div>
+            <dt>P4 &times; 3</dt>
+            <dd>Low-traffic and admin screens, done when a team is already working in that area.</dd>
+          </div>
+        </dl>
+      </div>
+      <CaseStudyFigure
+        src={bannersLibraryImg}
+        alt="The Banner Message page in the component library, laid out as five panels: an overview with a change log, the component in its four tones, usage guidelines with do and don&rsquo;t examples, layout and spacing with redlines and behaviors, and three examples from the product."
+        caption="The Banner Message page I wrote for the component library: when to use it, spacing, behaviors, and examples from the product."
+      />
+    </div>
+    <aside class="cs-outcome">
+      <p class="eyebrow all-caps">Where it stands</p>
+      <p>The plan is in draft. All 14 tickets are written and prioritized, 11 with a proposed team, for product to claim or reassign.</p>
     </aside>
   </section>
 
-  <!-- THE PEOPLE SIDE + FAILED EXPERIMENT -->
+  <!-- THE PEOPLE SIDE -->
   <section class="content-section" id="people">
     <p class="eyebrow all-caps soft">The people side</p>
     <h2 class="heading-3">A system only works if the designers grow with it.</h2>
     <div class="cs-cols">
       <div>
-        <p class="eyebrow all-caps soft">Ownership</p>
-        <h3>Bigger scope</h3>
-        <p>One designer led the tables redesign end to end, including PM and engineering alignment. They took ownership of systems work beyond a typical product scope and made systemic architectural changes inside product feature work.</p>
-      </div>
-      <div>
         <p class="eyebrow all-caps soft">Coaching</p>
         <h3>How I coach</h3>
-        <p>Senior designers need space to do their best work. I meet with them 1:1 every week, focus on growing systems-level and holistic solutions over granular pixel-pushing, and keep improving our shared processes so designers can spend their time on the most valuable work.</p>
+        <p>Weekly 1:1s focused on systems-level, holistic solutions over granular pixel-pushing.</p>
       </div>
       <div>
         <p class="eyebrow all-caps soft">Team</p>
@@ -330,8 +274,13 @@ const sections = [
         <p>I hired two versatile, senior designers and created individual growth frameworks and a design team leveling rubric.</p>
       </div>
     </div>
+    <blockquote class="cs-quote">
+      &ldquo;Design is finally involved in product roadmap discussions and it&rsquo;s a great thing!&rdquo;
+      <cite>Senior product designer</cite>
+    </blockquote>
   </section>
 
+  <!-- ONE EXPERIMENT THAT FAILED -->
   <section class="content-section" id="failed">
     <p class="eyebrow all-caps soft">One experiment that failed</p>
     <h2 class="heading-3">Scaling also meant knowing when to remove process.</h2>
@@ -366,43 +315,7 @@ const sections = [
     <p class="eyebrow all-caps soft">What I learned</p>
     <h2 class="heading-3">The manager shouldn't be <i>the system.</i></h2>
     <div class="cs-prose">
-      <p>The biggest shift in my management approach was realizing that scaling a senior team isn't about getting better at keeping track of everything, everywhere. It's about building systems that <b>empower the team to do their most valuable work</b>.</p>
-      <p>Clear ownership creates autonomy. Shared frameworks build consistency and free up valuable time. AI reduces the cost of context. And good design architecture lets individual decisions compound into something larger.</p>
-    </div>
-  </section>
-
-  <!-- ALSO: SCALING THE PRODUCT -->
-  <section class="content-section" id="product">
-    <p class="eyebrow all-caps soft">Also: scaling the product</p>
-    <h2 class="heading-3">Some design problems shouldn't be solved one feature at a time.</h2>
-    <p class="eyebrow all-caps soft">Observation</p>
-    <div class="cs-split even">
-      <div class="cs-prose"><p>We kept displaying the same underlying product objects in very different contexts. Solving each instance independently created inconsistency and lengthy, repeated design work.</p></div>
-      <div class="cs-prose"><p>So we defined each core object once—with shared hierarchy and interaction rules—and let context set the density. <b>Carrier and Driver</b> were the first to be trialed in Pickup Verification and Commodities work.</p></div>
-    </div>
-    <ObjectDensityDemo />
-    <div class="cs-cols">
-      <div><p class="eyebrow all-caps soft">Consistency</p><p>The same objects behave predictably everywhere.</p></div>
-      <div><p class="eyebrow all-caps soft">Velocity</p><p>Designers stop reinventing common presentation problems.</p></div>
-      <div><p class="eyebrow all-caps soft">Scale</p><p>New objects inherit an established framework.</p></div>
-    </div>
-    <p class="eyebrow all-caps soft">The platform layer underneath</p>
-    <div class="cs-cols">
-      <div>
-        <p class="eyebrow all-caps soft">FIGMA ↔ CODE</p>
-        <h3>Library audits against the codebase</h3>
-        <p>Audited Figma libraries against code; pushed for foundations and components as separate published files, variable names that match code tokens literally, and Code Connect to close the interpretation gap.</p>
-      </div>
-      <div>
-        <p class="eyebrow all-caps soft">WEB ↔ MOBILE</p>
-        <h3>A boundary for the platform</h3>
-        <p>Sorted features into Configure / Monitor / Act / Investigate. Configuration lives on web; lightweight action lives on mobile — a rule for what to standardize and what to differentiate.</p>
-      </div>
-      <div>
-        <p class="eyebrow all-caps soft">AI ↔ SYSTEM</p>
-        <h3>AI-assisted audits &amp; handoff</h3>
-        <p>A reusable AI workflow for auditing component libraries and generating developer handoff documentation — making the system cheaper to keep honest.</p>
-      </div>
+      <p>Scaling a senior team isn't about getting better at keeping track of everything, everywhere. It's about building systems that <b>empower the team to do their most valuable work</b>. Clear ownership creates autonomy. Shared frameworks build consistency. AI reduces the cost of context.</p>
     </div>
   </section>
 
@@ -421,8 +334,101 @@ const sections = [
 </CaseStudyLayout>
 
 <style is:global>
-  /* The DS / patterns node lights up while the board screenshot is hovered. */
-  #team .cs-split:has(.cs-zoom:hover) .cs-node.linked {
-    background: color-mix(in srgb, var(--color-vibrant) 30%, var(--color-bg));
+  /*
+    One "move": a short explanation and its result in a narrow column, with the
+    real artifact taking most of the width. On small screens it stacks in source
+    order: explanation, artifact, result.
+  */
+  .cs-move {
+    display: grid;
+    gap: var(--space-m);
+  }
+
+  @media screen and (min-width: 821px) {
+    .cs-move {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr);
+      grid-template-rows: auto 1fr;
+      column-gap: var(--space-l);
+      align-items: start;
+    }
+
+    .cs-move > .cs-prose {
+      grid-area: 1 / 1;
+    }
+
+    .cs-move > .cs-figure {
+      grid-area: 1 / 2 / -1 / 3;
+    }
+
+    .cs-move > .cs-outcome {
+      grid-area: 2 / 1;
+    }
+
+    /* Two artifacts: the diagram sits under the text, beside the screenshot. */
+    .cs-move.even {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: auto auto 1fr;
+    }
+
+    .cs-move.even > .cs-panel {
+      grid-area: 2 / 1;
+    }
+
+    .cs-move.even > .cs-outcome {
+      grid-area: 3 / 1;
+    }
+  }
+
+  /* The result of a move: one bold line under a raspberry rule. */
+  .cs-new .cs-outcome {
+    display: grid;
+    gap: var(--space-2xs);
+    padding-top: var(--space-xs);
+    border-top: 4px solid var(--accent);
+  }
+
+  .cs-new .cs-outcome .eyebrow {
+    margin-bottom: 0;
+    color: var(--accent-text);
+  }
+
+  .cs-new .cs-outcome p:not(.eyebrow) {
+    font: var(--font-body-3);
+    font-weight: 700;
+    max-width: 44rem;
+  }
+
+  /* Figures in a pair sit on the same top edge, whatever their labels. */
+  .cs-new .cs-run {
+    display: grid;
+    gap: var(--space-3xs);
+    margin-top: var(--space-m);
+    padding-top: var(--space-s);
+    border-top: 2px solid var(--fg);
+  }
+
+  .cs-new .cs-run .eyebrow {
+    margin-bottom: 0;
+  }
+
+  .cs-new .cs-run h3 {
+    font: var(--font-body-3);
+    font-weight: 700;
+  }
+
+  .cs-new .cs-plan {
+    display: grid;
+    align-content: start;
+    gap: var(--space-xs);
+  }
+
+  .cs-new .cs-plan .cs-facts.rows > div {
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+    gap: var(--space-s);
+  }
+
+  .cs-new .cs-compare > div {
+    display: grid;
+    align-content: start;
   }
 </style>
