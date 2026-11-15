@@ -9,17 +9,21 @@ interface Group {
 
 interface Tab {
   id: string;
+  /** Matching id in the expertise data, which supplies the one-line summary. */
+  area: string;
   label: string;
   groups: Group[];
 }
 
-const byId = (id: string) => areas.find((area) => area.id === id)?.groups ?? [];
+const area = (id: string) => areas.find((a) => a.id === id);
+const byId = (id: string) => area(id)?.groups ?? [];
 
 // The first tab is the copy from the Figma design. The other three tabs have
 // no content in the design yet, so they reuse the existing expertise data.
 const tabs: Tab[] = [
   {
     id: "player-coach",
+    area: "player-coach-leadership",
     label: "Player-Coach Leadership",
     groups: [
       {
@@ -47,14 +51,21 @@ const tabs: Tab[] = [
       },
     ],
   },
-  { id: "design-systems", label: "Design Systems", groups: byId("design-systems") },
+  {
+    id: "design-systems",
+    area: "design-systems",
+    label: "Design Systems",
+    groups: byId("design-systems"),
+  },
   {
     id: "product-strategy",
+    area: "product-and-business-strategy",
     label: "Product Strategy",
     groups: byId("product-and-business-strategy"),
   },
   {
     id: "ai-design-engineering",
+    area: "design-engineering-with-ai",
     label: "AI Design Engineering",
     groups: byId("design-engineering-with-ai"),
   },
@@ -71,17 +82,21 @@ const columns = (tab: Tab) => (tab.groups.length === 3 ? 3 : 2);
       description="Serving startups, growth-phase Orgs, and Post-IPO companies in systems, leadership, and strategy"
     />
     <div class="strengths" data-tabs>
-      <div class="tablist" role="tablist" aria-label="Strengths">
+      <div class="picker" role="tablist" aria-label="Four strengths">
         {tabs.map((tab, i) => (
           <button
-            class="tab"
+            class="pick"
             type="button"
             role="tab"
             id={`tab-${tab.id}`}
             aria-controls={`panel-${tab.id}`}
             aria-selected={i === 0 ? "true" : "false"}
             tabindex={i === 0 ? 0 : -1}
-          >{tab.label}</button>
+            style={`--i:${i}`}
+          >
+            <span class="name">{tab.label}</span>
+            <span class="mark" aria-hidden="true"></span>
+          </button>
         ))}
       </div>
       {tabs.map((tab, i) => (
@@ -90,19 +105,22 @@ const columns = (tab: Tab) => (tab.groups.length === 3 ? 3 : 2);
           role="tabpanel"
           id={`panel-${tab.id}`}
           aria-labelledby={`tab-${tab.id}`}
-          style={`--cols:${columns(tab)}`}
+          style={`--i:${i};--cols:${columns(tab)}`}
           hidden={i !== 0}
         >
-          {tab.groups.map((group) => (
-            <section class="highlight">
-              <h3>{group.heading}</h3>
-              <ul>
-                {group.items.map((item) => (
-                  <li>{item}</li>
-                ))}
-              </ul>
-            </section>
-          ))}
+          <p class="lead">{area(tab.area)?.line}</p>
+          <div class="groups">
+            {tab.groups.map((group) => (
+              <section class="highlight">
+                <h3>{group.heading}</h3>
+                <ul>
+                  {group.items.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+              </section>
+            ))}
+          </div>
         </div>
       ))}
     </div>
@@ -129,26 +147,27 @@ const columns = (tab: Tab) => (tab.groups.length === 3 ? 3 : 2);
     --selected-fg: var(--on-accent);
   }
 
-  .tablist {
+  /* Phones: an accordion. The four buttons stack, and the open strength's
+     panel sits directly under its own button. The buttons stay one tablist
+     in the markup; `display: contents` and `order` interleave the panels. */
+  .strengths {
     display: flex;
-    gap: var(--space-xs);
-    padding: 2px var(--space-sm) 0;
-    border-bottom: 2px solid var(--edge);
-    /* On narrow screens the four tabs scroll sideways instead of wrapping. */
-    overflow-x: auto;
-    scrollbar-width: none;
-    overscroll-behavior-x: contain;
+    flex-direction: column;
   }
 
-  .tablist::-webkit-scrollbar {
-    display: none;
+  .picker {
+    display: contents;
   }
 
-  .tab {
-    flex: none;
-    padding: var(--space-sm);
+  .pick {
+    order: calc(var(--i) * 2);
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-sm);
+    min-height: 44px;
+    padding: var(--space-sm) var(--space-md);
     border: 2px solid var(--edge);
-    border-bottom: 0;
+    border-radius: 3px;
     background: transparent;
     color: var(--fg);
     font-family: var(--font-body);
@@ -156,31 +175,63 @@ const columns = (tab: Tab) => (tab.groups.length === 3 ? 3 : 2);
     font-size: var(--fs-body);
     line-height: 1.2;
     letter-spacing: 1px;
-    white-space: nowrap;
+    text-align: left;
     cursor: pointer;
     transition: background-color 0.15s, color 0.15s;
   }
 
-  .tab:hover {
+  .pick + .pick {
+    margin-top: var(--space-sm);
+  }
+
+  .pick:hover {
     background: var(--subdued);
   }
 
-  .tab[aria-selected="true"] {
+  .pick[aria-selected="true"] {
     background: var(--selected-bg);
     color: var(--selected-fg);
   }
 
-  .tab:focus-visible {
-    outline-offset: -5px;
+  .mark {
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: var(--fs-mono);
+  }
+
+  .mark {
+    margin-left: auto;
+  }
+
+  .mark::before {
+    content: "+";
+  }
+
+  .pick[aria-selected="true"] .mark::before {
+    content: "\2212";
   }
 
   .panel {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
+    order: calc(var(--i) * 2 + 1);
+    margin-block: var(--space-sm);
   }
 
   .panel[hidden] {
     display: none;
+  }
+
+  /* The strength's one-line claim, above the detail that backs it up. */
+  .lead {
+    margin-bottom: var(--space-md);
+    font-weight: 700;
+    font-size: var(--fs-heading);
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+
+  .groups {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .highlight {
@@ -208,8 +259,36 @@ const columns = (tab: Tab) => (tab.groups.length === 3 ? 3 : 2);
     margin-top: var(--space-sm);
   }
 
-  @media (min-width: 54rem) {
+  /* Wider screens: the buttons sit in a row above one shared panel, and wrap
+     onto a second row instead of scrolling sideways. */
+  @media (min-width: 40rem) {
+    .picker {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-lg);
+    }
+
+    .pick,
     .panel {
+      order: 0;
+    }
+
+    .pick + .pick {
+      margin-top: 0;
+    }
+
+    .panel {
+      margin-block: 0;
+    }
+
+    .mark {
+      display: none;
+    }
+  }
+
+  @media (min-width: 54rem) {
+    .groups {
       grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
     }
   }
@@ -221,14 +300,19 @@ const columns = (tab: Tab) => (tab.groups.length === 3 ? 3 : 2);
     const panels = tabs.map((tab) => document.getElementById(tab.getAttribute("aria-controls") ?? ""));
 
     const select = (index: number, focus = false) => {
+      // In the stacked layout a panel closing above the pressed button moves
+      // it. Measure before and after, and scroll by the difference so the
+      // button stays where it was pressed.
+      const before = tabs[index].getBoundingClientRect().top;
       tabs.forEach((tab, i) => {
         const on = i === index;
         tab.setAttribute("aria-selected", String(on));
         tab.tabIndex = on ? 0 : -1;
         if (panels[i]) panels[i]!.hidden = !on;
       });
-      tabs[index].scrollIntoView({ block: "nearest", inline: "nearest" });
-      if (focus) tabs[index].focus();
+      const shift = tabs[index].getBoundingClientRect().top - before;
+      if (shift) window.scrollBy({ top: shift, behavior: "instant" });
+      if (focus) tabs[index].focus({ preventScroll: true });
     };
 
     tabs.forEach((tab, i) => {
@@ -236,8 +320,8 @@ const columns = (tab: Tab) => (tab.groups.length === 3 ? 3 : 2);
       tab.addEventListener("keydown", (event) => {
         const last = tabs.length - 1;
         const next =
-          event.key === "ArrowRight" ? (i === last ? 0 : i + 1)
-          : event.key === "ArrowLeft" ? (i === 0 ? last : i - 1)
+          event.key === "ArrowRight" || event.key === "ArrowDown" ? (i === last ? 0 : i + 1)
+          : event.key === "ArrowLeft" || event.key === "ArrowUp" ? (i === 0 ? last : i - 1)
           : event.key === "Home" ? 0
           : event.key === "End" ? last
           : null;
