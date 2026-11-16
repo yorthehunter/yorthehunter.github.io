@@ -1,0 +1,174 @@
+---
+import { Image } from "astro:assets";
+import ActionLink from "./ActionLink.astro";
+import tokensThumb from "../../assets/images/quick-tokens-thumb.png";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+// Quick looks are short write-ups that can ship before the project is done.
+// Add one by appending to this list; `status` is shown as the first chip.
+const looks = [
+  {
+    eyebrow: "Design systems at Tive",
+    title: "Bringing semantic color tokens to a live design system",
+    summary:
+      "Why components pointing at raw palette shades was a problem, the role-based layer I added, two contrast decisions, and what is still open. No outcomes yet.",
+    status: "In progress",
+    tags: ["Design systems", "Accessibility"],
+    image: tokensThumb,
+    alt: "Success and warning color swatches shown twice: with white text, which fails contrast, and with dark text, which passes.",
+    href: `${base}/work/semantic-color-tokens`,
+  },
+];
+---
+
+<div class="quick-looks" id="quick-looks">
+  <div class="quick-heading">
+    <h3 class="display">Quick Looks</h3>
+    <p class="mono">Short write-ups, including work in progress</p>
+  </div>
+  <ul class="looks">
+    {looks.map((look) => (
+      <li class="look">
+        {/* The CTA below is the keyboard link; the image and title are mouse
+            and touch shortcuts to the same place. */}
+        <a class="media" href={look.href} tabindex="-1">
+          <Image
+            src={look.image}
+            alt={look.alt}
+            widths={[320, 640]}
+            sizes="(min-width: 40rem) 280px, 100vw"
+            loading="lazy"
+          />
+        </a>
+        <div class="body">
+          <a class="heading" href={look.href} tabindex="-1">
+            <p class="mono">{look.eyebrow}</p>
+            <h4 class="display">{look.title}</h4>
+          </a>
+          <p class="summary">{look.summary}</p>
+          <ul class="chips">
+            <li class="chip status">{look.status}</li>
+            {look.tags.map((tag) => (
+              <li class="chip">{tag}</li>
+            ))}
+          </ul>
+          <ActionLink href={look.href} label="Take a Quick Look" />
+        </div>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .quick-looks {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .quick-heading {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--fg);
+  }
+
+  .quick-heading h3 {
+    font-size: var(--fs-heading);
+  }
+
+  .looks {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  /* A smaller version of the featured story row: these are shorter reads. */
+  .look {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-md);
+    padding-bottom: var(--space-lg);
+    border-bottom: 2px solid var(--fg);
+  }
+
+  .media {
+    display: block;
+    aspect-ratio: 10 / 7;
+    border: 4px solid var(--fg);
+    background: #fff;
+    overflow: hidden;
+    transition: border-color 0.15s;
+  }
+
+  .media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .media:hover {
+    border-color: var(--accent-text);
+  }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+    min-width: 0;
+  }
+
+  .heading {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .heading:hover {
+    color: var(--accent-text);
+  }
+
+  .heading h4 {
+    margin: 0;
+    font-size: var(--fs-heading);
+  }
+
+  .summary {
+    max-width: 61rem;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+
+  .chip {
+    padding: var(--space-xs);
+    background: var(--subdued);
+    font-family: var(--font-mono);
+    font-size: var(--fs-chip);
+    line-height: 1.4;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .chip.status {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+
+  @media (min-width: 40rem) {
+    .look {
+      grid-template-columns: minmax(0, 17.5rem) minmax(0, 1fr);
+      gap: var(--space-lg);
+      align-items: start;
+    }
+  }
+</style>

@@ -1,0 +1,606 @@
+---
+import CaseStudyLayout from "../../layouts/CaseStudyLayout.astro";
+import HomeLayout from "../../layouts/HomeLayout.astro";
+import SiteHeader from "../../components/home/SiteHeader.astro";
+import { resumeUrl } from "../../data/site-links";
+import ActionLink from "../../components/home/ActionLink.astro";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+// The visuals on this page are drawn in HTML and CSS so they follow the theme.
+// Swatch fills are the real token values from the Foundation Library; ratios
+// are WCAG 2.x, computed from those values.
+const DARK_TEXT = "#0b0b0b";
+const fills = [
+  { tone: "Error", bg: "#c93631", white: "5.18", token: "5.18", tokenDark: false },
+  { tone: "Info", bg: "#2b6ddb", white: "4.87", token: "4.87", tokenDark: false },
+  { tone: "Success", bg: "#008b61", white: "4.32", token: "4.56", tokenDark: true },
+  { tone: "Warning", bg: "#f6d142", white: "1.49", token: "13.23", tokenDark: true },
+];
+const passesAA = (ratio: string) => Number(ratio) >= 4.5;
+
+const components = ["Banner", "Toast", "Badge", "Tag", "Form message"];
+
+const anatomy = [
+  { part: "color", name: "Category", options: "Always \u201ccolor\u201d" },
+  { part: "/ bg", name: "Property", options: "bg \u00b7 text \u00b7 icon \u00b7 border" },
+  { part: "/ warning", name: "Tone", options: "error \u00b7 info \u00b7 warning \u00b7 success \u00b7 neutral" },
+  { part: "/ subtle", name: "Strength", options: "subtle \u00b7 solid" },
+];
+
+const board = [
+  {
+    label: "Done",
+    note: "In Figma, on a branch",
+    items: [
+      "Role-based color layer: 48 tokens over a 72-step palette",
+      "Colors, Typography, and Layout docs pages rebuilt",
+      "Contrast checked for each text and fill pairing",
+      "WCAG chosen as the pass or fail standard",
+    ],
+  },
+  {
+    label: "Open decisions",
+    note: "Not settled",
+    items: [
+      "Green means both \u201cprimary action\u201d and \u201csuccess\u201d",
+      "Hover and pressed: overlays, or one token per state",
+      "Focus ring is 2.3 : 1, below the 3 : 1 minimum",
+      "No dark mode (yet)",
+    ],
+  },
+  {
+    label: "Next",
+    note: "Not started",
+    items: [
+      "Add the role tokens to the code",
+      "Move components from shades to roles",
+      "The test: count the files the orange to yellow change touches",
+    ],
+  },
+];
+
+const sections = [
+  { id: "problem", label: "Problem" },
+  { id: "approach", label: "Approach" },
+  { id: "decisions", label: "Decisions" },
+  { id: "status", label: "Status" },
+];
+---
+
+<CaseStudyLayout
+  title="Semantic Color Tokens at Tive · Brian Cleveland"
+  description="A work-in-progress look at moving Tive's design system from raw palette steps to semantic color tokens, with the decisions made so far and what is still open."
+  navLabel="Quick Look: Semantic Color Tokens"
+  variant="new"
+  shell={HomeLayout}
+  sections={sections}
+>
+  <Fragment slot="header">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <SiteHeader resumeUrl={resumeUrl} />
+  </Fragment>
+
+  <!-- HERO -->
+  <header class="content-section">
+    <p class="eyebrow all-caps soft">Quick look • Design systems at Tive • In progress, November 2026</p>
+    <h1 class="heading-1">Bringing semantic color tokens to a live design system</h1>
+    <p class="cs-lede">
+      Components used primitive palette shades, which meant changing the warning color from orange to yellow meant hunting down all 280 stylesheets. A semantic token layer named by role makes it one edit.
+    </p>
+    <ul class="cs-stats">
+      <li><span class="value">~1,000</span><span class="label">Hardcoded hex values in the code</span></li>
+      <li><span class="value">~280</span><span class="label">Stylesheets they sit in</span></li>
+      <li><span class="value">48</span><span class="label">Role tokens, over a 72-step palette</span></li>
+      <li><span class="value">10</span><span class="label">Tokens in use that were never defined</span></li>
+    </ul>
+    <dl class="cs-facts rows">
+      <div>
+        <dt>Status</dt>
+        <dd><b>This is a work in progress.</b> Currently, the work is pending review from the product team.</dd>
+      </div>
+      <div>
+        <dt>My role</dt>
+        <dd>Tive product design lead and systems owner. I am solely leading this work using Claude for auditing, contrast assurance, and faster documentation builds.</dd>
+      </div>
+    </dl>
+  </header>
+
+  <!-- THE PROBLEM -->
+  <section class="content-section" id="problem">
+    <p class="eyebrow all-caps soft">The problem</p>
+    <h2 class="heading-3">Colors had no <em class="cs-accent">meaning</em>.</h2>
+    <div class="cs-prose">
+      <p>Components in Figma <em>and</em> in code directly referenced primitives like <code>gray-85</code>. So &ldquo;we&rsquo;re changing the warning color from orange to yellow&rdquo; meant editing every component that used orange. A count of the codebase found about <b>1,000 hardcoded hex values across about 280 stylesheets</b>. It also found 16 places that reference 10 token names that were never defined, like <code>gray-80</code>, which isn&rsquo;t in the palette.</p>
+      <p>The docs disagreed with themselves too. Green was both &ldquo;primary action&rdquo; and &ldquo;success&rdquo;, and orange was still called &ldquo;warning&rdquo; after yellow had been chosen.</p>
+    </div>
+    <figure class="cs-figure tk-fig">
+      <div class="tk-change">
+        <div class="tk-box">
+          <p class="tk-label">Before: components point at a shade</p>
+          <ul class="tk-links">
+            {components.map((name) => (
+              <li>
+                <span class="tk-chip">{name}</span>
+                <span class="tk-arrow" aria-hidden="true">&rarr;</span>
+                <span class="tk-chip"><i class="tk-dot" style="background:#d27024"></i>orange</span>
+                <span class="tk-edit">edit</span>
+              </li>
+            ))}
+          </ul>
+          <p class="tk-sum">One edit per component</p>
+          <p class="tk-note">And the same again for every hardcoded hex value.</p>
+        </div>
+        <div class="tk-box">
+          <p class="tk-label accent">After: components point at a role</p>
+          <div class="tk-role">
+            <ul class="tk-stack">
+              {components.map((name) => (
+                <li><span class="tk-chip">{name}</span></li>
+              ))}
+            </ul>
+            <span class="tk-arrow" aria-hidden="true">&rarr;</span>
+            <div class="tk-target">
+              <p class="tk-small">Role token</p>
+              <span class="tk-chip strong">color/bg/warning/solid</span>
+              <p class="tk-small">&darr; points to one palette step</p>
+              <span class="tk-chip was"><i class="tk-dot" style="background:#d27024"></i>orange</span>
+              <span class="tk-chip"><i class="tk-dot" style="background:#f6d142"></i>yellow-50 <span class="tk-edit">edit</span></span>
+            </div>
+          </div>
+          <p class="tk-sum">One edit, in one place</p>
+          <p class="tk-note">Not done yet: components still have to move to role tokens first.</p>
+        </div>
+      </div>
+      <figcaption>The idea in one picture, using the change that started this: warning moves from orange to yellow.</figcaption>
+    </figure>
+  </section>
+
+  <!-- WHAT I DID -->
+  <section class="content-section" id="approach">
+    <p class="eyebrow all-caps soft">What I did</p>
+    <h2 class="heading-3">I added the semantic token layer.</h2>
+    <div class="cs-prose">
+      <p>I added a layer between the palette and the components: tokens named for the job they do, like <code>color/text/error/solid</code> and <code>color/bg/warning/subtle</code>. Designers can design for the purpose, removing the decision of &ldquo;which color?&rdquo; every time.</p>
+      <p>Then I rebuilt the Colors documentation page: how color works, meaning, usage rules, interaction states, accessibility, and token naming. Swatches are bound to the live variables, so the page can&rsquo;t quietly show the wrong color.</p>
+    </div>
+    <figure class="cs-figure tk-fig">
+      <ol class="tk-anatomy">
+        {anatomy.map((piece) => (
+          <li>
+            <span class="tk-part">{piece.part}</span>
+            <b>{piece.name}</b>
+            <span class="tk-note">{piece.options}</span>
+          </li>
+        ))}
+      </ol>
+      <div class="tk-box tk-map">
+        <i class="tk-tile" style="background:#fbeebe" aria-hidden="true"></i>
+        <p><span class="tk-small">In Figma</span><code>color/bg/warning/subtle</code></p>
+        <span class="tk-equals" aria-hidden="true">=</span>
+        <p><span class="tk-small">In code</span><code>var(--color-bg-warning-subtle)</code></p>
+      </div>
+      <figcaption>How a tone token is named: what it colors, what it means, how strong it is. Slashes in Figma become dashes in CSS, so designers and engineers use the same word for the same thing.</figcaption>
+    </figure>
+  </section>
+
+  <!-- TWO DECISIONS -->
+  <section class="content-section" id="decisions">
+    <p class="eyebrow all-caps soft">Two decisions</p>
+    <h2 class="heading-3">WCAG decides contrast, and each fill gets its own text color.</h2>
+    <div class="cs-prose">
+      <p><b>WCAG decides, APCA advises.</b> On our own palette the two disagree. White text on our success green passes APCA&rsquo;s &ldquo;any text&rdquo; level but fails WCAG AA at 4.3:1. I chose WCAG as the pass or fail standard because it&rsquo;s what audits and accessibility law point to. APCA stays as guidance, and I&rsquo;ll revisit once WCAG 3 is final.</p>
+    </div>
+    <figure class="cs-figure tk-fig">
+      <div class="tk-verdicts">
+        <div class="tk-swatch big" style="background:#008b61;color:#fff">
+          <span class="tk-aa" aria-hidden="true">Aa</span>
+          <span>Shipment delivered</span>
+          <span class="tk-hex">green-50 #008b61</span>
+        </div>
+        <div class="tk-box">
+          <p class="tk-label">APCA (advisory)</p>
+          <p class="tk-big">&ldquo;all&rdquo;</p>
+          <p class="tk-sum">Fine for any text</p>
+          <p class="tk-note">Our APCA chart labels this pairing usable at any size and weight.</p>
+        </div>
+        <div class="tk-box">
+          <p class="tk-label accent">WCAG 2.x (decides)</p>
+          <p class="tk-big">4.32 : 1</p>
+          <p class="tk-sum fail">Fails AA for body text</p>
+          <p class="tk-note">Body text needs 4.5 : 1. It passes only for large text (3 : 1).</p>
+        </div>
+      </div>
+      <figcaption>Same swatch, two verdicts: white text on our success green.</figcaption>
+    </figure>
+    <div class="cs-prose">
+      <p><b>One text-on-fill token per tone.</b> White text passes on the red and blue fills but fails on yellow at 1.5:1. So &ldquo;text on a solid fill&rdquo; can&rsquo;t be one shared token. Each tone gets its own.</p>
+    </div>
+    <figure class="cs-figure tk-fig">
+      {[
+        { key: "white", label: "A. White text on every fill" },
+        { key: "token", label: "B. The text color each token actually uses" },
+      ].map((row) => (
+        <div class="tk-strip">
+          <p class="tk-label">{row.label}</p>
+          <ul class="tk-swatches">
+            {fills.map((fill) => {
+              const ratio = row.key === "white" ? fill.white : fill.token;
+              const dark = row.key === "token" && fill.tokenDark;
+              const ok = passesAA(ratio);
+              return (
+                <li>
+                  <div class="tk-swatch" style={`background:${fill.bg};color:${dark ? DARK_TEXT : "#fff"}`}>
+                    <span class="tk-aa" aria-hidden="true">Aa</span>
+                    <span>{fill.tone} fill</span>
+                  </div>
+                  <p class="tk-ratio">
+                    <b>{ratio} : 1</b>
+                    <span class:list={["tk-verdict", !ok && "fail"]}>{ok ? "Pass" : "Fail"}</span>
+                  </p>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ))}
+      <figcaption>WCAG 2.x contrast of text on each solid fill, computed from the real token values. Body text needs 4.5 : 1. Success and warning use dark text because white fails.</figcaption>
+    </figure>
+  </section>
+
+  <!-- WHERE IT STANDS -->
+  <section class="content-section" id="status">
+    <p class="eyebrow all-caps soft">Where it stands</p>
+    <h2 class="heading-3">Designed, but not yet migrated or measured.</h2>
+    <figure class="cs-figure tk-fig">
+      <div class="tk-board">
+        {board.map((column) => (
+          <div class="tk-box">
+            <p class="tk-label"><b>{column.label}</b> {column.note}</p>
+            <ul class="tk-items">
+              {column.items.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <figcaption>Done, open, and next. Nothing on the board is a measured outcome.</figcaption>
+    </figure>
+    <p class="cs-callout">The outcomes will come soon: <em>how many files does the orange to yellow change touch?</em></p>
+  </section>
+
+  <div class="content-section">
+    <div class="cs-sign">
+      <span>Brian Cleveland · Quick look, work in progress</span>
+      <span>Counts are from November 2026. None are outcomes.</span>
+    </div>
+    <nav class="navigation-list" aria-label="More work">
+      <ul>
+        <li><ActionLink href={`${base}/#my-work`} label="Back to all work" /></li>
+        <li><ActionLink href={`${base}/work/tive`} label="Read: Scaling design judgment at Tive" variant="filled" /></li>
+      </ul>
+    </nav>
+  </div>
+</CaseStudyLayout>
+
+<style>
+  /* Visuals drawn in the page: square, stroked boxes in the site's own type,
+     so they follow light and dark mode and reflow on small screens. Only the
+     swatch fills are fixed, because they are the product's real colors. */
+  .tk-fig {
+    gap: var(--space-s);
+  }
+
+  .tk-box {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding: var(--space-s);
+    border: 2px solid var(--fg);
+  }
+
+  .tk-label,
+  .tk-small,
+  .tk-edit,
+  .tk-hex,
+  .tk-verdict {
+    font-family: var(--font-mono);
+    font-size: var(--fs-chip);
+    line-height: 1.4;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .tk-label.accent,
+  .tk-edit,
+  .tk-sum.fail {
+    color: var(--accent-text);
+  }
+
+  .tk-label b {
+    margin-right: var(--space-2xs);
+    padding: 2px 6px;
+    background: var(--fg);
+    color: var(--bg);
+    font-weight: 400;
+  }
+
+  .tk-sum {
+    font: var(--font-body-3);
+    font-weight: 700;
+  }
+
+  .tk-note {
+    font: var(--font-body-4);
+    color: var(--color-secondary);
+  }
+
+  .tk-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    padding: 4px 10px;
+    border: 2px solid var(--fg);
+    font-family: var(--font-mono);
+    font-size: var(--fs-chip);
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+
+  .tk-chip.strong {
+    background: var(--fg);
+    color: var(--bg);
+  }
+
+  .tk-chip.was {
+    border-style: dashed;
+    opacity: 0.55;
+    text-decoration: line-through;
+  }
+
+  .tk-dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    border: 1px solid var(--fg);
+    border-radius: 50%;
+  }
+
+  .tk-arrow {
+    font-family: var(--font-mono);
+  }
+
+  /* 1. One edit per component vs one edit in one place */
+  .tk-change {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-s);
+  }
+
+  .tk-links,
+  .tk-stack,
+  .tk-target {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2xs);
+  }
+
+  .tk-links li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2xs);
+  }
+
+  .tk-role {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  .tk-stack {
+    flex: none;
+    padding-right: var(--space-xs);
+    border-right: 4px solid var(--accent);
+  }
+
+  /* The token name is the longest thing here; let it wrap on narrow screens. */
+  .tk-target {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .tk-target .tk-chip {
+    max-width: 100%;
+    flex-wrap: wrap;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .tk-change .tk-sum {
+    margin-top: auto;
+    padding-top: var(--space-xs);
+  }
+
+  /* 2. Token anatomy */
+  .tk-anatomy {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-xs);
+    list-style: none;
+  }
+
+  .tk-anatomy li {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+  }
+
+  .tk-part {
+    display: grid;
+    place-items: center;
+    min-height: 5rem;
+    margin-bottom: var(--space-2xs);
+    padding: var(--space-xs);
+    border: 2px solid var(--fg);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-2);
+    line-height: 1.1;
+  }
+
+  .tk-anatomy li:nth-child(3) .tk-part {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--on-accent);
+  }
+
+  .tk-map {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-s);
+  }
+
+  .tk-map p {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+  }
+
+  .tk-map code {
+    font-family: var(--font-mono);
+    font-size: var(--fs-body);
+    overflow-wrap: anywhere;
+  }
+
+  .tk-tile {
+    width: 3.5rem;
+    height: 3.5rem;
+    border: 2px solid var(--fg);
+  }
+
+  .tk-equals {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-2);
+  }
+
+  /* 3 and 4. Swatches */
+  .tk-swatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3xs);
+    min-height: 8rem;
+    padding: var(--space-xs);
+    border: 2px solid var(--fg);
+    font: var(--font-body-4);
+    text-align: center;
+  }
+
+  .tk-swatch.big {
+    min-height: 13rem;
+    font: var(--font-body-3);
+  }
+
+  .tk-aa {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: var(--font-size-3);
+    line-height: 1;
+  }
+
+  .tk-swatch.big .tk-aa {
+    font-size: var(--font-size-4);
+  }
+
+  .tk-hex {
+    text-transform: none;
+  }
+
+  .tk-verdicts {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-s);
+  }
+
+  .tk-big {
+    font-family: var(--font-display);
+    font-size: var(--font-size-3);
+    line-height: 1.1;
+  }
+
+  .tk-strip {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .tk-swatches {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-xs);
+    list-style: none;
+  }
+
+  .tk-swatches li {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+  }
+
+  .tk-ratio {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2xs);
+    font: var(--font-body-3);
+  }
+
+  .tk-verdict {
+    padding: 2px 6px;
+    border: 2px solid var(--fg);
+  }
+
+  .tk-verdict.fail {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--on-accent);
+  }
+
+  /* 5. Status board */
+  .tk-board {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-s);
+    align-items: start;
+  }
+
+  .tk-items {
+    list-style: none;
+    font: var(--font-body-4);
+  }
+
+  .tk-items li {
+    padding-block: var(--space-2xs);
+    border-top: 1px solid var(--fg);
+  }
+
+  .tk-items li:last-child {
+    padding-bottom: 0;
+  }
+
+  @media (max-width: 820px) {
+    .tk-change,
+    .tk-verdicts,
+    .tk-board {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .tk-anatomy,
+    .tk-swatches {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>
