@@ -41,22 +41,26 @@ const { title, description } = Astro.props;
     color-scheme: light;
 
     /* Palette (from the Figma "Color" variables) */
-    --color-dark-gray: #121212;
-    --color-light-cream: #f2f0ea;
+    --color-ink: #1d2229;
+    --color-paper: #f0f3f6;
+    /* Borders and rules: close to the text color, a step more muted. */
+    --color-line-on-paper: #4b5563;
+    --color-line-on-ink: #aab3c0;
     --color-dark-raspberry: #c4005c;
     --color-bright-teal: #18f1ca;
 
     /* Semantic roles. Dark mode only swaps these. */
-    --bg: var(--color-light-cream);
-    --fg: var(--color-dark-gray);
-    --subdued: rgba(18, 18, 18, 0.2);
+    --bg: var(--color-paper);
+    --fg: var(--color-ink);
+    --subdued: color-mix(in srgb, var(--fg) 20%, transparent);
+    --line: var(--color-line-on-paper);
     --accent: var(--color-dark-raspberry);
-    --on-accent: var(--color-light-cream);
+    --on-accent: var(--color-paper);
     --accent-text: var(--color-dark-raspberry);
-    --band-bg: var(--color-dark-gray);
-    --band-fg: var(--color-light-cream);
+    --band-bg: var(--color-ink);
+    --band-fg: var(--color-paper);
     --band-eyebrow: var(--color-bright-teal);
-    --tab-active-bg: var(--color-dark-gray);
+    --tab-active-bg: var(--color-ink);
     --tab-active-fg: var(--color-bright-teal);
 
     /* Type families */
@@ -93,15 +97,15 @@ const { title, description } = Astro.props;
 
   html.dark {
     color-scheme: dark;
-    --bg: var(--color-dark-gray);
-    --fg: var(--color-light-cream);
-    --subdued: rgba(242, 240, 234, 0.2);
+    --bg: var(--color-ink);
+    --fg: var(--color-paper);
+    --line: var(--color-line-on-ink);
     /* The raspberry fill stays; raspberry as text on near-black needs a lift. */
     --accent-text: #ff4d94;
-    --band-bg: var(--color-light-cream);
-    --band-fg: var(--color-dark-gray);
+    --band-bg: var(--color-paper);
+    --band-fg: var(--color-ink);
     --band-eyebrow: var(--color-dark-raspberry);
-    --tab-active-bg: var(--color-light-cream);
+    --tab-active-bg: var(--color-paper);
     --tab-active-fg: var(--color-dark-raspberry);
   }
 
@@ -177,7 +181,7 @@ const { title, description } = Astro.props;
 
   /* One band per page section, with a 4px rule between them. */
   .band {
-    border-top: 4px solid var(--fg);
+    border-top: 4px solid var(--line);
   }
 
   .band-content {
