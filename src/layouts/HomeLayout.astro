@@ -115,6 +115,15 @@ const { title, description } = Astro.props;
     box-sizing: border-box;
   }
 
+  /* Fast repeat taps (the theme toggle, nav buttons) shouldn't double-tap zoom.
+     Pinch-zoom still works, so this is safe for accessibility. */
+  a,
+  button,
+  [role="tab"],
+  summary {
+    touch-action: manipulation;
+  }
+
   html {
     background: var(--bg);
     scroll-padding-top: var(--header-offset);
