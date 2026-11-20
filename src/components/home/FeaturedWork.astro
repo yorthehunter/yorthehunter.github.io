@@ -4,6 +4,7 @@ import ActionLink from "./ActionLink.astro";
 import tiveLogo from "../../assets/images/tive-logo.png";
 import modeDS from "../../assets/images/sample-sf-mode.png";
 import globalNav from "../../assets/images/home-global-nav.png";
+import personalizedHome from "../../assets/images/sample-mh-home.png";
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
@@ -16,6 +17,15 @@ const stories = [
     alt: "Tive logo",
     position: "center",
     cta: { label: "Read the Case Study", href: `${base}/work/tive`, external: false },
+  },
+  {
+    eyebrow: "Personalizing the member home screen at Modern Health",
+    title: "A home screen that meets members where they are",
+    tags: ["Personalization", "Modular design", "Cross-platform"],
+    image: personalizedHome,
+    alt: "The redesigned Modern Health home screen on a laptop and a phone, with a For You list of next steps and Your 1:1 Care.",
+    position: "center",
+    cta: { label: "Read the Case Study", href: `${base}/work/personalized-home`, external: false },
   },
   {
     eyebrow: "Growing adoption across 9 product teams at Stitch Fix",

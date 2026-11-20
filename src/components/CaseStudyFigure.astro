@@ -7,6 +7,8 @@ interface ScrollFrame {
   /** Full-height export of a frame that scrolls in the source design. */
   src: ImageMetadata;
   alt: string;
+  /** A phone-width frame: the lightbox scrolls it at phone width instead of full width. */
+  narrow?: boolean;
 }
 
 interface Props {
@@ -30,6 +32,7 @@ const frames = scroll
       scroll.map(async (f) => ({
         label: f.label,
         alt: f.alt,
+        narrow: f.narrow,
         src: (await getImage({ src: f.src, width: Math.min(f.src.width, 1800) })).src,
       })),
     )

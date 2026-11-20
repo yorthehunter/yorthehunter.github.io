@@ -113,7 +113,7 @@ export const areas: ExpertiseArea[] = [
         heading: "Business impact and value creation",
         items: [
           "Anomalie: rebrand increased engagement 25% and retention 40%",
-          "Modern Health: personalized home screen raised return rate 25% against a 30-day benchmark",
+          "Modern Health: personalized home screen brought back 25% more members within a week",
           "Connecting decisions to adoption, retention, and revenue through monetization, branding, and positioning",
         ],
       },

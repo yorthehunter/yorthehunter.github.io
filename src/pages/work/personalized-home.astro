@@ -1,0 +1,993 @@
+---
+import CaseStudyLayout from "../../layouts/CaseStudyLayout.astro";
+import HomeLayout from "../../layouts/HomeLayout.astro";
+import SiteHeader from "../../components/home/SiteHeader.astro";
+import CaseStudyFigure from "../../components/CaseStudyFigure.astro";
+import ActionLink from "../../components/home/ActionLink.astro";
+import { resumeUrl } from "../../data/site-links";
+
+import shippedImg from "../../assets/images/sample-mh-home.png";
+import mobileImg from "../../assets/images/gnav-mobile.png";
+import beforeWebImg from "../../assets/images/mh-before-web.png";
+import beforeMobileImg from "../../assets/images/mh-before-mweb.png";
+import beforeMobileFullImg from "../../assets/images/mh-before-mweb-full.png";
+import afterWebImg from "../../assets/images/mh-after-web.png";
+import afterWebFullImg from "../../assets/images/mh-after-web-full.png";
+import afterMobileImg from "../../assets/images/mh-after-mweb.png";
+import afterMobileFullImg from "../../assets/images/mh-after-mweb-full.png";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+const sections = [
+  { id: "overview", label: "Overview" },
+  { id: "front-door", label: "Why home" },
+  { id: "personalization", label: "Personalization" },
+  { id: "approach", label: "Approach" },
+  { id: "results", label: "Results" },
+  { id: "learned", label: "Learned" },
+];
+
+/*
+  "For you" states, taken from the logic map the team built with engineering
+  and product (members triaged to 1:1 care). Each stage shows what the module
+  listed and the conditions that triggered it.
+*/
+type Icon = "person" | "calendar" | "form" | "cup" | "circles" | "clock" | "avatar";
+const stages: {
+  id: string;
+  label: string;
+  when: string[];
+  rows: { icon: Icon; title: string; sub: string }[];
+}[] = [
+  {
+    id: "new",
+    label: "Just signed up",
+    when: ["Not matched to a provider", "Hasn't filled out the intake form"],
+    rows: [
+      { icon: "person", title: "Select your care provider", sub: "Get started by selecting a professional" },
+      { icon: "cup", title: "Practice mindfulness", sub: "Browse our library of resources" },
+    ],
+  },
+  {
+    id: "ready",
+    label: "Ready to match",
+    when: ["Not matched to a provider", "Intake form done"],
+    rows: [
+      { icon: "person", title: "Select your care provider", sub: "Get started by selecting a professional" },
+      { icon: "form", title: "View your care form", sub: "You completed it on 11/15" },
+      { icon: "cup", title: "Practice mindfulness", sub: "Browse our library of resources" },
+    ],
+  },
+  {
+    id: "matched",
+    label: "Matched",
+    when: ["Matched to a provider", "No sessions booked yet"],
+    rows: [
+      { icon: "calendar", title: "Schedule a session", sub: "Work 1:1 on topics most important to you" },
+      { icon: "form", title: "View your care form", sub: "You completed it on 11/15" },
+      { icon: "cup", title: "Practice mindfulness", sub: "Browse our library of resources" },
+    ],
+  },
+  {
+    id: "upcoming",
+    label: "Session coming up",
+    when: ["Matched to a provider", "One session upcoming", "Has attended at least one"],
+    rows: [
+      { icon: "avatar", title: "Coaching with Adam", sub: "Tuesday, March 15" },
+      { icon: "calendar", title: "Schedule a session", sub: "Work 1:1 on topics most important to you" },
+      { icon: "cup", title: "Practice mindfulness", sub: "Browse our library of resources" },
+    ],
+  },
+  {
+    id: "between",
+    label: "Between sessions",
+    when: ["Has had at least one session", "Nothing upcoming"],
+    rows: [
+      { icon: "calendar", title: "Schedule a session", sub: "Work 1:1 on topics most important to you" },
+      { icon: "cup", title: "Practice mindfulness", sub: "Browse our library of resources" },
+      { icon: "circles", title: "Discover Circles", sub: "Live community sessions, led by pros" },
+    ],
+  },
+  {
+    id: "out",
+    label: "Out of sessions",
+    when: ["Used all coaching and therapy sessions", "Point to self-guided care until the benefit renews"],
+    rows: [
+      { icon: "cup", title: "Practice mindfulness", sub: "Browse our library of resources" },
+      { icon: "circles", title: "Discover Circles", sub: "Live community sessions, led by pros" },
+      { icon: "clock", title: "View your session history", sub: "Sessions renew 01/01" },
+    ],
+  },
+];
+
+const icons: Record<Icon, string> = {
+  person: '<circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/>',
+  calendar: '<rect x="4" y="5" width="16" height="15" rx="1"/><path d="M4 10h16M9 3v4M15 3v4"/>',
+  form: '<rect x="6" y="3" width="12" height="18" rx="1"/><path d="M9 8h6M9 12h6M9 16h4"/>',
+  cup: '<path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5z"/><path d="M16 11h1.5a2.5 2.5 0 0 1 0 5H16M9 3v3M12 3v3"/>',
+  circles: '<circle cx="9" cy="12" r="5"/><circle cx="15" cy="12" r="5"/>',
+  clock: '<circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/>',
+  avatar: '<circle cx="12" cy="9" r="3"/><path d="M6.5 18.5c1-2.7 3-4 5.5-4s4.5 1.3 5.5 4"/><circle cx="12" cy="12" r="9"/>',
+};
+---
+
+<CaseStudyLayout
+  title="A Personalized Home Screen · Brian Cleveland"
+  description="Rebuilt the Modern Health home screen, where every member lands on web, iOS and Android, as modules, then layered in personalization: next steps by care stage, content by care modality, and care members can change as their needs change."
+  navLabel="Personalized Home Screen Case Study"
+  variant="new"
+  shell={HomeLayout}
+  sections={sections}
+>
+  <Fragment slot="header">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <SiteHeader resumeUrl={resumeUrl} />
+  </Fragment>
+
+  <!-- HERO -->
+  <header class="content-section" id="overview">
+    <p class="eyebrow all-caps soft">Personalization · Modern Health</p>
+    <h1 class="heading-1">A home screen that meets members <em>where they are</em></h1>
+    <p class="cs-lede">
+      Every Modern Health member starts on the home screen, on web, iOS, and Android. It showed everyone the same static page. We rebuilt it as modules, then made it personal: the next step for where you are in care, content that follows the care you chose, and an easy way to change your care when your needs change.
+    </p>
+    <ul class="cs-stats">
+      <li><span class="value">~95%</span><span class="label">Of members land on the home screen, on web and mobile</span></li>
+      <li><span class="value">+25%</span><span class="label">More members came back within a week, on web or app</span></li>
+      <li><span class="value">+20%</span><span class="label">More members went 2+ pages deep instead of bouncing</span></li>
+      <li><span class="value">+35%</span><span class="label">Growth in Circles attendance</span></li>
+    </ul>
+
+    <div class="pz-ba">
+      <p class="pz-ba-platform">Desktop web</p>
+      <div class="pz-ba-pair">
+        <div class="pz-ba-cell">
+          <p class="cs-compare-label">Before</p>
+          <CaseStudyFigure
+            src={beforeWebImg}
+            alt="The old home screen on desktop web: a blue Hello, Brian banner asking the member to schedule a session, a No scheduled sessions card with a Schedule Session button, and a row of meditation cards with a second row running into it."
+            caption="One prompt for every member: &ldquo;Schedule a session.&rdquo;"
+          />
+        </div>
+        <div class="pz-ba-cell">
+          <p class="cs-compare-label accent">After</p>
+          <CaseStudyFigure
+            src={afterWebImg}
+            alt="The redesigned home screen on desktop web: a featured Striving for Sleep banner, a For you list beside it (select your care provider, view your care form, practice mindfulness), and a Resources row."
+            caption="<b>For you</b> sits beside the banner with this member's next steps."
+            scroll={[{ label: "Full page", src: afterWebFullImg, alt: "The full redesigned desktop home screen: banner, For you, Resources, Circles, and Your care." }]}
+          />
+        </div>
+      </div>
+
+      <p class="pz-ba-platform">Mobile web</p>
+      <div class="pz-ba-pair phones">
+        <div class="pz-ba-cell">
+          <p class="cs-compare-label">Before</p>
+          <CaseStudyFigure
+            src={beforeMobileImg}
+            alt="The old home screen in a phone browser: the navigation wraps, the Hello banner is squeezed into a narrow column, and the session card is cut off at the right edge, running into the first meditation card."
+            caption="On phones the layout broke."
+            scroll={[{ label: "Full page", src: beforeMobileFullImg, narrow: true, alt: "The full old home screen in a phone browser: a broken banner and session card, then one long column of meditation cards, some marked web-only." }]}
+          />
+        </div>
+        <div class="pz-ba-cell">
+          <p class="cs-compare-label accent">After</p>
+          <CaseStudyFigure
+            src={afterMobileImg}
+            alt="The redesigned home screen on a phone: greeting, a Striving for Sleep banner, a For you list of three next steps, then Resources."
+            caption="The same modules, stacked."
+            scroll={[{ label: "Full page", src: afterMobileFullImg, narrow: true, alt: "The full redesigned home screen on a phone: banner, For you, Resources, Circles, and Your care." }]}
+          />
+        </div>
+      </div>
+
+      <div class="pz-ba-pair notes">
+        <div class="pz-ba-cell">
+          <p class="cs-compare-label">Before</p>
+          <ul class="pz-notes">
+            <li>The same page for every member, whatever they signed up for.</li>
+            <li>One prompt to schedule a session, even for members already in care.</li>
+            <li>Rows collided on desktop, and the page broke on phones.</li>
+          </ul>
+        </div>
+        <div class="pz-ba-cell">
+          <p class="cs-compare-label accent">After</p>
+          <ul class="pz-notes after">
+            <li><b>For you:</b> the next step for where each member is in care.</li>
+            <li><b>Modules</b> that can be moved, shown, or hidden per member.</li>
+            <li><b>One layout</b> from the design system, on every screen size.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <dl class="cs-facts">
+      <div>
+        <dt>Challenge</dt>
+        <dd>The most-visited page was static, the same for everyone, and hard to change.</dd>
+      </div>
+      <div>
+        <dt>My role</dt>
+        <dd>Design lead on a three-person tiger team.</dd>
+      </div>
+      <div>
+        <dt>Team</dt>
+        <dd>Design lead, product manager, and engineering manager.</dd>
+      </div>
+      <div>
+        <dt>Scope</dt>
+        <dd>The member home screen on web, iOS, and Android.</dd>
+      </div>
+      <div>
+        <dt>The move</dt>
+        <dd>Modules first, so personalization had something to stand on.</dd>
+      </div>
+      <div>
+        <dt>Outcome</dt>
+        <dd>A page that changes with the member, and faster launches for every new home feature.</dd>
+      </div>
+    </dl>
+  </header>
+
+  <!-- WHY THE HOME SCREEN -->
+  <section class="content-section" id="front-door">
+    <p class="eyebrow all-caps soft">Why the home screen</p>
+    <h2 class="heading-3">Every member walks through the same front door.</h2>
+    <div class="cs-split even">
+      <div class="cs-prose">
+        <ul>
+          <li>The home screen is the landing page for <b>~95% of members</b>, on web and mobile. Whatever it shows is what members think Modern Health offers.</li>
+          <li>It was <b>static</b>: the same rows for a new member and for someone six sessions into therapy.</li>
+          <li>No one owned its parts, so <b>launching anything was hard</b>. Our Daily Pause feature was blocked by it.</li>
+        </ul>
+      </div>
+      <div class="pz-door" role="img" aria-label="Diagram: members on web, iOS, and Android all arrive at one home screen, which leads to care, content, and Circles.">
+        <div class="pz-door-col" aria-hidden="true">
+          <span class="pz-chip">Web</span>
+          <span class="pz-chip">iOS</span>
+          <span class="pz-chip">Android</span>
+        </div>
+        <span class="pz-arrow" aria-hidden="true">→</span>
+        <div class="pz-door-home" aria-hidden="true">Home screen</div>
+        <span class="pz-arrow" aria-hidden="true">→</span>
+        <div class="pz-door-col" aria-hidden="true">
+          <span class="pz-chip soft">1:1 care</span>
+          <span class="pz-chip soft">Content</span>
+          <span class="pz-chip soft">Circles</span>
+        </div>
+      </div>
+    </div>
+    <p class="cs-callout">
+      &ldquo;Why did I answer so many questions but it's like the app <em>didn't listen</em>?&rdquo;
+    </p>
+    <p class="pz-source">Member feedback, voice-of-the-customer channel</p>
+  </section>
+
+  <!-- PERSONALIZATION -->
+  <section class="content-section" id="personalization">
+    <p class="eyebrow all-caps soft">Personalization</p>
+    <h2 class="heading-3">Three ways the page adapts to each member.</h2>
+    <p class="cs-prose">
+      Our care model is about meeting members where they are. Each layer below answers something members told us.
+    </p>
+
+    <!-- Layer 01 -->
+    <article class="pz-layer">
+      <div class="pz-layer-head">
+        <span class="index" aria-hidden="true">1</span>
+        <div>
+          <h3>For you: the next step, based on where you are in care</h3>
+          <p class="pz-heard">Members asked: &ldquo;Where do I begin?&rdquo;</p>
+        </div>
+      </div>
+      <p class="cs-prose">
+        A short list of tasks, chosen by rules: are you matched to a provider, did you fill out your intake form, is a session coming up, do you have sessions left? I mapped more than a dozen states with engineering and product. Pick a stage to see what a member triaged to 1:1 care would see.
+      </p>
+
+      <div class="pz-demo" data-fy>
+        <div class="pz-tabs" role="tablist" aria-label="Member stage">
+          {stages.map((s, i) => (
+            <button
+              type="button"
+              role="tab"
+              id={`fy-tab-${s.id}`}
+              aria-controls={`fy-panel-${s.id}`}
+              aria-selected={i === 0 ? "true" : "false"}
+              tabindex={i === 0 ? 0 : -1}
+            >
+              <span class="n">{i + 1}</span>{s.label}
+            </button>
+          ))}
+        </div>
+        {stages.map((s, i) => (
+          <div
+            class="pz-panel"
+            role="tabpanel"
+            id={`fy-panel-${s.id}`}
+            aria-labelledby={`fy-tab-${s.id}`}
+            hidden={i !== 0}
+          >
+            <div class="pz-phone">
+              <p class="pz-phone-title">For you</p>
+              <ul>
+                {s.rows.map((r) => (
+                  <li>
+                    <span class:list={["pz-icon", r.icon]} aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" set:html={icons[r.icon]} />
+                    </span>
+                    <span class="pz-row-text">
+                      <b>{r.title}</b>
+                      <small>{r.sub}</small>
+                    </span>
+                    <span class="pz-chev" aria-hidden="true">›</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div class="pz-why">
+              <p class="eyebrow">Why these</p>
+              <ul>
+                {s.when.map((w) => <li>{w}</li>)}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </article>
+
+    <!-- Layer 02 -->
+    <article class="pz-layer">
+      <div class="pz-layer-head">
+        <span class="index" aria-hidden="true">2</span>
+        <div>
+          <h3>Content that follows the care you chose</h3>
+          <p class="pz-heard">Members asked: &ldquo;Why did I answer so many questions but it's like the app didn't listen?&rdquo;</p>
+        </div>
+      </div>
+      <p class="cs-prose">
+        Onboarding triages each member to a care modality, from what they're focusing on and their level of need. The home screen now uses that answer. Tasks, recommended content, and Circles are surfaced for the care the member is in, so their onboarding answers show up the first time they land.
+      </p>
+      <div class="pz-flow" role="img" aria-label="Diagram: what a member shares at onboarding (focus, such as anxiety and depression, and level of need, such as preventative) sets their care modality (therapy, coaching, self-guided content, or Circles), which decides what the home screen surfaces: For you tasks, recommended content, and Circles.">
+        <div class="pz-flow-step" aria-hidden="true">
+          <p class="eyebrow">Member shares</p>
+          <span class="pz-chip">Focus: anxiety &amp; depression</span>
+          <span class="pz-chip">Level of need: preventative</span>
+        </div>
+        <span class="pz-arrow" aria-hidden="true">→</span>
+        <div class="pz-flow-step" aria-hidden="true">
+          <p class="eyebrow">Care modality</p>
+          <span class="pz-chip soft">Therapy</span>
+          <span class="pz-chip on">Coaching</span>
+          <span class="pz-chip on">Self-guided content</span>
+          <span class="pz-chip soft">Circles</span>
+        </div>
+        <span class="pz-arrow" aria-hidden="true">→</span>
+        <div class="pz-flow-step" aria-hidden="true">
+          <p class="eyebrow">Home surfaces</p>
+          <span class="pz-chip on">For you tasks for coaching</span>
+          <span class="pz-chip on">Recommended content</span>
+          <span class="pz-chip on">Circles on the same topics</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Layer 03 -->
+    <article class="pz-layer">
+      <div class="pz-layer-head">
+        <span class="index" aria-hidden="true">3</span>
+        <div>
+          <h3>Change or add care when your needs change</h3>
+          <p class="pz-heard">Members asked: &ldquo;I want a therapist but wasn't given the option when I signed up.&rdquo;</p>
+        </div>
+      </div>
+      <div class="cs-split even">
+        <div class="cs-prose">
+          <ul>
+            <li>Onboarding answers shouldn't lock a member in. <b>Your 1:1 Care</b> shows the services they have, with a way to manage their care team.</li>
+            <li>Members who weren't triaged to therapy could <b>request it for the first time</b> from the home screen. That was a new path, 0 to 1.</li>
+            <li>Session counts stay visible (&ldquo;15 therapy sessions available&rdquo;), so members know what their benefit covers before they ask.</li>
+          </ul>
+        </div>
+        <div class="pz-care-mock" role="img" aria-label="Schematic of the Your 1:1 Care module: cards for working with a coach and booking a therapy session, a sessions-available count, and a Manage care team link.">
+          <div class="pz-care-head" aria-hidden="true">
+            <b>Your 1:1 Care</b>
+            <span>Manage care team</span>
+          </div>
+          <div class="pz-care-cards" aria-hidden="true">
+            <div>
+              <b>Work with a coach</b>
+              <small>Your benefit includes 20 coaching sessions</small>
+            </div>
+            <div>
+              <b>Book a therapy session</b>
+              <small>Work with your therapist on what matters to you</small>
+              <span class="pz-tag">15 sessions available</span>
+            </div>
+            <div class="pz-add">
+              <b>+ Add therapy</b>
+              <small>Request care you didn't pick at sign-up</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- APPROACH -->
+  <section class="content-section" id="approach">
+    <p class="eyebrow all-caps soft">The approach</p>
+    <h2 class="heading-3">Make it modular, then personalize it. You can't personalize a page that <em>can't change</em>.</h2>
+    <div class="cs-split even">
+      <div class="cs-prose">
+        <p>
+          My hypothesis: a modular layout lets content move around the page based on the member's needs, and gives each product team clear ownership of its module. Personalization can then be layered in.
+        </p>
+        <p>
+          A design-led initiative became a product priority once Daily Pause was blocked. We formed a tiger team and committed to the redesign.
+        </p>
+      </div>
+      <ol class="pz-steps">
+        <li>
+          <span class="when">Frame</span>
+          <p>Personas grounded the work in real needs, like a new manager burning out and a parent juggling a full plate.</p>
+        </li>
+        <li>
+          <span class="when">Journey</span>
+          <p>Wireframes for each persona's day 1, day 7, and day 30 started the team talking about what personalization could look like.</p>
+        </li>
+        <li>
+          <span class="when">Map</span>
+          <p>Every For you state written down as rules, with engineering and product, before we built it.</p>
+        </li>
+        <li>
+          <span class="when">Systemize</span>
+          <p>New patterns and components went into Vita, our design system, so other pages could use them.</p>
+        </li>
+      </ol>
+    </div>
+    <div class="pz-shipped">
+      <CaseStudyFigure
+        src={shippedImg}
+        alt="The shipped home screen on desktop and mobile web. Desktop shows a featured Pathway banner, a For You list (select a coach, schedule a therapy session, continue a stress course), Your 1:1 Care cards, and Recommended for You content. Mobile shows the same modules stacked."
+        caption="Shipped: the same modules on desktop and mobile web."
+      />
+      <CaseStudyFigure
+        src={mobileImg}
+        alt="The native app home screen: a greeting, a Take a Pause banner with a one-week streak, a For You list, and Your 1:1 Care."
+        caption="And in the native app."
+        contain
+      />
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="content-section" id="results">
+    <p class="eyebrow all-caps soft">Results</p>
+    <h2 class="heading-3">Members came back, and found more.</h2>
+    <ul class="cs-results">
+      <li>
+        <span class="value">+25%</span>
+        <p>More members came back at least once within a week, on web or in the app.</p>
+      </li>
+      <li>
+        <span class="value">+20%</span>
+        <p>More members clicked through to two or more pages, so fewer bounced from the home screen.</p>
+      </li>
+      <li>
+        <span class="value">+35%</span>
+        <p>Growth in Circles attendance, the live group sessions led by professionals.</p>
+      </li>
+    </ul>
+    <p class="pz-source">Each result compares the 30 days before launch with the 30 days after.</p>
+    <div class="cs-prose">
+      <ul>
+        <li><b>Big lifts in content discovery</b> once recommendations went live.</li>
+        <li><b>A new path to therapy</b> for members who weren't triaged to it.</li>
+        <li><b>Faster launches</b> for every new home feature, starting with Daily Pause and Schedule Therapy.</li>
+        <li><b>Strong post-launch feedback</b> from surveyed members.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- LEARNED -->
+  <section class="content-section" id="learned">
+    <p class="eyebrow all-caps soft">What I learned</p>
+    <h2 class="heading-3">Personalization is a system, not a feature.</h2>
+    <div class="cs-prose">
+      <ul>
+        <li><b>Build the structure first.</b> Modules with owners and rules you can explain are what make personalization possible, and safe to change.</li>
+        <li><b>Personalize the next step, not only the content.</b> Telling members what to do next did more than reshuffling what they could browse.</li>
+        <li><b>Let people correct it.</b> Needs change. The page has to let members change their care, not lock them into what they said at sign-up.</li>
+        <li><b>The logic is a team sport.</b> Writing the states down with engineering and product made edge cases, like running out of sessions, part of the design.</li>
+      </ul>
+    </div>
+    <nav class="navigation-list" aria-label="More case studies">
+      <ul>
+        <li><ActionLink href={`${base}/#my-work`} label="Back to all work" /></li>
+        <li><ActionLink href={`${base}/work/global-navigation`} label="Read: One navigation system, globally adopted" variant="filled" /></li>
+      </ul>
+    </nav>
+  </section>
+</CaseStudyLayout>
+
+<script>
+  // Tabs for the For you demo: click or arrow keys switch the member stage.
+  document.querySelectorAll<HTMLElement>("[data-fy]").forEach((root) => {
+    const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
+    const select = (tab: HTMLButtonElement, focus = false) => {
+      tabs.forEach((t) => {
+        const on = t === tab;
+        t.setAttribute("aria-selected", String(on));
+        t.tabIndex = on ? 0 : -1;
+        const panel = document.getElementById(t.getAttribute("aria-controls") ?? "");
+        if (panel) panel.hidden = !on;
+      });
+      if (focus) tab.focus();
+    };
+    tabs.forEach((tab, i) => {
+      tab.addEventListener("click", () => select(tab));
+      tab.addEventListener("keydown", (e) => {
+        const step = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+        if (step) {
+          e.preventDefault();
+          select(tabs[(i + step + tabs.length) % tabs.length], true);
+        } else if (e.key === "Home") {
+          e.preventDefault();
+          select(tabs[0], true);
+        } else if (e.key === "End") {
+          e.preventDefault();
+          select(tabs[tabs.length - 1], true);
+        }
+      });
+    });
+  });
+</script>
+
+<style is:global>
+  /* Personalized home case study. Diagrams and mock-ups are drawn in code so
+     they stay sharp and follow the light and dark themes. */
+
+  .cs-new {
+    --pz-on: color-mix(in srgb, var(--accent) 14%, var(--bg));
+    --pz-muted: color-mix(in srgb, var(--fg) 8%, var(--bg));
+    --pz-soft-line: color-mix(in srgb, var(--fg) 30%, var(--bg));
+  }
+
+  /* ---------- Before / after: real screens in matching pairs ---------- */
+
+  .cs-new .pz-ba {
+    display: grid;
+    gap: var(--space-s);
+  }
+
+  .cs-new .pz-ba-platform {
+    padding-top: var(--space-2xs);
+    border-top: 2px solid var(--line);
+    font-family: var(--font-mono);
+    font-size: var(--fs-mono);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .cs-new .pz-ba-platform:not(:first-child) {
+    margin-top: var(--space-s);
+  }
+
+  .cs-new .pz-ba-pair {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-m);
+    align-items: start;
+  }
+
+  /* Phones sit side by side at every width so the pair stays comparable. */
+  .cs-new .pz-ba-pair.phones {
+    gap: var(--space-s);
+    width: 100%;
+    max-width: 40rem;
+    margin-inline: auto;
+  }
+
+  .cs-new .pz-ba-pair.notes {
+    margin-top: var(--space-xs);
+  }
+
+  @media screen and (max-width: 820px) {
+    .cs-new .pz-ba-pair:not(.phones) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .cs-new .pz-ba-cell {
+    display: grid;
+    gap: var(--space-2xs);
+  }
+
+  .cs-new .pz-ba-cell .cs-compare-label {
+    margin: 0;
+  }
+
+  .cs-new .pz-notes.after li::marker {
+    color: var(--accent-text);
+  }
+
+  .cs-new .pz-notes {
+    display: grid;
+    gap: 6px;
+    padding-left: 1.1rem;
+    font: var(--font-body-4);
+  }
+
+  .cs-new .pz-notes b {
+    font-weight: 700;
+  }
+
+  /* ---------- Front door ---------- */
+
+  .cs-new .pz-door,
+  .cs-new .pz-flow {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  .cs-new .pz-door-col,
+  .cs-new .pz-flow-step {
+    display: grid;
+    gap: 8px;
+  }
+
+  .cs-new .pz-flow-step .eyebrow {
+    margin: 0 0 2px;
+    font-size: 0.75rem;
+  }
+
+  .cs-new .pz-chip {
+    display: block;
+    padding: 8px 10px;
+    border: 2px solid var(--line);
+    background: var(--bg);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+  }
+
+  .cs-new .pz-chip.soft {
+    border-color: var(--pz-soft-line);
+    color: var(--color-secondary);
+  }
+
+  .cs-new .pz-chip.on {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+
+  .cs-new .pz-door-home {
+    display: grid;
+    place-items: center;
+    min-height: 9rem;
+    padding: 1rem;
+    background: var(--accent);
+    color: var(--on-accent);
+    font-family: var(--font-display);
+    font-size: var(--font-size-0);
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .cs-new .pz-arrow {
+    font-family: var(--font-mono);
+    font-size: 1.25rem;
+  }
+
+  @media screen and (max-width: 560px) {
+    .cs-new .pz-door,
+    .cs-new .pz-flow {
+      grid-template-columns: 1fr;
+    }
+
+    .cs-new .pz-arrow {
+      transform: rotate(90deg);
+      justify-self: center;
+    }
+
+    .cs-new .pz-door-home {
+      min-height: 4rem;
+    }
+  }
+
+  .cs-new .pz-source {
+    margin-top: calc(var(--space-m) * -1);
+    font-family: var(--font-mono);
+    font-size: var(--fs-mono);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ---------- Layers ---------- */
+
+  .cs-new .pz-layer {
+    display: grid;
+    gap: var(--space-m);
+    padding-top: var(--space-m);
+    border-top: 2px solid var(--line);
+  }
+
+  .cs-new .pz-layer-head {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-s);
+    align-items: start;
+  }
+
+  .cs-new .pz-layer-head .index {
+    font-family: var(--font-display);
+    font-size: var(--font-size-3);
+    line-height: 1;
+    color: var(--accent-text);
+  }
+
+  .cs-new .pz-layer-head h3 {
+    font: var(--font-heading-4);
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .cs-new .pz-heard {
+    margin-top: 6px;
+    font-family: var(--font-mono);
+    font-size: var(--fs-mono);
+    line-height: 1.4;
+  }
+
+  /* ---------- For you demo ---------- */
+
+  .cs-new .pz-demo {
+    display: grid;
+    gap: var(--space-m);
+  }
+
+  @media screen and (min-width: 821px) {
+    .cs-new .pz-demo {
+      grid-template-columns: minmax(12rem, 16rem) minmax(0, 1fr);
+      align-items: start;
+    }
+  }
+
+  .cs-new .pz-tabs {
+    display: grid;
+    gap: 6px;
+  }
+
+  @media screen and (max-width: 820px) {
+    .cs-new .pz-tabs {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .cs-new .pz-tabs button {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    padding: 10px 12px;
+    border: 2px solid var(--line);
+    border-radius: 3px;
+    background: transparent;
+    color: var(--fg);
+    font: inherit;
+    font-weight: 700;
+    text-align: left;
+    cursor: pointer;
+    touch-action: manipulation;
+    transition: background-color 0.15s, color 0.15s;
+  }
+
+  .cs-new .pz-tabs button .n {
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: 0.75rem;
+  }
+
+  .cs-new .pz-tabs button:hover {
+    background: var(--pz-muted);
+  }
+
+  .cs-new .pz-tabs button[aria-selected="true"] {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--on-accent);
+  }
+
+  .cs-new .pz-tabs button:focus-visible {
+    outline: 3px solid var(--accent-text);
+    outline-offset: 2px;
+  }
+
+  .cs-new .pz-panel {
+    display: grid;
+    gap: var(--space-m);
+  }
+
+  .cs-new .pz-panel[hidden] {
+    display: none;
+  }
+
+  @media screen and (min-width: 1000px) {
+    .cs-new .pz-panel {
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      align-items: start;
+    }
+  }
+
+  .cs-new .pz-phone {
+    padding: 16px;
+    border: 4px solid var(--line);
+    background: var(--bg);
+  }
+
+  .cs-new .pz-phone-title {
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-size: var(--font-size-0);
+  }
+
+  .cs-new .pz-phone ul {
+    display: grid;
+    list-style: none;
+    padding: 0;
+  }
+
+  .cs-new .pz-phone li {
+    display: grid;
+    grid-template-columns: 40px 1fr auto;
+    gap: 12px;
+    align-items: center;
+    padding: 10px 0;
+    border-top: 1px solid var(--pz-soft-line);
+  }
+
+  .cs-new .pz-icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--pz-on);
+    color: var(--accent-text);
+  }
+
+  .cs-new .pz-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .cs-new .pz-row-text {
+    display: grid;
+    gap: 2px;
+  }
+
+  .cs-new .pz-row-text b {
+    font-weight: 700;
+  }
+
+  .cs-new .pz-row-text small {
+    font-size: 0.8125rem;
+    color: var(--color-secondary);
+  }
+
+  .cs-new .pz-chev {
+    font-size: 1.25rem;
+  }
+
+  .cs-new .pz-why {
+    display: grid;
+    gap: 8px;
+    padding-top: var(--space-xs);
+    border-top: 4px solid var(--accent);
+  }
+
+  .cs-new .pz-why .eyebrow {
+    margin: 0;
+    color: var(--accent-text);
+  }
+
+  .cs-new .pz-why ul {
+    display: grid;
+    gap: 6px;
+    padding-left: 1.1rem;
+    font-weight: 700;
+  }
+
+  /* ---------- 1:1 care mock ---------- */
+
+  .cs-new .pz-care-mock {
+    padding: 16px;
+    border: 4px solid var(--line);
+  }
+
+  .cs-new .pz-care-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 12px;
+  }
+
+  .cs-new .pz-care-head span {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-decoration: underline;
+    color: var(--accent-text);
+  }
+
+  .cs-new .pz-care-cards {
+    display: grid;
+    gap: 8px;
+  }
+
+  .cs-new .pz-care-cards > div {
+    display: grid;
+    gap: 4px;
+    padding: 10px 12px;
+    border: 2px solid var(--pz-soft-line);
+  }
+
+  .cs-new .pz-care-cards small {
+    font-size: 0.8125rem;
+    color: var(--color-secondary);
+  }
+
+  .cs-new .pz-care-cards .pz-add {
+    border: 2px dashed var(--accent-text);
+    background: var(--pz-on);
+  }
+
+  .cs-new .pz-tag {
+    justify-self: start;
+    padding: 2px 8px;
+    background: var(--pz-on);
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+  }
+
+  /* ---------- Approach ---------- */
+
+  .cs-new .pz-steps {
+    display: grid;
+    gap: var(--space-s);
+    list-style: none;
+    padding: 0;
+  }
+
+  .cs-new .pz-steps li {
+    display: grid;
+    gap: 4px;
+    padding-top: var(--space-2xs);
+    border-top: 4px solid var(--line);
+  }
+
+  .cs-new .pz-steps .when {
+    font-family: var(--font-mono);
+    font-size: var(--fs-mono);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--accent-text);
+  }
+
+  .cs-new .pz-shipped {
+    display: grid;
+    gap: var(--space-m);
+    align-items: start;
+  }
+
+  @media screen and (min-width: 821px) {
+    .cs-new .pz-shipped {
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    }
+  }
+</style>

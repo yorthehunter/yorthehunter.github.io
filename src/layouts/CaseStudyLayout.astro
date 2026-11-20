@@ -77,11 +77,13 @@ const Shell = shell ?? Layout;
     const caption = dialog.querySelector<HTMLElement>(".cs-lightbox-caption")!;
     let opener: HTMLElement | null = null;
 
-    type Frame = { label: string; src: string; alt: string };
+    type Frame = { label: string; src: string; alt: string; narrow?: boolean };
 
     // Show one image. Tall "scroll" frames get a scrollable pane starting at the top.
-    const show = (src: string, alt: string, scrolling: boolean) => {
+    // Phone frames ("narrow") scroll at phone width instead of stretching to the window.
+    const show = (src: string, alt: string, scrolling: boolean, narrow = false) => {
       pane.classList.toggle("scrolling", scrolling);
+      pane.classList.toggle("narrow", scrolling && narrow);
       pane.scrollTop = 0;
       img.src = src;
       img.alt = alt;
@@ -103,7 +105,7 @@ const Shell = shell ?? Layout;
           t.setAttribute("aria-selected", String(i === j));
           t.tabIndex = i === j ? 0 : -1;
         });
-        show(frames[i].src, frames[i].alt, true);
+        show(frames[i].src, frames[i].alt, true, frames[i].narrow);
       };
       select(0);
     };
@@ -831,6 +833,10 @@ const Shell = shell ?? Layout;
     background: white;
     justify-content: flex-start;
     align-items: flex-start;
+  }
+
+  .cs-lightbox-pane.scrolling.narrow {
+    width: min(100%, 26rem);
   }
 
   .cs-lightbox-pane.scrolling img {
