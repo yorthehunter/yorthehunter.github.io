@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concept B: Arrive As You Are · Brian Cleveland</title>
+<script src="./_runtime/react.js"></script>
+<script src="./_runtime/react-dom.js"></script>
+<script src="./_runtime/support.js"></script>
+</head>
+<body>
+<aside aria-label="About this prototype" style="position: fixed; left: 16px; bottom: 16px; z-index: 50; max-width: calc(100vw - 32px); box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; padding: 10px 16px; border-radius: 12px; background: #1D2229; color: #F0F3F6; font: 500 13px/1.4 system-ui, -apple-system, sans-serif; box-shadow: 0 6px 24px rgba(0,0,0,0.18)"><span><strong>Concept prototype</strong> by Brian Cleveland. Not a shipped Modern Health product.</span><a href="/work/personalized-home/#next" style="color: #FF7FB6; font-weight: 700">Back to the case study</a></aside>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#4B32C3}a:hover{color:#36239A}
+button{font-family:inherit;cursor:pointer}
+.search{border:1.5px solid rgba(35,30,51,0.10);transition:border-color 120ms ease,box-shadow 120ms ease}
+.search:hover{border-color:rgba(35,30,51,0.22)}
+.search:focus-within{border-color:#5B3FD1;box-shadow:0 0 0 3px rgba(91,63,209,0.15)}
+.search input::placeholder{color:#6E6984}
+</style>
+</helmet>
+<div style="font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #231E33; background: #FFFFFF; min-height: 100vh">
+
+<div style="{{heroBand}}">
+<header>
+<div style="max-width: 1280px; margin: 0 auto; padding: 16px 40px; display: flex; align-items: center; gap: 28px; flex-wrap: wrap">
+<a href="#" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #231E33; font-weight: 800; font-size: 19px; letter-spacing: -0.01em">
+<svg aria-hidden="true" width="28" height="28" viewBox="0 0 28 28"><circle cx="11" cy="14" r="9" fill="#C9BCF7"></circle><circle cx="17" cy="14" r="9" fill="#F7C6AE" fill-opacity="0.85"></circle></svg>
+modern health</a>
+<nav aria-label="Primary" style="display: flex; gap: 4px; flex-wrap: wrap; flex: 1 1 auto">
+<a href="#" aria-current="page" style="padding: 10px 16px; border-radius: 999px; background: #FFFFFF; color: #231E33; font-weight: 700; font-size: 15px; text-decoration: none">Home</a>
+<a href="#" style="padding: 10px 16px; border-radius: 999px; color: #3F3954; font-weight: 600; font-size: 15px; text-decoration: none">Care</a>
+<a href="#" style="padding: 10px 16px; border-radius: 999px; color: #3F3954; font-weight: 600; font-size: 15px; text-decoration: none">Circles</a>
+<a href="#" style="padding: 10px 16px; border-radius: 999px; color: #3F3954; font-weight: 600; font-size: 15px; text-decoration: none">Library</a>
+</nav>
+<form role="search" style="flex: 0 1 300px; min-width: 200px; margin: 0">
+<label class="search" style="display: flex; align-items: center; gap: 8px; height: 44px; padding: 0 16px; border-radius: 999px; background: #FFFFFF; box-sizing: border-box; cursor: text">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="#5B5670" stroke-width="1.6" stroke-linecap="round" style="flex: none"><circle cx="7" cy="7" r="4.75"></circle><path d="M10.6 10.6L14 14"></path></svg>
+<span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap">Search Modern Health</span>
+<input type="search" placeholder="Search programs, Circles, providers" style="flex: 1 1 auto; min-width: 0; border: none; outline: none; background: transparent; font-family: inherit; font-size: 15px; color: #231E33">
+</label>
+</form>
+<a href="#support" style="padding: 10px 16px; border-radius: 999px; border: 1.5px solid #231E33; color: #231E33; font-weight: 600; font-size: 14px; text-decoration: none">Get support now</a>
+<button aria-label="Your account" style="width: 44px; height: 44px; border-radius: 999px; border: none; background: #FFFFFF; color: #231E33; font-weight: 800; font-size: 16px">M</button>
+</div>
+</header>
+
+<section aria-labelledby="hero-h" style="max-width: 1280px; margin: 0 auto; padding: 40px 40px 56px; display: flex; flex-direction: column; gap: 32px; position: relative">
+<svg aria-hidden="true" width="360" height="360" viewBox="0 0 360 360" style="position: absolute; right: 20px; top: -10px; pointer-events: none"><circle cx="230" cy="150" r="120" fill="{{mood.a}}" fill-opacity="0.55"></circle><circle cx="130" cy="230" r="80" fill="{{mood.b}}" fill-opacity="0.35"></circle><circle cx="290" cy="290" r="36" fill="#FFFFFF" fill-opacity="0.7"></circle></svg>
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 980px; position: relative">
+<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #3F3954">{{greeting}}, Maya</p>
+<h1 id="hero-h" style="margin: 0; font-size: 60px; line-height: 1.04; letter-spacing: -0.03em; font-weight: 800">{{mood.headline}}</h1>
+<p style="margin: 0; font-size: 19px; line-height: 1.55; color: #3F3954">{{mood.sub}}</p>
+</div>
+
+<div style="background: #FFFFFF; border-radius: 28px; padding: 22px 24px; display: flex; flex-direction: column; gap: 14px; position: relative; max-width: 920px">
+<p id="checkin-q" style="margin: 0; font-size: 17px; font-weight: 800">How are you arriving today?</p>
+<div role="group" aria-labelledby="checkin-q" style="display: flex; flex-wrap: wrap; gap: 10px">
+<sc-for list="{{moods}}" as="m" hint-placeholder-count="5">
+<button onClick="{{m.pick}}" aria-pressed="{{m.pressed}}" style="{{m.style}}"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="{{m.b}}" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex: none"><path d="{{m.icon}}"></path></svg>{{m.label}}</button>
+</sc-for>
+</div>
+<p style="margin: 0; font-size: 13px; color: #5B5670">Only you see your check-ins. They shape this page and nothing else.</p>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 16px; position: relative">
+<h2 style="margin: 0; font-size: 24px; font-weight: 800; letter-spacing: -0.01em">Right now, for you</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px">
+<sc-for list="{{picks}}" as="p" hint-placeholder-count="3">
+<article style="background: #FFFFFF; border-radius: 24px; padding: 22px; display: flex; flex-direction: column; gap: 10px; min-height: 200px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 8px">
+<span style="font-size: 13px; font-weight: 700; color: #4E4864">{{p.kind}} · {{p.min}}</span>
+<svg aria-hidden="true" width="40" height="40" viewBox="0 0 40 40"><circle cx="24" cy="16" r="13" fill="{{mood.a}}"></circle><circle cx="15" cy="26" r="9" fill="{{mood.b}}" fill-opacity="0.8"></circle></svg>
+</div>
+<h3 style="margin: 0; font-size: 21px; line-height: 1.2; font-weight: 800">{{p.title}}</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.5; color: #4E4864">{{p.desc}}</p>
+<button style="margin-top: auto; align-self: flex-start; min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1.5px solid #231E33; background: transparent; color: #231E33; font-weight: 700; font-size: 14px">{{p.cta}}</button>
+</article>
+</sc-for>
+</div>
+</div>
+
+<sc-if value="{{mood.support}}" hint-placeholder-val="{{ false }}">
+<div style="background: #FFFFFF; border: 2px solid #231E33; border-radius: 24px; padding: 20px 24px; display: flex; gap: 16px; align-items: center; justify-content: space-between; flex-wrap: wrap; position: relative">
+<p style="margin: 0; font-size: 16px; line-height: 1.5; flex: 1 1 420px"><strong>Want to talk it through with a person?</strong> A therapist can usually meet within a few days, and our support line is open any time.</p>
+<div style="display: flex; gap: 10px; flex-wrap: wrap">
+<a href="#" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; border-radius: 999px; background: #5B3FD1; color: #FFFFFF; font-weight: 700; font-size: 15px; text-decoration: none">Find a time</a>
+<a href="#support" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; color: #231E33; font-weight: 700; font-size: 15px">Talk now</a>
+</div>
+</div>
+</sc-if>
+</section>
+</div>
+
+<main style="max-width: 1280px; margin: 0 auto; padding: 64px 40px 96px; display: flex; flex-direction: column; gap: 72px">
+
+<section aria-labelledby="rhythm-h" style="display: flex; flex-wrap: wrap; gap: 24px; align-items: stretch">
+<div style="flex: 999 1 560px; min-width: 0; border: 1.5px solid #EEEBF5; border-radius: 28px; padding: 28px; display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h2 id="rhythm-h" style="margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.02em">Your rhythm</h2>
+<p style="margin: 0; font-size: 15px; color: #5B5670">Your last two weeks of check-ins, from low to bright. Today is on the right.</p>
+</div>
+</div>
+<svg role="img" aria-label="{{chart.aria}}" viewBox="0 0 760 180" style="width: 100%; height: auto; display: block; overflow: visible">
+<defs><linearGradient id="moodfill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7C63E0" stop-opacity="0.2"></stop><stop offset="1" stop-color="#7C63E0" stop-opacity="0"></stop></linearGradient></defs>
+<sc-for list="{{chart.levels}}" as="lv" hint-placeholder-count="5">
+<line x1="124" x2="744" y1="{{lv.y}}" y2="{{lv.y}}" stroke="#E7E2F3" stroke-width="1.5" stroke-dasharray="3 5"></line>
+<circle cx="6" cy="{{lv.y}}" r="4" fill="{{lv.color}}"></circle>
+<text x="16" y="{{lv.ty}}" font-size="12" font-weight="600" fill="#5B5670">{{lv.label}}</text>
+</sc-for>
+<path d="{{chart.area}}" fill="url(#moodfill)"></path>
+<path d="{{chart.line}}" fill="none" stroke="#7C63E0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+<circle cx="{{chart.todayDot.x}}" cy="{{chart.todayDot.y}}" r="14" fill="none" stroke="#231E33" stroke-width="2"></circle>
+<sc-for list="{{chart.dots}}" as="d" hint-placeholder-count="12">
+<circle cx="{{d.x}}" cy="{{d.y}}" r="{{d.r}}" fill="{{d.color}}" stroke="#FFFFFF" stroke-width="2.5"></circle>
+</sc-for>
+<sc-for list="{{chart.days}}" as="dy" hint-placeholder-count="14">
+<text x="{{dy.x}}" y="172" text-anchor="middle" font-size="12" font-weight="{{dy.weight}}" fill="{{dy.fill}}">{{dy.label}}</text>
+</sc-for>
+</svg>
+<div style="background: #F7F5FC; border-radius: 20px; padding: 20px 22px; display: flex; flex-direction: column; gap: 12px">
+<p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #5B5670">YOUR TRENDS</p>
+<p style="margin: 0; font-size: 18px; line-height: 1.45; font-weight: 700">The mornings after you did the evening wind-down, you checked in steadier.</p>
+<div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap">
+<span style="font-size: 14px; color: #4E4864">Does that ring true?</span>
+<button onClick="{{agreeYes}}" aria-pressed="{{yesPressed}}" style="{{yesStyle}}">Yes</button>
+<button onClick="{{agreeNo}}" aria-pressed="{{noPressed}}" style="{{noStyle}}">Not really</button>
+<sc-if value="{{answered}}" hint-placeholder-val="{{ false }}"><span style="font-size: 14px; font-weight: 600; color: #3F3954">{{answerNote}}</span></sc-if>
+</div>
+</div>
+</div>
+
+<aside aria-labelledby="month-h" style="flex: 1 1 340px; min-width: 0; border-radius: 28px; padding: 28px; background: #EEE8FD; display: flex; flex-direction: column; gap: 18px; position: relative; overflow: hidden">
+<svg aria-hidden="true" width="220" height="220" viewBox="0 0 220 220" style="position: absolute; right: -50px; bottom: -50px"><circle cx="110" cy="110" r="100" fill="#B9A8F2" fill-opacity="0.5"></circle><circle cx="80" cy="80" r="44" fill="#F6B99B" fill-opacity="0.6"></circle></svg>
+<p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #3F3954">Your November, so far</p>
+<h2 id="month-h" style="margin: 0; font-size: 28px; line-height: 1.15; font-weight: 800; letter-spacing: -0.02em; position: relative">You kept showing up.</h2>
+<dl style="margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; position: relative">
+<div><dt style="font-size: 13px; color: #3F3954">Check-ins</dt><dd style="margin: 0; font-size: 34px; font-weight: 800">12</dd></div>
+<div><dt style="font-size: 13px; color: #3F3954">Minutes of practice</dt><dd style="margin: 0; font-size: 34px; font-weight: 800">86</dd></div>
+<div><dt style="font-size: 13px; color: #3F3954">Circles joined</dt><dd style="margin: 0; font-size: 34px; font-weight: 800">2</dd></div>
+<div><dt style="font-size: 13px; color: #3F3954">Most common</dt><dd style="margin: 0; font-size: 22px; font-weight: 800; padding-top: 8px">Steady</dd></div>
+</dl>
+<a href="#" style="margin-top: auto; align-self: flex-start; font-weight: 700; font-size: 15px; position: relative">Open your full reflection</a>
+</aside>
+</section>
+
+<section aria-labelledby="coach-h" style="display: flex; flex-wrap: wrap; gap: 24px; align-items: stretch">
+<article style="flex: 999 1 520px; min-width: 0; background: #E1F4EC; border-radius: 28px; padding: 28px; display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap">
+<img src="./assets/633cde2bfae1cca2b5e3b28ec312beeb.jpg" alt="" style="flex: none; width: 64px; height: 64px; border-radius: 999px; object-fit: cover; background: #FFFFFF">
+<div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<h2 id="coach-h" style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #3F3954">A note from Kate, your coach</h2>
+<p style="margin: 0; font-size: 20px; line-height: 1.45; font-weight: 600">“Saw you tried the boundary script on Tuesday. That's a big one. Want to spend Monday on what happened next?”</p>
+<div style="display: flex; gap: 10px; flex-wrap: wrap">
+<button style="min-height: 44px; padding: 0 18px; border-radius: 999px; border: none; background: #231E33; color: #FFFFFF; font-weight: 700; font-size: 14px">Reply</button>
+<button style="min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1.5px solid #231E33; background: transparent; color: #231E33; font-weight: 700; font-size: 14px">Book Monday</button>
+</div>
+</div>
+</article>
+<article style="flex: 1 1 340px; min-width: 0; border: 1.5px solid #EEEBF5; border-radius: 28px; padding: 28px; display: flex; flex-direction: column; gap: 14px">
+<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #5B5670">Keep going</p>
+<h3 style="margin: 0; font-size: 22px; line-height: 1.2; font-weight: 800">Better Sleep in Four Weeks</h3>
+<div role="progressbar" aria-label="Program progress" aria-valuemin="0" aria-valuemax="8" aria-valuenow="5" style="height: 10px; border-radius: 999px; background: #EEE8FD; overflow: hidden"><div style="width: 62%; height: 100%; background: #7C63E0; border-radius: 999px"></div></div>
+<p style="margin: 0; font-size: 14px; color: #4E4864">Lesson 6 of 8 · about 12 minutes</p>
+<button style="margin-top: auto; align-self: flex-start; min-height: 44px; padding: 0 18px; border-radius: 999px; border: none; background: #5B3FD1; color: #FFFFFF; font-weight: 700; font-size: 14px">Continue</button>
+</article>
+</section>
+
+<section aria-labelledby="circles-h" style="display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h2 id="circles-h" style="margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.02em">Circles that fit today</h2>
+<p style="margin: 0; font-size: 15px; color: #5B5670">{{mood.circleIntro}}</p>
+</div>
+<a href="#" style="font-weight: 700; font-size: 15px">Browse all Circles</a>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px">
+<sc-for list="{{circles}}" as="c" hint-placeholder-count="3">
+<article style="{{c.style}}">
+<span style="align-self: flex-start; padding: 6px 12px; border-radius: 999px; background: #FFFFFF; font-size: 13px; font-weight: 700">{{c.when}}</span>
+<h3 style="margin: 0; font-size: 21px; line-height: 1.2; font-weight: 800">{{c.title}}</h3>
+<p style="margin: 0; font-size: 14px; line-height: 1.5; color: #3F3954">{{c.note}}</p>
+<button style="margin-top: auto; align-self: flex-start; min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1.5px solid #231E33; background: transparent; color: #231E33; font-weight: 700; font-size: 14px">Register</button>
+</article>
+</sc-for>
+</div>
+</section>
+
+<section id="support" aria-label="Crisis support" style="border-radius: 24px; background: #F7F5FC; padding: 24px 28px; display: flex; gap: 16px; align-items: center; justify-content: space-between; flex-wrap: wrap">
+<p style="margin: 0; font-size: 16px; line-height: 1.5; color: #3F3954; flex: 1 1 420px"><strong style="color: #231E33">Need to talk to someone right now?</strong> Our support line is open 24/7. In the US you can also call or text 988.</p>
+<a href="#" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; border-radius: 999px; background: #FFFFFF; border: 1.5px solid #231E33; color: #231E33; font-weight: 700; font-size: 15px; text-decoration: none">Get support now</a>
+</section>
+
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;daypart&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;morning&quot;,&quot;afternoon&quot;,&quot;evening&quot;],&quot;default&quot;:&quot;morning&quot;},&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:2300}}">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { mood: 'stretched', insight: null };
+  }
+  renderVals() {
+    const s = this.state;
+    const daypart = this.props.daypart ?? 'morning';
+    const greeting = { morning: 'Good morning', afternoon: 'Good afternoon', evening: 'Good evening' }[daypart];
+    const MOODS = [
+      { id: 'bright', label: 'Bright', bg: '#FBF2D6', a: '#F2D58A', b: '#C98A1A',
+        headline: 'Love that. Let’s put it to work.',
+        sub: 'Good energy is a great moment to build a habit or take on the thing you’ve been putting off.',
+        circleIntro: 'Bring that energy. These groups are about building, not just coping.',
+        picks: [
+          { kind: 'Course', min: '15 min', title: 'Deep Work Without Burnout', desc: 'Turn today’s focus into a routine that lasts.', cta: 'Start' },
+          { kind: 'Coaching', min: '30 min', title: 'Set a goal with Kate', desc: 'Pick one thing to move forward this month.', cta: 'Book' },
+          { kind: 'Exercise', min: '5 min', title: 'Three Good Things', desc: 'Notice what’s going right so you can find it again.', cta: 'Try it' }
+        ] },
+      { id: 'steady', label: 'Steady', bg: '#E1F4EC', a: '#9ED8C0', b: '#2F8F6B',
+        headline: 'Steady is a good place to be.',
+        sub: 'A small, consistent step today keeps you here. Pick up where you left off.',
+        circleIntro: 'Easygoing groups for staying on an even keel.',
+        picks: [
+          { kind: 'Program', min: '12 min', title: 'Better Sleep, lesson 6', desc: 'You’re two lessons from the end.', cta: 'Continue' },
+          { kind: 'Meditation', min: '10 min', title: 'Midday Check-in', desc: 'A short pause to stay where you are.', cta: 'Play' },
+          { kind: 'Exercise', min: '5 min', title: 'Gratitude Letter', desc: 'Write a few lines to someone who helped lately.', cta: 'Try it' }
+        ] },
+      { id: 'stretched', label: 'Stretched thin', bg: '#FDEBE1', a: '#F6B99B', b: '#D2683E',
+        headline: 'Let’s lighten the load.',
+        sub: 'Nothing big today. Here are three small things that take less than they give back.',
+        circleIntro: 'Groups for when there’s too much on your plate.',
+        picks: [
+          { kind: 'Exercise', min: '3 min', title: 'The 3-Minute Reset', desc: 'Breath, body, next step. For between meetings.', cta: 'Start' },
+          { kind: 'Tool', min: '5 min', title: 'Brain Dump', desc: 'Get it all out of your head and pick just one thing.', cta: 'Open' },
+          { kind: 'Coaching', min: 'Message', title: 'Ask Kate to triage your week', desc: 'Send a note. She’ll reply by tomorrow.', cta: 'Message' }
+        ] },
+      { id: 'anxious', label: 'On edge', bg: '#E2EEFB', a: '#A9C9F2', b: '#3D74C9',
+        headline: 'Let’s slow things down.',
+        sub: 'Start with your breath. When you’re ready, a few ways to loosen the knot.',
+        circleIntro: 'Calm, guided groups. You can just listen.',
+        support: true,
+        picks: [
+          { kind: 'Breathing', min: '2 min', title: 'Box Breathing', desc: 'In for four, hold for four. A pace to follow on screen.', cta: 'Begin' },
+          { kind: 'Program', min: '15 min', title: 'Untangling Anxious Thoughts', desc: 'Notice the spiral early and step out of it.', cta: 'Start' },
+          { kind: 'Meditation', min: '8 min', title: 'Grounding: 5-4-3-2-1', desc: 'Use your senses to come back to the room.', cta: 'Play' }
+        ] },
+      { id: 'low', label: 'Low', bg: '#EEE8FD', a: '#B9A8F2', b: '#6A4FD6',
+        headline: 'Thanks for telling us. Let’s be gentle today.',
+        sub: 'You don’t have to fix anything right now. Here are a few soft places to land.',
+        circleIntro: 'Supportive groups where it’s okay not to be okay.',
+        support: true,
+        picks: [
+          { kind: 'Audio', min: '6 min', title: 'Self-Compassion Break', desc: 'Talk to yourself the way you’d talk to a friend.', cta: 'Play' },
+          { kind: 'Exercise', min: '10 min', title: 'A Short Walk Outside', desc: 'Guided audio for a slow loop around the block.', cta: 'Start' },
+          { kind: 'Journal', min: '5 min', title: 'One Small Thing', desc: 'Name one thing that would make today a little easier.', cta: 'Write' }
+        ] }
+    ];
+    const CIRCLES = {
+      bright: [
+        { when: 'Tue, Nov 24 · 1:00 PM ET', title: 'Focus in a Noisy World', note: 'Build habits that protect your best hours.' },
+        { when: 'Wed, Nov 25 · 12:00 PM ET', title: 'Growing Into a New Role', note: 'For anyone stepping up at work.' },
+        { when: 'Mon, Nov 30 · 6:00 PM ET', title: 'Kindness as a Practice', note: 'Small acts, shared stories.' }
+      ],
+      steady: [
+        { when: 'Tue, Nov 24 · 8:00 PM ET', title: 'Sleep Is a Skill', note: 'Keep the good nights coming.' },
+        { when: 'Wed, Nov 25 · 12:00 PM ET', title: 'Mindful Midweek', note: 'A gentle reset with others.' },
+        { when: 'Tue, Dec 1 · 7:30 PM ET', title: 'Parenting Through Big Feelings', note: 'Share what works with other parents.' }
+      ],
+      stretched: [
+        { when: 'Tue, Nov 24 · 12:00 PM ET', title: 'When Work Follows You Home', note: 'Switching off when the inbox doesn’t.' },
+        { when: 'Wed, Dec 2 · 12:00 PM ET', title: 'Holidays and Family Dynamics', note: 'Plans, expectations, and saying no.' },
+        { when: 'Thu, Dec 3 · 6:00 PM ET', title: 'Caregivers’ Circle', note: 'For people looking after everyone else.' }
+      ],
+      anxious: [
+        { when: 'Mon, Nov 30 · 6:00 PM ET', title: 'Quieting the Inner Critic', note: 'Cameras optional. Listening is enough.' },
+        { when: 'Wed, Nov 25 · 8:00 PM ET', title: 'Sleep Is a Skill', note: 'For racing thoughts at bedtime.' },
+        { when: 'Thu, Dec 3 · 12:00 PM ET', title: 'Calm in the Middle of the Day', note: 'A guided breathing group.' }
+      ],
+      low: [
+        { when: 'Tue, Nov 24 · 7:00 PM ET', title: 'It’s Okay Not to Be Okay', note: 'A supportive space, led by a therapist.' },
+        { when: 'Mon, Nov 30 · 6:00 PM ET', title: 'Quieting the Inner Critic', note: 'Cameras optional. Listening is enough.' },
+        { when: 'Wed, Dec 2 · 7:00 PM ET', title: 'Winter Blues, Together', note: 'Light, routine, and connection.' }
+      ]
+    };
+    const mood = MOODS.find((m) => m.id === s.mood);
+    const moods = MOODS.map((m) => {
+      const on = m.id === s.mood;
+      return {
+        ...m, pressed: on ? 'true' : 'false',
+        icon: ({
+          bright: 'M8 5.25a2.75 2.75 0 1 0 0 5.5a2.75 2.75 0 1 0 0-5.5M8 1.25v1.5M8 13.25v1.5M1.25 8h1.5M13.25 8h1.5M3.2 3.2l1.05 1.05M11.75 11.75l1.05 1.05M12.8 3.2l-1.05 1.05M4.25 11.75L3.2 12.8',
+          steady: 'M1.5 6.5c1.6 0 1.6-1.5 3.25-1.5s1.6 1.5 3.25 1.5s1.6-1.5 3.25-1.5s1.6 1.5 3.25 1.5M1.5 11c1.6 0 1.6-1.5 3.25-1.5s1.6 1.5 3.25 1.5s1.6-1.5 3.25-1.5s1.6 1.5 3.25 1.5',
+          stretched: 'M2.75 4.75h9a.75.75 0 0 1 .75.75v5a.75.75 0 0 1-.75.75h-9A.75.75 0 0 1 2 10.5v-5a.75.75 0 0 1 .75-.75zM14.25 6.75v2.5M4.5 7v2',
+          anxious: 'M1.25 8.5l2-3l2 5.5l2.25-7l2.25 7l2-5.5l2 3',
+          low: 'M4.75 10.5h6.5a2.5 2.5 0 0 0 .2-5A3.5 3.5 0 0 0 4.7 5.2A2.65 2.65 0 0 0 4.75 10.5zM6 12.75l-.5 1.25M9 12.75l-.5 1.25'
+        })[m.id],
+        style: 'display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 18px; border-radius: 999px; font-size: 15px; font-weight: 700; ' + (on ? 'border: 2px solid #231E33; background: ' + m.bg + '; color: #231E33' : 'border: 1.5px solid #D6D0E6; background: #FFFFFF; color: #231E33'),
+        pick: () => this.setState({ mood: m.id })
+      };
+    });
+    const days = ['F', 'S', 'S', 'M', 'T', 'W', 'T', 'F', 'S', 'S', 'M', 'T', 'W', 'T'];
+    const past = ['steady', null, 'bright', 'stretched', 'stretched', 'steady', 'anxious', 'steady', 'bright', null, 'low', 'stretched', 'steady'];
+    const all = [...past, s.mood];
+    const history = all.map((id, i) => {
+      const m = MOODS.find((x) => x.id === id);
+      const today = i === all.length - 1;
+      const size = today ? 36 : 28;
+      return {
+        day: today ? 'Today' : days[i],
+        aria: (today ? 'Today: ' : days[i] + ': ') + (m ? m.label : 'no check-in'),
+        style: 'display: block; width: ' + size + 'px; height: ' + size + 'px; border-radius: 999px; ' + (m ? 'background: ' + m.b + ';' : 'background: #FFFFFF; border: 1.5px dashed #B8B2CC; box-sizing: border-box;') + (today ? ' box-shadow: 0 0 0 4px #FFFFFF, 0 0 0 6px #231E33;' : '')
+      };
+    });
+    const ORDER = ['bright', 'steady', 'stretched', 'anxious', 'low'];
+    const X0 = 124, X1 = 744, Y0 = 18, STEP_Y = 30;
+    const stepX = (X1 - X0) / (all.length - 1);
+    const fx = (n) => n.toFixed(1);
+    const pts = [];
+    const chartDays = all.map((id, i) => {
+      const m = MOODS.find((x) => x.id === id);
+      const today = i === all.length - 1;
+      const x = X0 + i * stepX;
+      if (m) pts.push({ x, y: Y0 + ORDER.indexOf(id) * STEP_Y, m, today });
+      return { x: fx(x), label: today ? 'Today' : days[i], fill: m ? (today ? '#231E33' : '#5B5670') : '#B8B2CC', weight: today ? '800' : '600' };
+    });
+    let line = '';
+    pts.forEach((p, i) => {
+      if (i === 0) { line = 'M' + fx(p.x) + ' ' + fx(p.y); return; }
+      const p0 = pts[i - 2] || pts[i - 1], p1 = pts[i - 1], p3 = pts[i + 1] || p;
+      line += ' C' + fx(p1.x + (p.x - p0.x) / 6) + ' ' + fx(p1.y + (p.y - p0.y) / 6) + ' ' + fx(p.x - (p3.x - p1.x) / 6) + ' ' + fx(p.y - (p3.y - p1.y) / 6) + ' ' + fx(p.x) + ' ' + fx(p.y);
+    });
+    const firstPt = pts[0], lastPt = pts[pts.length - 1];
+    const chart = {
+      line,
+      area: line + ' L' + fx(lastPt.x) + ' 148 L' + fx(firstPt.x) + ' 148 Z',
+      dots: pts.map((p) => ({ x: fx(p.x), y: fx(p.y), color: p.m.b, r: p.today ? 8 : 6 })),
+      todayDot: { x: fx(lastPt.x), y: fx(lastPt.y) },
+      levels: ORDER.map((id, i) => { const m = MOODS.find((x) => x.id === id); return { y: Y0 + i * STEP_Y, ty: Y0 + i * STEP_Y + 4, label: m.label, color: m.b }; }),
+      days: chartDays,
+      aria: 'Mood over the last 14 days, from Low at the bottom to Bright at the top. ' + all.map((id, i) => (i === all.length - 1 ? 'Today' : days[i]) + ': ' + (id ? MOODS.find((x) => x.id === id).label : 'no check-in')).join(', ') + '.'
+    };
+    const pill = (on) => 'min-height: 44px; padding: 0 16px; border-radius: 999px; font-size: 14px; font-weight: 700; ' + (on ? 'border: 1.5px solid #231E33; background: #231E33; color: #FFFFFF' : 'border: 1.5px solid #D6D0E6; background: #FFFFFF; color: #231E33');
+    return {
+      greeting, mood, moods, history, chart,
+      legend: MOODS.map((m) => ({ label: m.label, b: m.b })),
+      picks: mood.picks,
+      circles: (CIRCLES[s.mood] || []).map((c) => ({ ...c, style: 'background: ' + mood.bg + '; border-radius: 24px; padding: 22px; display: flex; flex-direction: column; gap: 12px; min-height: 210px' })),
+      heroBand: 'background: ' + mood.bg + '; transition: background 400ms ease',
+      yesPressed: s.insight === 'yes' ? 'true' : 'false', noPressed: s.insight === 'no' ? 'true' : 'false',
+      yesStyle: pill(s.insight === 'yes'), noStyle: pill(s.insight === 'no'),
+      agreeYes: () => this.setState({ insight: 'yes' }), agreeNo: () => this.setState({ insight: 'no' }),
+      answered: !!s.insight,
+      answerNote: s.insight === 'yes' ? 'Great. We’ll nudge the wind-down on busy evenings.' : 'Thanks. We’ll stop suggesting this pattern.'
+    };
+  }
+}
+</script>
+</body>
+</html>

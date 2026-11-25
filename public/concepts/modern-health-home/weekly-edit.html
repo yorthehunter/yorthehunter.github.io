@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concept A: Your Weekly Edit · Brian Cleveland</title>
+<script src="./_runtime/react.js"></script>
+<script src="./_runtime/react-dom.js"></script>
+<script src="./_runtime/support.js"></script>
+</head>
+<body>
+<aside aria-label="About this prototype" style="position: fixed; left: 16px; bottom: 16px; z-index: 50; max-width: calc(100vw - 32px); box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; padding: 10px 16px; border-radius: 12px; background: #1D2229; color: #F0F3F6; font: 500 13px/1.4 system-ui, -apple-system, sans-serif; box-shadow: 0 6px 24px rgba(0,0,0,0.18)"><span><strong>Concept prototype</strong> by Brian Cleveland. Not a shipped Modern Health product.</span><a href="/work/personalized-home/#next" style="color: #FF7FB6; font-weight: 700">Back to the case study</a></aside>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#4B32C3}a:hover{color:#36239A}
+button{font-family:inherit;cursor:pointer}
+.tertiary{background:transparent;color:#4B32C3;text-decoration:none;border:none;border-radius:999px;transition:background-color 120ms ease}
+.tertiary:hover{background:rgba(91,63,209,0.10);color:#4B32C3}
+.tertiary:focus-visible{outline:2px solid #5B3FD1;outline-offset:2px}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.rise{animation:rise 760ms cubic-bezier(.22,.61,.36,1) both}
+@media (prefers-reduced-motion: reduce){.rise{animation:none}}
+.search{border:1.5px solid #E2DCF0;transition:border-color 120ms ease,box-shadow 120ms ease}
+.search:hover{border-color:#CFC6E8}
+.search:focus-within{border-color:#5B3FD1;box-shadow:0 0 0 3px rgba(91,63,209,0.15)}
+.search input::placeholder{color:#6E6984}
+</style>
+</helmet>
+<div style="font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #231E33; background: #FFFFFF; min-height: 100vh; position: relative">
+<svg aria-hidden="true" width="100%" height="660" viewBox="0 0 1440 660" preserveAspectRatio="none" style="position: absolute; top: 0; left: 0; display: block; pointer-events: none"><path d="M0 0H1440V392C1290 352 1170 344 1020 378C860 414 760 432 600 404C450 378 330 342 190 360C110 370 50 386 0 398Z" fill="#EFEAFB"></path><path d="M0 398C50 386 110 370 190 360C330 342 450 378 600 404C760 432 860 414 1020 378C1170 344 1290 352 1440 392V418C1290 382 1170 376 1020 408C860 442 760 460 600 432C450 406 330 372 190 390C110 400 50 414 0 426Z" fill="#EFEAFB" fill-opacity="0.55"></path></svg>
+
+<header style="position: relative; border-bottom: 1px solid rgba(35, 30, 51, 0.06)">
+<div style="max-width: 1280px; margin: 0 auto; padding: 16px 40px; display: flex; align-items: center; gap: 28px; flex-wrap: wrap">
+<a href="#" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #231E33; font-weight: 800; font-size: 19px; letter-spacing: -0.01em">
+<svg aria-hidden="true" width="28" height="28" viewBox="0 0 28 28"><circle cx="11" cy="14" r="9" fill="#C9BCF7"></circle><circle cx="17" cy="14" r="9" fill="#F7C6AE" fill-opacity="0.85"></circle></svg>
+modern health</a>
+<nav aria-label="Primary" style="display: flex; gap: 4px; flex-wrap: wrap; flex: 1 1 auto">
+<a href="#" aria-current="page" style="padding: 10px 16px; border-radius: 999px; background: #FFFFFF; box-shadow: 0 0 0 1px rgba(35, 30, 51, 0.08), 0 2px 6px rgba(35, 30, 51, 0.08); color: #231E33; font-weight: 800; font-size: 15px; text-decoration: none">Home</a>
+<a href="#" style="padding: 10px 16px; border-radius: 999px; color: #4E4864; font-weight: 600; font-size: 15px; text-decoration: none">Care</a>
+<a href="#" style="padding: 10px 16px; border-radius: 999px; color: #4E4864; font-weight: 600; font-size: 15px; text-decoration: none">Circles</a>
+<a href="#" style="padding: 10px 16px; border-radius: 999px; color: #4E4864; font-weight: 600; font-size: 15px; text-decoration: none">Library</a>
+</nav>
+<form role="search" style="flex: 0 1 300px; min-width: 200px; margin: 0">
+<label class="search" style="display: flex; align-items: center; gap: 8px; height: 44px; padding: 0 16px; border-radius: 999px; background: #FFFFFF; box-sizing: border-box; cursor: text">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="#5B5670" stroke-width="1.6" stroke-linecap="round" style="flex: none"><circle cx="7" cy="7" r="4.75"></circle><path d="M10.6 10.6L14 14"></path></svg>
+<span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap">Search Modern Health</span>
+<input type="search" placeholder="Search programs, Circles, providers" style="flex: 1 1 auto; min-width: 0; border: none; outline: none; background: transparent; font-family: inherit; font-size: 15px; color: #231E33">
+</label>
+</form>
+<a href="#support" style="padding: 10px 16px; border-radius: 999px; border: 1.5px solid #D6D0E6; color: #231E33; font-weight: 600; font-size: 14px; text-decoration: none">Get support now</a>
+<button aria-label="Your account" style="width: 44px; height: 44px; border-radius: 999px; border: none; background: #FDE6DA; color: #231E33; font-weight: 800; font-size: 16px">M</button>
+</div>
+</header>
+
+<main style="position: relative; max-width: 1280px; margin: 0 auto; padding: 48px 40px 96px; display: flex; flex-direction: column; gap: 72px">
+
+<section style="display: flex; flex-wrap: wrap; gap: 32px; align-items: stretch">
+<div style="flex: 999 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 22px; justify-content: center">
+<p class="rise" style="animation-delay: 0ms; margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #6E6984">Thursday, November 19</p>
+<h1 class="rise" style="animation-delay: 80ms; margin: 0; font-size: 56px; line-height: 1.05; letter-spacing: -0.03em; font-weight: 800">Good morning, Maya.<br></h1>
+<p class="rise" style="animation-delay: 160ms; margin: 0; font-size: 19px; line-height: 1.55; color: #4E4864; max-width: 560px">{{summary}}</p>
+<div class="rise" style="animation-delay: 240ms; display: flex; gap: 12px; flex-wrap: wrap; align-items: center">
+<a href="#edit" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; border-radius: 999px; background: #5B3FD1; color: #FFFFFF; font-weight: 700; font-size: 16px; text-decoration: none">Start with&nbsp; {{feature.short}}</a>
+</div>
+<button onClick="{{toggleHow}}" aria-expanded="{{howExpanded}}" class="rise" style="animation-delay: 300ms; align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; min-height: 44px; margin-top: -10px; padding: 0; border: none; background: transparent; color: #5B5670; font-weight: 500; font-size: 14px"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6.5"></circle><path d="M8 7.25v3.75"></path><circle cx="8" cy="5" r="0.6" fill="currentColor" stroke="none"></circle></svg>How we pick for you</button>
+<sc-if value="{{showHow}}" hint-placeholder-val="{{ false }}">
+<div style="background: #FFFFFF; border: 1.5px solid #E7E2F3; border-radius: 20px; padding: 20px 22px; display: flex; flex-direction: column; gap: 10px; max-width: 560px">
+<p style="margin: 0; font-weight: 700; font-size: 16px">Your edit is built from four things, and only these:</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #4E4864">What's on your mind · how you like support · the time you have · what you've finished or skipped. Your care team never sees your edit unless you share it.</p>
+</div>
+</sc-if>
+</div>
+
+<aside aria-labelledby="profile-h" class="rise" style="animation-delay: 140ms; flex: 1 1 420px; min-width: 0; background: #FFFFFF; border: 1.5px solid #EEEBF5; border-radius: 28px; padding: 28px; display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h2 id="profile-h" style="margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.01em">Your wellbeing profile</h2>
+<p style="margin: 0; font-size: 15px; color: #5B5670">We meet you where you are. Not every day is the same.<br>Tell us what you want help with <i>today</i>.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #6E6984">What's on your mind</p>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{foci}}" as="f" hint-placeholder-count="6">
+<button onClick="{{f.toggle}}" aria-pressed="{{f.pressed}}" style="{{f.style}}">
+<svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="{{f.checkColor}}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex: none"><path d="M2.5 7.5l3 3 6-7"></path></svg>
+{{f.label}}</button>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #6E6984">How you like support</p>
+<div role="group" aria-label="How you like support" style="display: flex; gap: 4px; padding: 4px; background: #FFFFFF; border: 1.5px solid #E7E2F3; border-radius: 999px">
+<sc-for list="{{modes}}" as="m" hint-placeholder-count="3">
+<button onClick="{{m.pick}}" aria-pressed="{{m.pressed}}" style="{{m.style}}">{{m.label}}</button>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #6E6984">Time you usually have</p>
+<div role="group" aria-label="Time you usually have" style="display: flex; gap: 4px; padding: 4px; background: #FFFFFF; border: 1.5px solid #E7E2F3; border-radius: 999px">
+<sc-for list="{{times}}" as="t" hint-placeholder-count="3">
+<button onClick="{{t.pick}}" aria-pressed="{{t.pressed}}" style="{{t.style}}">{{t.label}}</button>
+</sc-for>
+</div>
+</div>
+<p style="margin: 0; font-size: 13px; color: #6E6984">Last modified from your Monday check-in, September 14.<br></p>
+</aside>
+</section>
+
+<section id="edit" aria-labelledby="edit-h" class="rise" style="animation-delay: 400ms; display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h2 id="edit-h" style="margin: 0; font-size: 34px; font-weight: 800; letter-spacing: -0.02em">This week's edit</h2>
+<p style="margin: 0; font-size: 16px; color: #5B5670">Our picks for you. Refreshed every Monday.</p>
+</div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: stretch">
+<article style="{{feature.featureStyle}}">
+<svg aria-hidden="true" viewBox="0 0 520 200" width="100%" height="200" preserveAspectRatio="xMidYMid slice" style="border-radius: 20px; background: #FFFFFF; display: block"><circle cx="380" cy="80" r="96" fill="{{feature.artA}}"></circle><circle cx="270" cy="160" r="64" fill="{{feature.artB}}" fill-opacity="0.85"></circle><circle cx="110" cy="70" r="34" fill="{{feature.artA}}" fill-opacity="0.45"></circle><rect x="60" y="130" width="140" height="140" rx="70" fill="{{feature.artB}}" fill-opacity="0.25"></rect></svg>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<p style="margin: 0; font-size: 14px; font-weight: 700; color: #4E4864">{{feature.kind}} · {{feature.minutesLabel}} · {{feature.modeLabel}}</p>
+<h3 style="margin: 0; font-size: 32px; line-height: 1.15; font-weight: 800; letter-spacing: -0.02em">{{feature.title}}</h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.55; color: #3F3954">{{feature.desc}}</p>
+</div>
+<p style="margin: 0; align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: #FFFFFF; font-size: 14px; font-weight: 600; color: #231E33"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#5B3FD1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1.5v3M8 11.5v3M1.5 8h3M11.5 8h3M3.6 3.6l2 2M10.4 10.4l2 2M12.4 3.6l-2 2M5.6 10.4l-2 2"></path></svg>{{feature.why}}</p>
+<div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto">
+<button style="min-height: 48px; padding: 0 24px; border-radius: 999px; border: none; background: #5B3FD1; color: #FFFFFF; font-weight: 700; font-size: 15px">{{feature.cta}}</button>
+<button onClick="{{feature.dismiss}}" style="min-height: 48px; padding: 0 20px; border-radius: 999px; border: 1.5px solid #231E33; background: transparent; color: #231E33; font-weight: 600; font-size: 15px">Something else</button>
+</div>
+</article>
+
+<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+<sc-for list="{{rest}}" as="r" hint-placeholder-count="3">
+<article style="{{r.cardStyle}}">
+<svg aria-hidden="true" width="96" height="96" viewBox="0 0 96 96" style="flex: none; border-radius: 20px; background: #FFFFFF"><circle cx="60" cy="38" r="30" fill="{{r.artA}}"></circle><circle cx="36" cy="64" r="22" fill="{{r.artB}}" fill-opacity="0.85"></circle></svg>
+<div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+<p style="margin: 0; font-size: 13px; font-weight: 700; color: #4E4864">{{r.kind}} · {{r.minutesLabel}}</p>
+<h3 style="margin: 0; font-size: 19px; line-height: 1.25; font-weight: 800">{{r.title}}</h3>
+<p style="margin: 0; font-size: 14px; font-weight: 600; color: #4B32C3">{{r.why}}</p>
+<div style="display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap">
+<button style="min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1.5px solid #231E33; background: transparent; color: #231E33; font-weight: 700; font-size: 14px">{{r.cta}}</button>
+<button onClick="{{r.dismiss}}" class="tertiary" style="min-height: 44px; padding: 0 14px; font-weight: 600; font-size: 14px">Something else</button>
+</div>
+</div>
+</article>
+</sc-for>
+</div>
+</div>
+<sc-if value="{{hasDismissed}}" hint-placeholder-val="{{ false }}">
+<p style="margin: 0; font-size: 14px; color: #5B5670">Got it. We replaced {{dismissedCount}} and will show fewer like them. <button onClick="{{resetDismissed}}" style="border: none; background: transparent; color: #4B32C3; font-weight: 700; font-size: 14px; text-decoration: underline; padding: 0; min-height: 44px">Undo</button></p>
+</sc-if>
+</section>
+
+<section aria-labelledby="team-h" class="rise" style="animation-delay: 500ms; display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h2 id="team-h" style="margin: 0; font-size: 34px; font-weight: 800; letter-spacing: -0.02em">Your care team</h2>
+<p style="margin: 0; font-size: 16px; color: #5B5670">Matched to your profile. You can rematch anytime, no reason needed.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px">
+<article style="border: 1.5px solid #EEEBF5; border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; gap: 14px; align-items: center">
+<img src="./assets/633cde2bfae1cca2b5e3b28ec312beeb.jpg" alt="" style="flex: none; width: 56px; height: 56px; border-radius: 999px; object-fit: cover; background: #E1F4EC">
+<div><p style="margin: 0; font-weight: 800; font-size: 18px">Kate Morgan</p><p style="margin: 0; font-size: 14px; color: #5B5670">Certified coach</p></div>
+</div>
+<p style="margin: 0; font-size: 15px; line-height: 1.5; color: #3F3954"><strong style="color: #231E33">Matched on:</strong> {{matchText}}</p>
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: auto">
+<p style="margin: 0; font-size: 14px; color: #5B5670">Next opening: Mon, 10:30 AM</p>
+<button style="min-height: 44px; padding: 0 18px; border-radius: 999px; border: none; background: #231E33; color: #FFFFFF; font-weight: 700; font-size: 14px">Book now</button>
+</div>
+</article>
+<article style="border: 1.5px solid #EEEBF5; border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; gap: 14px; align-items: center">
+<img src="./assets/45e83a3a06a0624f553fe6402c0fb295.jpg" alt="" style="flex: none; width: 56px; height: 56px; border-radius: 999px; object-fit: cover; background: #E2EEFB">
+<div><p style="margin: 0; font-weight: 800; font-size: 18px">Dr. Elena Ortiz</p><p style="margin: 0; font-size: 14px; color: #5B5670">Licensed therapist · CBT</p></div>
+</div>
+<p style="margin: 0; font-size: 15px; line-height: 1.5; color: #3F3954"><strong style="color: #231E33">Your fit:</strong> Works with {{therapistFit}}, and offers evening video sessions.</p>
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: auto">
+<p style="margin: 0; font-size: 14px; color: #5B5670">Next opening: Wed, 6:00 PM</p>
+<button style="min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1.5px solid #231E33; background: transparent; color: #231E33; font-weight: 700; font-size: 14px">View profile</button>
+</div>
+</article>
+<article style="background: #FDEBE1; border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 12px; justify-content: space-between">
+<p style="margin: 0; font-size: 20px; line-height: 1.3; font-weight: 800">Looking for a different fit?</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.5; color: #3F3954">A good relationship with your provider is one of the strongest predictors of progress. Share what matters most to you and we'll recommend providers who fit.</p>
+<a href="#" class="tertiary" style="align-self: flex-start; display: inline-flex; align-items: center; min-height: 40px; padding: 0 12px; margin-left: -12px; font-weight: 700; font-size: 15px">Update provider preferences</a>
+</article>
+</div>
+</section>
+
+<section aria-labelledby="circles-h" class="rise" style="animation-delay: 580ms; display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h2 id="circles-h" style="margin: 0; font-size: 34px; font-weight: 800; letter-spacing: -0.02em">Circles for you</h2>
+<p style="margin: 0; font-size: 16px; color: #5B5670">Live, therapist-led groups on what's on your mind. Cameras optional, first names only.</p>
+</div>
+<a href="#" class="tertiary" style="display: inline-flex; align-items: center; min-height: 40px; padding: 0 14px; margin-right: -14px; font-weight: 700; font-size: 15px">Browse all Circles</a>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px">
+<sc-for list="{{circles}}" as="c" hint-placeholder-count="3">
+<article style="{{c.cardStyle}}">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 8px">
+<div style="display: flex; align-items: center; gap: 2px">
+<sc-if value="{{c.now}}" hint-placeholder-val="{{ false }}"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px; background: #FFFFFF; font-size: 13px; font-weight: 800; color: #9A3412"><svg aria-hidden="true" width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#C2410C"></circle></svg>Happening now</span></sc-if>
+<sc-if value="{{c.later}}" hint-placeholder-val="{{ true }}"><span style="padding: 6px 12px; border-radius: 999px; background: #FFFFFF; font-size: 13px; font-weight: 700">{{c.when}}</span></sc-if>
+<sc-if value="{{c.hasMore}}" hint-placeholder-val="{{ true }}"><button aria-label="{{c.moreAria}}" style="min-height: 44px; min-width: 44px; padding: 0 4px; border: none; background: transparent; display: inline-flex; align-items: center; justify-content: center"><span style="padding: 6px 10px; border-radius: 999px; background: #FFFFFF; font-size: 13px; font-weight: 700; color: #4E4864">{{c.more}}</span></button></sc-if>
+</div>
+<span style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: #3F3954"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="5.5" r="2.25"></circle><path d="M2 13c0-2.2 1.8-3.75 4-3.75S10 10.8 10 13"></path><circle cx="11.25" cy="6.25" r="1.75"></circle><path d="M11 9.4c1.7.1 3 1.4 3 3.1"></path></svg>Live session</span>
+</div>
+<h3 style="margin: 0; font-size: 22px; line-height: 1.2; font-weight: 800">{{c.title}}</h3>
+<p style="margin: 0; font-size: 14px; color: #3F3954">{{c.why}}</p>
+<a href="#" class="tertiary" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 12px; margin-left: -12px; font-size: 14px; font-weight: 600"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="4.5"></circle><path d="M10.5 10.5L14 14"></path></svg>Find more like this</a>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-top: auto">
+<div style="display: flex; align-items: center">
+<span aria-hidden="true" style="width: 32px; height: 32px; border-radius: 999px; background: #C9BCF7; border: 2px solid #FFFFFF"></span>
+<span aria-hidden="true" style="width: 32px; height: 32px; border-radius: 999px; background: #F7C6AE; border: 2px solid #FFFFFF; margin-left: -10px"></span>
+<span aria-hidden="true" style="width: 32px; height: 32px; border-radius: 999px; background: #9ED8C0; border: 2px solid #FFFFFF; margin-left: -10px"></span>
+<span style="font-size: 13px; color: #3F3954; margin-left: 8px">{{c.seats}}</span>
+</div>
+<button style="{{c.ctaStyle}}">{{c.cta}}</button>
+</div>
+</article>
+</sc-for>
+</div>
+</section>
+
+<section id="support" aria-label="Crisis support" class="rise" style="animation-delay: 660ms; border-radius: 24px; background: #F7F5FC; padding: 24px 28px; display: flex; gap: 16px; align-items: center; justify-content: space-between; flex-wrap: wrap">
+<p style="margin: 0; font-size: 16px; line-height: 1.5; color: #3F3954; flex: 1 1 420px"><strong style="color: #231E33">Need to talk to someone right now?</strong> Our support line is open 24/7. In the US you can also call or text 988.</p>
+<a href="#" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; border-radius: 999px; background: #FFFFFF; border: 1.5px solid #231E33; color: #231E33; font-weight: 700; font-size: 15px; text-decoration: none">Get support now</a>
+</section>
+
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2300}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { focus: ['sleep', 'stress'], mode: 'solo', time: 15, dismissed: [], showHow: false };
+  }
+  renderVals() {
+    const s = this.state;
+    const T = {
+      lavender: { bg: '#EEE8FD', a: '#B9A8F2', b: '#7C63E0' },
+      peach: { bg: '#FDEBE1', a: '#F6B99B', b: '#E8875F' },
+      mint: { bg: '#E1F4EC', a: '#9ED8C0', b: '#4FAE8A' },
+      sky: { bg: '#E2EEFB', a: '#A9C9F2', b: '#5B8FD9' },
+      butter: { bg: '#FBF2D6', a: '#F2D58A', b: '#D9A93A' }
+    };
+    const FOCI = [
+      { id: 'sleep', label: 'Sleep', phrase: 'sleep has been rough' },
+      { id: 'stress', label: 'Work stress', phrase: 'work has been a lot' },
+      { id: 'anxiety', label: 'Anxious thoughts', phrase: 'anxious thoughts are loud lately' },
+      { id: 'relationships', label: 'Relationships', phrase: 'relationships are on your mind' },
+      { id: 'focus', label: 'Focus', phrase: 'you want to focus better' },
+      { id: 'parenting', label: 'Parenting', phrase: 'parenting is on your plate' }
+    ];
+    const MODES = [
+      { id: 'solo', label: 'On my own', item: 'On your own', sum: 'things you can do on your own' },
+      { id: 'guided', label: 'With a coach', item: 'With your coach', sum: 'time with your coach' },
+      { id: 'group', label: 'In a group', item: 'Live group', sum: 'live group sessions' }
+    ];
+    const TIMES = [
+      { id: 5, label: '5 min', cap: 5, sum: 'a few minutes' },
+      { id: 15, label: '15 min', cap: 20, sum: 'about 15 minutes' },
+      { id: 45, label: '45+ min', cap: 999, sum: 'longer stretches' }
+    ];
+    const CATALOG = [
+      { id: 'sleep-prog', kind: 'Program', short: 'Better Sleep', title: 'Better Sleep in Four Weeks', desc: 'A CBT-informed program to quiet a busy mind at night, one short lesson at a time.', min: 15, mode: 'solo', tags: ['sleep', 'anxiety'], tint: 'lavender' },
+      { id: 'bodyscan', kind: 'Meditation', short: 'the Wind-Down', title: 'Wind-Down Body Scan', desc: 'Ten minutes to let the day drain out of your shoulders before bed.', min: 10, mode: 'solo', tags: ['sleep', 'stress'], tint: 'sky' },
+      { id: 'workhome', kind: 'Circle', short: 'a Circle', title: 'When Work Follows You Home', desc: 'A live, therapist-led group on switching off after hours.', min: 45, mode: 'group', tags: ['stress'], tint: 'peach' },
+      { id: 'boundaries', kind: 'Coaching', short: 'coaching', title: 'Setting Boundaries at Work', desc: 'A session with your coach to draft one boundary and the words to say it.', min: 30, mode: 'guided', tags: ['stress', 'relationships'], tint: 'mint' },
+      { id: 'anx-prog', kind: 'Program', short: 'Untangling', title: 'Untangling Anxious Thoughts', desc: 'Learn to notice the spiral early and step out of it.', min: 15, mode: 'solo', tags: ['anxiety'], tint: 'butter' },
+      { id: 'reset', kind: 'Exercise', short: 'a 3-minute reset', title: 'The 3-Minute Reset', desc: 'Breath, body, next step. For between meetings.', min: 3, mode: 'solo', tags: ['stress', 'anxiety', 'focus'], tint: 'mint' },
+      { id: 'deepwork', kind: 'Course', short: 'Deep Work', title: 'Deep Work Without Burnout', desc: 'Protect focus time without running yourself down.', min: 15, mode: 'solo', tags: ['focus', 'stress'], tint: 'sky' },
+      { id: 'hardconvo', kind: 'Program', short: 'Hard Conversations', title: 'Hard Conversations, Kindly', desc: 'Say the difficult thing and keep the relationship intact.', min: 15, mode: 'solo', tags: ['relationships'], tint: 'peach' },
+      { id: 'bigfeel', kind: 'Circle', short: 'a Circle', title: 'Parenting Through Big Feelings', desc: 'Swap what works with other parents, guided by a therapist.', min: 45, mode: 'group', tags: ['parenting'], tint: 'butter' },
+      { id: 'sprint', kind: 'Exercise', short: 'a focus sprint', title: 'Single-Task Sprint', desc: 'One task, one timer, zero tabs.', min: 5, mode: 'solo', tags: ['focus'], tint: 'lavender' },
+      { id: 'sleepcoach', kind: 'Coaching', short: 'coaching', title: 'Build a Sleep Reset Plan', desc: 'Work with your coach on a routine you will actually keep.', min: 30, mode: 'guided', tags: ['sleep'], tint: 'lavender' },
+      { id: 'parentcoach', kind: 'Coaching', short: 'coaching', title: 'Calmer Mornings With Kids', desc: 'Plan the hardest hour of the day with your coach.', min: 30, mode: 'guided', tags: ['parenting', 'stress'], tint: 'mint' }
+    ];
+    const CIRCLES = [
+      { title: 'When Work Follows You Home', when: 'Tue, Nov 24 · 12:00 PM ET', tags: ['stress'], tint: 'peach', seats: '14 going' },
+      { title: 'Sleep Is a Skill', when: 'Wed, Nov 25 · 8:00 PM ET', tags: ['sleep', 'anxiety'], tint: 'lavender', seats: '9 going' },
+      { title: 'Quieting the Inner Critic', when: 'Mon, Nov 30 · 6:00 PM ET', tags: ['anxiety'], tint: 'sky', seats: '11 going' },
+      { title: 'Parenting Through Big Feelings', when: 'Tue, Dec 1 · 7:30 PM ET', tags: ['parenting'], tint: 'butter', seats: '8 going' },
+      { title: 'Holidays and Family Dynamics', when: 'Wed, Dec 2 · 12:00 PM ET', tags: ['relationships', 'stress'], tint: 'mint', seats: '16 going' },
+      { title: 'Focus in a Noisy World', when: 'Thu, Dec 3 · 1:00 PM ET', tags: ['focus'], tint: 'sky', seats: '7 going' }
+    ];
+    const focusLabel = (id) => FOCI.find((f) => f.id === id);
+    const time = TIMES.find((t) => t.id === s.time);
+    const mode = MODES.find((m) => m.id === s.mode);
+
+    const chip = (on) => 'display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 16px; border-radius: 999px; font-size: 15px; font-weight: 600; ' + (on ? 'border: 1.5px solid #231E33; background: #231E33; color: #FFFFFF' : 'border: 1.5px solid #D6D0E6; background: #FFFFFF; color: #231E33');
+    const seg = (on) => 'flex: 1 1 0; min-height: 44px; padding: 0 12px; border-radius: 999px; border: none; font-size: 15px; font-weight: 700; ' + (on ? 'background: #5B3FD1; color: #FFFFFF' : 'background: transparent; color: #3F3954');
+
+    const foci = FOCI.map((f) => {
+      const on = s.focus.includes(f.id);
+      return { ...f, on, pressed: on ? 'true' : 'false', style: chip(on), checkColor: on ? '#FFFFFF' : '#E4E0EE', toggle: () => this.setState({ focus: on ? s.focus.filter((x) => x !== f.id) : [...s.focus, f.id] }) };
+    });
+    const modes = MODES.map((m) => ({ ...m, pressed: m.id === s.mode ? 'true' : 'false', style: seg(m.id === s.mode), pick: () => this.setState({ mode: m.id }) }));
+    const times = TIMES.map((t) => ({ ...t, pressed: t.id === s.time ? 'true' : 'false', style: seg(t.id === s.time), pick: () => this.setState({ time: t.id }) }));
+
+    const scored = CATALOG.filter((c) => !s.dismissed.includes(c.id)).map((c, i) => {
+      const overlap = c.tags.filter((t) => s.focus.includes(t));
+      const modeHit = c.mode === s.mode;
+      const fits = c.min <= time.cap;
+      const score = overlap.length * 4 + (modeHit ? 3 : 0) + (fits ? 2 : -2) - i * 0.01;
+      let why = 'A good place to start';
+      if (overlap.length) why = 'Because ' + focusLabel(overlap[0]).phrase;
+      else if (modeHit) why = 'Fits how you like support';
+      const t = T[c.tint];
+      return {
+        ...c, score, why,
+        minutesLabel: c.min + ' min',
+        cta: ({ Circle: 'Register', Coaching: 'Book session', Meditation: 'Play', Exercise: 'Try it', Program: 'Start program', Course: 'Start course' })[c.kind] || 'Start',
+        modeLabel: MODES.find((m) => m.id === c.mode).item,
+        artA: t.a, artB: t.b,
+        featureStyle: 'flex: 1.4 1 480px; min-width: 0; background: ' + t.bg + '; border-radius: 28px; padding: 28px; display: flex; flex-direction: column; gap: 20px',
+        cardStyle: 'flex: 1 1 auto; background: ' + t.bg + '; border-radius: 24px; padding: 18px; display: flex; gap: 18px; align-items: flex-start',
+        dismiss: () => this.setState({ dismissed: [...s.dismissed, c.id] })
+      };
+    }).sort((a, b) => b.score - a.score);
+    const picks = scored.slice(0, 4);
+    const feature = picks[0];
+    const rest = picks.slice(1);
+
+    const chosen = s.focus.map((id) => focusLabel(id).label.toLowerCase());
+    const list = chosen.length <= 1 ? (chosen[0] || '') : chosen.slice(0, -1).join(', ') + ' and ' + chosen[chosen.length - 1];
+    const summary = chosen.length
+      ? 'Four picks for ' + list + ', leaning toward ' + mode.sum + ' in ' + time.sum + '.'
+      : 'Tell us what is on your mind and we will build this week around it. For now, here are a few gentle places to start.';
+
+    const circles = CIRCLES.map((c, i) => {
+      const overlap = c.tags.filter((t) => s.focus.includes(t));
+      return {
+        ...c, score: overlap.length * 2 - i * 0.01,
+        why: overlap.length ? 'Because ' + focusLabel(overlap[0]).phrase : 'Open to everyone',
+        cardStyle: 'background: ' + T[c.tint].bg + '; border-radius: 24px; padding: 22px; display: flex; flex-direction: column; gap: 14px; min-height: 220px'
+      };
+    }).sort((a, b) => b.score - a.score).slice(0, 3).map((c, i) => ({ ...c, hasMore: [3, 2, 0][i] > 0, more: '+' + [3, 2, 0][i], moreAria: 'See ' + [3, 2, 0][i] + ' more upcoming sessions', now: i === 0, later: i !== 0, cta: i === 0 ? 'Join now' : 'Register', ctaStyle: 'min-height: 44px; padding: 0 18px; border-radius: 999px; font-weight: 700; font-size: 14px; ' + (i === 0 ? 'border: 1.5px solid #231E33; background: #231E33; color: #FFFFFF' : 'border: 1.5px solid #231E33; background: transparent; color: #231E33'), seats: i === 0 ? c.seats.replace('going', 'in the room') : c.seats }));
+
+    return {
+      foci, modes, times, feature, rest, summary, circles,
+      matchText: chosen.length ? list + ', and a preference for ' + mode.label.toLowerCase().replace('on my own', 'self-guided work') : 'your goals',
+      therapistFit: chosen.length ? list : 'a wide range of concerns',
+      showHow: s.showHow, howExpanded: s.showHow ? 'true' : 'false',
+      toggleHow: () => this.setState({ showHow: !s.showHow }),
+      hasDismissed: s.dismissed.length > 0, dismissedCount: s.dismissed.length === 1 ? 'one pick' : s.dismissed.length + ' picks',
+      resetDismissed: () => this.setState({ dismissed: [] })
+    };
+  }
+}
+</script>
+</body>
+</html>

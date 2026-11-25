@@ -4,6 +4,9 @@ import HomeLayout from "../../layouts/HomeLayout.astro";
 import SiteHeader from "../../components/home/SiteHeader.astro";
 import CaseStudyFigure from "../../components/CaseStudyFigure.astro";
 import ActionLink from "../../components/home/ActionLink.astro";
+import { Image } from "astro:assets";
+import conceptWeeklyImg from "../../assets/images/mh-concept-weekly-edit.png";
+import conceptCheckInImg from "../../assets/images/mh-concept-check-in.png";
 import { resumeUrl } from "../../data/site-links";
 
 import shippedImg from "../../assets/images/sample-mh-home.png";
@@ -25,6 +28,52 @@ const sections = [
   { id: "approach", label: "Approach" },
   { id: "results", label: "Results" },
   { id: "learned", label: "Learned" },
+  { id: "next", label: "Next" },
+];
+
+// "What's next": two unshipped concepts, hosted as live prototypes in public/concepts.
+const conceptBase = `${base}/concepts/modern-health-home`;
+const concepts = [
+  {
+    label: "Concept A",
+    title: "Your Weekly Edit",
+    href: `${conceptBase}/weekly-edit.html`,
+    image: conceptWeeklyImg,
+    alt: "Concept A prototype: a Good morning, Maya greeting beside a wellbeing profile where the member picks what's on their mind (sleep, work stress), how they like support, and how much time they have.",
+    summary:
+      "A profile members can change anytime: what's on their mind, how they like support, and how much time they have. The page builds a weekly edit from it, with a reason on every pick.",
+    ideas: [
+      "Every pick says why, like “Because sleep has been rough.”",
+      "“Something else” swaps a pick and teaches the system.",
+      "“How we pick for you” shows exactly what drives the edit.",
+    ],
+    bet: "If members can see and change what drives their picks, they'll trust them and start more of them.",
+    validate: [
+      "<b>Moderated sessions with 6–8 members.</b> Ask them why they think they see each pick, then have them change their profile. Can they predict what happens?",
+      "<b>Review the labels with clinical partners.</b> Naming “anxious thoughts” on a home screen has to feel safe, not exposing.",
+      "<b>Pilot against today's home screen.</b> Track picks started, swap rate, profile edits, and the one-week return rate.",
+    ],
+  },
+  {
+    label: "Concept B",
+    title: "Arrive As You Are",
+    href: `${conceptBase}/check-in.html`,
+    image: conceptCheckInImg,
+    alt: "Concept B prototype: a How are you arriving today? check-in set to Stretched thin, a Let's lighten the load headline, and three small picks for right now.",
+    summary:
+      "A one-tap check-in reshapes the page for today: the headline, three small picks, and the Circles shown. When a member says they're low or on edge, a path to a person moves up.",
+    ideas: [
+      "A daily check-in is a fresher signal than sign-up answers.",
+      "“Your rhythm” shows two weeks of check-ins and asks, “Does that ring true?”",
+      "Low and on-edge check-ins bring a therapist and the support line forward.",
+    ],
+    bet: "If one tap visibly changes the page, members will keep checking in, and we'll notice hard days sooner.",
+    validate: [
+      "<b>A two-week diary study with about 10 members.</b> Do they keep checking in, and does the page match how they arrived?",
+      "<b>Design the hard-day paths with the clinical team.</b> Decide when to surface a therapist or the support line, and test the tone of the copy with members.",
+      "<b>Pilot it.</b> Track week-two check-in rate against week one, picks started after a check-in, and therapist bookings from hard-day check-ins.",
+    ],
+  },
 ];
 
 /*
@@ -502,6 +551,62 @@ const icons: Record<Icon, string> = {
         <li><b>The logic is a team sport.</b> Writing the states down with engineering and product made edge cases, like running out of sessions, part of the design.</li>
       </ul>
     </div>
+  </section>
+
+  <!-- WHAT'S NEXT -->
+  <section class="content-section" id="next">
+    <p class="eyebrow all-caps soft">What's next</p>
+    <h2 class="heading-3">Where personalization could go <em>next</em>.</h2>
+    <p class="cs-prose">
+      Two concepts I prototyped recently to push the idea further. Both ask the same question: what if members could tell the home screen what they need today, and see it respond? Neither shipped. Here's what each one tests, and how I'd validate it with members.
+    </p>
+
+    {concepts.map((c) => (
+      <article class="pz-concept">
+        <a
+          class="pz-concept-shot"
+          href={c.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Open the ${c.label} prototype in a new tab`}
+        >
+          <span class="pz-concept-chrome" aria-hidden="true"><i></i><i></i><i></i></span>
+          <Image
+            src={c.image}
+            alt={c.alt}
+            widths={[640, 960, 1440]}
+            sizes="(min-width: 821px) 640px, 100vw"
+            loading="lazy"
+          />
+          <span class="pz-concept-open" aria-hidden="true">Open prototype ↗</span>
+        </a>
+        <div class="pz-concept-body">
+          <p class="eyebrow">{c.label}</p>
+          <h3>{c.title}</h3>
+          <p>{c.summary}</p>
+          <ul class="pz-concept-ideas">
+            {c.ideas.map((idea) => <li>{idea}</li>)}
+          </ul>
+          <div class="pz-bet">
+            <p class="eyebrow">The bet</p>
+            <p>{c.bet}</p>
+          </div>
+          <h4>How I'd validate it</h4>
+          <ol class="pz-validate">
+            {c.validate.map((v) => <li set:html={v} />)}
+          </ol>
+          <ActionLink href={c.href} label="Open the prototype" variant="filled" external />
+        </div>
+      </article>
+    ))}
+
+    <p class="cs-callout">
+      They aren't either/or. The profile holds the <em>long view</em>, and the check-in tunes <em>today</em>.
+    </p>
+    <p class="cs-prose">
+      I'd test them separately first, so we learn which signal actually moves return visits, then combine what works.
+    </p>
+
     <nav class="navigation-list" aria-label="More case studies">
       <ul>
         <li><ActionLink href={`${base}/#my-work`} label="Back to all work" /></li>
@@ -989,5 +1094,165 @@ const icons: Record<Icon, string> = {
     .cs-new .pz-shipped {
       grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
     }
+  }
+
+  /* ---------- What's next: concept prototypes ---------- */
+
+  .cs-new .pz-concept {
+    display: grid;
+    gap: var(--space-m);
+    padding-top: var(--space-m);
+    border-top: 2px solid var(--line);
+  }
+
+  @media screen and (min-width: 821px) {
+    .cs-new .pz-concept {
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      column-gap: var(--space-l);
+      align-items: start;
+    }
+  }
+
+  /* The screenshot is a link to the live prototype, framed like a browser window. */
+  .cs-new .pz-concept-shot {
+    position: relative;
+    display: block;
+    border: 4px solid var(--line);
+    background: var(--bg);
+    color: var(--fg);
+    text-decoration: none;
+    transition: border-color 0.15s;
+  }
+
+  .cs-new .pz-concept-chrome {
+    display: flex;
+    gap: 6px;
+    padding: 8px 10px;
+    border-bottom: 2px solid var(--line);
+    transition: border-color 0.15s;
+  }
+
+  .cs-new .pz-concept-chrome i {
+    width: 9px;
+    height: 9px;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+  }
+
+  .cs-new .pz-concept-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .cs-new .pz-concept-open {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    padding: 6px 10px;
+    border-radius: 3px;
+    background: var(--fg);
+    color: var(--bg);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+
+  .cs-new .pz-concept-shot:hover,
+  .cs-new .pz-concept-shot:focus-visible {
+    border-color: var(--accent-text);
+  }
+
+  .cs-new .pz-concept-shot:hover .pz-concept-chrome {
+    border-color: var(--accent-text);
+  }
+
+  .cs-new .pz-concept-shot:hover .pz-concept-open,
+  .cs-new .pz-concept-shot:focus-visible .pz-concept-open {
+    opacity: 1;
+  }
+
+  .cs-new .pz-concept-shot:focus-visible {
+    outline: 3px solid var(--accent-text);
+    outline-offset: 3px;
+  }
+
+  @media (hover: none) {
+    .cs-new .pz-concept-open {
+      opacity: 1;
+    }
+  }
+
+  .cs-new .pz-concept-body {
+    display: grid;
+    gap: var(--space-xs);
+    justify-items: start;
+  }
+
+  .cs-new .pz-concept-body > .eyebrow {
+    margin: 0;
+    color: var(--accent-text);
+  }
+
+  .cs-new .pz-concept-body h3 {
+    font-family: var(--font-display);
+    font-size: var(--font-size-2);
+    font-weight: 400;
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+
+  .cs-new .pz-concept-body h4 {
+    margin-top: var(--space-2xs);
+    font: var(--font-heading-5);
+  }
+
+  .cs-new .pz-concept-ideas,
+  .cs-new .pz-validate {
+    display: grid;
+    gap: 6px;
+    padding-left: 1.25rem;
+  }
+
+  .cs-new .pz-concept-ideas {
+    list-style: disc;
+  }
+
+  .cs-new .pz-validate {
+    list-style: decimal;
+  }
+
+  .cs-new .pz-validate li::marker {
+    font-family: var(--font-mono);
+    color: var(--accent-text);
+  }
+
+  .cs-new .pz-validate b {
+    font-weight: 700;
+  }
+
+  .cs-new .pz-bet {
+    display: grid;
+    gap: 4px;
+    width: 100%;
+    padding-top: var(--space-2xs);
+    border-top: 4px solid var(--accent);
+  }
+
+  .cs-new .pz-bet .eyebrow {
+    margin: 0;
+    color: var(--accent-text);
+  }
+
+  .cs-new .pz-bet p:not(.eyebrow) {
+    font-weight: 700;
+  }
+
+  .cs-new .pz-concept-body .navigation-list,
+  .cs-new .pz-concept-body > a {
+    margin-top: var(--space-2xs);
   }
 </style>
